@@ -14,7 +14,7 @@ static inline uint8_t bit_reverse_8(uint8_t const data)
 
 #else
 
-  uint8_t result;
+  uint8_t result = data;
 
   uint8_t const bit_swap_mask[] =
   {
@@ -40,7 +40,7 @@ static inline uint16_t bit_reverse_16(uint16_t const data)
 
 #else
 
-  uint16_t result;
+  uint16_t result = data;
 
   // 1. Reverse all bits in each byte
 
@@ -77,7 +77,7 @@ static inline uint32_t bit_reverse_32(uint32_t const data)
 
 #else
 
-  uint32_t result;
+  uint32_t result = data;
 
   // 1. Reverse all bits in each byte
 
@@ -118,7 +118,7 @@ static inline uint64_t bit_reverse_64(uint64_t const data)
 
 #else
 
-  uint64_t result;
+  uint64_t result = data;
 
   // 1. Reverse all bits in each byte
 
