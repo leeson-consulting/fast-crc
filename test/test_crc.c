@@ -61,6 +61,35 @@ void test_crc8_koopman(void)
 
 ///////////////////////////////////////////////////////////////////////////////
 
+// CRC-12/UMTS:
+//  width   = 12-bits
+//  poly    = 0x80f
+//  init    = 0x000
+//  refin   = false
+//  refout  = true
+//  xorout  = 0x000
+//  check   = 0xdaf
+//  residue = 0x000
+
+static uint16_t const CRC12_UMTS_CHECK = 0xdaf;
+
+void test_crc12_umts(void)
+{
+  printf(">>>   Test CRC12_UMTS   <<<\n\n");
+
+  printf("Check test string \"%s\"\n", CRC_CHECK_STRING);
+
+  uint16_t crc = crc12_umts((uint8_t *)CRC_CHECK_STRING, strlen(CRC_CHECK_STRING));
+
+  if (CRC12_UMTS_CHECK != crc) {
+    ERROR("CRC Test failed: Expected 0x%04x , Actual 0x%04x\n\n", CRC12_UMTS_CHECK, crc);
+  }
+
+  printf("CRC Test Pass\n\n");
+}
+
+///////////////////////////////////////////////////////////////////////////////
+
 // CRC-16/IBM3740:
 //  width   = 16-bits
 //  poly    = 0x1021
@@ -220,6 +249,7 @@ int main(void)
   test_crc8_koopman();
 
   test_crc16_ibm3740();
+  test_crc12_umts();
   test_crc16_mcrfxx();
   test_crc16_modbus();
 

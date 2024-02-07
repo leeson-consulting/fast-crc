@@ -4,6 +4,10 @@
 
 #include "./algorithms/crc8_koopman.inc"
 
+// CRC-12 algorithms
+
+#include "./algorithms/crc12_umts.inc"
+
 // CRC-16 algorithms
 
 #include "./algorithms/crc16_ibm3740.inc"
