@@ -1,5 +1,15 @@
 #pragma once
 
+// Polynomial           :
+//
+//  x^64 + x^62 + x^57 + x^55 + x^54 + x^53 + x^52 + x^47 + x^46 + x^45 + x^40 + x^39 + x^38 + x^37 + x^35 + x^33 +
+//  x^32 + x^31 + x^29 + x^27 + x^24 + x^23 + x^22 + x^21 + x^19 + x^17 + x^13 + x^12 + x^10 + x^9 + x^7 + x^4 + x + 1
+//
+// Implicit             :      0xa17870f5d4f51b49
+// Explicit             :      0x142f0e1eba9ea3693
+// Reversed Implicit    :      0xc96c5795d7870f42
+// Reversed Explicit    :      0x192d8af2baf0e1e85
+
 static uint64_t const RPoly42f0e1eba9ea3693[16] =
 {
   0x0000000000000000, 0x7d9ba13851336649, 0xfb374270a266cc92, 0x86ace348f355aadb,
