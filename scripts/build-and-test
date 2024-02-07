@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+set -e
+
+SCRIPT_PATH="${0%/*}"
+REPO_ROOT="$(git rev-parse --show-toplevel)"
+
+###############################################################################
+
+function main()
+{
+  mkdir -p "${REPO_ROOT}/build/bin"
+
+  time gcc -Wall -Wpedantic -std=c99 -fdiagnostics-color=always \
+    -I "${REPO_ROOT}" \
+    -I "${REPO_ROOT}/test" \
+    \
+    "${REPO_ROOT}/crc.c" \
+    "${REPO_ROOT}/test/test_crc.c" \
+    -o "${REPO_ROOT}/build/bin/test_crc" \
+    \
+    -L "${REPO_ROOT}" \
+    \
+    && "${REPO_ROOT}/build/bin/test_crc"
+}
+
+###############################################################################
+
+main "$@"
