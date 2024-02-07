@@ -21,3 +21,7 @@
 #include "./algorithms/crc32_hdlc.inc"
 
 #include "./algorithms/crc32_hdlc_offset.inc"
+
+// CRC-64 algorithms
+
+#include "./algorithms/crc64_xz.inc"

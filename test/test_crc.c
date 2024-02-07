@@ -205,6 +205,35 @@ void test_crc32_hdlc(void)
 }
 
 ///////////////////////////////////////////////////////////////////////////////
+
+// CRC-64/XZ:
+//  width   = 64-bits
+//  poly    = 42f0e1eba9ea3693
+//  init    = 0xffffffffffffffff
+//  refin   = true
+//  refout  = true
+//  xorout  = 0xffffffffffffffff
+//  check   = 0x995dc9bbdf1939fa
+//  residue = 0x49958c9abd7d353f
+
+static uint64_t const CRC64_XZ_CHECK = 0x995dc9bbdf1939fa;
+
+void test_crc64_xz(void)
+{
+  printf(">>>   Test CRC64_XZ   <<<\n\n");
+
+  printf("Check test string \"%s\"\n", CRC_CHECK_STRING);
+
+  uint64_t crc = crc64_xz((uint8_t *)CRC_CHECK_STRING, strlen(CRC_CHECK_STRING));
+
+  if (CRC64_XZ_CHECK != crc) {
+    ERROR("CRC Test failed: Expected 0x%016lx , Actual 0x%016lx\n\n", CRC64_XZ_CHECK, crc);
+  }
+
+  printf("CRC Test Pass\n\n");
+}
+
+///////////////////////////////////////////////////////////////////////////////
 //
 // Test CRC Offset Kernels
 //
@@ -254,6 +283,8 @@ int main(void)
   test_crc16_modbus();
 
   test_crc32_hdlc();
+
+  test_crc64_xz();
 
   /////////////////////
   //
