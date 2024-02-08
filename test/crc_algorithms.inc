@@ -13,6 +13,7 @@
 #include "./algorithms/crc16_ibm3740.inc"
 #include "./algorithms/crc16_mcrfxx.inc"
 #include "./algorithms/crc16_modbus.inc"
+#include "./algorithms/crc16_nguyen.inc"
 
 #include "./algorithms/crc16_ibm3740_offset.inc"
 

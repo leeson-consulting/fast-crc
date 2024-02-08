@@ -177,6 +177,34 @@ void test_crc16_modbus(void)
 
 ///////////////////////////////////////////////////////////////////////////////
 
+// CRC-16/Nguyen:
+//  width   = 16-bits
+//  poly    = 0x0007
+//  init    = 0x0000
+//  refin   = false
+//  refout  = false
+//  xorout  = 0x0000
+//  check   = 0xef6f
+
+static uint16_t const CRC16_NGUYEN_CHECK = 0xef6f;
+
+void test_crc16_nguyen(void)
+{
+  printf(">>>   Test CRC16_NGUYEN   <<<\n\n");
+
+  printf("Check test string \"%s\"\n", CRC_CHECK_STRING);
+
+  uint16_t crc = crc16_nguyen((uint8_t *)CRC_CHECK_STRING, strlen(CRC_CHECK_STRING));
+
+  if (CRC16_NGUYEN_CHECK != crc) {
+    ERROR("CRC Test failed: Expected 0x%04x , Actual 0x%04x\n\n", CRC16_NGUYEN_CHECK, crc);
+  }
+
+  printf("CRC Test Pass\n\n");
+}
+
+///////////////////////////////////////////////////////////////////////////////
+
 // CRC-32/ISO-HDLC:
 //  width   = 32-bits
 //  poly    = 0x04c11db7
@@ -281,6 +309,7 @@ int main(void)
   test_crc12_umts();
   test_crc16_mcrfxx();
   test_crc16_modbus();
+  test_crc16_nguyen();
 
   test_crc32_hdlc();
 
