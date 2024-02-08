@@ -15,6 +15,8 @@
 #include "./algorithms/crc16_modbus.inc"
 #include "./algorithms/crc16_nguyen.inc"
 
+#include "./algorithms/crc16_fast.inc"
+
 #include "./algorithms/crc16_ibm3740_offset.inc"
 
 // CRC-32 algorithms
