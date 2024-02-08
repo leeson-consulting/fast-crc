@@ -5,6 +5,8 @@
 #include "./algorithms/crc8_koopman.inc"
 #include "./algorithms/crc8_nguyen.inc"
 
+#include "./algorithms/crc8_fast.inc"
+
 // CRC-12 algorithms
 
 #include "./algorithms/crc12_umts.inc"

@@ -89,6 +89,34 @@ void test_crc8_nguyen(void)
 
 ///////////////////////////////////////////////////////////////////////////////
 
+// CRC-8/Fast:
+//  width   = 8-bits
+//  poly    = 0x07
+//  init    = 0x00
+//  refin   = false
+//  refout  = false
+//  xorout  = 0x00
+//  check   = 0xf4
+
+static uint8_t const CRC8_FAST_CHECK = 0xf4;
+
+void test_crc8_fast(void)
+{
+  printf(">>>   Test CRC8_FAST   <<<\n\n");
+
+  printf("Check test string \"%s\"\n", CRC_CHECK_STRING);
+
+  uint8_t crc = crc8_fast((uint8_t *)CRC_CHECK_STRING, strlen(CRC_CHECK_STRING));
+
+  if (CRC8_FAST_CHECK != crc) {
+    ERROR("CRC Test failed: Expected 0x%02x , Actual 0x%02x\n\n", CRC8_FAST_CHECK, crc);
+  }
+
+  printf("CRC Test Pass\n\n");
+}
+
+///////////////////////////////////////////////////////////////////////////////
+
 // CRC-12/UMTS:
 //  width   = 12-bits
 //  poly    = 0x80f
@@ -361,6 +389,8 @@ int main(void)
 {
   test_crc8_koopman();
   test_crc8_nguyen();
+
+  test_crc8_fast();
 
   test_crc16_ibm3740();
   test_crc12_umts();
