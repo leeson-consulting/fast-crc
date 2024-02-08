@@ -1,7 +1,5 @@
 #if crc_algorithms_inc == INCLUDE_INTERFACE
 
-#define REQUIRE_CRC_KERNEL16
-
 // CRC-16/Fast:
 //  width   = 16-bits
 //  poly    = 0x0007
