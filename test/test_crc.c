@@ -42,18 +42,46 @@ do {                                           \
 //  http://www.ece.cmu.edu/~koopman/roses/dsn04/koopman04_crc_poly_embedded.pdf
 //  https://stackoverflow.com/a/51748961
 
-static uint8_t const crc8_koopman_CHECK = 0xd8;
+static uint8_t const CRC8_KOOPMAN_CHECK = 0xd8;
 
 void test_crc8_koopman(void)
 {
-  printf(">>>   Test crc8_koopman   <<<\n\n");
+  printf(">>>   Test CRC8_KOOPMAN   <<<\n\n");
 
   printf("Check test string \"%s\"\n", CRC_CHECK_STRING);
 
   uint8_t crc = crc8_koopman((uint8_t *)CRC_CHECK_STRING, strlen(CRC_CHECK_STRING));
 
-  if (crc8_koopman_CHECK != crc) {
-    ERROR("CRC Test failed: Expected 0x%02x , Actual 0x%02x\n\n", crc8_koopman_CHECK, crc);
+  if (CRC8_KOOPMAN_CHECK != crc) {
+    ERROR("CRC Test failed: Expected 0x%02x , Actual 0x%02x\n\n", CRC8_KOOPMAN_CHECK, crc);
+  }
+
+  printf("CRC Test Pass\n\n");
+}
+
+///////////////////////////////////////////////////////////////////////////////
+
+// CRC-8/Nguyen:
+//  width   = 8-bits
+//  poly    = 0x07
+//  init    = 0x00
+//  refin   = false
+//  refout  = false
+//  xorout  = 0x00
+//  check   = 0xf4
+
+static uint8_t const CRC8_NGUYEN_CHECK = 0xf4;
+
+void test_crc8_nguyen(void)
+{
+  printf(">>>   Test CRC8_NGUYEN   <<<\n\n");
+
+  printf("Check test string \"%s\"\n", CRC_CHECK_STRING);
+
+  uint8_t crc = crc8_nguyen((uint8_t *)CRC_CHECK_STRING, strlen(CRC_CHECK_STRING));
+
+  if (CRC8_NGUYEN_CHECK != crc) {
+    ERROR("CRC Test failed: Expected 0x%02x , Actual 0x%02x\n\n", CRC8_NGUYEN_CHECK, crc);
   }
 
   printf("CRC Test Pass\n\n");
@@ -332,6 +360,7 @@ void test_bit_offsets(void)
 int main(void)
 {
   test_crc8_koopman();
+  test_crc8_nguyen();
 
   test_crc16_ibm3740();
   test_crc12_umts();

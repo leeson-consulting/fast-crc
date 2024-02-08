@@ -3,6 +3,7 @@
 // CRC-8 algorithms
 
 #include "./algorithms/crc8_koopman.inc"
+#include "./algorithms/crc8_nguyen.inc"
 
 // CRC-12 algorithms
 
