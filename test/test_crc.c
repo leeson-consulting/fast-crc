@@ -331,7 +331,7 @@ static uint32_t const CRC32_NGUYEN_0006C001_CHECK = 0x1d40bcf7;
 
 void test_crc32_nguyen_0006c001(void)
 {
-  printf(">>>   Test CRC32_NGUYEN_0006C001<<<\n\n");
+  printf(">>>   Test CRC32_NGUYEN_0006C001   <<<\n\n");
 
   printf("Check test string \"%s\"\n", CRC_CHECK_STRING);
 
@@ -339,6 +339,44 @@ void test_crc32_nguyen_0006c001(void)
 
   if (CRC32_NGUYEN_0006C001_CHECK != crc) {
     ERROR("CRC Test failed: Expected 0x%08x , Actual 0x%08x\n\n", CRC32_NGUYEN_0006C001_CHECK, crc);
+  }
+
+  printf("CRC Test Pass\n\n");
+}
+
+///////////////////////////////////////////////////////////////////////////////
+
+// CRC-32/Fast6:
+//  width   = 32-bits
+//  poly    = 0x0006c001
+//  init    = 0x0000
+//  refin   = false
+//  refout  = false
+//  xorout  = 0x0000
+//  check   = 0x1d40bcf7
+
+static uint32_t const CRC32_FAST6_CHECK = 0x1d40bcf7;
+
+void test_crc32_fast6(void)
+{
+  printf(">>>   Test CRC32_FAST6   <<<\n\n");
+
+  printf("Check test string \"%s\"\n", CRC_CHECK_STRING);
+
+  uint16_t data[5] = {0};
+
+  memcpy(data, CRC_CHECK_STRING, 10);
+
+  uint32_t crc;
+
+  crc = crc32_fast6_u8((uint8_t *)CRC_CHECK_STRING, strlen(CRC_CHECK_STRING));
+
+  printf("\n\n ... second go with u16... \n\n");
+
+  crc = crc32_fast6(data, 5);
+
+  if (CRC32_FAST6_CHECK != crc) {
+    ERROR("CRC Test failed: Expected 0x%08x , Actual 0x%08x\n\n", CRC32_FAST6_CHECK, crc);
   }
 
   printf("CRC Test Pass\n\n");
@@ -424,12 +462,14 @@ int main(void)
   test_crc12_umts();
   test_crc16_mcrfxx();
   test_crc16_modbus();
-  test_crc16_nguyen();
 
+  test_crc16_nguyen();
   test_crc16_fast();
 
   test_crc32_hdlc();
+
   test_crc32_nguyen_0006c001();
+  test_crc32_fast6();
 
   test_crc64_xz();
 
