@@ -318,6 +318,34 @@ void test_crc32_hdlc(void)
 
 ///////////////////////////////////////////////////////////////////////////////
 
+// CRC-32/Nguyen_0006c001:
+//  width   = 32-bits
+//  poly    = 0x0006c001
+//  init    = 0x0000
+//  refin   = false
+//  refout  = false
+//  xorout  = 0x0000
+//  check   = 0x1d40bcf7
+
+static uint32_t const CRC32_NGUYEN_0006C001_CHECK = 0x1d40bcf7;
+
+void test_crc32_nguyen_0006c001(void)
+{
+  printf(">>>   Test CRC32_NGUYEN_0006C001<<<\n\n");
+
+  printf("Check test string \"%s\"\n", CRC_CHECK_STRING);
+
+  uint32_t crc = crc32_nguyen_0006c001((uint8_t *)CRC_CHECK_STRING, strlen(CRC_CHECK_STRING));
+
+  if (CRC32_NGUYEN_0006C001_CHECK != crc) {
+    ERROR("CRC Test failed: Expected 0x%08x , Actual 0x%08x\n\n", CRC32_NGUYEN_0006C001_CHECK, crc);
+  }
+
+  printf("CRC Test Pass\n\n");
+}
+
+///////////////////////////////////////////////////////////////////////////////
+
 // CRC-64/XZ:
 //  width   = 64-bits
 //  poly    = 42f0e1eba9ea3693
@@ -401,6 +429,7 @@ int main(void)
   test_crc16_fast();
 
   test_crc32_hdlc();
+  test_crc32_nguyen_0006c001();
 
   test_crc64_xz();
 
