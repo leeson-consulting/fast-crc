@@ -207,12 +207,13 @@
 
 ///////////////////////////////////////////////////////////////////////////////
 //
-// 3. Include bit_reverse_x inline functions
+// 3. Include intrinsic function wappers
 //    These are (very rarely) used by CRC algorithms where refin != refout,
 //    eg. CRC-12/UMTS
 //
 
 #include "./kernels/bit_reverse.c"
+#include "./kernels/byte_swap.c"
 
 ///////////////////////////////////////////////////////////////////////////////
 //
