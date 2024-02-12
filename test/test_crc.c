@@ -363,17 +363,13 @@ void test_crc32_fast6(void)
 
   printf("Check test string \"%s\"\n", CRC_CHECK_STRING);
 
-  uint16_t data[5] = {0};
-
-  memcpy(data, CRC_CHECK_STRING, 10);
-
   uint32_t crc;
+  uint8_t data[32] = {0};
+  size_t i = 1; // To experiment with offset behaviour
 
-  crc = crc32_fast6_u8((uint8_t *)CRC_CHECK_STRING, strlen(CRC_CHECK_STRING));
+  memcpy(data + i, CRC_CHECK_STRING, strlen(CRC_CHECK_STRING));
 
-  printf("\n\n ... second go with u16... \n\n");
-
-  crc = crc32_fast6(data, 5);
+  crc = crc32_fast6(data + i, strlen(CRC_CHECK_STRING));
 
   if (CRC32_FAST6_CHECK != crc) {
     ERROR("CRC Test failed: Expected 0x%08x , Actual 0x%08x\n\n", CRC32_FAST6_CHECK, crc);

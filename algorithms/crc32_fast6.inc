@@ -9,63 +9,62 @@
 //  xorout  = 0x0000
 //  check   = 0x1d40bcf7
 
-uint32_t crc32_fast6_u8(uint8_t const *data, size_t const data_len);
-
-uint32_t crc32_fast6(uint16_t const *data, size_t const data_len);
+uint32_t crc32_fast6(uint8_t const * data, size_t data_len);
 
 #elif crc_algorithms_inc == INCLUDE_IMPLEMENTATION
 
 #include <stdio.h>
 
-uint32_t crc32_fast6_u8(uint8_t const *data, size_t const data_len)
+static inline uint32_t crc32_fast6_u8(uint32_t crc, uint8_t const data_byte)
 {
-  uint32_t A, B, P;
-  size_t s = 8;
-  size_t hs = 24; /* hs = h-s, h = 32 */
-
-  P = /* init = */ 0;
-
-  for (size_t i = 0 ; i < data_len; ++i) /* 2 */
-  {
-    A = (P >> hs) ^ data[i]; /* 2 */
-    B = (A << 18) ^ (A << 17) ^ (A << 15) ^ (A << 14) ^ A; /* 8 */
-    P = B ^ (P << s);    /* 2 */
-    
-    printf("crc32_fast6_u8: data[%lu] = 0x%04x, P = 0x%08x\n", i, data[i], P);
-  }
-
-  return P;
+  uint32_t const A = (crc >> (32 - 8)) ^ data_byte;                     //   2 ops
+  uint32_t const B = (A << 18) ^ (A << 17) ^ (A << 15) ^ (A << 14) ^ A; //   8 ops
+  crc = B ^ (crc << 8);                                                 // + 2 ops
+                                                                        // -------
+  return crc;                                                           //  12 ops/u8
 }
-//   0x00000000, 0x0006c001, 0x000d8002, 0x000b4003, 0x001b0004, 0x001dc005, 0x00168006, 0x00104007, 0x00360008, 0x0030c009, 0x003b800a, 0x003d400b, 0x002d000c, 0x002bc00d, 0x0020800e, 0x0026400f
 
-
-uint32_t crc32_fast6(uint16_t const *data, size_t const data_len)
+static inline uint32_t crc32_fast6_u16(uint32_t crc, uint16_t const * data, size_t const data_len)
 {
-  uint32_t A, A1, A2, B, P;
-  static uint32_t T[4] = {0x0, 0x8006c001, 0xb4003, 0x800d8002};
+  uint32_t A, A1, A2, B;
+  static const uint32_t T[4] = {0x0, 0x8006c001, 0xb4003, 0x800d8002};
 
   size_t s = 16;
   size_t hs = 16; /* hs = h-s, h = 32 */
-  P = /* init = */ 0;
 
-  for (size_t i = 0; i < data_len; ++i) /* 2 */
-  {
-    uint16_t const item = __builtin_bswap16(data[i]);
-    //uint16_t const item = data[i];
+  for (size_t i = 0; i < data_len; ++i) {                               //   2 ops
+    uint16_t const item = __builtin_bswap16(data[i]);                   //   1 op
+    A = (crc >> hs) ^ item;                                             //   2 ops
+    A1 = A >> 14;                                                       //   1 op
+    A2 = A & 0x3fff;                                                    //   1 op
+    B = T[A1] ^ (A2 << 18) ^ (A2 << 17) ^ (A << 15) ^ (A << 14) ^ A;    //   9 ops
+    crc = B ^ (crc << s);                                               // + 2 ops
+  }                                                                     // -------
+                                                                        //  18 ops/u16
+  return crc;                                                           //   9 ops/u8
+}
 
-    //A = (P >> hs) ^ data[i]; /* 2 */
-    A = (P >> hs) ^ item; /* 2 */
-    A1 = A >> 14; /* 1 */
-    A2 = A & 0x3fff; /* 1 */
-    
-    //printf("crc32_fast6: data[%lu] = 0x%04x, A1 = 0x%08x\n", i, data[i], A1);
-    
-    B = T[A1] ^ (A2 << 18) ^ (A2 << 17) ^ (A << 15) ^ (A << 14) ^ A; /* 9 */
-    P = B ^ (P << s); /* 2 */
-    printf("crc32_fast6_u16: data[%lu] = 0x%04x, P = 0x%08x\n", i, data[i], P);
+uint32_t crc32_fast6(uint8_t const * data, size_t data_len)
+{
+  uint32_t crc = 0x00000000; // init;
+
+  if ((uintptr_t) data % sizeof(uint16_t) != 0) {
+    crc = crc32_fast6_u8(crc, *data);                                   // 12 ops
+    data++;
+    data_len--;
   }
 
-  return P;
+  if (data_len == 0) {
+    return crc;
+  }
+
+  crc = crc32_fast6_u16(crc, (uint16_t const *) data, data_len / 2);    // 18 * (data_len / 2) ops
+
+  if (data_len % 2 == 0) {
+    return crc;
+  }
+
+  return crc32_fast6_u8(crc, data[data_len - 1]);                       // 12 ops
 }
 
 #endif
