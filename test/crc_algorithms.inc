@@ -17,7 +17,7 @@
 #include "./algorithms/crc16_mcrfxx.inc"
 #include "./algorithms/crc16_modbus.inc"
 
-#include "./algorithms/crc16_nguyen.inc"
+#include "./algorithms/crc16_nguyen_0007.inc"
 #include "./algorithms/crc16_fast4.inc"
 
 #include "./algorithms/crc16_nguyen_011b.inc"

@@ -233,7 +233,7 @@ void test_crc16_modbus(void)
 
 ///////////////////////////////////////////////////////////////////////////////
 
-// CRC-16/Nguyen:
+// CRC-16/Nguyen_0007:
 //  width   = 16-bits
 //  poly    = 0x0007
 //  init    = 0x0000
@@ -242,18 +242,18 @@ void test_crc16_modbus(void)
 //  xorout  = 0x0000
 //  check   = 0xef6f
 
-static uint16_t const CRC16_NGUYEN_CHECK = 0xef6f;
+static uint16_t const CRC16_NGUYEN_0007_CHECK = 0xef6f;
 
-void test_crc16_nguyen(void)
+void test_crc16_nguyen_0007(void)
 {
-  printf(">>>   Test CRC16_NGUYEN   <<<\n\n");
+  printf(">>>   Test CRC16_NGUYEN_0007   <<<\n\n");
 
   printf("Check test string \"%s\"\n", CRC_CHECK_STRING);
 
-  uint16_t crc = crc16_nguyen((uint8_t *)CRC_CHECK_STRING, strlen(CRC_CHECK_STRING));
+  uint16_t crc = crc16_nguyen_0007((uint8_t *)CRC_CHECK_STRING, strlen(CRC_CHECK_STRING));
 
-  if (CRC16_NGUYEN_CHECK != crc) {
-    ERROR("CRC Test failed: Expected 0x%04x , Actual 0x%04x\n\n", CRC16_NGUYEN_CHECK, crc);
+  if (CRC16_NGUYEN_0007_CHECK != crc) {
+    ERROR("CRC Test failed: Expected 0x%04x , Actual 0x%04x\n\n", CRC16_NGUYEN_0007_CHECK, crc);
   }
 
   printf("CRC Test Pass\n\n");
@@ -549,7 +549,7 @@ int main(void)
   test_crc16_mcrfxx();
   test_crc16_modbus();
 
-  test_crc16_nguyen();
+  test_crc16_nguyen_0007();
   test_crc16_fast4();
 
   test_crc16_nguyen_011b();
