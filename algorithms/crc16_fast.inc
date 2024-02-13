@@ -37,9 +37,6 @@ static inline uint32_t crcx_fast4_u16(uint32_t crc, uint16_t const * data, size_
     A = crc ^ item;                                                     //   1 op
     A1 = A >> 14;                                                       //   1 op
     crc = T[A1] ^ (A << 2) ^ (A << 1) ^ A;                              // + 5 ops
-
-    printf("crcx_fast4_u16: data[%lu] = 0x%04x, crc = 0x%08x\n", i, data[i], crc);
-
   }                                                                     // -------
                                                                         //  10 ops/u16
   return crc;                                                           //   5 ops/u8
