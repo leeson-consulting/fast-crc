@@ -16,6 +16,14 @@
 #define REQUIRE_CRC_OFFSET_KERNEL16
 #endif
 
+#if defined(REQUIRE_CRC_KERNEL24)
+#define REQUIRE_CRC_KERNEL32
+#endif
+
+#if defined(REQUIRE_CRC_OFFSET_KERNEL24)
+#define REQUIRE_CRC_OFFSET_KERNEL32
+#endif
+
 #if !defined(PREFERRED_CRC_KERNEL_WIDTH)
 
   #if (defined(REQUIRE_CRC_KERNEL64) || defined(REQUIRE_CRC_OFFSET_KERNEL64)) && CPU_REGISTER_WIDTH >= 64
@@ -43,6 +51,7 @@
   typedef crcx_t   crc8_t;
   typedef uint16_t crc12_t;
   typedef uint16_t crc16_t;
+  typedef uint32_t crc24_t;
   typedef uint32_t crc32_t;
   typedef uint64_t crc64_t;
 
@@ -69,6 +78,7 @@
   typedef crcx_t   crc8_t;
   typedef crcx_t   crc12_t;
   typedef crcx_t   crc16_t;
+  typedef uint32_t crc24_t;
   typedef uint32_t crc32_t;
   typedef uint64_t crc64_t;
 
@@ -105,17 +115,20 @@
   typedef crcx_t   crc8_t;
   typedef crcx_t   crc12_t;
   typedef crcx_t   crc16_t;
+  typedef crcx_t   crc24_t;
   typedef crcx_t   crc32_t;
   typedef uint64_t crc64_t;
 
   #define calc_crc8(...)            calc_crcx(__VA_ARGS__)
   #define calc_crc12(...)           calc_crcx(__VA_ARGS__)
   #define calc_crc16(...)           calc_crcx(__VA_ARGS__)
+  #define calc_crc24(...)           calc_crcx(__VA_ARGS__)
   #define calc_crc32(...)           calc_crcx(__VA_ARGS__)
 
   #define calc_crc8_offset(...)     calc_crcx_offset(__VA_ARGS__)
   #define calc_crc12_offset(...)    calc_crcx_offset(__VA_ARGS__)
   #define calc_crc16_offset(...)    calc_crcx_offset(__VA_ARGS__)
+  #define calc_crc24_offset(...)    calc_crcx_offset(__VA_ARGS__)
   #define calc_crc32_offset(...)    calc_crcx_offset(__VA_ARGS__)
 
 #elif PREFERRED_CRC_KERNEL_WIDTH == 64
@@ -149,18 +162,21 @@
   typedef crcx_t   crc8_t;
   typedef crcx_t   crc12_t;
   typedef crcx_t   crc16_t;
+  typedef crcx_t   crc24_t;
   typedef crcx_t   crc32_t;
   typedef crcx_t   crc64_t;
 
   #define calc_crc8(...)            calc_crcx(__VA_ARGS__)
   #define calc_crc12(...)           calc_crcx(__VA_ARGS__)
   #define calc_crc16(...)           calc_crcx(__VA_ARGS__)
+  #define calc_crc24(...)           calc_crcx(__VA_ARGS__)
   #define calc_crc32(...)           calc_crcx(__VA_ARGS__)
   #define calc_crc64(...)           calc_crcx(__VA_ARGS__)
 
   #define calc_crc8_offset(...)     calc_crcx_offset(__VA_ARGS__)
   #define calc_crc12_offset(...)    calc_crcx_offset(__VA_ARGS__)
   #define calc_crc16_offset(...)    calc_crcx_offset(__VA_ARGS__)
+  #define calc_crc24_offset(...)    calc_crcx_offset(__VA_ARGS__)
   #define calc_crc32_offset(...)    calc_crcx_offset(__VA_ARGS__)
   #define calc_crc64_offset(...)    calc_crcx_offset(__VA_ARGS__)
 
