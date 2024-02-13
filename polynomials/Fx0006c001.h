@@ -1,8 +1,8 @@
 #pragma once
 
 // Polynomial           :      x^32 + x^18 + x^17 + x^15 + x^14 + 1
-// HD4+                 :      <= 65538 bits, 8192 bytes
-// HD6                  :      <= 32770 bits, 4096 bytes
+// HD4+                 :      <= 65506 bits, 8188 bytes
+// HD6                  :      <= 32738 bits, 4092 bytes
 // Implicit             :      
 // Explicit             :      0x10006c001
 // Reversed Implicit    :      

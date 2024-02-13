@@ -5,6 +5,10 @@
 //  x^64 + x^62 + x^57 + x^55 + x^54 + x^53 + x^52 + x^47 + x^46 + x^45 + x^40 + x^39 + x^38 + x^37 + x^35 + x^33 +
 //  x^32 + x^31 + x^29 + x^27 + x^24 + x^23 + x^22 + x^21 + x^19 + x^17 + x^13 + x^12 + x^10 + x^9 + x^7 + x^4 + x + 1
 //
+//
+// HD4                  :      8589606850 bits, <~= 1GB
+// HD6                  :          126701 bits, 15837 bytes
+// HD8                  :        >= 32768 bits,  4096 bytes
 // Implicit             :      0xa17870f5d4f51b49
 // Explicit             :      0x142f0e1eba9ea3693
 // Reversed Implicit    :      0xc96c5795d7870f42

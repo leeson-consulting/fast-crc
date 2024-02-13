@@ -1,6 +1,16 @@
 #pragma once
 
 // Polynomial           :      x^32 + x^26 + x^23 + x^22 + x^16 + x^12 + x^11 + x^10 + x^8 + x^7 + x^5 + x^4 + x^2 + x + 1
+// HD4                  :      <= 91607 bits, 11450 bytes
+// HD5                  :      <=  2974 bits,   371 bytes
+// HD6                  :      <=   268 bits,    33 bytes
+// HD7                  :      <=   171 bits,    21 bytes
+// HD8                  :      <=    91 bits,    11 bytes
+// HD9                  :      <=    57 bits,     7 bytes
+// HD10                 :      <=    34 bits,     4 bytes
+// HD11                 :      <=    21 bits,     2 bytes
+// HD12                 :      <=    12 bits,     1 byte
+// HD13                 :      <=    10 bits,     1 byte
 // Implicit             :      0x82608edb
 // Explicit             :      0x104c11db7
 // Reversed Implicit    :      0xedb88320
