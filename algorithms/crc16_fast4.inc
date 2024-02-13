@@ -11,11 +11,7 @@
 
 uint16_t crc16_fast4(uint8_t const * data, size_t data_len);
 
-uint8_t crc8_fast4(uint8_t const * data, size_t data_len);
-
 #elif crc_algorithms_inc == INCLUDE_IMPLEMENTATION
-
-#include <stdio.h>
 
 static inline uint32_t crcx_fast4_u8(size_t const crc_rs, uint32_t crc, uint8_t const data_byte)
 {

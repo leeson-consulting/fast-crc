@@ -89,7 +89,7 @@ void test_crc8_nguyen(void)
 
 ///////////////////////////////////////////////////////////////////////////////
 
-// CRC-8/Fast:
+// CRC-8/Fast4:
 //  width   = 8-bits
 //  poly    = 0x07
 //  init    = 0x00
@@ -98,20 +98,18 @@ void test_crc8_nguyen(void)
 //  xorout  = 0x00
 //  check   = 0xf4
 
-static uint8_t const CRC8_FAST_CHECK = 0xf4;
+static uint8_t const CRC8_FAST4_CHECK = 0xf4;
 
-void test_crc8_fast(void)
+void test_crc8_fast4(void)
 {
   printf(">>>   Test CRC8_FAST   <<<\n\n");
 
   printf("Check test string \"%s\"\n", CRC_CHECK_STRING);
 
-  uint8_t crc;
+  uint8_t crc = crc8_fast4((uint8_t *)CRC_CHECK_STRING, strlen(CRC_CHECK_STRING));
 
-  crc = crc8_fast((uint8_t *)CRC_CHECK_STRING, strlen(CRC_CHECK_STRING));
-
-  if (CRC8_FAST_CHECK != crc) {
-    ERROR("CRC Test failed: Expected 0x%02x , Actual 0x%02x\n\n", CRC8_FAST_CHECK, crc);
+  if (CRC8_FAST4_CHECK != crc) {
+    ERROR("CRC Test failed: Expected 0x%02x , Actual 0x%02x\n\n", CRC8_FAST4_CHECK, crc);
   }
 
   printf("CRC Test Pass\n\n");
@@ -263,7 +261,7 @@ void test_crc16_nguyen(void)
 
 ///////////////////////////////////////////////////////////////////////////////
 
-// CRC-16/Fast:
+// CRC-16/Fast4:
 //  width   = 16-bits
 //  poly    = 0x0007
 //  init    = 0x0000
@@ -272,20 +270,18 @@ void test_crc16_nguyen(void)
 //  xorout  = 0x0000
 //  check   = 0xef6f
 
-static uint16_t const CRC16_FAST_CHECK = 0xef6f;
+static uint16_t const CRC16_FAST4_CHECK = 0xef6f;
 
-void test_crc16_fast(void)
+void test_crc16_fast4(void)
 {
-  printf(">>>   Test CRC16_FAST   <<<\n\n");
+  printf(">>>   Test CRC16_FAST4   <<<\n\n");
 
   printf("Check test string \"%s\"\n", CRC_CHECK_STRING);
 
-  uint16_t crc;
+  uint16_t crc = crc16_fast4((uint8_t *)CRC_CHECK_STRING, strlen(CRC_CHECK_STRING));
 
-  crc = crc16_fast4((uint8_t *)CRC_CHECK_STRING, strlen(CRC_CHECK_STRING));
-
-  if (CRC16_FAST_CHECK != crc) {
-    ERROR("CRC Test failed: Expected 0x%04x , Actual 0x%04x\n\n", CRC16_FAST_CHECK, crc);
+  if (CRC16_FAST4_CHECK != crc) {
+    ERROR("CRC Test failed: Expected 0x%04x , Actual 0x%04x\n\n", CRC16_FAST4_CHECK, crc);
   }
 
   printf("CRC Test Pass\n\n");
@@ -516,9 +512,9 @@ void test_bit_offsets(void)
 int main(void)
 {
   test_crc8_koopman();
-  test_crc8_nguyen();
 
-  test_crc8_fast();
+  test_crc8_nguyen();
+  test_crc8_fast4();
 
   test_crc16_ibm3740();
   test_crc12_umts();
@@ -526,7 +522,7 @@ int main(void)
   test_crc16_modbus();
 
   test_crc16_nguyen();
-  test_crc16_fast();
+  test_crc16_fast4();
 
   test_crc24_nguyen();
   test_crc24_fast6();

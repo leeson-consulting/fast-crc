@@ -1,6 +1,6 @@
 #if crc_algorithms_inc == INCLUDE_INTERFACE
 
-// CRC-8/Fast:
+// CRC-8/Fast4:
 //  width   = 8-bits
 //  poly    = 0x07
 //  init    = 0x00
@@ -9,11 +9,11 @@
 //  xorout  = 0x00
 //  check   = 0xf4
 
-uint8_t crc8_fast(uint8_t const *data, size_t const data_len);
+uint8_t crc8_fast4(uint8_t const *data, size_t const data_len);
 
 #elif crc_algorithms_inc == INCLUDE_IMPLEMENTATION
 
-uint8_t crc8_fast(uint8_t const *data, size_t const data_len)
+uint8_t crc8_fast4(uint8_t const *data, size_t const data_len)
 {
   uint8_t crc = /* init */ 0x00;
   uint8_t const FPoly07 = 0x07; // X^8 + X^2 + X + 1

@@ -3,9 +3,9 @@
 // CRC-8 algorithms
 
 #include "./algorithms/crc8_koopman.inc"
-#include "./algorithms/crc8_nguyen.inc"
 
-#include "./algorithms/crc8_fast.inc"
+#include "./algorithms/crc8_nguyen.inc"
+#include "./algorithms/crc8_fast4.inc"
 
 // CRC-12 algorithms
 
@@ -16,9 +16,9 @@
 #include "./algorithms/crc16_ibm3740.inc"
 #include "./algorithms/crc16_mcrfxx.inc"
 #include "./algorithms/crc16_modbus.inc"
-#include "./algorithms/crc16_nguyen.inc"
 
-#include "./algorithms/crc16_fast.inc"
+#include "./algorithms/crc16_nguyen.inc"
+#include "./algorithms/crc16_fast4.inc"
 
 #include "./algorithms/crc16_ibm3740_offset.inc"
 
@@ -30,8 +30,8 @@
 // CRC-32 algorithms
 
 #include "./algorithms/crc32_hdlc.inc"
-#include "./algorithms/crc32_nguyen_0006c001.inc"
 
+#include "./algorithms/crc32_nguyen_0006c001.inc"
 #include "./algorithms/crc32_fast6.inc"
 
 #include "./algorithms/crc32_hdlc_offset.inc"
