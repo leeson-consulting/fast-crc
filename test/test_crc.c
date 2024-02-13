@@ -321,6 +321,40 @@ void test_crc24_nguyen(void)
 
 ///////////////////////////////////////////////////////////////////////////////
 
+// CRC-24/Fast6:
+//  width   = 24-bits
+//  poly    = 0x018301
+//  init    = 0x000000
+//  refin   = false
+//  refout  = false
+//  xorout  = 0x000000
+//  check   = 0x8a7d1b
+
+static uint32_t const CRC24_FAST6_CHECK = 0x8a7d1b;
+
+void test_crc24_fast6(void)
+{
+  printf(">>>   Test CRC24_FAST6   <<<\n\n");
+
+  printf("Check test string \"%s\"\n", CRC_CHECK_STRING);
+
+  uint32_t crc;
+  uint8_t data[32] = {0};
+  size_t i = 0; // To experiment with offset behaviour
+
+  memcpy(data + i, CRC_CHECK_STRING, strlen(CRC_CHECK_STRING));
+
+  crc = crc24_fast6(data + i, strlen(CRC_CHECK_STRING));
+
+  if (CRC24_FAST6_CHECK != crc) {
+    ERROR("CRC Test failed: Expected 0x%08x , Actual 0x%08x\n\n", CRC24_FAST6_CHECK, crc);
+  }
+
+  printf("CRC Test Pass\n\n");
+}
+
+///////////////////////////////////////////////////////////////////////////////
+
 // CRC-32/ISO-HDLC:
 //  width   = 32-bits
 //  poly    = 0x04c11db7
@@ -495,6 +529,7 @@ int main(void)
   test_crc16_fast();
 
   test_crc24_nguyen();
+  test_crc24_fast6();
 
   test_crc32_hdlc();
 

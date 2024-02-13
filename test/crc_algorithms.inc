@@ -25,6 +25,7 @@
 // CRC-24 algorithms
 
 #include "./algorithms/crc24_nguyen_018301.inc"
+#include "./algorithms/crc24_fast6.inc"
 
 // CRC-32 algorithms
 
