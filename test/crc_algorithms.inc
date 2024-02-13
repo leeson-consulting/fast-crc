@@ -22,6 +22,10 @@
 
 #include "./algorithms/crc16_ibm3740_offset.inc"
 
+// CRC-24 algorithms
+
+#include "./algorithms/crc24_nguyen_018301.inc"
+
 // CRC-32 algorithms
 
 #include "./algorithms/crc32_hdlc.inc"

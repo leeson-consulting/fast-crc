@@ -293,6 +293,34 @@ void test_crc16_fast(void)
 
 ///////////////////////////////////////////////////////////////////////////////
 
+// CRC-24/Nguyen_018301:
+//  width   = 24-bits
+//  poly    = 0x018301
+//  init    = 0x000000
+//  refin   = false
+//  refout  = false
+//  xorout  = 0x000000
+//  check   = 0x8a7d1b
+
+static uint32_t const CRC24_NGUYEN_CHECK = 0x8a7d1b;
+
+void test_crc24_nguyen(void)
+{
+  printf(">>>   Test CRC24_NGUYEN   <<<\n\n");
+
+  printf("Check test string \"%s\"\n", CRC_CHECK_STRING);
+
+  uint32_t crc = crc24_nguyen_018301((uint8_t *)CRC_CHECK_STRING, strlen(CRC_CHECK_STRING));
+
+  if (CRC24_NGUYEN_CHECK != crc) {
+    ERROR("CRC Test failed: Expected 0x%04x , Actual 0x%04x\n\n", CRC24_NGUYEN_CHECK, crc);
+  }
+
+  printf("CRC Test Pass\n\n");
+}
+
+///////////////////////////////////////////////////////////////////////////////
+
 // CRC-32/ISO-HDLC:
 //  width   = 32-bits
 //  poly    = 0x04c11db7
@@ -465,6 +493,8 @@ int main(void)
 
   test_crc16_nguyen();
   test_crc16_fast();
+
+  test_crc24_nguyen();
 
   test_crc32_hdlc();
 
