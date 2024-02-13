@@ -9,27 +9,71 @@
 //  xorout  = 0x0000
 //  check   = 0xef6f
 
-uint16_t crc16_fast(uint8_t const *data, size_t const data_len);
+uint16_t crc16_fast4(uint8_t const * data, size_t data_len);
+
+uint8_t crc8_fast4(uint8_t const * data, size_t data_len);
 
 #elif crc_algorithms_inc == INCLUDE_IMPLEMENTATION
 
-uint16_t crc16_fast(uint8_t const *data, size_t const data_len)
+#include <stdio.h>
+
+static inline uint32_t crcx_fast4_u8(size_t const crc_rs, uint32_t crc, uint8_t const data_byte)
 {
-  uint16_t crc = /* init = */ 0x0000;
-  uint16_t pol_Ax_mult_x2_x1_1;
+  uint32_t const A = (crc >> crc_rs) ^ data_byte;                       //   2 ops
+  uint32_t const B = (A << 2) ^ (A << 1) ^ A;                           //   4 ops
+  crc = B ^ (crc << 8);                                                 // + 2 ops
+                                                                        // -------
+  return crc;                                                           //   8 ops/u8
+}
 
-  const size_t s_val = 8;
-  const size_t h_s_val = 16 - s_val;
+static inline uint32_t crcx_fast4_u16(uint32_t crc, uint16_t const * data, size_t const data_len)
+{
+  static uint8_t const T[4] = {0x0, 0x7, 0x9, 0xe};
 
-  for (size_t i = 0 ; i < data_len ; ++i) {
-    // A(x)
-    pol_Ax_mult_x2_x1_1 = (crc >> h_s_val) ^ data[i];
+  uint16_t A, A1;
 
-    // A(x)*x^2 + A(x)*x^1 + A(x)
-    pol_Ax_mult_x2_x1_1 = (pol_Ax_mult_x2_x1_1 << 2) ^ (pol_Ax_mult_x2_x1_1 << 1) ^ pol_Ax_mult_x2_x1_1;
+  for (size_t i = 0; i < data_len; ++i) {                               //   2 ops
+    uint16_t const item = byte_swap_16(data[i]);                        //   1 op
+    A = crc ^ item;                                                     //   1 op
+    A1 = A >> 14;                                                       //   1 op
+    crc = T[A1] ^ (A << 2) ^ (A << 1) ^ A;                              // + 5 ops
 
-    crc = (crc << s_val) ^ pol_Ax_mult_x2_x1_1;
+    printf("crcx_fast4_u16: data[%lu] = 0x%04x, crc = 0x%08x\n", i, data[i], crc);
+
+  }                                                                     // -------
+                                                                        //  10 ops/u16
+  return crc;                                                           //   5 ops/u8
+}
+
+uint16_t crc16_fast4(uint8_t const * data, size_t data_len)
+{
+  size_t const crc_width = 16;
+
+  uint32_t crc = 0x00000000; // init;
+
+  // 1. Process unaligned data prefix if necessary at a cost of 9 ops
+
+  if ((uintptr_t) data % sizeof(uint16_t) != 0) {
+    crc = crcx_fast4_u8(crc_width - 8, crc, data[0]) & ((1U << crc_width) - 1);
+    data++;
+    data_len--;
   }
+
+  if (data_len == 0) {
+    return crc;
+  }
+
+  // 2. Process u16 aligned data at a cost of 6 ops / u8
+
+  crc = crcx_fast4_u16(crc, (uint16_t const *) data, data_len / 2) & ((1U << crc_width) - 1);
+
+  if (data_len % 2 == 0) {
+    return crc;
+  }
+
+  // 3. Process unaligned data suffix if necessary at a cost of 9 ops
+
+  crc = crcx_fast4_u8(crc_width - 8, crc, data[data_len - 1]) & ((1U << crc_width) - 1);
 
   return crc;
 }

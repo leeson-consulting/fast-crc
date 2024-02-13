@@ -106,7 +106,9 @@ void test_crc8_fast(void)
 
   printf("Check test string \"%s\"\n", CRC_CHECK_STRING);
 
-  uint8_t crc = crc8_fast((uint8_t *)CRC_CHECK_STRING, strlen(CRC_CHECK_STRING));
+  uint8_t crc;
+
+  crc = crc8_fast((uint8_t *)CRC_CHECK_STRING, strlen(CRC_CHECK_STRING));
 
   if (CRC8_FAST_CHECK != crc) {
     ERROR("CRC Test failed: Expected 0x%02x , Actual 0x%02x\n\n", CRC8_FAST_CHECK, crc);
@@ -278,7 +280,9 @@ void test_crc16_fast(void)
 
   printf("Check test string \"%s\"\n", CRC_CHECK_STRING);
 
-  uint16_t crc = crc16_fast((uint8_t *)CRC_CHECK_STRING, strlen(CRC_CHECK_STRING));
+  uint16_t crc;
+
+  crc = crc16_fast4((uint8_t *)CRC_CHECK_STRING, strlen(CRC_CHECK_STRING));
 
   if (CRC16_FAST_CHECK != crc) {
     ERROR("CRC Test failed: Expected 0x%04x , Actual 0x%04x\n\n", CRC16_FAST_CHECK, crc);
