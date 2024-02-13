@@ -21,6 +21,7 @@
 #include "./algorithms/crc16_fast4.inc"
 
 #include "./algorithms/crc16_nguyen_011b.inc"
+#include "./algorithms/crc16_fast6.inc"
 
 #include "./algorithms/crc16_ibm3740_offset.inc"
 
