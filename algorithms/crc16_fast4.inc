@@ -29,7 +29,7 @@ static inline uint32_t crcx_fast4_u16(uint32_t crc, uint16_t const * data, size_
   uint16_t A, A1;
 
   for (size_t i = 0; i < data_len; ++i) {                               //   2 ops
-    uint16_t const item = bswap16(data[i]);                             //   1 op
+    uint16_t const item = ensure_be16(data[i]);                         //   1 op on little-endian platforms
     A = crc ^ item;                                                     //   1 op
     A1 = A >> 14;                                                       //   1 op
     crc = T[A1] ^ (A << 2) ^ (A << 1) ^ A;                              // + 5 ops

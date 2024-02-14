@@ -33,7 +33,7 @@ static inline uint32_t crc32_fast6_u16(uint32_t crc, uint16_t const * data, size
   uint32_t A, A1, A2, B;
 
   for (size_t i = 0; i < data_len; ++i) {                               //   2 ops
-    uint16_t const item = bswap16(data[i]);                             //   1 op
+    uint16_t const item = ensure_be16(data[i]);                         //   1 op on little-endian platforms
     A = (crc >> hs) ^ item;                                             //   2 ops
     A1 = A >> 14;                                                       //   1 op
     A2 = A & 0x3fff;                                                    //   1 op

@@ -165,6 +165,14 @@ static inline double bswapd(double d) {
 #  define htonf(x)      bswapf((x))
 #  define ntohd(x)      bswapd((x))
 #  define htond(x)      bswapd((x))
+
+#  define ensure_be16(x)         bswap16((x))
+#  define ensure_be32(x)         bswap32((x))
+#  define ensure_be64(x)         bswap64((x))
+#  define ensure_le16(x)         (x)
+#  define ensure_le32(x)         (x)
+#  define ensure_le64(x)         (x)
+
 #elif defined(__BIG_ENDIAN__)
 #  define ntoh16(x)     (x)
 #  define hton16(x)     (x)
@@ -176,6 +184,14 @@ static inline double bswapd(double d) {
 #  define htonf(x)      (x)
 #  define ntohd(x)      (x)
 #  define htond(x)      (x)
+
+#  define ensure_be16(x)         (x)
+#  define ensure_be32(x)         (x)
+#  define ensure_be64(x)         (x)
+#  define ensure_le16(x)         bswap16((x))
+#  define ensure_le32(x)         bswap32((x))
+#  define ensure_le64(x)         bswap64((x))
+
 #  else
 #    warning "UNKNOWN Platform / endianness; network / host byte swaps not defined."
 #endif
