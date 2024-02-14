@@ -9,13 +9,15 @@
 //  xorout  = 0x00
 //  check   = 0xf4
 
+uint8_t crc8_fast4_init(uint8_t const init, uint8_t const * data, size_t const data_len);
+
 uint8_t crc8_fast4(uint8_t const *data, size_t const data_len);
 
 #elif crc_algorithms_inc == INCLUDE_IMPLEMENTATION
 
-uint8_t crc8_fast4(uint8_t const *data, size_t const data_len)
+uint8_t crc8_fast4_init(uint8_t const init, uint8_t const * data, size_t const data_len)
 {
-  uint8_t crc = /* init */ 0x00;
+  uint8_t crc = init;
   uint8_t const FPoly07 = 0x07; // X^8 + X^2 + X + 1
   uint8_t const K = 0x80; // K = 2^(h - 1) , h = s = 8
 
@@ -40,6 +42,11 @@ uint8_t crc8_fast4(uint8_t const *data, size_t const data_len)
   }
 
   return crc;
+}
+
+uint8_t crc8_fast4(uint8_t const * data, size_t const data_len)
+{
+  return crc8_fast4_init(/* init = */ 0x00, data, data_len);
 }
 
 #endif
