@@ -228,8 +228,8 @@
 //    eg. CRC-12/UMTS
 //
 
+#include "./kernels/endianness.h"
 #include "./kernels/bit_reverse.c"
-#include "./kernels/byte_swap.c"
 
 ///////////////////////////////////////////////////////////////////////////////
 //
