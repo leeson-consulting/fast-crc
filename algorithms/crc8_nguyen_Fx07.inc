@@ -1,6 +1,6 @@
 #if crc_algorithms_inc == INCLUDE_INTERFACE
 
-// CRC-8/Nguyen:
+// CRC-8/Nguyen_Fx07:
 //  width   = 8-bits
 //  poly    = 0x07
 //  init    = 0x00
