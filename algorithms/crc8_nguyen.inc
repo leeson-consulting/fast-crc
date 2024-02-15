@@ -1,7 +1,5 @@
 #if crc_algorithms_inc == INCLUDE_INTERFACE
 
-#define REQUIRE_CRC_KERNEL8
-
 // CRC-8/Nguyen:
 //  width   = 8-bits
 //  poly    = 0x07
@@ -19,7 +17,7 @@ uint8_t crc8_nguyen(uint8_t const *data, size_t const data_len);
 
 uint8_t crc8_nguyen(uint8_t const *data, size_t const data_len)
 {
-  return calc_crc8(/* crc_msb = */ 8, /* init = */ 0x00, data, data_len, &lookup_FPoly07);
+  return crc8_Fx07(/* init = */ 0x00, data, data_len);
 }
 
 #endif

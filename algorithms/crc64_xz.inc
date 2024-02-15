@@ -1,7 +1,5 @@
 #if crc_algorithms_inc == INCLUDE_INTERFACE
 
-#define REQUIRE_CRC_KERNEL64
-
 // CRC-64/XZ:
 //  width   = 64-bits
 //  poly    = 42f0e1eba9ea3693
@@ -20,7 +18,7 @@ uint64_t crc64_xz(uint8_t const *data, size_t const data_len);
 
 uint64_t crc64_xz(uint8_t const *data, size_t const data_len)
 {
-  return calc_crc64(/* crc_msb = */ 0, /* init = */ 0xffffffffffffffff, data, data_len, &lookup_RPoly42f0e1eba9ea3693) ^ /* xorout = */ 0xffffffffffffffff;
+  return crc64_Rx42f0e1eba9ea3693(/* init = */ 0xffffffffffffffff, data, data_len) ^ /* xorout = */ 0xffffffffffffffff;
 }
 
 #endif

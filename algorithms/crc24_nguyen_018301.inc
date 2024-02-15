@@ -1,7 +1,5 @@
 #if crc_algorithms_inc == INCLUDE_INTERFACE
 
-#define REQUIRE_CRC_KERNEL24
-
 // CRC-24/Nguyen_018301:
 //  width   = 24-bits
 //  poly    = 0x018301
@@ -19,7 +17,7 @@ uint32_t crc24_nguyen_018301(uint8_t const *data, size_t const data_len);
 
 uint32_t crc24_nguyen_018301(uint8_t const *data, size_t const data_len)
 {
-  return calc_crc24(/* crc_msb = */ 24, /* init = */ 0x000000, data, data_len, &lookup_FPoly018301) & 0xffffff;
+  return crc24_Fx018301(/* init = */ 0x000000, data, data_len);
 }
 
 #endif

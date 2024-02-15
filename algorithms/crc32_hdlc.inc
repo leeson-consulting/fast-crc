@@ -1,7 +1,5 @@
 #if crc_algorithms_inc == INCLUDE_INTERFACE
 
-#define REQUIRE_CRC_KERNEL32
-
 // CRC-32/ISO-HDLC:
 //  width   = 32-bits
 //  poly    = 0x04c11db7
@@ -20,7 +18,7 @@ uint32_t crc32_hdlc(uint8_t const *data, size_t const data_len);
 
 uint32_t crc32_hdlc(uint8_t const *data, size_t const data_len)
 {
-  return calc_crc32(/* crc_msb = */ 0, /* init = */ 0xffffffff, data, data_len, &lookup_RPoly04c11db7) ^ /* xorout = */ 0xffffffff;
+  return crc32_Rx04c11db7(/* init = */ 0xffffffff, data, data_len) ^ /* xorout = */ 0xffffffff;
 }
 
 #endif

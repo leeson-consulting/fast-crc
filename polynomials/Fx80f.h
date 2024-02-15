@@ -1,5 +1,7 @@
 #pragma once
 
+#include "../kernels/crc_kernel.h"
+
 // Polynomial           :      x^12 + x^11 + x^3 + x^2 + x + 1
 // HD4                  :      <= 2035 bits, 254 bytes
 // HD6                  :      <=    1 bit,    0 bytes
@@ -8,10 +10,9 @@
 // Reversed Implicit    :      0xf01
 // Reversed Explicit    :      0x1e03
 
-static uint16_t const FPoly80f[16] =
+static uint16_t const Fx80f[16] =
 {
   0x000, 0x80f, 0x811, 0x01e, 0x82d, 0x022, 0x03c, 0x833, 0x855, 0x05a, 0x044, 0x84b, 0x078, 0x877, 0x869, 0x066
 };
 
-static inline crc12_t lookup_FPoly80f(size_t const idx) { return FPoly80f[idx]; }
-
+make_crc_kernel_f12(Fx80f)

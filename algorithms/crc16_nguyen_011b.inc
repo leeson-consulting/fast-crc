@@ -1,7 +1,5 @@
 #if crc_algorithms_inc == INCLUDE_INTERFACE
 
-#define REQUIRE_CRC_KERNEL16
-
 // CRC-16/Nguyen_011b:
 //  width   = 16-bits
 //  poly    = 0x011b
@@ -19,7 +17,7 @@ uint16_t crc16_nguyen_011b(uint8_t const *data, size_t const data_len);
 
 uint16_t crc16_nguyen_011b(uint8_t const *data, size_t const data_len)
 {
-  return calc_crc16(/* crc_msb = */ 16, /* init = */ 0x0000, data, data_len, &lookup_FPoly011b);
+  return crc16_Fx011b(/* init = */ 0x0000, data, data_len);
 }
 
 #endif

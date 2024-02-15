@@ -1,7 +1,5 @@
 #if crc_algorithms_inc == INCLUDE_INTERFACE
 
-#define REQUIRE_CRC_KERNEL16
-
 // CRC-16/IBM3740:
 //  width   = 16-bits
 //  poly    = 0x1021
@@ -20,7 +18,7 @@ uint16_t crc16_ibm3740(uint8_t const *data, size_t const data_len);
 
 uint16_t crc16_ibm3740(uint8_t const *data, size_t const data_len)
 {
-  return calc_crc16(/* crc_msb = */ 16, /* init = */ 0xffff, data, data_len, &lookup_FPoly1021);
+  return crc16_Fx1021(/* init = */ 0xffff, data, data_len);
 }
 
 #endif
