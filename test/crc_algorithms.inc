@@ -23,8 +23,6 @@
 #include "./algorithms/crc16_nguyen_011b.inc"
 #include "./algorithms/crc16_fast6.inc"
 
-#include "./algorithms/crc16_ibm3740_offset.inc"
-
 // CRC-24 algorithms
 
 #include "./algorithms/crc24_nguyen_018301.inc"
@@ -36,8 +34,6 @@
 
 #include "./algorithms/crc32_nguyen_0006c001.inc"
 #include "./algorithms/crc32_fast6.inc"
-
-#include "./algorithms/crc32_hdlc_offset.inc"
 
 // CRC-64 algorithms
 

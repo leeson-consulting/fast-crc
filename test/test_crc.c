@@ -525,46 +525,6 @@ void test_crc64_xz(void)
   printf("CRC Test Pass\n\n");
 }
 
-///////////////////////////////////////////////////////////////////////////////
-//
-// Test CRC Offset Kernels
-//
-
-void test_bit_offset(size_t const bit_offset)
-{
-  uint64_t test_data[3] = { 0 };
-  memset(test_data, 0, sizeof(test_data));
-
-  memcpy(((uint8_t *) &test_data[1]), &CRC_CHECK_STRING[0], strlen(CRC_CHECK_STRING));
-
-  test_data[0] = (test_data[1] << bit_offset);
-  test_data[1] = (test_data[1] >> (64 - bit_offset)) | (test_data[2] << bit_offset);
-  test_data[2] = (test_data[2] >> (64 - bit_offset));
-
-  uint32_t crc32 = crc32_hdlc_offset((uint8_t *) &test_data[0], bit_offset, strlen(CRC_CHECK_STRING) * 8);
-
-  if (CRC32_HDLC_CHECK != crc32) {
-    ERROR("CRC32 HDLC failed for bit offset %lu : Expected 0x%08x , Actual 0x%08x\n\n", bit_offset, CRC32_HDLC_CHECK, crc32);
-  }
-
-  uint16_t crc16 = crc16_ibm3740_offset((uint8_t *) &test_data[0], bit_offset, strlen(CRC_CHECK_STRING) * 8);
-
-  if (CRC16_IBM3740_CHECK != crc16) {
-    ERROR("IBM3740 CRC16 failed for bit offset %lu : Expected 0x%04x , Actual 0x%04x\n\n", bit_offset, CRC16_IBM3740_CHECK, crc16);
-  }
-}
-
-void test_bit_offsets(void)
-{
-  printf(">>>   Test CRC32 HDLC Offset Kernel   <<<\n\n");
-
-  for (size_t i = 0 ; i < 64 ; ++i) {
-    test_bit_offset(i);
-  }
-
-  printf("Pass CRC Offset Kernel Test\n");
-}
-
 int main(void)
 {
   test_crc8_koopman();
@@ -592,12 +552,6 @@ int main(void)
   test_crc32_fast6();
 
   test_crc64_xz();
-
-  /////////////////////
-  //
-  // Test Arbitrary bit patterns
-
-  test_bit_offsets();
 
   return 0;
 }
