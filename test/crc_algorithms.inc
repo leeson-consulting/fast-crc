@@ -38,3 +38,5 @@
 // CRC-64 algorithms
 
 #include "./algorithms/crc64_xz.inc"
+
+#include "./algorithms/crc64_nguyen_Fx000000000000002f.inc"
