@@ -55,9 +55,9 @@ uint16_t crc16_fast4_init(uint16_t const init, uint8_t const * data, size_t data
 
   // 2. Process u16 aligned data at a cost of 5 ops / u8
 
-  crc = crc16_fast4_u16(crc, (uint16_t const *) data, data_len / 2);
+  crc = crc16_fast4_u16(crc, (uint16_t const *) data, data_len / sizeof(uint16_t));
 
-  if (data_len % 2 == 0) {
+  if (data_len % sizeof(uint16_t) == 0) {
     return crc;
   }
 
