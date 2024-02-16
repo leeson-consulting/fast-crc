@@ -553,6 +553,34 @@ void test_crc64_nguyen_Fx000000000000002f(void)
   printf("CRC Test Pass\n\n");
 }
 
+///////////////////////////////////////////////////////////////////////////////
+
+// CRC-64/Fast6:
+//  width   = 64-bits
+//  poly    = 0x000000000000002f (x^64 + x^5 + x3 + x^2 + x + 1)
+//  init    = 0x0000000000000000
+//  refin   = false
+//  refout  = false
+//  xorout  = 0x0000000000000000
+//  check   = 0x4966ab84f5dba52f
+
+static uint64_t const CRC64_FAST6_CHECK = 0x4966ab84f5dba52f;
+
+void test_crc64_fast6(void)
+{
+  printf(">>>   Test CRC64_FAST6   <<<\n\n");
+
+  printf("Check test string \"%s\"\n", CRC_CHECK_STRING);
+
+  uint64_t crc = crc64_fast6((uint8_t *)CRC_CHECK_STRING, strlen(CRC_CHECK_STRING));
+
+  if (CRC64_FAST6_CHECK != crc) {
+    ERROR("CRC Test failed: Expected 0x%016lx , Actual 0x%016lx\n\n", CRC64_FAST6_CHECK, crc);
+  }
+
+  printf("CRC Test Pass\n\n");
+}
+
 int main(void)
 {
   test_crc8_koopman();
@@ -580,7 +608,9 @@ int main(void)
   test_crc32_fast6();
 
   test_crc64_xz();
+
   test_crc64_nguyen_Fx000000000000002f();
+  test_crc64_fast6();
 
   return 0;
 }
