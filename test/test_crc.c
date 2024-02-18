@@ -345,6 +345,34 @@ void test_crc16_fast6(void)
 
 ///////////////////////////////////////////////////////////////////////////////
 
+// CRC-24/Nguyen_Fx000007:
+//  width   = 24-bits
+//  poly    = 0x000007
+//  init    = 0x000000
+//  refin   = false
+//  refout  = false
+//  xorout  = 0x000000
+//  check   = 0x921774
+
+static uint32_t const CRC24_NGUYEN_Fx000007_CHECK = 0x921774;
+
+void test_crc24_nguyen_Fx000007(void)
+{
+  printf(">>>   Test CRC24_NGUYEN   <<<\n\n");
+
+  printf("Check test string \"%s\"\n", CRC_CHECK_STRING);
+
+  uint32_t crc = crc24_nguyen_Fx000007((uint8_t *)CRC_CHECK_STRING, strlen(CRC_CHECK_STRING));
+
+  if (CRC24_NGUYEN_Fx000007_CHECK != crc) {
+    ERROR("CRC Test failed: Expected 0x%04x , Actual 0x%04x\n\n", CRC24_NGUYEN_Fx000007_CHECK, crc);
+  }
+
+  printf("CRC Test Pass\n\n");
+}
+
+///////////////////////////////////////////////////////////////////////////////
+
 // CRC-24/Nguyen_Fx018301:
 //  width   = 24-bits
 //  poly    = 0x018301
@@ -354,9 +382,9 @@ void test_crc16_fast6(void)
 //  xorout  = 0x000000
 //  check   = 0x8a7d1b
 
-static uint32_t const CRC24_NGUYEN_FxCHECK = 0x8a7d1b;
+static uint32_t const CRC24_NGUYEN_Fx018301_CHECK = 0x8a7d1b;
 
-void test_crc24_nguyen(void)
+void test_crc24_nguyen_Fx018301(void)
 {
   printf(">>>   Test CRC24_NGUYEN   <<<\n\n");
 
@@ -364,8 +392,8 @@ void test_crc24_nguyen(void)
 
   uint32_t crc = crc24_nguyen_Fx018301((uint8_t *)CRC_CHECK_STRING, strlen(CRC_CHECK_STRING));
 
-  if (CRC24_NGUYEN_FxCHECK != crc) {
-    ERROR("CRC Test failed: Expected 0x%04x , Actual 0x%04x\n\n", CRC24_NGUYEN_FxCHECK, crc);
+  if (CRC24_NGUYEN_Fx018301_CHECK != crc) {
+    ERROR("CRC Test failed: Expected 0x%04x , Actual 0x%04x\n\n", CRC24_NGUYEN_Fx018301_CHECK, crc);
   }
 
   printf("CRC Test Pass\n\n");
@@ -599,7 +627,9 @@ int main(void)
   test_crc16_nguyen_Fx011b();
   test_crc16_fast6();
 
-  test_crc24_nguyen();
+  test_crc24_nguyen_Fx000007();
+
+  test_crc24_nguyen_Fx018301();
   test_crc24_fast6();
 
   test_crc32_hdlc();
