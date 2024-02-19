@@ -1,8 +1,5 @@
 #pragma once
 
-#include "../kernels/crc_kernel.h"
-#include "FSub8x07.h"
-
 // Polynomial           :      x^8 + x^2 + x + 1
 // HD4                  :      <= 119 bits, 14 bytes
 // Implicit             :      0x83
@@ -10,6 +7,13 @@
 // Reversed Implicit    :      0xe0
 // Reversed Explicit    :      0x1c1
 
+#include "../kernels/crc_kernel.h"
+#include "FSub8x07.h"
+
 #define Fx07 (FSub8x07)
 
-make_crc_kernel_f8(Fx07)
+#if defined (USE_CRC_KERNEL_TABLE8)
+  make_crc_kernel_f8_t8(Fx07)
+#else
+  make_crc_kernel_f8(Fx07)
+#endif
