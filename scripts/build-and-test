@@ -11,17 +11,30 @@ function main()
 {
   mkdir -p "${REPO_ROOT}/build/bin"
 
-  time gcc -Wall -Wpedantic -std=c99 -fdiagnostics-color=always \
+  gcc -o "${REPO_ROOT}/build/bin/crc.c.o" \
+    -Wall -Wpedantic -std=c99 -fdiagnostics-color=always \
     -I "${REPO_ROOT}" \
     -I "${REPO_ROOT}/test" \
     \
+    -c \
     "${REPO_ROOT}/crc.c" \
-    "${REPO_ROOT}/test/test_crc.c" \
-    -o "${REPO_ROOT}/build/bin/test_crc" \
     \
-    -L "${REPO_ROOT}" \
+    -L "${REPO_ROOT}"
+
+  g++ -o "${REPO_ROOT}/build/bin/test_crc.cpp.o" \
+    -Wall -Wpedantic -std=c++23 -fdiagnostics-color=always \
+    -I "${REPO_ROOT}" \
+    -I "${REPO_ROOT}/test" \
     \
-    && "${REPO_ROOT}/build/bin/test_crc"
+    -c \
+    "${REPO_ROOT}/test/test_crc.cpp" \
+    \
+    -L "${REPO_ROOT}"
+
+  g++ -o "${REPO_ROOT}/build/bin/test_crc" \
+         "${REPO_ROOT}/build/bin/crc.c.o" \
+         "${REPO_ROOT}/build/bin/test_crc.cpp.o" \
+         && "${REPO_ROOT}/build/bin/test_crc"
 }
 
 ###############################################################################
