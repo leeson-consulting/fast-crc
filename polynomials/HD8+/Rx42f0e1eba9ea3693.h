@@ -24,4 +24,4 @@ static uint64_t const Rx42f0e1eba9ea3693[16] =
   0xadda7c5f3c4488e3, 0xd041dd676d77eeaa, 0x56ed3e2f9e224471, 0x2b769f17cf112238
 };
 
-make_crc_kernel_r64(Rx42f0e1eba9ea3693)
+make_crc_kernel_r64_t4(Rx42f0e1eba9ea3693)

@@ -13,7 +13,11 @@
 #define Fx07 (FSub8x07)
 
 #if defined (USE_CRC_KERNEL_TABLE8)
-  make_crc_kernel_f8_t8(Fx07)
+
+make_crc_kernel_f8_t8(Fx07)
+
 #else
-  make_crc_kernel_f8(Fx07)
+
+make_crc_kernel_f8_t4(Fx07)
+
 #endif
