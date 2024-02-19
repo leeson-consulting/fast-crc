@@ -14,7 +14,7 @@ uint16_t crc16_modbus(uint8_t const *data, size_t const data_len);
 
 #elif crc_algorithms_inc == INCLUDE_IMPLEMENTATION
 
-#include "../polynomials/Rx8005.h"
+#include "../polynomials/HD4/Rx8005.h"
 
 uint16_t crc16_modbus(uint8_t const *data, size_t const data_len)
 {

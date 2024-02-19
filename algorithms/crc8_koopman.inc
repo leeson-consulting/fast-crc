@@ -13,7 +13,7 @@ uint8_t crc8_koopman(uint8_t const *data, size_t const data_len);
 
 #elif crc_algorithms_inc == INCLUDE_IMPLEMENTATION
 
-#include "../polynomials/Rx4d.h"
+#include "../polynomials/HD4/Rx4d.h"
 
 uint8_t crc8_koopman(uint8_t const *data, size_t const data_len)
 {

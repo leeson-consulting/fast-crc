@@ -13,7 +13,7 @@ uint64_t crc64_nguyen_Fx000000000000002f(uint8_t const *data, size_t const data_
 
 #elif crc_algorithms_inc == INCLUDE_IMPLEMENTATION
 
-#include "../polynomials/Fx000000000000002f.h"
+#include "../polynomials/HD6/Fx000000000000002f.h"
 
 uint64_t crc64_nguyen_Fx000000000000002f(uint8_t const *data, size_t const data_len)
 {

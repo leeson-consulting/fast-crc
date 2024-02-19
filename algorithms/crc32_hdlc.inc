@@ -14,7 +14,7 @@ uint32_t crc32_hdlc(uint8_t const *data, size_t const data_len);
 
 #elif crc_algorithms_inc == INCLUDE_IMPLEMENTATION
 
-#include "../polynomials/Rx04c11db7.h"
+#include "../polynomials/HD8+/Rx04c11db7.h"
 
 uint32_t crc32_hdlc(uint8_t const *data, size_t const data_len)
 {

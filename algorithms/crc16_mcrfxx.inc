@@ -14,7 +14,7 @@ uint16_t crc16_mcrfxx(uint8_t const *data, size_t const data_len);
 
 #elif crc_algorithms_inc == INCLUDE_IMPLEMENTATION
 
-#include "../polynomials/Rx1021.h"
+#include "../polynomials/HD4/Rx1021.h"
 
 uint16_t crc16_mcrfxx(uint8_t const *data, size_t const data_len)
 {

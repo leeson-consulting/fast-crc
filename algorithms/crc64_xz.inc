@@ -14,7 +14,7 @@ uint64_t crc64_xz(uint8_t const *data, size_t const data_len);
 
 #elif crc_algorithms_inc == INCLUDE_IMPLEMENTATION
 
-#include "../polynomials/Rx42f0e1eba9ea3693.h"
+#include "../polynomials/HD8+/Rx42f0e1eba9ea3693.h"
 
 uint64_t crc64_xz(uint8_t const *data, size_t const data_len)
 {

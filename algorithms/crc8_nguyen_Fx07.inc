@@ -13,7 +13,7 @@ uint8_t crc8_nguyen_Fx07(uint8_t const *data, size_t const data_len);
 
 #elif crc_algorithms_inc == INCLUDE_IMPLEMENTATION
 
-#include "../polynomials/Fx07.h"
+#include "../polynomials/HD4/Fx07.h"
 
 uint8_t crc8_nguyen_Fx07(uint8_t const *data, size_t const data_len)
 {
