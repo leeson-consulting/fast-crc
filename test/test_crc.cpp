@@ -1,3 +1,5 @@
+#define UNIT_TESTS
+
 #include "../crc.h"
 
 #include "stdio.h"
@@ -28,35 +30,19 @@ do {                                           \
 
 ///////////////////////////////////////////////////////////////////////////////
 
-// CRC-8/Koopman:
-//  width   = 8-bits
-//  poly    = 0x4d
-//  init    = 0xff
-//  refin   = true
-//  refout  = true
-//  xorout  = 0xff
-//  check   = 0xd8
-//
-//  See:
-//
-//  http://www.ece.cmu.edu/~koopman/roses/dsn04/koopman04_crc_poly_embedded.pdf
-//  https://stackoverflow.com/a/51748961
+typedef uint64_t (* CRC_Algorithm)(uint8_t const * const data, size_t const data_len);
 
-static uint8_t const CRC8_KOOPMAN_CHECK = 0xd8;
-
-void test_crc8_koopman(void)
+void test_crc(crc_parameters_t const & crc_params, CRC_Algorithm const crc_algorithm)
 {
-  printf(">>>   Test CRC8_KOOPMAN   <<<\n\n");
+  printf("Test \"%s\" on \"%s\"", crc_params.name, CRC_CHECK_STRING);
 
-  printf("Check test string \"%s\"\n", CRC_CHECK_STRING);
+  uint64_t const crc = crc_algorithm((uint8_t *)CRC_CHECK_STRING, strlen(CRC_CHECK_STRING));
 
-  uint8_t crc = crc8_koopman((uint8_t *)CRC_CHECK_STRING, strlen(CRC_CHECK_STRING));
-
-  if (CRC8_KOOPMAN_CHECK != crc) {
-    ERROR("CRC Test failed: Expected 0x%02x , Actual 0x%02x\n\n", CRC8_KOOPMAN_CHECK, crc);
+  if (crc_params.check != crc) {
+    ERROR("\n\n>>>   CRC Test failed: Expected 0x%016lx , Actual 0x%016lx   <<<\n\n", crc_params.check, crc);
   }
 
-  printf("CRC Test Pass\n\n");
+  printf("   ==>   PASS\n\n");
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -639,7 +625,8 @@ void test_crc64_fast6(void)
 
 int main(void)
 {
-  test_crc8_koopman();
+  test_crc(crc8_koopman_params, [](uint8_t const * const data, size_t const data_len) -> uint64_t {
+           return crc8_koopman(data, data_len) & 0xff; });
 
   test_crc8_nguyen_Fx07();
   test_crc8_fast4();
