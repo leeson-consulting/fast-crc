@@ -110,9 +110,9 @@ define_crc_parameters(crc_name, /* crc_width = */ 12, crc_poly, crc_init, crc_re
 \
 uint16_t crc12_##crc_name##_start(uint8_t const *data, size_t const data_len); \
 \
-uint16_t crc12_##crc_name##_continue(uint8_t const crc, uint8_t const *data, size_t const data_len); \
+uint16_t crc12_##crc_name##_continue(uint16_t const crc, uint8_t const *data, size_t const data_len); \
 \
-uint16_t crc12_##crc_name##_finish(uint8_t const crc, uint8_t const *data, size_t const data_len); \
+uint16_t crc12_##crc_name##_finish(uint16_t const crc, uint8_t const *data, size_t const data_len); \
 \
 uint16_t crc12_##crc_name(uint8_t const *data, size_t const data_len); \
 
@@ -123,12 +123,12 @@ uint16_t crc12_##crc_name##_start(uint8_t const *data, size_t const data_len) \
   return crc12_##crc_poly(/* init = */ crc_init, data, data_len); \
 } \
 \
-uint16_t crc12_##crc_name##_continue(uint8_t const crc, uint8_t const *data, size_t const data_len) \
+uint16_t crc12_##crc_name##_continue(uint16_t const crc, uint8_t const *data, size_t const data_len) \
 { \
   return crc12_##crc_poly(/* init = */ crc, data, data_len); \
 } \
 \
-uint16_t crc12_##crc_name##_finish(uint8_t const crc, uint8_t const *data, size_t const data_len) \
+uint16_t crc12_##crc_name##_finish(uint16_t const crc, uint8_t const *data, size_t const data_len) \
 { \
   return crc12_##crc_poly(/* init = */ crc, data, data_len) ^ crc_xorout; /* NB. Compiler eliminates xor(0) */ \
 } \
@@ -146,9 +146,9 @@ define_crc_parameters(crc_name, /* crc_width = */ 16, crc_poly, crc_init, crc_re
 \
 uint16_t crc16_##crc_name##_start(uint8_t const *data, size_t const data_len); \
 \
-uint16_t crc16_##crc_name##_continue(uint8_t const crc, uint8_t const *data, size_t const data_len); \
+uint16_t crc16_##crc_name##_continue(uint16_t const crc, uint8_t const *data, size_t const data_len); \
 \
-uint16_t crc16_##crc_name##_finish(uint8_t const crc, uint8_t const *data, size_t const data_len); \
+uint16_t crc16_##crc_name##_finish(uint16_t const crc, uint8_t const *data, size_t const data_len); \
 \
 uint16_t crc16_##crc_name(uint8_t const *data, size_t const data_len); \
 
@@ -159,12 +159,12 @@ uint16_t crc16_##crc_name##_start(uint8_t const *data, size_t const data_len) \
   return crc16_##crc_poly(/* init = */ crc_init, data, data_len); \
 } \
 \
-uint16_t crc16_##crc_name##_continue(uint8_t const crc, uint8_t const *data, size_t const data_len) \
+uint16_t crc16_##crc_name##_continue(uint16_t const crc, uint8_t const *data, size_t const data_len) \
 { \
   return crc16_##crc_poly(/* init = */ crc, data, data_len); \
 } \
 \
-uint16_t crc16_##crc_name##_finish(uint8_t const crc, uint8_t const *data, size_t const data_len) \
+uint16_t crc16_##crc_name##_finish(uint16_t const crc, uint8_t const *data, size_t const data_len) \
 { \
   return crc16_##crc_poly(/* init = */ crc, data, data_len) ^ crc_xorout; /* NB. Compiler eliminates xor(0) */ \
 } \
@@ -182,9 +182,9 @@ define_crc_parameters(crc_name, /* crc_width = */ 24, crc_poly, crc_init, crc_re
 \
 uint32_t crc24_##crc_name##_start(uint8_t const *data, size_t const data_len); \
 \
-uint32_t crc24_##crc_name##_continue(uint8_t const crc, uint8_t const *data, size_t const data_len); \
+uint32_t crc24_##crc_name##_continue(uint32_t const crc, uint8_t const *data, size_t const data_len); \
 \
-uint32_t crc24_##crc_name##_finish(uint8_t const crc, uint8_t const *data, size_t const data_len); \
+uint32_t crc24_##crc_name##_finish(uint32_t const crc, uint8_t const *data, size_t const data_len); \
 \
 uint32_t crc24_##crc_name(uint8_t const *data, size_t const data_len); \
 
@@ -195,12 +195,12 @@ uint32_t crc24_##crc_name##_start(uint8_t const *data, size_t const data_len) \
   return crc24_##crc_poly(/* init = */ crc_init, data, data_len); \
 } \
 \
-uint32_t crc24_##crc_name##_continue(uint8_t const crc, uint8_t const *data, size_t const data_len) \
+uint32_t crc24_##crc_name##_continue(uint32_t const crc, uint8_t const *data, size_t const data_len) \
 { \
   return crc24_##crc_poly(/* init = */ crc, data, data_len); \
 } \
 \
-uint32_t crc24_##crc_name##_finish(uint8_t const crc, uint8_t const *data, size_t const data_len) \
+uint32_t crc24_##crc_name##_finish(uint32_t const crc, uint8_t const *data, size_t const data_len) \
 { \
   return crc24_##crc_poly(/* init = */ crc, data, data_len) ^ crc_xorout; /* NB. Compiler eliminates xor(0) */ \
 } \
@@ -218,9 +218,9 @@ define_crc_parameters(crc_name, /* crc_width = */ 32, crc_poly, crc_init, crc_re
 \
 uint32_t crc32_##crc_name##_start(uint8_t const *data, size_t const data_len); \
 \
-uint32_t crc32_##crc_name##_continue(uint8_t const crc, uint8_t const *data, size_t const data_len); \
+uint32_t crc32_##crc_name##_continue(uint32_t const crc, uint8_t const *data, size_t const data_len); \
 \
-uint32_t crc32_##crc_name##_finish(uint8_t const crc, uint8_t const *data, size_t const data_len); \
+uint32_t crc32_##crc_name##_finish(uint32_t const crc, uint8_t const *data, size_t const data_len); \
 \
 uint32_t crc32_##crc_name(uint8_t const *data, size_t const data_len); \
 
@@ -231,12 +231,12 @@ uint32_t crc32_##crc_name##_start(uint8_t const *data, size_t const data_len) \
   return crc32_##crc_poly(/* init = */ crc_init, data, data_len); \
 } \
 \
-uint32_t crc32_##crc_name##_continue(uint8_t const crc, uint8_t const *data, size_t const data_len) \
+uint32_t crc32_##crc_name##_continue(uint32_t const crc, uint8_t const *data, size_t const data_len) \
 { \
   return crc32_##crc_poly(/* init = */ crc, data, data_len); \
 } \
 \
-uint32_t crc32_##crc_name##_finish(uint8_t const crc, uint8_t const *data, size_t const data_len) \
+uint32_t crc32_##crc_name##_finish(uint32_t const crc, uint8_t const *data, size_t const data_len) \
 { \
   return crc32_##crc_poly(/* init = */ crc, data, data_len) ^ crc_xorout; /* NB. Compiler eliminates xor(0) */ \
 } \
@@ -254,9 +254,9 @@ define_crc_parameters(crc_name, /* crc_width = */ 64, crc_poly, crc_init, crc_re
 \
 uint64_t crc64_##crc_name##_start(uint8_t const *data, size_t const data_len); \
 \
-uint64_t crc64_##crc_name##_continue(uint8_t const crc, uint8_t const *data, size_t const data_len); \
+uint64_t crc64_##crc_name##_continue(uint64_t const crc, uint8_t const *data, size_t const data_len); \
 \
-uint64_t crc64_##crc_name##_finish(uint8_t const crc, uint8_t const *data, size_t const data_len); \
+uint64_t crc64_##crc_name##_finish(uint64_t const crc, uint8_t const *data, size_t const data_len); \
 \
 uint64_t crc64_##crc_name(uint8_t const *data, size_t const data_len); \
 
@@ -267,12 +267,12 @@ uint64_t crc64_##crc_name##_start(uint8_t const *data, size_t const data_len) \
   return crc64_##crc_poly(/* init = */ crc_init, data, data_len); \
 } \
 \
-uint64_t crc64_##crc_name##_continue(uint8_t const crc, uint8_t const *data, size_t const data_len) \
+uint64_t crc64_##crc_name##_continue(uint64_t const crc, uint8_t const *data, size_t const data_len) \
 { \
   return crc64_##crc_poly(/* init = */ crc, data, data_len); \
 } \
 \
-uint64_t crc64_##crc_name##_finish(uint8_t const crc, uint8_t const *data, size_t const data_len) \
+uint64_t crc64_##crc_name##_finish(uint64_t const crc, uint8_t const *data, size_t const data_len) \
 { \
   return crc64_##crc_poly(/* init = */ crc, data, data_len) ^ crc_xorout; /* NB. Compiler eliminates xor(0) */ \
 } \
