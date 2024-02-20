@@ -91,10 +91,10 @@ int main(void)
 
   // CRC-32 Algorithms
 
-  test_crc32(crc32_hdlc);
+  test_crc32(crc32_ISO_HDLC);
 
-  test_crc32(crc32_nguyen_Fx0006c001);
-  test_crc32(crc32_fast6);
+  test_crc32(crc32_Nguyen_Fx0006c001);
+  test_crc32(crc32_Fast6);
 
   // CRC-64 Algorithms
 
