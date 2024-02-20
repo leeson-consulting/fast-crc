@@ -45,89 +45,11 @@ void test_crc(crc_parameters_t const & crc_params, CRC_Algorithm const crc_algor
   printf("   ==>   PASS\n\n");
 }
 
-///////////////////////////////////////////////////////////////////////////////
+#define test_crc8(crc_alg) test_crc(crc_alg##_params, [](uint8_t const * const data, size_t const data_len) -> uint64_t { return crc_alg(data, data_len) & 0xff; });
 
-// CRC-16/Nguyen_Fx0007:
-//  width   = 16-bits
-//  poly    = 0x0007
-//  init    = 0x0000
-//  refin   = false
-//  refout  = false
-//  xorout  = 0x0000
-//  check   = 0xef6f
+#define test_crc12(crc_alg) test_crc(crc_alg##_params, [](uint8_t const * const data, size_t const data_len) -> uint64_t { return crc_alg(data, data_len) & 0xfff; });
 
-static uint16_t const CRC16_NGUYEN_Fx0007_CHECK = 0xef6f;
-
-void test_crc16_nguyen_Fx0007(void)
-{
-  printf(">>>   Test CRC16_NGUYEN_Fx0007   <<<\n\n");
-
-  printf("Check test string \"%s\"\n", CRC_CHECK_STRING);
-
-  uint16_t crc = crc16_nguyen_Fx0007((uint8_t *)CRC_CHECK_STRING, strlen(CRC_CHECK_STRING));
-
-  if (CRC16_NGUYEN_Fx0007_CHECK != crc) {
-    ERROR("CRC Test failed: Expected 0x%04x , Actual 0x%04x\n\n", CRC16_NGUYEN_Fx0007_CHECK, crc);
-  }
-
-  printf("CRC Test Pass\n\n");
-}
-
-///////////////////////////////////////////////////////////////////////////////
-
-// CRC-16/Fast4:
-//  width   = 16-bits
-//  poly    = 0x0007
-//  init    = 0x0000
-//  refin   = false
-//  refout  = false
-//  xorout  = 0x0000
-//  check   = 0xef6f
-
-static uint16_t const CRC16_FAST4_CHECK = 0xef6f;
-
-void test_crc16_fast4(void)
-{
-  printf(">>>   Test CRC16_FAST4   <<<\n\n");
-
-  printf("Check test string \"%s\"\n", CRC_CHECK_STRING);
-
-  uint16_t crc = crc16_fast4((uint8_t *)CRC_CHECK_STRING, strlen(CRC_CHECK_STRING));
-
-  if (CRC16_FAST4_CHECK != crc) {
-    ERROR("CRC Test failed: Expected 0x%04x , Actual 0x%04x\n\n", CRC16_FAST4_CHECK, crc);
-  }
-
-  printf("CRC Test Pass\n\n");
-}
-
-///////////////////////////////////////////////////////////////////////////////
-
-// CRC-16/Nguyen_Fx011b:
-//  width   = 16-bits
-//  poly    = 0x011b
-//  init    = 0x0000
-//  refin   = false
-//  refout  = false
-//  xorout  = 0x0000
-//  check   = 0x8d1c
-
-static uint16_t const CRC16_NGUYEN_Fx011B_CHECK = 0x8d1c;
-
-void test_crc16_nguyen_Fx011b(void)
-{
-  printf(">>>   Test CRC16_NGUYEN_Fx011B   <<<\n\n");
-
-  printf("Check test string \"%s\"\n", CRC_CHECK_STRING);
-
-  uint16_t crc = crc16_nguyen_Fx011b((uint8_t *)CRC_CHECK_STRING, strlen(CRC_CHECK_STRING));
-
-  if (CRC16_NGUYEN_Fx011B_CHECK != crc) {
-    ERROR("CRC Test failed: Expected 0x%04x , Actual 0x%04x\n\n", CRC16_NGUYEN_Fx011B_CHECK, crc);
-  }
-
-  printf("CRC Test Pass\n\n");
-}
+#define test_crc16(crc_alg) test_crc(crc_alg##_params, [](uint8_t const * const data, size_t const data_len) -> uint64_t { return crc_alg(data, data_len) & 0xffff; });
 
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -455,25 +377,25 @@ int main(void)
 {
   // CRC-8 Algorithms
 
-  test_crc(crc8_koopman_params, [](uint8_t const * const data, size_t const data_len) -> uint64_t { return crc8_koopman(data, data_len) & 0xff; });
-  test_crc(crc8_nguyen_Fx07_params, [](uint8_t const * const data, size_t const data_len) -> uint64_t { return crc8_nguyen_Fx07(data, data_len) & 0xff; });
-  test_crc(crc8_fast4_params, [](uint8_t const * const data, size_t const data_len) -> uint64_t { return crc8_fast4(data, data_len) & 0xff; });
+  test_crc8(crc8_koopman);
+  test_crc8(crc8_nguyen_Fx07);
+  test_crc8(crc8_fast4);
 
   // CRC-12 Algorithms
 
-  test_crc(crc12_umts_params, [](uint8_t const * const data, size_t const data_len) -> uint64_t { return crc12_umts(data, data_len) & 0xfff; });
+  test_crc12(crc12_umts);
 
   // CRC-16 Algorithms
 
-  test_crc(crc16_ibm3740_params, [](uint8_t const * const data, size_t const data_len) -> uint64_t { return crc16_ibm3740(data, data_len) & 0xffff; });
-  test_crc(crc16_mcrfxx_params, [](uint8_t const * const data, size_t const data_len) -> uint64_t { return crc16_mcrfxx(data, data_len) & 0xffff; });
-  test_crc(crc16_modbus_params, [](uint8_t const * const data, size_t const data_len) -> uint64_t { return crc16_modbus(data, data_len) & 0xffff; });
+  test_crc16(crc16_ibm3740);
+  test_crc16(crc16_mcrfxx);
+  test_crc16(crc16_modbus);
 
-  test_crc16_nguyen_Fx0007();
-  test_crc16_fast4();
+  test_crc16(crc16_nguyen_Fx0007);
+  test_crc16(crc16_fast4);
 
-  test_crc16_nguyen_Fx011b();
-  test_crc16_fast6();
+  test_crc16(crc16_nguyen_Fx011b);
+  test_crc16(crc16_fast6);
 
   test_crc24_nguyen_Fx000007();
   test_crc24_fast4();
