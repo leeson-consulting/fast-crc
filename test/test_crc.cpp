@@ -53,96 +53,7 @@ void test_crc(crc_parameters_t const & crc_params, CRC_Algorithm const crc_algor
 
 #define test_crc24(crc_alg) test_crc(crc_alg##_params, [](uint8_t const * const data, size_t const data_len) -> uint64_t { return crc_alg(data, data_len) & 0xffffff; });
 
-///////////////////////////////////////////////////////////////////////////////
-
-// CRC-32/ISO-HDLC:
-//  width   = 32-bits
-//  poly    = 0x04c11db7
-//  init    = 0xffffffff
-//  refin   = true
-//  refout  = true
-//  xorout  = 0xffffffff
-//  check   = 0xcbf43926
-//  residue = 0xdebb20e3
-
-static uint32_t const CRC32_HDLC_CHECK = 0xcbf43926;
-
-void test_crc32_hdlc(void)
-{
-  printf(">>>   Test CRC32_HDLC   <<<\n\n");
-
-  printf("Check test string \"%s\"\n", CRC_CHECK_STRING);
-
-  uint32_t crc = crc32_hdlc((uint8_t *)CRC_CHECK_STRING, strlen(CRC_CHECK_STRING));
-
-  if (CRC32_HDLC_CHECK != crc) {
-    ERROR("CRC Test failed: Expected 0x%08x , Actual 0x%08x\n\n", CRC32_HDLC_CHECK, crc);
-  }
-
-  printf("CRC Test Pass\n\n");
-}
-
-///////////////////////////////////////////////////////////////////////////////
-
-// CRC-32/Nguyen_Fx0006c001:
-//  width   = 32-bits
-//  poly    = 0x0006c001
-//  init    = 0x0000
-//  refin   = false
-//  refout  = false
-//  xorout  = 0x0000
-//  check   = 0x1d40bcf7
-
-static uint32_t const CRC32_NGUYEN_Fx0006C001_CHECK = 0x1d40bcf7;
-
-void test_crc32_nguyen_Fx0006c001(void)
-{
-  printf(">>>   Test CRC32_NGUYEN_Fx0006C001   <<<\n\n");
-
-  printf("Check test string \"%s\"\n", CRC_CHECK_STRING);
-
-  uint32_t crc = crc32_nguyen_Fx0006c001((uint8_t *)CRC_CHECK_STRING, strlen(CRC_CHECK_STRING));
-
-  if (CRC32_NGUYEN_Fx0006C001_CHECK != crc) {
-    ERROR("CRC Test failed: Expected 0x%08x , Actual 0x%08x\n\n", CRC32_NGUYEN_Fx0006C001_CHECK, crc);
-  }
-
-  printf("CRC Test Pass\n\n");
-}
-
-///////////////////////////////////////////////////////////////////////////////
-
-// CRC-32/Fast6:
-//  width   = 32-bits
-//  poly    = 0x0006c001
-//  init    = 0x0000
-//  refin   = false
-//  refout  = false
-//  xorout  = 0x0000
-//  check   = 0x1d40bcf7
-
-static uint32_t const CRC32_FAST6_CHECK = 0x1d40bcf7;
-
-void test_crc32_fast6(void)
-{
-  printf(">>>   Test CRC32_FAST6   <<<\n\n");
-
-  printf("Check test string \"%s\"\n", CRC_CHECK_STRING);
-
-  uint32_t crc;
-  uint8_t data[32] = {0};
-  size_t i = 1; // To experiment with offset behaviour
-
-  memcpy(data + i, CRC_CHECK_STRING, strlen(CRC_CHECK_STRING));
-
-  crc = crc32_fast6(data + i, strlen(CRC_CHECK_STRING));
-
-  if (CRC32_FAST6_CHECK != crc) {
-    ERROR("CRC Test failed: Expected 0x%08x , Actual 0x%08x\n\n", CRC32_FAST6_CHECK, crc);
-  }
-
-  printf("CRC Test Pass\n\n");
-}
+#define test_crc32(crc_alg) test_crc(crc_alg##_params, [](uint8_t const * const data, size_t const data_len) -> uint64_t { return crc_alg(data, data_len) & 0xffffffff; });
 
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -261,10 +172,12 @@ int main(void)
   test_crc24(crc24_nguyen_Fx018301);
   test_crc24(crc24_fast6);
 
-  test_crc32_hdlc();
+  // CRC-32 Algorithms
 
-  test_crc32_nguyen_Fx0006c001();
-  test_crc32_fast6();
+  test_crc32(crc32_hdlc);
+
+  test_crc32(crc32_nguyen_Fx0006c001);
+  test_crc32(crc32_fast6);
 
   test_crc64_xz();
 
