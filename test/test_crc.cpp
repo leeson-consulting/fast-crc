@@ -55,90 +55,7 @@ void test_crc(crc_parameters_t const & crc_params, CRC_Algorithm const crc_algor
 
 #define test_crc32(crc_alg) test_crc(crc_alg##_params, [](uint8_t const * const data, size_t const data_len) -> uint64_t { return crc_alg(data, data_len) & 0xffffffff; });
 
-///////////////////////////////////////////////////////////////////////////////
-
-// CRC-64/XZ:
-//  width   = 64-bits
-//  poly    = 42f0e1eba9ea3693
-//  init    = 0xffffffffffffffff
-//  refin   = true
-//  refout  = true
-//  xorout  = 0xffffffffffffffff
-//  check   = 0x995dc9bbdf1939fa
-//  residue = 0x49958c9abd7d353f
-
-static uint64_t const CRC64_XZ_CHECK = 0x995dc9bbdf1939fa;
-
-void test_crc64_xz(void)
-{
-  printf(">>>   Test CRC64_XZ   <<<\n\n");
-
-  printf("Check test string \"%s\"\n", CRC_CHECK_STRING);
-
-  uint64_t crc = crc64_xz((uint8_t *)CRC_CHECK_STRING, strlen(CRC_CHECK_STRING));
-
-  if (CRC64_XZ_CHECK != crc) {
-    ERROR("CRC Test failed: Expected 0x%016lx , Actual 0x%016lx\n\n", CRC64_XZ_CHECK, crc);
-  }
-
-  printf("CRC Test Pass\n\n");
-}
-
-///////////////////////////////////////////////////////////////////////////////
-
-// CRC-64/Nguyen_Fx000000000000002f:
-//  width   = 64-bits
-//  poly    = 0x000000000000002f
-//  init    = 0x0000000000000000
-//  refin   = false
-//  refout  = false
-//  xorout  = 0x0000000000000000
-//  check   = 0x4966ab84f5dba52f
-
-static uint64_t const CRC64_NGUYEN_Fx000000000000002F_CHECK = 0x4966ab84f5dba52f;
-
-void test_crc64_nguyen_Fx000000000000002f(void)
-{
-  printf(">>>   Test CRC64_NGUYEN_Fx000000000000002F   <<<\n\n");
-
-  printf("Check test string \"%s\"\n", CRC_CHECK_STRING);
-
-  uint64_t crc = crc64_nguyen_Fx000000000000002f((uint8_t *)CRC_CHECK_STRING, strlen(CRC_CHECK_STRING));
-
-  if (CRC64_NGUYEN_Fx000000000000002F_CHECK != crc) {
-    ERROR("CRC Test failed: Expected 0x%016lx , Actual 0x%016lx\n\n", CRC64_NGUYEN_Fx000000000000002F_CHECK, crc);
-  }
-
-  printf("CRC Test Pass\n\n");
-}
-
-///////////////////////////////////////////////////////////////////////////////
-
-// CRC-64/Fast6:
-//  width   = 64-bits
-//  poly    = 0x000000000000002f (x^64 + x^5 + x3 + x^2 + x + 1)
-//  init    = 0x0000000000000000
-//  refin   = false
-//  refout  = false
-//  xorout  = 0x0000000000000000
-//  check   = 0x4966ab84f5dba52f
-
-static uint64_t const CRC64_FAST6_CHECK = 0x4966ab84f5dba52f;
-
-void test_crc64_fast6(void)
-{
-  printf(">>>   Test CRC64_FAST6   <<<\n\n");
-
-  printf("Check test string \"%s\"\n", CRC_CHECK_STRING);
-
-  uint64_t crc = crc64_fast6((uint8_t *)CRC_CHECK_STRING, strlen(CRC_CHECK_STRING));
-
-  if (CRC64_FAST6_CHECK != crc) {
-    ERROR("CRC Test failed: Expected 0x%016lx , Actual 0x%016lx\n\n", CRC64_FAST6_CHECK, crc);
-  }
-
-  printf("CRC Test Pass\n\n");
-}
+#define test_crc64(crc_alg) test_crc(crc_alg##_params, [](uint8_t const * const data, size_t const data_len) -> uint64_t { return crc_alg(data, data_len) & 0xffffffffffffffff; });
 
 int main(void)
 {
@@ -179,10 +96,12 @@ int main(void)
   test_crc32(crc32_nguyen_Fx0006c001);
   test_crc32(crc32_fast6);
 
-  test_crc64_xz();
+  // CRC-64 Algorithms
 
-  test_crc64_nguyen_Fx000000000000002f();
-  test_crc64_fast6();
+  test_crc64(crc64_xz);
+
+  test_crc64(crc64_nguyen_Fx000000000000002f);
+  test_crc64(crc64_fast6);
 
   return 0;
 }
