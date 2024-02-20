@@ -12,7 +12,7 @@
 
 ///////////////////////////////////////////////////////////////////////////////
 //
-// 4. Include application defined CRC algorithms
+// 2. Include application defined CRC algorithms
 
 #undef crc_algorithms_inc
 #define crc_algorithms_inc (INCLUDE_IMPLEMENTATION)
