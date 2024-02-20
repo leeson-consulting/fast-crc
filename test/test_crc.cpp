@@ -1,6 +1,6 @@
 #define UNIT_TESTS
 
-#include "crc.h"
+#include "fast_crc.h"
 
 #include "stdio.h"
 #include "stdint.h"

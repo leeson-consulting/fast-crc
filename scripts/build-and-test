@@ -11,13 +11,13 @@ function main()
 {
   mkdir -p "${REPO_ROOT}/build/bin"
 
-  gcc -o "${REPO_ROOT}/build/bin/crc.c.o" \
+  gcc -o "${REPO_ROOT}/build/bin/fast_crc.c.o" \
     -Wall -Wpedantic -std=c99 -fdiagnostics-color=always \
     -I "${REPO_ROOT}" \
     -I "${REPO_ROOT}/test" \
     \
     -c \
-    "${REPO_ROOT}/crc.c" \
+    "${REPO_ROOT}/fast_crc.c" \
     \
     -L "${REPO_ROOT}"
 
@@ -32,7 +32,7 @@ function main()
     -L "${REPO_ROOT}"
 
   g++ -o "${REPO_ROOT}/build/bin/test_crc" \
-         "${REPO_ROOT}/build/bin/crc.c.o" \
+         "${REPO_ROOT}/build/bin/fast_crc.c.o" \
          "${REPO_ROOT}/build/bin/test_crc.cpp.o" \
          && "${REPO_ROOT}/build/bin/test_crc"
 }
