@@ -83,11 +83,11 @@ int main(void)
 
   // CRC-24 Algorithms
 
-  test_crc24(crc24_nguyen_Fx000007);
-  test_crc24(crc24_fast4);
+  test_crc24(crc24_Nguyen_Fx000007);
+  test_crc24(crc24_Fast4);
 
-  test_crc24(crc24_nguyen_Fx018301);
-  test_crc24(crc24_fast6);
+  test_crc24(crc24_Nguyen_Fx018301);
+  test_crc24(crc24_Fast6);
 
   // CRC-32 Algorithms
 
