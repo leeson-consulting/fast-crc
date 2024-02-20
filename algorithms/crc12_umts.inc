@@ -2,30 +2,29 @@
 
 #include "crc_interface.h"
 
-#if defined(UNIT_TESTS)
+// CRC-12/UMTS is a special case with .refin != .refout
+// This means that the CRC value needs reversed prior to return.
+// AFAIK, no other CRC algorithms require this.
+//
+// So instead of defining an entire family implementation macros for one case,
+// CRC-12/umts is implemented explicitly below.
+//
 
-static const crc_parameters_t
-crc12_umts_params = {
-  .name     = "CRC-12/UMTS",
-  .width    = 12,
-  .poly     = 0x80f,
-  .init     = 0x000,
-  .refin    = false,
-  .refout   = true,
-  .xorout   = 0x000,
-  .check    = 0xdaf,
-  .residue  = 0x000,
-};
-
-#endif
-
-uint16_t crc12_umts(uint8_t const *data, size_t const data_len);
+make_crc12_interface(
+  /* .name     =  */    UMTS,
+  /* .poly     =  */    Fx80f,
+  /* .init     =  */    0x00,
+  /* .refin    =  */    false,
+  /* .refout   =  */    true,
+  /* .xorout   =  */    0x000,
+  /* .check    =  */    0xdaf,
+  /* .residue  =  */    0x000)
 
 #elif crc_algorithms_inc == INCLUDE_IMPLEMENTATION
 
 #include "../polynomials/HD6/Fx80f.h"
 
-uint16_t crc12_umts(uint8_t const *data, size_t const data_len)
+uint16_t crc12_UMTS(uint8_t const *data, size_t const data_len)
 {
   uint16_t crc = crc12_Fx80f(/* init = */ 0x000, data, data_len);
   return bit_reverse_16(crc) >> 4;

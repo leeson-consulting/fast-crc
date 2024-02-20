@@ -61,13 +61,13 @@ int main(void)
 {
   // CRC-8 Algorithms
 
-  test_crc8(crc8_koopman);
-  test_crc8(crc8_nguyen_Fx07);
-  test_crc8(crc8_fast4);
+  test_crc8(crc8_Koopman);
+  test_crc8(crc8_Nguyen_Fx07);
+  test_crc8(crc8_Fast4);
 
   // CRC-12 Algorithms
 
-  test_crc12(crc12_umts);
+  test_crc12(crc12_UMTS);
 
   // CRC-16 Algorithms
 

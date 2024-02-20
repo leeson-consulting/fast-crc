@@ -2,31 +2,20 @@
 
 #include "crc_interface.h"
 
-#if defined(UNIT_TESTS)
-
-static const crc_parameters_t
-crc8_fast4_params = {
-  .name     = "CRC-8/Fast4",
-  .width    = 8,
-  .poly     = 0x07,
-  .init     = 0x00,
-  .refin    = false,
-  .refout   = false,
-  .xorout   = 0x00,
-  .check    = 0xf4
-};
-
-#endif
-
-uint8_t crc8_fast4_init(uint8_t const init, uint8_t const * data, size_t const data_len);
-
-uint8_t crc8_fast4(uint8_t const *data, size_t const data_len);
+make_crc8_interface(
+  /* .name     =  */    Fast4,
+  /* .poly     =  */    Fx07,
+  /* .init     =  */    0x00,
+  /* .refin    =  */    false,
+  /* .refout   =  */    false,
+  /* .xorout   =  */    0x00,
+  /* .check    =  */    0xf4,
+  /* .residue  =  */    0xBaaDf00d)
 
 #elif crc_algorithms_inc == INCLUDE_IMPLEMENTATION
 
-uint8_t crc8_fast4_init(uint8_t const init, uint8_t const * data, size_t const data_len)
+uint8_t crc8_Fast4_Fx07(uint8_t crc, uint8_t const * data, size_t const data_len)
 {
-  uint8_t crc = init;
   uint8_t const FPoly07 = 0x07; // X^8 + X^2 + X + 1
   uint8_t const K = 0x80; // K = 2^(h - 1) , h = s = 8
 
@@ -53,9 +42,10 @@ uint8_t crc8_fast4_init(uint8_t const init, uint8_t const * data, size_t const d
   return crc;
 }
 
-uint8_t crc8_fast4(uint8_t const * data, size_t const data_len)
-{
-  return crc8_fast4_init(/* init = */ 0x00, data, data_len);
-}
+make_crc8_implementation(
+  /* .name     =  */    Fast4,
+  /* .poly     =  */    Fx07,
+  /* .init     =  */    0x00,
+  /* .xorout   =  */    0x00)
 
 #endif
