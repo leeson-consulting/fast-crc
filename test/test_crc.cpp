@@ -98,10 +98,10 @@ int main(void)
 
   // CRC-64 Algorithms
 
-  test_crc64(crc64_xz);
+  test_crc64(crc64_XZ);
 
-  test_crc64(crc64_nguyen_Fx000000000000002f);
-  test_crc64(crc64_fast6);
+  test_crc64(crc64_Nguyen_Fx000000000000002f);
+  test_crc64(crc64_Fast6);
 
   return 0;
 }
