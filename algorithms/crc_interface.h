@@ -28,8 +28,7 @@ typedef struct CRC_Parameters
   // and (importantly) eliminates one bit shift operation in the implementation.
   //
 
-  uint64_t const          poly;
-  //char const * const    poly;
+  char const * const    poly;
 
   uint64_t const        init;         // used to seed CRC value
   bool const            refin;        // are the data bits reflected when processed
@@ -48,7 +47,7 @@ static const crc_parameters_t \
 crc##crc_width##_##crc_name##_params = { \
   .name     = "CRC-"#crc_width"/"#crc_name, \
   .width    = crc_width, \
-  .poly     = 0xBaaDf00d, \
+  .poly     = #crc_poly, \
   .init     = crc_init, \
   .refin    = crc_refin, \
   .refout   = crc_refout, \
