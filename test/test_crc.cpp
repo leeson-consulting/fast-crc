@@ -71,15 +71,15 @@ int main(void)
 
   // CRC-16 Algorithms
 
-  test_crc16(crc16_ibm3740);
-  test_crc16(crc16_mcrfxx);
-  test_crc16(crc16_modbus);
+  test_crc16(crc16_IBM3740);
+  test_crc16(crc16_MCRFXX);
+  test_crc16(crc16_MODBUS);
 
-  test_crc16(crc16_nguyen_Fx0007);
-  test_crc16(crc16_fast4);
+  test_crc16(crc16_Nguyen_Fx0007);
+  test_crc16(crc16_Fast4);
 
-  test_crc16(crc16_nguyen_Fx011b);
-  test_crc16(crc16_fast6);
+  test_crc16(crc16_Nguyen_Fx011b);
+  test_crc16(crc16_Fast6);
 
   // CRC-24 Algorithms
 
