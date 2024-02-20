@@ -47,178 +47,6 @@ void test_crc(crc_parameters_t const & crc_params, CRC_Algorithm const crc_algor
 
 ///////////////////////////////////////////////////////////////////////////////
 
-// CRC-8/Nguyen_Fx07:
-//  width   = 8-bits
-//  poly    = 0x07
-//  init    = 0x00
-//  refin   = false
-//  refout  = false
-//  xorout  = 0x00
-//  check   = 0xf4
-
-static uint8_t const CRC8_NGUYEN_Fx07_CHECK = 0xf4;
-
-void test_crc8_nguyen_Fx07(void)
-{
-  printf(">>>   Test CRC8_NGUYEN_Fx07   <<<\n\n");
-
-  printf("Check test string \"%s\"\n", CRC_CHECK_STRING);
-
-  uint8_t crc = crc8_nguyen_Fx07((uint8_t *)CRC_CHECK_STRING, strlen(CRC_CHECK_STRING));
-
-  if (CRC8_NGUYEN_Fx07_CHECK != crc) {
-    ERROR("CRC Test failed: Expected 0x%02x , Actual 0x%02x\n\n", CRC8_NGUYEN_Fx07_CHECK, crc);
-  }
-
-  printf("CRC Test Pass\n\n");
-}
-
-///////////////////////////////////////////////////////////////////////////////
-
-// CRC-8/Fast4:
-//  width   = 8-bits
-//  poly    = 0x07
-//  init    = 0x00
-//  refin   = false
-//  refout  = false
-//  xorout  = 0x00
-//  check   = 0xf4
-
-static uint8_t const CRC8_FAST4_CHECK = 0xf4;
-
-void test_crc8_fast4(void)
-{
-  printf(">>>   Test CRC8_FAST   <<<\n\n");
-
-  printf("Check test string \"%s\"\n", CRC_CHECK_STRING);
-
-  uint8_t crc = crc8_fast4((uint8_t *)CRC_CHECK_STRING, strlen(CRC_CHECK_STRING));
-
-  if (CRC8_FAST4_CHECK != crc) {
-    ERROR("CRC Test failed: Expected 0x%02x , Actual 0x%02x\n\n", CRC8_FAST4_CHECK, crc);
-  }
-
-  printf("CRC Test Pass\n\n");
-}
-
-///////////////////////////////////////////////////////////////////////////////
-
-// CRC-12/UMTS:
-//  width   = 12-bits
-//  poly    = 0x80f
-//  init    = 0x000
-//  refin   = false
-//  refout  = true
-//  xorout  = 0x000
-//  check   = 0xdaf
-//  residue = 0x000
-
-static uint16_t const CRC12_UMTS_CHECK = 0xdaf;
-
-void test_crc12_umts(void)
-{
-  printf(">>>   Test CRC12_UMTS   <<<\n\n");
-
-  printf("Check test string \"%s\"\n", CRC_CHECK_STRING);
-
-  uint16_t crc = crc12_umts((uint8_t *)CRC_CHECK_STRING, strlen(CRC_CHECK_STRING));
-
-  if (CRC12_UMTS_CHECK != crc) {
-    ERROR("CRC Test failed: Expected 0x%04x , Actual 0x%04x\n\n", CRC12_UMTS_CHECK, crc);
-  }
-
-  printf("CRC Test Pass\n\n");
-}
-
-///////////////////////////////////////////////////////////////////////////////
-
-// CRC-16/IBM3740:
-//  width   = 16-bits
-//  poly    = 0x1021
-//  init    = 0xffff
-//  refin   = false
-//  refout  = false
-//  xorout  = 0x0000
-//  check   = 0x29b1
-//  residue = 0x0000
-
-static uint16_t const CRC16_IBM3740_CHECK = 0x29b1;
-
-void test_crc16_ibm3740(void)
-{
-  printf(">>>   Test CRC16_IBM3740   <<<\n\n");
-
-  printf("Check test string \"%s\"\n", CRC_CHECK_STRING);
-
-  uint16_t crc = crc16_ibm3740((uint8_t *)CRC_CHECK_STRING, strlen(CRC_CHECK_STRING));
-
-  if (CRC16_IBM3740_CHECK != crc) {
-    ERROR("CRC Test failed: Expected 0x%04x , Actual 0x%04x\n\n", CRC16_IBM3740_CHECK, crc);
-  }
-
-  printf("CRC Test Pass\n\n");
-}
-
-///////////////////////////////////////////////////////////////////////////////
-
-// CRC-16/MCRFXX:
-//  width   = 16-bits
-//  poly    = 0x1021
-//  init    = 0xffff
-//  refin   = true
-//  refout  = true
-//  xorout  = 0x0000
-//  check   = 0x6f91
-//  residue = 0x0000
-
-static uint16_t const CRC16_MCRFXX_CHECK = 0x6f91;
-
-void test_crc16_mcrfxx(void)
-{
-  printf(">>>   Test CRC16_MCRFXX   <<<\n\n");
-
-  printf("Check test string \"%s\"\n", CRC_CHECK_STRING);
-
-  uint16_t crc = crc16_mcrfxx((uint8_t *)CRC_CHECK_STRING, strlen(CRC_CHECK_STRING));
-
-  if (CRC16_MCRFXX_CHECK != crc) {
-    ERROR("CRC Test failed: Expected 0x%04x , Actual 0x%04x\n\n", CRC16_MCRFXX_CHECK, crc);
-  }
-
-  printf("CRC Test Pass\n\n");
-}
-
-///////////////////////////////////////////////////////////////////////////////
-
-// CRC-16/MODBUS:
-//  width   = 16-bits
-//  poly    = 0x8005
-//  init    = 0xffff
-//  refin   = true
-//  refout  = true
-//  xorout  = 0x0000
-//  check   = 0x4b37
-//  residue = 0x0000
-
-static uint16_t const CRC16_MODBUS_CHECK = 0x4b37;
-
-void test_crc16_modbus(void)
-{
-  printf(">>>   Test CRC16_MODBUS   <<<\n\n");
-
-  printf("Check test string \"%s\"\n", CRC_CHECK_STRING);
-
-  uint16_t crc = crc16_modbus((uint8_t *)CRC_CHECK_STRING, strlen(CRC_CHECK_STRING));
-
-  if (CRC16_MODBUS_CHECK != crc) {
-    ERROR("CRC Test failed: Expected 0x%04x , Actual 0x%04x\n\n", CRC16_MODBUS_CHECK, crc);
-  }
-
-  printf("CRC Test Pass\n\n");
-}
-
-///////////////////////////////////////////////////////////////////////////////
-
 // CRC-16/Nguyen_Fx0007:
 //  width   = 16-bits
 //  poly    = 0x0007
@@ -625,16 +453,21 @@ void test_crc64_fast6(void)
 
 int main(void)
 {
-  test_crc(crc8_koopman_params, [](uint8_t const * const data, size_t const data_len) -> uint64_t {
-           return crc8_koopman(data, data_len) & 0xff; });
+  // CRC-8 Algorithms
 
-  test_crc8_nguyen_Fx07();
-  test_crc8_fast4();
+  test_crc(crc8_koopman_params, [](uint8_t const * const data, size_t const data_len) -> uint64_t { return crc8_koopman(data, data_len) & 0xff; });
+  test_crc(crc8_nguyen_Fx07_params, [](uint8_t const * const data, size_t const data_len) -> uint64_t { return crc8_nguyen_Fx07(data, data_len) & 0xff; });
+  test_crc(crc8_fast4_params, [](uint8_t const * const data, size_t const data_len) -> uint64_t { return crc8_fast4(data, data_len) & 0xff; });
 
-  test_crc16_ibm3740();
-  test_crc12_umts();
-  test_crc16_mcrfxx();
-  test_crc16_modbus();
+  // CRC-12 Algorithms
+
+  test_crc(crc12_umts_params, [](uint8_t const * const data, size_t const data_len) -> uint64_t { return crc12_umts(data, data_len) & 0xfff; });
+
+  // CRC-16 Algorithms
+
+  test_crc(crc16_ibm3740_params, [](uint8_t const * const data, size_t const data_len) -> uint64_t { return crc16_ibm3740(data, data_len) & 0xffff; });
+  test_crc(crc16_mcrfxx_params, [](uint8_t const * const data, size_t const data_len) -> uint64_t { return crc16_mcrfxx(data, data_len) & 0xffff; });
+  test_crc(crc16_modbus_params, [](uint8_t const * const data, size_t const data_len) -> uint64_t { return crc16_modbus(data, data_len) & 0xffff; });
 
   test_crc16_nguyen_Fx0007();
   test_crc16_fast4();

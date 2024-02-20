@@ -1,14 +1,23 @@
 #if crc_algorithms_inc == INCLUDE_INTERFACE
 
-// CRC-16/MCRFXX:
-//  width   = 16-bits
-//  poly    = 0x1021
-//  init    = 0xffff
-//  refin   = true
-//  refout  = true
-//  xorout  = 0x0000
-//  check   = 0x6f91
-//  residue = 0x0000
+#include "crc_interface.h"
+
+#if defined(UNIT_TESTS)
+
+static const crc_parameters_t
+crc16_mcrfxx_params = {
+  .name     = "CRC-16/MCRFXX",
+  .width    = 16,
+  .poly     = 0x1021,
+  .init     = 0xffff,
+  .refin    = true,
+  .refout   = true,
+  .xorout   = 0x0000,
+  .check    = 0x6f91,
+  .residue  = 0x0000
+};
+
+#endif
 
 uint16_t crc16_mcrfxx(uint8_t const *data, size_t const data_len);
 

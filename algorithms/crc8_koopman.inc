@@ -12,6 +12,7 @@ crc8_koopman_params = {
   .init     = 0xff,
   .refin    = true,
   .refout   = true,
+  .xorout   = 0xff,
   .check    = 0xd8
 };
 
