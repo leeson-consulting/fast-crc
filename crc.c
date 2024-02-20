@@ -7,8 +7,8 @@
 //    eg. CRC-12/UMTS
 //
 
-#include "./kernels/endianness.h"
-#include "./kernels/bit_reverse.c"
+#include "./crc_kernels/endianness.h"
+#include "./crc_kernels/bit_reverse.c"
 
 ///////////////////////////////////////////////////////////////////////////////
 //

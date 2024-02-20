@@ -12,7 +12,7 @@
 
 #define USE_CRC_KERNEL_TABLE8
 
-#include "./algorithms/crc8_nguyen_Fx07.inc"
+#include "crc_algorithms/crc8_nguyen_Fx07.inc"
 
 ///////////////////////////////////////////////////////////////////////////////
 //
@@ -21,35 +21,35 @@
 
 #undef USE_CRC_KERNEL_TABLE8
 
-#include "./algorithms/crc8_koopman.inc"
+#include "crc_algorithms/crc8_koopman.inc"
 
-#include "./algorithms/crc12_umts.inc"
+#include "crc_algorithms/crc12_umts.inc"
 
-#include "./algorithms/crc16_ibm3740.inc"
-#include "./algorithms/crc16_mcrfxx.inc"
-#include "./algorithms/crc16_modbus.inc"
-#include "./algorithms/crc16_nguyen_Fx0007.inc"
-#include "./algorithms/crc16_nguyen_Fx011b.inc"
+#include "crc_algorithms/crc16_ibm3740.inc"
+#include "crc_algorithms/crc16_mcrfxx.inc"
+#include "crc_algorithms/crc16_modbus.inc"
+#include "crc_algorithms/crc16_nguyen_Fx0007.inc"
+#include "crc_algorithms/crc16_nguyen_Fx011b.inc"
 
-#include "./algorithms/crc24_nguyen_Fx000007.inc"
-#include "./algorithms/crc24_nguyen_Fx018301.inc"
+#include "crc_algorithms/crc24_nguyen_Fx000007.inc"
+#include "crc_algorithms/crc24_nguyen_Fx018301.inc"
 
-#include "./algorithms/crc32_hdlc.inc"
-#include "./algorithms/crc32_nguyen_Fx0006c001.inc"
+#include "crc_algorithms/crc32_hdlc.inc"
+#include "crc_algorithms/crc32_nguyen_Fx0006c001.inc"
 
-#include "./algorithms/crc64_nguyen_Fx000000000000002f.inc"
-#include "./algorithms/crc64_xz.inc"
+#include "crc_algorithms/crc64_nguyen_Fx000000000000002f.inc"
+#include "crc_algorithms/crc64_xz.inc"
 
 ///////////////////////////////////////////////////////////////////////////////
 //
 // 3. Algorithms that use Nguyen's Fast-CRC algorithms
 //
 
-#include "./algorithms/crc8_fast4.inc"
-#include "./algorithms/crc16_fast4.inc"
-#include "./algorithms/crc24_fast4.inc"
+#include "crc_algorithms/crc8_fast4.inc"
+#include "crc_algorithms/crc16_fast4.inc"
+#include "crc_algorithms/crc24_fast4.inc"
 
-#include "./algorithms/crc16_fast6.inc"
-#include "./algorithms/crc24_fast6.inc"
-#include "./algorithms/crc32_fast6.inc"
-#include "./algorithms/crc64_fast6.inc"
+#include "crc_algorithms/crc16_fast6.inc"
+#include "crc_algorithms/crc24_fast6.inc"
+#include "crc_algorithms/crc32_fast6.inc"
+#include "crc_algorithms/crc64_fast6.inc"
