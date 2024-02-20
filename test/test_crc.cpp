@@ -51,151 +51,7 @@ void test_crc(crc_parameters_t const & crc_params, CRC_Algorithm const crc_algor
 
 #define test_crc16(crc_alg) test_crc(crc_alg##_params, [](uint8_t const * const data, size_t const data_len) -> uint64_t { return crc_alg(data, data_len) & 0xffff; });
 
-///////////////////////////////////////////////////////////////////////////////
-
-// CRC-16/Fast6:
-//  width   = 16-bits
-//  poly    = 0x011b
-//  init    = 0x0000
-//  refin   = false
-//  refout  = false
-//  xorout  = 0x0000
-//  check   = 0x8d1c
-
-static uint16_t const CRC16_FAST6_CHECK = 0x8d1c;
-
-void test_crc16_fast6(void)
-{
-  printf(">>>   Test CRC16_FAST6   <<<\n\n");
-
-  printf("Check test string \"%s\"\n", CRC_CHECK_STRING);
-
-  uint16_t crc = crc16_fast6((uint8_t *)CRC_CHECK_STRING, strlen(CRC_CHECK_STRING));
-
-  if (CRC16_FAST6_CHECK != crc) {
-    ERROR("CRC Test failed: Expected 0x%04x , Actual 0x%04x\n\n", CRC16_FAST6_CHECK, crc);
-  }
-
-  printf("CRC Test Pass\n\n");
-}
-
-///////////////////////////////////////////////////////////////////////////////
-
-// CRC-24/Nguyen_Fx000007:
-//  width   = 24-bits
-//  poly    = 0x000007
-//  init    = 0x000000
-//  refin   = false
-//  refout  = false
-//  xorout  = 0x000000
-//  check   = 0x921774
-
-static uint32_t const CRC24_NGUYEN_Fx000007_CHECK = 0x921774;
-
-void test_crc24_nguyen_Fx000007(void)
-{
-  printf(">>>   Test CRC24_NGUYEN   <<<\n\n");
-
-  printf("Check test string \"%s\"\n", CRC_CHECK_STRING);
-
-  uint32_t crc = crc24_nguyen_Fx000007((uint8_t *)CRC_CHECK_STRING, strlen(CRC_CHECK_STRING));
-
-  if (CRC24_NGUYEN_Fx000007_CHECK != crc) {
-    ERROR("CRC Test failed: Expected 0x%04x , Actual 0x%04x\n\n", CRC24_NGUYEN_Fx000007_CHECK, crc);
-  }
-
-  printf("CRC Test Pass\n\n");
-}
-
-///////////////////////////////////////////////////////////////////////////////
-
-// CRC-24/Fast4:
-//  width   = 24-bits
-//  poly    = 0x000007
-//  init    = 0x000000
-//  refin   = false
-//  refout  = false
-//  xorout  = 0x000000
-//  check   = 0x921774
-
-static uint32_t const CRC24_FAST4_CHECK = 0x921774;
-
-void test_crc24_fast4(void)
-{
-  printf(">>>   Test CRC24_FAST4   <<<\n\n");
-
-  printf("Check test string \"%s\"\n", CRC_CHECK_STRING);
-
-  uint32_t crc = crc24_fast4((uint8_t *)CRC_CHECK_STRING, strlen(CRC_CHECK_STRING));
-
-  if (CRC24_FAST4_CHECK != crc) {
-    ERROR("CRC Test failed: Expected 0x%04x , Actual 0x%04x\n\n", CRC24_FAST4_CHECK, crc);
-  }
-
-  printf("CRC Test Pass\n\n");
-}
-
-///////////////////////////////////////////////////////////////////////////////
-
-// CRC-24/Nguyen_Fx018301:
-//  width   = 24-bits
-//  poly    = 0x018301
-//  init    = 0x000000
-//  refin   = false
-//  refout  = false
-//  xorout  = 0x000000
-//  check   = 0x8a7d1b
-
-static uint32_t const CRC24_NGUYEN_Fx018301_CHECK = 0x8a7d1b;
-
-void test_crc24_nguyen_Fx018301(void)
-{
-  printf(">>>   Test CRC24_NGUYEN   <<<\n\n");
-
-  printf("Check test string \"%s\"\n", CRC_CHECK_STRING);
-
-  uint32_t crc = crc24_nguyen_Fx018301((uint8_t *)CRC_CHECK_STRING, strlen(CRC_CHECK_STRING));
-
-  if (CRC24_NGUYEN_Fx018301_CHECK != crc) {
-    ERROR("CRC Test failed: Expected 0x%04x , Actual 0x%04x\n\n", CRC24_NGUYEN_Fx018301_CHECK, crc);
-  }
-
-  printf("CRC Test Pass\n\n");
-}
-
-///////////////////////////////////////////////////////////////////////////////
-
-// CRC-24/Fast6:
-//  width   = 24-bits
-//  poly    = 0x018301
-//  init    = 0x000000
-//  refin   = false
-//  refout  = false
-//  xorout  = 0x000000
-//  check   = 0x8a7d1b
-
-static uint32_t const CRC24_FAST6_CHECK = 0x8a7d1b;
-
-void test_crc24_fast6(void)
-{
-  printf(">>>   Test CRC24_FAST6   <<<\n\n");
-
-  printf("Check test string \"%s\"\n", CRC_CHECK_STRING);
-
-  uint32_t crc;
-  uint8_t data[32] = {0};
-  size_t i = 0; // To experiment with offset behaviour
-
-  memcpy(data + i, CRC_CHECK_STRING, strlen(CRC_CHECK_STRING));
-
-  crc = crc24_fast6(data + i, strlen(CRC_CHECK_STRING));
-
-  if (CRC24_FAST6_CHECK != crc) {
-    ERROR("CRC Test failed: Expected 0x%08x , Actual 0x%08x\n\n", CRC24_FAST6_CHECK, crc);
-  }
-
-  printf("CRC Test Pass\n\n");
-}
+#define test_crc24(crc_alg) test_crc(crc_alg##_params, [](uint8_t const * const data, size_t const data_len) -> uint64_t { return crc_alg(data, data_len) & 0xffffff; });
 
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -397,11 +253,13 @@ int main(void)
   test_crc16(crc16_nguyen_Fx011b);
   test_crc16(crc16_fast6);
 
-  test_crc24_nguyen_Fx000007();
-  test_crc24_fast4();
+  // CRC-24 Algorithms
 
-  test_crc24_nguyen_Fx018301();
-  test_crc24_fast6();
+  test_crc24(crc24_nguyen_Fx000007);
+  test_crc24(crc24_fast4);
+
+  test_crc24(crc24_nguyen_Fx018301);
+  test_crc24(crc24_fast6);
 
   test_crc32_hdlc();
 

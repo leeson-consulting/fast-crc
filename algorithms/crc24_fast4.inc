@@ -1,13 +1,23 @@
 #if crc_algorithms_inc == INCLUDE_INTERFACE
 
-// CRC-24/Fast4:
-//  width   = 24-bits
-//  poly    = 0x000007
-//  init    = 0x000000
-//  refin   = false
-//  refout  = false
-//  xorout  = 0x000000
-//  check   = 0x921774
+#include "crc_interface.h"
+
+#if defined(UNIT_TESTS)
+
+static const crc_parameters_t
+crc24_fast4_params = {
+  .name     = "CRC-24/Fast4",
+  .width    = 24,
+  .poly     = 0x000007,
+  .init     = 0x000000,
+  .refin    = false,
+  .refout   = false,
+  .xorout   = 0x000000,
+  .check    = 0x921774,
+  .residue  = 0x0000
+};
+
+#endif
 
 uint32_t crc24_fast4_init(uint32_t const init, uint8_t const * data, size_t data_len);
 
