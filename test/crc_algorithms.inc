@@ -26,6 +26,7 @@
 #include "crc_algorithms/crc12_umts.inc"
 
 #include "crc_algorithms/crc16_ccitt.inc"
+#include "crc_algorithms/crc16_dds_110.inc"
 #include "crc_algorithms/crc16_ibm3740.inc"
 #include "crc_algorithms/crc16_kermit.inc"
 #include "crc_algorithms/crc16_mcrfxx.inc"

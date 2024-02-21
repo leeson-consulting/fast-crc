@@ -161,6 +161,7 @@ int main(void)
   // CRC-16 Algorithms
 
   test_crc16(crc16_CCITT);
+  test_crc16(crc16_DDS_110);
   test_crc16(crc16_IBM3740);
   test_crc16(crc16_Kermit);
   test_crc16(crc16_MCRFXX);
