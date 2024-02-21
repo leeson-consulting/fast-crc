@@ -25,7 +25,9 @@
 
 #include "crc_algorithms/crc12_umts.inc"
 
+#include "crc_algorithms/crc16_ccitt.inc"
 #include "crc_algorithms/crc16_ibm3740.inc"
+#include "crc_algorithms/crc16_kermit.inc"
 #include "crc_algorithms/crc16_mcrfxx.inc"
 #include "crc_algorithms/crc16_modbus.inc"
 #include "crc_algorithms/crc16_nguyen_Fx0007.inc"
