@@ -1,7 +1,32 @@
 #!/usr/bin/env bash
 
+function print_poly_help()
+{
+  echo "Usage print_poly <poly_hex> <poly_degree>"
+  echo ""
+  echo "eg. Print the 0x1021 CRC-16/CCITT polynomial:"
+  echo ""
+  echo "./print_poly 1021 16"
+  echo ""
+  echo "  -- OR --"
+  echo ""
+  echo "./print_poly 0x1021 16"
+}
+
 function print_poly()
 (
+  # 0. Quick arg check
+
+  if [[ "$1" == '-h' || "$1" == '--help' ]] ; then
+    print_poly_help
+    exit 0
+  fi
+
+  if (( $# != 2 )) ; then
+    print_poly_help
+    exit 1
+  fi
+
   # 1. Make sure poly (a) has no 0x prefix, and (b) uses uppercase digits
 
   polly_hex="${1#0x}" ; polly_hex="${polly_hex^^}"
