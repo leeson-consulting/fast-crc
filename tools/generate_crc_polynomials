@@ -1,0 +1,167 @@
+#!/usr/bin/env bash
+
+set -e
+
+###############################################################################
+
+function make_tables()
+{
+  width="$1"
+  poly="$2"
+
+  echo "Generating CRC polynomial tables for 0x${poly}"
+
+  "$PYCRC" --width="$width" --poly=0x"${poly}" --reflect-in=False --reflect-out=False --xor-in=0x0000 --xor-out=0x0000 --algorithm=table-driven --generate=table --table-idx-width=8 -o "${POLYNOMIAL_EXPORT_PATH}/Fx${poly}".t8
+  "$PYCRC" --width="$width" --poly=0x"${poly}" --reflect-in=False --reflect-out=False --xor-in=0x0000 --xor-out=0x0000 --algorithm=table-driven --generate=table --table-idx-width=4 -o "${POLYNOMIAL_EXPORT_PATH}/Fx${poly}".t4
+  "$PYCRC" --width="$width" --poly=0x"${poly}" --reflect-in=True  --reflect-out=True  --xor-in=0x0000 --xor-out=0x0000 --algorithm=table-driven --generate=table --table-idx-width=8 -o "${POLYNOMIAL_EXPORT_PATH}/Rx${poly}".t8
+  "$PYCRC" --width="$width" --poly=0x"${poly}" --reflect-in=True  --reflect-out=True  --xor-in=0x0000 --xor-out=0x0000 --algorithm=table-driven --generate=table --table-idx-width=4 -o "${POLYNOMIAL_EXPORT_PATH}/Rx${poly}".t4
+}
+
+###############################################################################
+
+function make_catalogued_polynomials()
+{
+  # CRC-8 Polynomials
+
+  make_tables 8 07
+  make_tables 8 31
+  make_tables 8 1d
+  make_tables 8 49
+  make_tables 8 2f
+  make_tables 8 39
+  make_tables 8 d5
+  make_tables 8 9b
+  make_tables 8 a7
+
+  # CRC-16 Polynomials
+
+  make_tables 16 233
+  make_tables 16 0589
+  make_tables 16 080b
+  make_tables 16 1021
+  make_tables 16 1dcf
+  make_tables 16 3d65
+  make_tables 16 8005
+  make_tables 16 5935
+  make_tables 16 6f63
+  make_tables 16 755b
+  make_tables 16 8bb7
+  make_tables 16 a097
+  make_tables 16 c867
+  make_tables 16 8bb7
+  make_tables 16 0589
+  make_tables 16 5935
+  make_tables 16 755b
+  make_tables 16 1dcf
+
+  # CRC-24 Polynomials
+
+  make_tables 24 00065b
+  make_tables 24 328b63
+  make_tables 24 5d6dcb
+  make_tables 24 800063
+  make_tables 24 864cfb
+
+  # CRC-32 Polynomials
+
+  make_tables 32 000000af
+  make_tables 32 04c11db7
+  make_tables 32 1edc6f41
+  make_tables 32 741b8cd7
+  make_tables 32 8001801b
+  make_tables 32 814141ab
+  make_tables 32 f4acfb13
+  make_tables 32 a833982b
+
+  # CRC-64 Polynomials
+
+  make_tables 64 000000000000001b
+  make_tables 64 259c84cba6426349
+  make_tables 64 ad93d23594c935a9
+  make_tables 64 42f0e1eba9ea3693
+}
+
+###############################################################################
+
+function setup_pycrc()
+{
+  if [[ -x "${PYCRC}" ]] then return; fi
+
+  echo "Installing pycrc from tarball..."
+
+  local pycrc_tarball=$(find "$SCRIPT_PATH" -iname pycrc*.tar*)
+
+  if [[ ! -r "${pycrc_tarball}" ]] then
+    echo "pycrc tarball missing.  Download the latest release from https://pycrc.org/"
+    exit 1
+  fi
+
+  local pycrc_install_path="${pycrc_tarball%%.tar*}"
+
+  tar xaf "$pycrc_tarball" -C "$SCRIPT_PATH"
+
+  local pycrc=$(find "${pycrc_install_path}" -type f -executable -iname pycrc\*)
+
+  if [[ ! -r "${pycrc}" ]] then
+    echo "pycrc executable appears to be missing from tarball!  Have a look in \"${pycrc_install_path}\" to see what's going on."
+    exit 2
+  fi
+
+cat <<-EOF > "${SCRIPT_PATH}/pycrc"
+
+#!/usr/bin/env bash
+
+# Some versions of pycrc run very slowly.
+# The cause is unknown.
+#
+# Older versions of pycrc seem to require Python 2.7,
+# but are much faster...
+#
+# This is a wee hack to make sure table generation completes in a timely manner
+#
+
+exec python2 "$pycrc" "\$@"
+
+EOF
+
+  chmod u+x "${SCRIPT_PATH}/pycrc"
+
+  PYCRC="${SCRIPT_PATH}/pycrc"
+
+  cd - &> /dev/null
+
+  echo "pycrc installed to \"${pycrc_install_path}\""
+}
+
+###############################################################################
+
+function main()
+{
+  cd "${0%/*}" ; SCRIPT_PATH="$PWD" ; cd - > /dev/null
+  SCRIPT_NAME="${0##*/}"
+  CALLERS_WD="$PWD"
+
+  trap "cleanup ;" EXIT
+
+  POLYNOMIAL_EXPORT_PATH="${1:-${CALLERS_WD}/crc_polynomial_tables}"
+
+  mkdir -p "$POLYNOMIAL_EXPORT_PATH"
+
+  PYCRC="${1:-${SCRIPT_PATH}/pycrc}"
+
+  setup_pycrc
+
+  make_catalogued_polynomials
+}
+
+###############################################################################
+
+function cleanup()
+{
+  cd "$CALLERS_WD" &> /dev/null
+}
+
+###############################################################################
+
+main "$@"
+
