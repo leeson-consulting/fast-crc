@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+
+function print_poly()
+(
+  # 1. Make sure poly (a) has no 0x prefix, and (b) uses uppercase digits
+
+  polly_hex="${1#0x}" ; polly_hex="${polly_hex^^}"
+
+  # 2. Hex to Bin
+
+  polly_bin=$(echo "obase=2; ibase=16; ${polly_hex}" | bc)
+
+  # 3. Use the poly_degree arguement to correctly prefix polly_bin
+
+  declare -i polly_degree="${2}"
+
+  polly_bin=$(printf "1%0${polly_degree}d" "$polly_bin")
+
+  declare -i polly_bits="${#polly_bin}"
+
+  # 4. Walk the poly_bin string.  NB. First character is MSb
+
+  for (( i = 0 ;  i < $polly_bits ; i++)) ; do
+    bit="${polly_bin:${i}:1}"
+
+    declare -i degree=$((polly_bits - 1 - i))
+
+    if [[ "$bit" == '0' ]] ; then
+      continue;
+    fi
+
+    if (( degree != 0 )) ; then
+      printf "x^${degree} + "
+    else
+      printf "1"
+    fi
+
+  done
+)
+
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]] then
+  set -e
+  print_poly "$@"
+  echo
+fi
