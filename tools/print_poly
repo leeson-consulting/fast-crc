@@ -1,64 +1,86 @@
 #!/usr/bin/env bash
 
-function print_poly_help()
-(
+function _print_poly_help()
+{
+  local tool
+  local tool_name
+
   if [[ "${BASH_SOURCE[0]}" == "${0}" ]] then
-    tool_name=".${SCRIPT_PATH#${REPO_ROOT}}/${SCRIPT_NAME}"
+    tool=".${SCRIPT_PATH#${REPO_ROOT}}/${SCRIPT_NAME}"
+    tool_name="$SCRIPT_NAME"
   else
-    tool_name="print_poly"
+    tool="print_poly"
+    tool_name="$tool"
   fi
 
-  echo "Usage print_poly <poly_hex> <poly_degree>"
-  echo ""
-  echo "eg. Print the 0x1021 CRC-16/CCITT polynomial:"
-  echo ""
-  echo "${tool_name} 1021 16"
-  echo ""
-  echo "  -- OR --"
-  echo ""
-  echo "${tool_name} 0x1021 16"
-)
+  cat << EOF
+
+$tool_name prints CRC polynomials in human readable form.
+
+  Koopman Notation :   $tool_name <koopman_hex>
+  Normal Notation  :   $tool_name <normal_hex> <poly_degree>
+
+  eg. print CRC-16/CCITT using various polynomial notations:
+
+${tool} 1021 16
+${tool} 0x1021 16
+${tool} 8810
+${tool} 0x8810
+
+EOF
+
+}
+
+function _normal_poly_notation_to_bin()
+{
+  declare -i normal_notation=$(( "0x${1#0x}" ))
+  declare -i explicit_notation=$(( (1 << $2) + normal_notation ))
+  echo $(echo "obase=2; ibase=10; $(( explicit_notation ))" | bc)
+}
+
+function _koopman_poly_notation_to_bin()
+{
+  declare -i koopman_notation=$(( "0x${1#0x}" ))
+  declare -i explicit_notation=$(( (koopman_notation * 2) + 1 ))
+  echo $(echo "obase=2; ibase=10; $(( explicit_notation ))" | bc)
+}
 
 function print_poly()
-(
+{
   # 0. Quick arg check
 
-  if [[ "$1" == '-h' || "$1" == '--help' ]] ; then
-    print_poly_help
-    exit 0
-  fi
-
-  if (( $# != 2 )) ; then
-    print_poly_help
+  if (( $# < 1 )) ; then
+    _print_poly_help
     exit 1
   fi
 
-  # 1. Make sure poly (a) has no 0x prefix, and (b) uses uppercase digits
+  if [[ "$1" == '-h' || "$1" == '--help' ]] ; then
+    _print_poly_help
+    exit 0
+  fi
 
-  polly_hex="${1#0x}" ; polly_hex="${polly_hex^^}"
+  # 1. Convert poly_hex to poly_bin
 
-  # 2. Hex to Bin
+  local second_arg="${2:-koopman}"
 
-  polly_bin=$(echo "obase=2; ibase=16; ${polly_hex}" | bc)
+  local polly_bin
 
-  # 3. Use the poly_degree arguement to correctly prefix polly_bin
+  if [[ "$second_arg" == 'koopman' ]] ; then
+    polly_bin=$(_koopman_poly_notation_to_bin "$1")
+  else
+    polly_bin=$(_normal_poly_notation_to_bin "$1" "$2")
+  fi
 
-  declare -i polly_degree="${2}"
+  local -i polly_bits="${#polly_bin}"
 
-  polly_bin=$(printf "1%0${polly_degree}s" "$polly_bin")
+  # 3. Walk the poly_bin string.  NB. First character is MSb
 
-  declare -i polly_bits="${#polly_bin}"
-
-  # 4. Walk the poly_bin string.  NB. First character is MSb
-
-  for (( i = 0 ;  i < $polly_bits ; i++)) ; do
-    bit="${polly_bin:${i}:1}"
-
-    declare -i degree=$((polly_bits - 1 - i))
-
-    if [[ "$bit" == '0' ]] ; then
+  for (( i = 0 ;  i < $polly_bits ; i++ )) ; do
+    if (( "${polly_bin:${i}:1}" == 0 )) ; then
       continue;
     fi
+
+    local -i degree=$((polly_bits - 1 - i))
 
     if (( degree != 0 )) ; then
       printf "x^${degree} + "
@@ -67,7 +89,7 @@ function print_poly()
     fi
 
   done
-)
+}
 
 if [[ "${BASH_SOURCE[0]}" == "${0}" ]] then
   set -e
