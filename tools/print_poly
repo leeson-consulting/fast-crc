@@ -15,19 +15,59 @@ function _print_poly_help()
 
   cat << EOF
 
-$tool_name prints CRC polynomials in human readable form.
+$tool_name prints CRC polynomials in various notations.
 
-  Koopman Notation :   $tool_name <koopman_hex>
+The main application is printing human readable notations from hex:
+
+  Koopman Notation :   $tool_name <koopman_hex> {||kn|koopman}
+  Explicit Notation :  $tool_name <explicit_hex> {en|explicit}
   Normal Notation  :   $tool_name <normal_hex> <poly_degree>
 
   eg. print CRC-16/CCITT using various polynomial notations:
 
 ${tool} 1021 16
 ${tool} 0x1021 16
+${tool} 11021 explicit
+${tool} 0x11021 en
 ${tool} 8810
+${tool} 8810 kn
+${tool} 8810 koopman
 ${tool} 0x8810
+${tool} 0x8810 koopman
+
+The seconday application is converting between hex notations:
+
+${tool} e2n 11021
+${tool} explicit_to_normal 0x11021
+${tool} e2k 0x11021
+${tool} explicit_to_koopman 11021
+
+${tool} k2e 0x8810
+${tool} koopman_to_explicit 0x8810
+${tool} k2n 8810
+${tool} koopman_to_normal 8810
+
+${tool} n2e 0x1021 16
+${tool} normal_to_explicit 1021 16
+${tool} n2k 1021 16
+${tool} normal_to_koopman 0x1021 16
 
 EOF
+}
+
+###############################################################################
+
+function _koopman_poly_notation_to_bin()
+{
+  local -i koopman_notation=$(( "0x${1#0x}" ))
+  local -i explicit_notation=$(( (koopman_notation * 2) + 1 ))
+  echo $(echo "obase=2; ibase=10; $(( explicit_notation ))" | bc)
+}
+
+function _explicit_poly_notation_to_bin()
+{
+  local -i explicit_notation=$(( "0x${1#0x}" ))
+  echo $(echo "obase=2; ibase=10; $(( explicit_notation ))" | bc)
 }
 
 function _normal_poly_notation_to_bin()
@@ -37,12 +77,51 @@ function _normal_poly_notation_to_bin()
   echo $(echo "obase=2; ibase=10; $(( explicit_notation ))" | bc)
 }
 
-function _koopman_poly_notation_to_bin()
+###############################################################################
+
+function _koopman_poly_notation_to_explicit_notation()
 {
   local -i koopman_notation=$(( "0x${1#0x}" ))
   local -i explicit_notation=$(( (koopman_notation * 2) + 1 ))
-  echo $(echo "obase=2; ibase=10; $(( explicit_notation ))" | bc)
+  printf "0x%x" "$explicit_notation"
 }
+
+function _koopman_poly_notation_to_normal_notation()
+{
+  local explicit_notation=$(_koopman_poly_notation_to_explicit_notation "$1")
+  echo $(_explicit_poly_notation_to_normal_notation "${explicit_notation}")
+}
+
+function _explicit_poly_notation_to_normal_notation()
+{
+  local poly_bin=$(_explicit_poly_notation_to_bin "$1")
+  local -i poly_bits="${#poly_bin}"
+  local explicit_stripped="${1#0x}"
+  printf "0x%s %d" "${explicit_stripped:1}" $(( poly_bits - 1 ))
+}
+
+function _explicit_poly_notation_to_koopman_notation()
+{
+  local -i explicit_notation=$(( "0x${1#0x}" ))
+  local -i koopman_notation=$(( explicit_notation >> 1 ))
+  printf "0x%x" "$koopman_notation"
+}
+
+function _normal_poly_notation_to_explicit_notation()
+{
+  local -i normal_notation=$(( "0x${1#0x}" ))
+  local -i explicit_notation=$(( (1 << $2) + normal_notation ))
+  printf "0x%x" "$explicit_notation"
+}
+
+function _normal_poly_notation_to_koopman_notation()
+{
+  local -i normal_notation=$(( "0x${1#0x}" ))
+  local -i koopman_notation=$(( (((1 << $2) + normal_notation) - 1) >> 1 ))
+  printf "0x%x" "$koopman_notation"
+}
+
+###############################################################################
 
 # NB. The print_poly function runs in a subshell.
 #     This allows exit on error even when the script is sourced.
@@ -56,10 +135,35 @@ function print_poly()
     exit 1
   fi
 
-  if [[ "$1" == '-h' || "$1" == '--help' ]] ; then
-    _print_poly_help
-    exit 0
-  fi
+  case "$1" in
+    'k2e' | 'koopman_to_explicit')
+      echo $(_koopman_poly_notation_to_explicit_notation "$2")
+      exit 0 ;;
+
+    'k2n' | 'koopman_to_normal')
+      echo $(_koopman_poly_notation_to_normal_notation "$2")
+      exit 0 ;;
+
+    'e2n' | 'explicit_to_normal')
+      echo $(_explicit_poly_notation_to_normal_notation "$2")
+      exit 0 ;;
+
+    'e2k' | 'explicit_to_koopman')
+      echo $(_explicit_poly_notation_to_koopman_notation "$2")
+      exit 0 ;;
+
+    'n2e' | 'normal_to_explicit')
+      echo $(_normal_poly_notation_to_explicit_notation "$2" "$3")
+      exit 0 ;;
+
+    'n2k' | 'normal_to_koopman')
+      echo $(_normal_poly_notation_to_koopman_notation "$2" "$3")
+      exit 0 ;;
+
+    'h' | '-h' | 'help' | '--help')
+      _print_poly_help
+      exit 0 ;;
+  esac
 
   # 1. Convert poly_hex to poly_bin
 
@@ -67,15 +171,18 @@ function print_poly()
 
   local poly_bin
 
-  if [[ "$second_arg" == 'koopman' ]] ; then
-    poly_bin=$(_koopman_poly_notation_to_bin "$1")
-  else
-    poly_bin=$(_normal_poly_notation_to_bin "$1" "$2")
-  fi
+  case "$second_arg" in
+    'kn' | 'koopman')
+      poly_bin=$(_koopman_poly_notation_to_bin "$1") ;;
+    'en' | 'explicit')
+      poly_bin=$(_explicit_poly_notation_to_bin "$1") ;;
+    *)
+      poly_bin=$(_normal_poly_notation_to_bin "$1" "$2") ;;
+  esac
 
   local -i poly_bits="${#poly_bin}"
 
-  # 3. Walk the poly_bin string.  NB. First character is MSb
+  # 2. Walk the poly_bin string.  NB. First character is MSb
 
   for (( i = 0 ;  i < $poly_bits ; i++ )) ; do
     if (( "${poly_bin:${i}:1}" == 0 )) ; then
@@ -92,6 +199,8 @@ function print_poly()
 
   done
 )
+
+###############################################################################
 
 if [[ "${BASH_SOURCE[0]}" == "${0}" ]] then
   set -e
