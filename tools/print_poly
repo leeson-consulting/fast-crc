@@ -1,17 +1,23 @@
 #!/usr/bin/env bash
 
 function print_poly_help()
-{
+(
+  if [[ "${BASH_SOURCE[0]}" == "${0}" ]] then
+    tool_name=".${SCRIPT_PATH#${REPO_ROOT}}/${SCRIPT_NAME}"
+  else
+    tool_name="print_poly"
+  fi
+
   echo "Usage print_poly <poly_hex> <poly_degree>"
   echo ""
   echo "eg. Print the 0x1021 CRC-16/CCITT polynomial:"
   echo ""
-  echo "./print_poly 1021 16"
+  echo "${tool_name} 1021 16"
   echo ""
   echo "  -- OR --"
   echo ""
-  echo "./print_poly 0x1021 16"
-}
+  echo "${tool_name} 0x1021 16"
+)
 
 function print_poly()
 (
@@ -39,7 +45,7 @@ function print_poly()
 
   declare -i polly_degree="${2}"
 
-  polly_bin=$(printf "1%0${polly_degree}d" "$polly_bin")
+  polly_bin=$(printf "1%0${polly_degree}s" "$polly_bin")
 
   declare -i polly_bits="${#polly_bin}"
 
@@ -65,6 +71,9 @@ function print_poly()
 
 if [[ "${BASH_SOURCE[0]}" == "${0}" ]] then
   set -e
+  cd "${0%/*}" ; SCRIPT_PATH="$PWD" ; cd - > /dev/null
+  SCRIPT_NAME="${0##*/}"
+  REPO_ROOT="$(git rev-parse --show-toplevel)"
   print_poly "$@"
   echo
 fi
