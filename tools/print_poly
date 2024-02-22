@@ -28,25 +28,27 @@ ${tool} 8810
 ${tool} 0x8810
 
 EOF
-
 }
 
 function _normal_poly_notation_to_bin()
 {
-  declare -i normal_notation=$(( "0x${1#0x}" ))
-  declare -i explicit_notation=$(( (1 << $2) + normal_notation ))
+  local -i normal_notation=$(( "0x${1#0x}" ))
+  local -i explicit_notation=$(( (1 << $2) + normal_notation ))
   echo $(echo "obase=2; ibase=10; $(( explicit_notation ))" | bc)
 }
 
 function _koopman_poly_notation_to_bin()
 {
-  declare -i koopman_notation=$(( "0x${1#0x}" ))
-  declare -i explicit_notation=$(( (koopman_notation * 2) + 1 ))
+  local -i koopman_notation=$(( "0x${1#0x}" ))
+  local -i explicit_notation=$(( (koopman_notation * 2) + 1 ))
   echo $(echo "obase=2; ibase=10; $(( explicit_notation ))" | bc)
 }
 
+# NB. The print_poly function runs in a subshell.
+#     This allows exit on error even when the script is sourced.
+
 function print_poly()
-{
+(
   # 0. Quick arg check
 
   if (( $# < 1 )) ; then
@@ -89,7 +91,7 @@ function print_poly()
     fi
 
   done
-}
+)
 
 if [[ "${BASH_SOURCE[0]}" == "${0}" ]] then
   set -e
