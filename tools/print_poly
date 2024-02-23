@@ -55,29 +55,34 @@ EOF
 
 function _koopman_to_bin()
 {
-  local -i koopman=$(( "0x${1#0x}" ))
-  local -i explicit=$(( (koopman * 2) + 1 ))
-  echo $(echo "obase=2; ibase=10; $(( explicit ))" | bc)
+  local koopman="${1#0x}" ; koopman="${koopman^^}"
+  echo $(echo "obase=2; ibase=16; koopman_to_explicit(${koopman})" | bc -l "${SCRIPT_PATH}/convert_poly.bc")
 }
 
 function _explicit_to_bin()
 {
-  local -i explicit=$(( "0x${1#0x}" ))
-  echo $(echo "obase=2; ibase=10; $(( explicit ))" | bc)
+  local explicit="${1#0x}" ; explicit="${explicit^^}"
+  echo $(echo "obase=2; ibase=16; ${explicit}" | bc)
 }
 
 function _normal_to_bin()
 {
-  local -i normal=$(( "0x${1#0x}" ))
+  local normal="${1#0x}" ; normal="${normal^^}"
+  local degree="$2"
+  local bc_helper_script
 
-  if (( $2 < 64 )) ; then
-    local -i explicit=$(( (1 << $2) + normal ))
-    echo $(echo "obase=2; ibase=10; $(( explicit ))" | bc)
-  else
-    local -i explicit_high=$(( (1 << ($2 - 32)) + (normal >> 32) ))
-    local -i explicit_low=$(( normal & 0xffffffff ))
-    echo $(printf "obase=2; ibase=16; 0x%X%X" "$explicit_high" "$explicit_low")
-  fi
+  mapfile -d '' bc_helper_script << EOF
+ibase=base_16
+normal=${normal}
+
+ibase=base_10
+degree=${degree}
+
+obase=base_2
+normal_to_explicit(normal, degree)
+EOF
+
+  echo 0x$(echo "$bc_helper_script" | bc -l "${SCRIPT_PATH}/convert_poly.bc")
 }
 
 ###############################################################################
