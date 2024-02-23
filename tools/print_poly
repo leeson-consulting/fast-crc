@@ -57,20 +57,20 @@ EOF
 
 ###############################################################################
 
-function _koopman_poly_to_bin()
+function _koopman_to_bin()
 {
   local -i koopman=$(( "0x${1#0x}" ))
   local -i explicit=$(( (koopman * 2) + 1 ))
   echo $(echo "obase=2; ibase=10; $(( explicit ))" | bc)
 }
 
-function _explicit_poly_to_bin()
+function _explicit_to_bin()
 {
   local -i explicit=$(( "0x${1#0x}" ))
   echo $(echo "obase=2; ibase=10; $(( explicit ))" | bc)
 }
 
-function _normal_poly_to_bin()
+function _normal_to_bin()
 {
   local -i normal=$(( "0x${1#0x}" ))
 
@@ -86,46 +86,76 @@ function _normal_poly_to_bin()
 
 ###############################################################################
 
-function _koopman_poly_to_explicit()
+function _normal_to_target()
 {
-  local -i koopman=$(( "0x${1#0x}" ))
-  local -i explicit=$(( (koopman * 2) + 1 ))
-  printf "0x%x" "$explicit"
+  local target="$1"
+  local normal="${2#0x}" ; normal="${normal^^}"
+  local degree="$3"
+  local bc_helper_script
+
+  mapfile -d '' bc_helper_script << EOF
+ibase=base_16
+normal=${normal}
+
+ibase=base_10
+degree=${degree}
+
+obase=base_16
+normal_to_${target}(normal, degree)
+EOF
+
+  echo 0x$(echo "$bc_helper_script" | bc -l "${SCRIPT_PATH}/convert_poly.bc")
 }
 
-function _koopman_poly_to_normal()
+function _normal_to_explicit()
 {
-  local explicit=$(_koopman_poly_to_explicit "$1")
-  echo $(_explicit_poly_to_normal "${explicit}")
+  _normal_to_target "explicit" "$@"
 }
 
-function _explicit_poly_to_normal()
+function _normal_to_koopman()
 {
-  local poly_bin=$(_explicit_poly_to_bin "$1")
-  local -i poly_bits="${#poly_bin}"
-  local explicit_stripped="${1#0x}"
-  printf "0x%s %d" "${explicit_stripped:1}" $(( poly_bits - 1 ))
+  _normal_to_target "koopman" "$@"
 }
 
-function _explicit_poly_to_koopman()
+function _normal_from_target()
 {
-  local -i explicit=$(( "0x${1#0x}" ))
-  local -i koopman=$(( explicit >> 1 ))
-  printf "0x%x" "$koopman"
+  local target="$1"
+  local poly="${2#0x}" ; poly="${poly^^}"
+  local bc_helper_script
+
+  mapfile -d '' bc_helper_script << EOF
+ibase=base_16
+
+obase=base_16
+${target}_to_normal_poly(${poly})
+
+obase=base_10
+${target}_to_normal_poly_degree(${poly})
+EOF
+
+  echo $(echo "$bc_helper_script" | bc -l "${SCRIPT_PATH}/convert_poly.bc")
 }
 
-function _normal_poly_to_explicit()
+function _explicit_to_normal()
 {
-  local -i normal=$(( "0x${1#0x}" ))
-  local -i explicit=$(( (1 << $2) + normal ))
-  printf "0x%x" "$explicit"
+  _normal_from_target "explicit" "$@"
 }
 
-function _normal_poly_to_koopman()
+function _koopman_to_normal()
 {
-  local -i normal=$(( "0x${1#0x}" ))
-  local -i koopman=$(( (((1 << $2) + normal) - 1) >> 1 ))
-  printf "0x%x" "$koopman"
+  _normal_from_target "koopman" "$@"
+}
+
+function _explicit_to_koopman()
+{
+  local explicit="${1#0x}" ; explicit="${explicit^^}"
+  echo 0x$(echo "obase=base_16; ibase=base_16; explicit_to_koopman(${explicit})" | bc -l "${SCRIPT_PATH}/convert_poly.bc")
+}
+
+function _koopman_to_explicit()
+{
+  local koopman="${1#0x}" ; koopman="${koopman^^}"
+  echo $(echo "obase=base_16; ibase=base_16; koopman_to_explicit(${koopman})" | bc -l "${SCRIPT_PATH}/convert_poly.bc")
 }
 
 ###############################################################################
@@ -144,27 +174,27 @@ function print_poly()
 
   case "$1" in
     'k2e' | 'koopman_to_explicit')
-      echo $(_koopman_poly_to_explicit "$2")
+      echo $(_koopman_to_explicit "$2")
       exit 0 ;;
 
     'k2n' | 'koopman_to_normal')
-      echo $(_koopman_poly_to_normal "$2")
+      echo $(_koopman_to_normal "$2")
       exit 0 ;;
 
     'e2n' | 'explicit_to_normal')
-      echo $(_explicit_poly_to_normal "$2")
+      echo $(_explicit_to_normal "$2")
       exit 0 ;;
 
     'e2k' | 'explicit_to_koopman')
-      echo $(_explicit_poly_to_koopman "$2")
+      echo $(_explicit_to_koopman "$2")
       exit 0 ;;
 
     'n2e' | 'normal_to_explicit')
-      echo $(_normal_poly_to_explicit "$2" "$3")
+      echo $(_normal_to_explicit "$2" "$3")
       exit 0 ;;
 
     'n2k' | 'normal_to_koopman')
-      echo $(_normal_poly_to_koopman "$2" "$3")
+      echo $(_normal_to_koopman "$2" "$3")
       exit 0 ;;
 
     'h' | '-h' | 'help' | '--help')
@@ -180,11 +210,11 @@ function print_poly()
 
   case "$second_arg" in
     'kn' | 'koopman')
-      poly_bin=$(_koopman_poly_to_bin "$1") ;;
+      poly_bin=$(_koopman_to_bin "$1") ;;
     'en' | 'explicit')
-      poly_bin=$(_explicit_poly_to_bin "$1") ;;
+      poly_bin=$(_explicit_to_bin "$1") ;;
     *)
-      poly_bin=$(_normal_poly_to_bin "$1" "$2") ;;
+      poly_bin=$(_normal_to_bin "$1" "$2") ;;
   esac
 
   local -i poly_bits="${#poly_bin}"
