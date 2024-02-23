@@ -164,7 +164,7 @@ function _koopman_to_explicit()
 # NB. The print_poly function runs in a subshell.
 #     This allows exit on error even when the script is sourced.
 
-function print_poly()
+function convert_poly()
 (
   # 0. Dynamically scope 'globals' to maintain sourcing context
 
