@@ -55,6 +55,78 @@ ${tool} normal_to_koopman 0x1021 16
 EOF
 }
 
+function _generate_bc_crc_poly_lib()
+{
+  local bc_libcrc
+
+  mapfile -d '' bc_libcrc << EOF
+
+/* bc script */
+
+define div(x, y) {
+  orig_scale = scale
+  result = x / y
+  scale = 0
+  result = result / 1
+  scale = orig_scale
+  return result
+}
+
+define msb(x) {
+  orig_scale = scale
+  orig_ibase = ibase
+  ibase = 2
+  result = l(x)/l(2)
+  scale = 0
+  result = result / 1
+  ibase = orig_ibase
+  scale = orig_scale
+  return result
+}
+
+define mod(x, y) {
+  orig_scale = scale
+  scale = 0
+  result = x % y
+  scale = orig_scale
+  return result
+}
+
+define normal_to_explicit(normal, degree) {
+  return (2 ^ degree) + normal
+}
+
+define normal_to_koopman(normal, degree) {
+  explicit = (2 ^ degree) + normal
+  return div(explicit, 2)
+}
+
+define koopman_to_explicit(koopman) {
+  return (koopman * 2) + 1
+}
+
+define koopman_to_normal(koopman) {
+  degree = msb(koopman) + 1
+  explicit = koopman_to_explicit(koopman)
+  print div(explicit, 2) , degree
+}
+
+define explicit_to_koopman(explicit) {
+  return div(explicit, 2)
+}
+
+define explicit_to_normal(explicit) {
+  degree = msb(explicit)
+  print div(explicit, 2) , degree
+}
+
+
+
+EOF
+
+  return "$bc_libcrc"
+}
+
 ###############################################################################
 
 function _koopman_poly_notation_to_bin()
@@ -73,8 +145,15 @@ function _explicit_poly_notation_to_bin()
 function _normal_poly_notation_to_bin()
 {
   local -i normal_notation=$(( "0x${1#0x}" ))
-  local -i explicit_notation=$(( (1 << $2) + normal_notation ))
-  echo $(echo "obase=2; ibase=10; $(( explicit_notation ))" | bc)
+
+  if (( $2 < 64 )) ; then
+    local -i explicit_notation=$(( (1 << $2) + normal_notation ))
+    echo $(echo "obase=2; ibase=10; $(( explicit_notation ))" | bc)
+  else
+    local -i explicit_notation_high=$(( (1 << ($2 - 32)) + (normal_notation >> 32) ))
+    local -i explicit_notation_low=$(( normal_notation & 0xffffffff ))
+    echo $(printf "obase=2; ibase=16; 0x%X%X" "$explicit_notation_high" "$explicit_notation_low")
+  fi
 }
 
 ###############################################################################
