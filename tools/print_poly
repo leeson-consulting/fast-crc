@@ -55,149 +55,77 @@ ${tool} normal_to_koopman 0x1021 16
 EOF
 }
 
-function _generate_bc_crc_poly_lib()
-{
-  local bc_libcrc
-
-  mapfile -d '' bc_libcrc << EOF
-
-/* bc script */
-
-define div(x, y) {
-  orig_scale = scale
-  result = x / y
-  scale = 0
-  result = result / 1
-  scale = orig_scale
-  return result
-}
-
-define msb(x) {
-  orig_scale = scale
-  orig_ibase = ibase
-  ibase = 2
-  result = l(x)/l(2)
-  scale = 0
-  result = result / 1
-  ibase = orig_ibase
-  scale = orig_scale
-  return result
-}
-
-define mod(x, y) {
-  orig_scale = scale
-  scale = 0
-  result = x % y
-  scale = orig_scale
-  return result
-}
-
-define normal_to_explicit(normal, degree) {
-  return (2 ^ degree) + normal
-}
-
-define normal_to_koopman(normal, degree) {
-  explicit = (2 ^ degree) + normal
-  return div(explicit, 2)
-}
-
-define koopman_to_explicit(koopman) {
-  return (koopman * 2) + 1
-}
-
-define koopman_to_normal(koopman) {
-  degree = msb(koopman) + 1
-  explicit = koopman_to_explicit(koopman)
-  print div(explicit, 2) , degree
-}
-
-define explicit_to_koopman(explicit) {
-  return div(explicit, 2)
-}
-
-define explicit_to_normal(explicit) {
-  degree = msb(explicit)
-  print div(explicit, 2) , degree
-}
-
-
-
-EOF
-
-  return "$bc_libcrc"
-}
-
 ###############################################################################
 
-function _koopman_poly_notation_to_bin()
+function _koopman_poly_to_bin()
 {
-  local -i koopman_notation=$(( "0x${1#0x}" ))
-  local -i explicit_notation=$(( (koopman_notation * 2) + 1 ))
-  echo $(echo "obase=2; ibase=10; $(( explicit_notation ))" | bc)
+  local -i koopman=$(( "0x${1#0x}" ))
+  local -i explicit=$(( (koopman * 2) + 1 ))
+  echo $(echo "obase=2; ibase=10; $(( explicit ))" | bc)
 }
 
-function _explicit_poly_notation_to_bin()
+function _explicit_poly_to_bin()
 {
-  local -i explicit_notation=$(( "0x${1#0x}" ))
-  echo $(echo "obase=2; ibase=10; $(( explicit_notation ))" | bc)
+  local -i explicit=$(( "0x${1#0x}" ))
+  echo $(echo "obase=2; ibase=10; $(( explicit ))" | bc)
 }
 
-function _normal_poly_notation_to_bin()
+function _normal_poly_to_bin()
 {
-  local -i normal_notation=$(( "0x${1#0x}" ))
+  local -i normal=$(( "0x${1#0x}" ))
 
   if (( $2 < 64 )) ; then
-    local -i explicit_notation=$(( (1 << $2) + normal_notation ))
-    echo $(echo "obase=2; ibase=10; $(( explicit_notation ))" | bc)
+    local -i explicit=$(( (1 << $2) + normal ))
+    echo $(echo "obase=2; ibase=10; $(( explicit ))" | bc)
   else
-    local -i explicit_notation_high=$(( (1 << ($2 - 32)) + (normal_notation >> 32) ))
-    local -i explicit_notation_low=$(( normal_notation & 0xffffffff ))
-    echo $(printf "obase=2; ibase=16; 0x%X%X" "$explicit_notation_high" "$explicit_notation_low")
+    local -i explicit_high=$(( (1 << ($2 - 32)) + (normal >> 32) ))
+    local -i explicit_low=$(( normal & 0xffffffff ))
+    echo $(printf "obase=2; ibase=16; 0x%X%X" "$explicit_high" "$explicit_low")
   fi
 }
 
 ###############################################################################
 
-function _koopman_poly_notation_to_explicit_notation()
+function _koopman_poly_to_explicit()
 {
-  local -i koopman_notation=$(( "0x${1#0x}" ))
-  local -i explicit_notation=$(( (koopman_notation * 2) + 1 ))
-  printf "0x%x" "$explicit_notation"
+  local -i koopman=$(( "0x${1#0x}" ))
+  local -i explicit=$(( (koopman * 2) + 1 ))
+  printf "0x%x" "$explicit"
 }
 
-function _koopman_poly_notation_to_normal_notation()
+function _koopman_poly_to_normal()
 {
-  local explicit_notation=$(_koopman_poly_notation_to_explicit_notation "$1")
-  echo $(_explicit_poly_notation_to_normal_notation "${explicit_notation}")
+  local explicit=$(_koopman_poly_to_explicit "$1")
+  echo $(_explicit_poly_to_normal "${explicit}")
 }
 
-function _explicit_poly_notation_to_normal_notation()
+function _explicit_poly_to_normal()
 {
-  local poly_bin=$(_explicit_poly_notation_to_bin "$1")
+  local poly_bin=$(_explicit_poly_to_bin "$1")
   local -i poly_bits="${#poly_bin}"
   local explicit_stripped="${1#0x}"
   printf "0x%s %d" "${explicit_stripped:1}" $(( poly_bits - 1 ))
 }
 
-function _explicit_poly_notation_to_koopman_notation()
+function _explicit_poly_to_koopman()
 {
-  local -i explicit_notation=$(( "0x${1#0x}" ))
-  local -i koopman_notation=$(( explicit_notation >> 1 ))
-  printf "0x%x" "$koopman_notation"
+  local -i explicit=$(( "0x${1#0x}" ))
+  local -i koopman=$(( explicit >> 1 ))
+  printf "0x%x" "$koopman"
 }
 
-function _normal_poly_notation_to_explicit_notation()
+function _normal_poly_to_explicit()
 {
-  local -i normal_notation=$(( "0x${1#0x}" ))
-  local -i explicit_notation=$(( (1 << $2) + normal_notation ))
-  printf "0x%x" "$explicit_notation"
+  local -i normal=$(( "0x${1#0x}" ))
+  local -i explicit=$(( (1 << $2) + normal ))
+  printf "0x%x" "$explicit"
 }
 
-function _normal_poly_notation_to_koopman_notation()
+function _normal_poly_to_koopman()
 {
-  local -i normal_notation=$(( "0x${1#0x}" ))
-  local -i koopman_notation=$(( (((1 << $2) + normal_notation) - 1) >> 1 ))
-  printf "0x%x" "$koopman_notation"
+  local -i normal=$(( "0x${1#0x}" ))
+  local -i koopman=$(( (((1 << $2) + normal) - 1) >> 1 ))
+  printf "0x%x" "$koopman"
 }
 
 ###############################################################################
@@ -216,27 +144,27 @@ function print_poly()
 
   case "$1" in
     'k2e' | 'koopman_to_explicit')
-      echo $(_koopman_poly_notation_to_explicit_notation "$2")
+      echo $(_koopman_poly_to_explicit "$2")
       exit 0 ;;
 
     'k2n' | 'koopman_to_normal')
-      echo $(_koopman_poly_notation_to_normal_notation "$2")
+      echo $(_koopman_poly_to_normal "$2")
       exit 0 ;;
 
     'e2n' | 'explicit_to_normal')
-      echo $(_explicit_poly_notation_to_normal_notation "$2")
+      echo $(_explicit_poly_to_normal "$2")
       exit 0 ;;
 
     'e2k' | 'explicit_to_koopman')
-      echo $(_explicit_poly_notation_to_koopman_notation "$2")
+      echo $(_explicit_poly_to_koopman "$2")
       exit 0 ;;
 
     'n2e' | 'normal_to_explicit')
-      echo $(_normal_poly_notation_to_explicit_notation "$2" "$3")
+      echo $(_normal_poly_to_explicit "$2" "$3")
       exit 0 ;;
 
     'n2k' | 'normal_to_koopman')
-      echo $(_normal_poly_notation_to_koopman_notation "$2" "$3")
+      echo $(_normal_poly_to_koopman "$2" "$3")
       exit 0 ;;
 
     'h' | '-h' | 'help' | '--help')
@@ -252,11 +180,11 @@ function print_poly()
 
   case "$second_arg" in
     'kn' | 'koopman')
-      poly_bin=$(_koopman_poly_notation_to_bin "$1") ;;
+      poly_bin=$(_koopman_poly_to_bin "$1") ;;
     'en' | 'explicit')
-      poly_bin=$(_explicit_poly_notation_to_bin "$1") ;;
+      poly_bin=$(_explicit_poly_to_bin "$1") ;;
     *)
-      poly_bin=$(_normal_poly_notation_to_bin "$1" "$2") ;;
+      poly_bin=$(_normal_poly_to_bin "$1" "$2") ;;
   esac
 
   local -i poly_bits="${#poly_bin}"
