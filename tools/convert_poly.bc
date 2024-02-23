@@ -1,0 +1,88 @@
+/* bc script */
+
+/* ========================================================================= */
+/*                                                                           */
+/*     IF YOU VALUE YOUR SANITY...                                           */
+/*                                                                           */
+/*        DO NOT assign ibase and obase using literal values                 */
+/*        bc parses the literal in the context of the CURRENT ibase setting! */
+/*                                                                           */
+/*        INSTEAD assign ibase and obase using pseudo-constants,             */
+/*        which are evaluated at the start of the script while ibase == 10   */
+/*                                                                           */
+/*        ADDITIONALLY use 'auto' to keep variables local to functions       */
+/*        The default scope is global -- just like SHELL                     */
+/*                                                                           */
+/* ========================================================================= */
+
+base_2=2
+base_10=10
+base_16=16
+
+define div(x, y) {
+  auto orig_scale, result
+  orig_scale = scale
+  result = x / y
+  scale = 0
+  result = result / 1
+  scale = orig_scale
+  return result
+}
+
+define msb(x) {
+  auto orig_scale, result
+  orig_scale = scale
+  result = l(x)/l(2)
+  scale = 0
+  result = result / 1
+  scale = orig_scale
+  return result
+}
+
+define mod(x, y) {
+  auto orig_scale, result
+  orig_scale = scale
+  scale = 0
+  result = x % y
+  scale = orig_scale
+  return result
+}
+
+define normal_to_explicit(normal, degree) {
+  return (2 ^ degree) + normal
+}
+
+define normal_to_koopman(normal, degree) {
+  explicit = (2 ^ degree) + normal
+  return div(explicit, 2)
+}
+
+define koopman_to_explicit(koopman) {
+  return (koopman * 2) + 1
+}
+
+define koopman_to_normal_poly_degree(koopman) {
+  return msb(koopman) + 1
+}
+
+define koopman_to_normal_poly(koopman) {
+  auto degree, explicit
+  degree = msb(koopman) + 1
+  explicit = koopman_to_explicit(koopman)
+  return explicit - (2 ^ degree)
+}
+
+define explicit_to_koopman(explicit) {
+  return div(explicit, 2)
+}
+
+define explicit_to_normal_poly_degree(explicit) {
+  return msb(explicit)
+}
+
+define explicit_to_normal_poly(explicit) {
+  auto degree
+  degree = msb(explicit)
+  return explicit - (2 ^ degree)
+}
+
