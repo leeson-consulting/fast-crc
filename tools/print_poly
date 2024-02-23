@@ -2,55 +2,51 @@
 
 function _print_poly_help()
 {
-  local tool
-  local tool_name
+  local script_name="${SCRIPT_NAME}"
+  local script="$script_name"
 
   if [[ "${BASH_SOURCE[0]}" == "${0}" ]] then
-    tool=".${SCRIPT_PATH#${REPO_ROOT}}/${SCRIPT_NAME}"
-    tool_name="$SCRIPT_NAME"
-  else
-    tool="print_poly"
-    tool_name="$tool"
+    script="./${script}"
   fi
 
   cat << EOF
 
-$tool_name prints CRC polynomials in various notations.
+$script_name prints CRC polynomials in various notations.
 
 The main application is printing human readable notations from hex:
 
-  Koopman Notation :   $tool_name <koopman_hex> {||kn|koopman}
-  Explicit Notation :  $tool_name <explicit_hex> {en|explicit}
-  Normal Notation  :   $tool_name <normal_hex> <poly_degree>
+  Koopman Notation :   $script_name <koopman_hex> {||kn|koopman}
+  Explicit Notation :  $script_name <explicit_hex> {en|explicit}
+  Normal Notation  :   $script_name <normal_hex> <poly_degree>
 
   eg. print CRC-16/CCITT using various polynomial notations:
 
-${tool} 1021 16
-${tool} 0x1021 16
-${tool} 11021 explicit
-${tool} 0x11021 en
-${tool} 8810
-${tool} 8810 kn
-${tool} 8810 koopman
-${tool} 0x8810
-${tool} 0x8810 koopman
+${script} 1021 16
+${script} 0x1021 16
+${script} 11021 explicit
+${script} 0x11021 en
+${script} 8810
+${script} 8810 kn
+${script} 8810 koopman
+${script} 0x8810
+${script} 0x8810 koopman
 
 The seconday application is converting between hex notations:
 
-${tool} e2n 11021
-${tool} explicit_to_normal 0x11021
-${tool} e2k 0x11021
-${tool} explicit_to_koopman 11021
+${script} e2n 11021
+${script} explicit_to_normal 0x11021
+${script} e2k 0x11021
+${script} explicit_to_koopman 11021
 
-${tool} k2e 0x8810
-${tool} koopman_to_explicit 0x8810
-${tool} k2n 8810
-${tool} koopman_to_normal 8810
+${script} k2e 0x8810
+${script} koopman_to_explicit 0x8810
+${script} k2n 8810
+${script} koopman_to_normal 8810
 
-${tool} n2e 0x1021 16
-${tool} normal_to_explicit 1021 16
-${tool} n2k 1021 16
-${tool} normal_to_koopman 0x1021 16
+${script} n2e 0x1021 16
+${script} normal_to_explicit 1021 16
+${script} n2k 1021 16
+${script} normal_to_koopman 0x1021 16
 
 EOF
 }
@@ -165,7 +161,12 @@ function _koopman_to_explicit()
 
 function print_poly()
 (
-  # 0. Quick arg check
+  # 0. Dynamically scope 'globals' to maintain sourcing context
+
+  local SCRIPT_PATH=$(realpath "${BASH_SOURCE[0]%/*}")
+  local SCRIPT_NAME="${BASH_SOURCE[0]##*/}"
+
+  # 1. Quick arg check
 
   if (( $# < 1 )) ; then
     _print_poly_help
@@ -202,7 +203,7 @@ function print_poly()
       exit 0 ;;
   esac
 
-  # 1. Convert poly_hex to poly_bin
+  # 2. Convert poly_hex to poly_bin
 
   local second_arg="${2:-koopman}"
 
@@ -219,7 +220,7 @@ function print_poly()
 
   local -i poly_bits="${#poly_bin}"
 
-  # 2. Walk the poly_bin string.  NB. First character is MSb
+  # 3. Walk the poly_bin string.  NB. First character is MSb
 
   for (( i = 0 ;  i < $poly_bits ; i++ )) ; do
     if (( "${poly_bin:${i}:1}" == 0 )) ; then
@@ -241,9 +242,6 @@ function print_poly()
 
 if [[ "${BASH_SOURCE[0]}" == "${0}" ]] then
   set -e
-  cd "${0%/*}" ; SCRIPT_PATH="$PWD" ; cd - > /dev/null
-  SCRIPT_NAME="${0##*/}"
-  REPO_ROOT="$(git rev-parse --show-toplevel)"
   print_poly "$@"
   echo
 fi
