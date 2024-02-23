@@ -53,6 +53,7 @@ define normal_to_explicit(normal, degree) {
 }
 
 define normal_to_koopman(normal, degree) {
+  auto explicit
   explicit = (2 ^ degree) + normal
   return div(explicit, 2)
 }
