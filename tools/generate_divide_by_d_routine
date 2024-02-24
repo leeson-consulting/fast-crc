@@ -1,0 +1,88 @@
+#!/usr/bin/env bash
+
+set -e
+
+SCRIPT_PATH="${0%/*}"
+
+###############################################################################
+
+function generate_routine()
+{
+  local int_width="$1"
+  local divisor="$2"
+  local c_source
+
+  local uint_t="uint${int_width}_t"
+  local uint_wide_t="uint$(( int_width * 2 ))_t"
+  local int_t="int${int_width}_t"
+  local int_wide_t="int$(( int_width * 2 ))_t"
+  local recip_params=$(echo ". = calc_reciprocal_constants(${int_width}, ${divisor})" | bc -l "${SCRIPT_PATH}/calc_recip_params.bc")
+
+  mapfile -d '' c_source << EOF
+
+///////////////////////////////////////////////////////////////////////////////
+//
+// The following use the "Division by a constant" method described in:
+// https://en.wikipedia.org/wiki/Division_algorithm
+//
+// <quote>
+//
+// ...
+//
+// For general {{mvar|x}}-bit unsigned integer division where the divisor {{mvar|D}} is not a power of 2,
+// the following identity converts the division into two {{mvar|x}}-bit addition/subtraction,
+// one {{mvar|x}}-bit by {{mvar|x}}-bit multiplication (where only the upper half of the result is used) and several shifts,
+// after precomputing
+//
+//   <math>
+//     k=x+\lceil\log_2{D}\rceil
+//   </math>
+//
+//   and
+//
+//   <math>
+//     a=\left\lceil\frac{2^k}{D}\right\rceil-2^x
+//   </math>:
+//
+// : <math>
+//     \left\lfloor\frac{N}{D}\right\rfloor=\left\lfloor\frac{\left\lfloor\frac{N-b}{2}\right\rfloor+b}{2^{k-x-1}}\right\rfloor
+//     \text{ where } b=\left\lfloor\frac{Na}{2^x}\right\rfloor
+//   </math>
+//
+// ...
+//
+// </quote>
+//
+
+${uint_t} u${int_width}_div_by_${divisor}(${uint_t} const numerator)
+{
+${recip_params}
+  ${uint_t} const b = (numerator * a) >> ${int_width};
+  ${uint_t} const proto_numerator = ( ((numerator - b) / 2) + b );
+  return proto_numerator >> ( k - ${int_width} - 1 );
+}
+
+${int_t} i${int_width}_div_by_${divisor}(${int_t} const numerator)
+{
+  if (numerator < 0) {
+    return -u${int_width}_div_by_${divisor}(-numerator);
+  } else {
+    return u${int_width}_div_by_${divisor}(numerator);
+  }
+}
+
+EOF
+
+  echo "${c_source}"
+}
+
+###############################################################################
+
+function main()
+{
+  generate_routine "$@"
+}
+
+###############################################################################
+
+main "$@"
