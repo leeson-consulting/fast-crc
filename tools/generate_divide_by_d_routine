@@ -6,23 +6,51 @@ SCRIPT_PATH="${0%/*}"
 
 ###############################################################################
 
+function count_bits()
+{
+  local number_hex
+  printf -v number_hex "%x" "$1"
+  local ms_nibble="${number_hex:0:1}"
+
+  # NB. "When used with [[, the ‘<’ and ‘>’ operators sort lexicographically using the current locale." -- Bash Reference Manual
+
+  [[ "$ms_nibble" < 2 ]] && echo $(( (${#number_hex} - 1) * 4 + 1 )) && return
+  [[ "$ms_nibble" < 4 ]] && echo $(( (${#number_hex} - 1) * 4 + 2 )) && return
+  [[ "$ms_nibble" < 8 ]] && echo $(( (${#number_hex} - 1) * 4 + 3 )) && return
+  echo $(( ${#number_hex} * 4 ))
+}
+
+###############################################################################
+
 function generate_routine()
 {
-  local int_width="$1"
-  local divisor="$2"
-  local c_source
+  local -i divisor="$1"
+  local -i divisor_bits=$(count_bits "$divisor")
+  local -i int_width="${2:-$(( (($divisor_bits + 3) / 4) * 4 ))}"
 
+  # 1. recip_k = int_width + ceil(log_2(divisor))
+
+  local -i recip_k=$(( int_width + divisor_bits ))
+
+  # 2. recip_a = ceil((2 ^ k) / divisor) - (2 ^ int_width)
+
+  local -i recip_a=$(( \
+    (((1 << $recip_k) + (divisor - 1)) / divisor) \
+    - \
+    (1 << int_width) ))
+
+  # 3. generate C source code
+
+  local c_source
   local uint_t="uint${int_width}_t"
   local uint_wide_t="uint$(( int_width * 2 ))_t"
   local int_t="int${int_width}_t"
   local int_wide_t="int$(( int_width * 2 ))_t"
-  local recip_params=$(echo ". = calc_reciprocal_constants(${int_width}, ${divisor})" | bc -l "${SCRIPT_PATH}/calc_recip_params.bc")
 
   mapfile -d '' c_source << EOF
-
 ///////////////////////////////////////////////////////////////////////////////
 //
-// The following use the "Division by a constant" method described in:
+// The following routines use the "Division by a constant" method described in:
 // https://en.wikipedia.org/wiki/Division_algorithm
 //
 // <quote>
@@ -56,8 +84,9 @@ function generate_routine()
 
 ${uint_t} u${int_width}_div_by_${divisor}(${uint_t} const numerator)
 {
-${recip_params}
-  ${uint_t} const b = (numerator * a) >> ${int_width};
+  ${uint_t} const k = $recip_k;
+  ${uint_t} const a = $recip_a;
+  ${uint_t} const b = (((${uint_wide_t}) numerator) * a) >> ${int_width};
   ${uint_t} const proto_numerator = ( ((numerator - b) / 2) + b );
   return proto_numerator >> ( k - ${int_width} - 1 );
 }
