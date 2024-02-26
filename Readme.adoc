@@ -1,0 +1,42 @@
+= Fast-CRC - Off the shelf and on your way
+
+Fast-CRC provides tooling for generating efficient Cyclic Redundancy Check (CRC) implementations from pick and choose templates.
+
+== Table Based Algorithms:
+
+* Every polynomial listed in Prof. Koopman's "CRC Zoo"
+* Every "attested" or "confirmed" algorithm from Greg Cook's "CRC Catalog"
+* Choice of 4-bit and 8-bit polynomial lookup tables
+* Unit tested against published check values
+
+All algorithms are C99 compliant, allowing easy integration with your C or C++ source.
+Interfaces are provided for direct calculation across a single buffer and for cumulative calculation across multiple buffers.
+Template names prefix all interfaces to prevent ambiguity and provide standardisation.
+
+== Bonus Algorithms:
+
+* Dr. Nyugen's HD4 and HD6 Fast-CRC algorithms
+* Prof. Koopman's HD4 Koopman15P algorithm
+
+Fast-CRC provides the first tested library of Dr. Nyugen's "Fast-CRC" algorithms.
+These CRC algorithms offer the best speed-size trade off available for pure software implementations.
+In some instances they can outperform the large table based implementations.
+
+Koopman15P is an algorithm proposed as a fast alternative to CRC-16 algorithms.
+It offers HD4 error detection of datawords up to around 2kB, but has not been used outside of research environments.
+
+== Acknowledgements:
+
+Fast-CRC at it's heart is an effort to streamline and standardise CRC libraries for engineers.
+However, the really hard work has been done by others.
+I mention them here to acknowledge their work and express my gratitude for what they have shared.
+
+Fast-CRC makes extensive use of https://users.ece.cmu.edu/~koopman/crc/[Philip Koopman's CRC data].
+This data is used under terms of http://creativecommons.org/licenses/by/4.0/[Creative Commons 4.0 Attribution International License].
+
+Greg Cook's https://reveng.sourceforge.io/crc-catalogue/[CRC Catalog] has proved an invaluable resource
+for disambiguating the often subtle differences between "standard" CRC algorithms.
+
+Thomas Pircher's https://pycrc.org/[pycrc] generates the CRC tables used by Fast-CRC.
+pycrc is an excellent and simple to use product that can generate standalone C implementations at the drop of a hat.
+pycrc is used under terms of the http://opensource.org/licenses/mit-license.php[MIT license].
