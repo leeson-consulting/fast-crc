@@ -82,7 +82,42 @@ obase=base_2
 normal_to_explicit(normal, degree)
 EOF
 
-  echo 0x$(echo "$bc_helper_script" | bc -l "${SCRIPT_PATH}/convert_poly.bc")
+  echo $(echo "$bc_helper_script" | bc -l "${SCRIPT_PATH}/convert_poly.bc")
+}
+
+function _poly_hex_to_poly_math()
+{
+  local second_arg="${2:-koopman}"
+
+  local poly_bin
+
+  case "$second_arg" in
+    'kn' | 'koopman')
+      poly_bin=$(_koopman_to_bin "$1") ;;
+    'en' | 'explicit')
+      poly_bin=$(_explicit_to_bin "$1") ;;
+    *)
+      poly_bin=$(_normal_to_bin "$1" "$2") ;;
+  esac
+
+  local -i poly_bits="${#poly_bin}"
+
+  # 3. Walk the poly_bin string.  NB. First character is MSb
+
+  for (( i = 0 ;  i < $poly_bits ; i++ )) ; do
+    if (( "${poly_bin:${i}:1}" == 0 )) ; then
+      continue;
+    fi
+
+    local -i degree=$((poly_bits - 1 - i))
+
+    if (( degree != 0 )) ; then
+      printf "x^${degree} + "
+    else
+      printf "1"
+    fi
+
+  done
 }
 
 ###############################################################################
@@ -159,6 +194,59 @@ function _koopman_to_explicit()
   echo 0x$(echo "obase=base_16; ibase=base_16; koopman_to_explicit(${koopman})" | bc -l "${SCRIPT_PATH}/convert_poly.bc")
 }
 
+function _koopman_to_json()
+{
+  local koopman="${1#0x}" ; koopman="0x${koopman^^}"
+  local polynomial=$(_poly_hex_to_poly_math "$1" "koopman")
+  local -a normal=( $(_koopman_to_normal "$1") )
+  mapfile -d '' json << EOF
+{
+  "polynomial" : "${polynomial}",
+  "degree"     : ${normal[1]},
+  "explicit"   : "$(_koopman_to_explicit ${1})",
+  "koopman"    : "${koopman}",
+  "normal"     : "${normal[0]}"
+}
+EOF
+
+  echo -n "${json[@]}"
+}
+
+function _explicit_to_json()
+{
+  local explicit="${1#0x}" ; explicit="0x${explicit^^}"
+  local polynomial=$(_poly_hex_to_poly_math "$1" "explicit")
+  local -a normal=( $(_explicit_to_normal "$1") )
+  mapfile -d '' json << EOF
+{
+  "polynomial" : "${polynomial}",
+  "degree"     : ${normal[1]},
+  "explicit"   : "${explicit}",
+  "koopman"    : "$(_explicit_to_koopman ${1})",
+  "normal"     : "${normal[0]}"
+}
+EOF
+
+  echo -n "${json[@]}"
+}
+
+function _normal_to_json()
+{
+  local polynomial=$(_poly_hex_to_poly_math "$1" "$2")
+  local -a normal=( "0x${1#0x}" "$2" )
+  mapfile -d '' json << EOF
+{
+  "polynomial" : "${polynomial}",
+  "degree"     : ${normal[1]},
+  "explicit"   : "$(_normal_to_explicit ${1} ${2})",
+  "koopman"    : "$(_normal_to_koopman ${1} ${2})",
+  "normal"     : "${normal[0]}"
+}
+EOF
+
+  echo -n "${json[@]}"
+}
+
 ###############################################################################
 
 # NB. The convert_poly function runs in a subshell.
@@ -180,27 +268,39 @@ function convert_poly()
 
   case "$1" in
     'k2e' | 'koopman_to_explicit')
-      echo $(_koopman_to_explicit "$2")
+      _koopman_to_explicit "$2"
       exit 0 ;;
 
     'k2n' | 'koopman_to_normal')
-      echo $(_koopman_to_normal "$2")
+      _koopman_to_normal "$2"
+      exit 0 ;;
+
+    'k2j' | 'koopman_to_json')
+      _koopman_to_json "$2"
       exit 0 ;;
 
     'e2n' | 'explicit_to_normal')
-      echo $(_explicit_to_normal "$2")
+      _explicit_to_normal "$2"
       exit 0 ;;
 
     'e2k' | 'explicit_to_koopman')
-      echo $(_explicit_to_koopman "$2")
+      _explicit_to_koopman "$2"
+      exit 0 ;;
+
+    'e2j' | 'explicit_to_json')
+      _explicit_to_json "$2"
       exit 0 ;;
 
     'n2e' | 'normal_to_explicit')
-      echo $(_normal_to_explicit "$2" "$3")
+      _normal_to_explicit "$2" "$3"
       exit 0 ;;
 
     'n2k' | 'normal_to_koopman')
-      echo $(_normal_to_koopman "$2" "$3")
+      _normal_to_koopman "$2" "$3"
+      exit 0 ;;
+
+    'n2j' | 'normal_to_json')
+      _normal_to_json "$2" "$3"
       exit 0 ;;
 
     'h' | '-h' | 'help' | '--help')
@@ -210,37 +310,7 @@ function convert_poly()
 
   # 2. Convert poly_hex to poly_bin
 
-  local second_arg="${2:-koopman}"
-
-  local poly_bin
-
-  case "$second_arg" in
-    'kn' | 'koopman')
-      poly_bin=$(_koopman_to_bin "$1") ;;
-    'en' | 'explicit')
-      poly_bin=$(_explicit_to_bin "$1") ;;
-    *)
-      poly_bin=$(_normal_to_bin "$1" "$2") ;;
-  esac
-
-  local -i poly_bits="${#poly_bin}"
-
-  # 3. Walk the poly_bin string.  NB. First character is MSb
-
-  for (( i = 0 ;  i < $poly_bits ; i++ )) ; do
-    if (( "${poly_bin:${i}:1}" == 0 )) ; then
-      continue;
-    fi
-
-    local -i degree=$((poly_bits - 1 - i))
-
-    if (( degree != 0 )) ; then
-      printf "x^${degree} + "
-    else
-      printf "1"
-    fi
-
-  done
+  _poly_hex_to_poly_math "$@"
 )
 
 ###############################################################################
