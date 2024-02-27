@@ -1,0 +1,13 @@
+{
+  "identity" : {
+    "polynomial" : "x^16 + x^13 + x^11 + x^10 + x^9 + x^8 + x^5 + x^4 + x^3 + x^2 + 1",
+    "degree"     : 16,
+    "explicit"   : "0x12F3D",
+    "koopman"    : "0x979E",
+    "normal"     : "0x2F3D"
+  },
+  "profile" : {
+    "record" : "# 0x979e HD=3 len=65519 Example: Len=65520 0x979e {0} (0x8000) (Bits=2) # 0x979e HD=4 len=462 Example: Len=463 0x979e {0,387} (0x8000) (Bits=3) # 0x979e HD=5 len=33 Example: Len=34 0x979e {0,6} (0x8001) (Bits=4) # 0x979e HD=6 len=13 Example: Len=14 0x979e {0,3,8} (0xc000) (Bits=5) # 0x979e HD=7 len=13 Example: Len=14 0x979e {0,3,8} (0xc000) (Bits=5) # 0x979e HD=8 len=8 Example: Len=9 0x979e {0,7} (0x8318) (Bits=7) # 0x979e HD=9 len=5 Example: Len=6 0x979e {0} (0xa436) (Bits=8) # 0x979e HD=10 len=3 Example: Len=4 0x979e {0} (0xcea2) (Bits=9) # 0x979e HD=11 len=1 Example: Len=2 0x979e {0,1} (0xdc51) (Bits=10) # 0x979e HD=12 NONE Example: Len=1 0x979e {0} (0x979e) (Bits=11) 0x979e {65519,462,33,13,13,8,5,3,1}",
+    "HD"     : [null, null, null, 65519, 462,33,13,13,8,5,3,1]
+  }
+}

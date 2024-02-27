@@ -1,0 +1,13 @@
+{
+  "identity" : {
+    "polynomial" : "x^17 + x^13 + x^12 + x^10 + x^9 + x^8 + x^7 + x^6 + x^5 + x^3 + x^1 + 1",
+    "degree"     : 17,
+    "explicit"   : "0x237EB",
+    "koopman"    : "0x11BF5",
+    "normal"     : "0x37EB"
+  },
+  "profile" : {
+    "record" : "# 0x11bf5 HD=3 len=238 Example: Len=239 0x11bf5 {0} (0x10000) (Bits=2) # 0x11bf5 HD=4 len=238 Example: Len=239 0x11bf5 {0} (0x10000) (Bits=2) # 0x11bf5 HD=5 len=28 Example: Len=29 0x11bf5 {0,25} (0x10040) (Bits=4) # 0x11bf5 HD=6 len=28 Example: Len=29 0x11bf5 {0,25} (0x10040) (Bits=4) # 0x11bf5 HD=7 len=22 Example: Len=23 0x11bf5 {0,5,12} (0x18040) (Bits=6) # 0x11bf5 HD=8 len=22 Example: Len=23 0x11bf5 {0,5,12} (0x18040) (Bits=6) # 0x11bf5 HD=9 len=5 Example: Len=6 0x11bf5 {0} (0x1ac11) (Bits=8) # 0x11bf5 HD=10 len=5 Example: Len=6 0x11bf5 {0} (0x1ac11) (Bits=8) # 0x11bf5 HD=11 len=1 Example: Len=2 0x11bf5 {0} (0x1960f) (Bits=10) # 0x11bf5 HD=12 len=1 Example: Len=2 0x11bf5 {0} (0x1960f) (Bits=10) # 0x11bf5 HD=13 NONE Example: Len=1 0x11bf5 {0} (0x11bf5) (Bits=12) 0x11bf5 {238,238,28,28,22,22,5,5,1,1}",
+    "HD"     : [null, null, null, 238, 238,28,28,22,22,5,5,1,1]
+  }
+}

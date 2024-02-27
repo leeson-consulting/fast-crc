@@ -1,0 +1,13 @@
+{
+  "identity" : {
+    "polynomial" : "x^30 + x^28 + x^26 + x^24 + x^21 + x^20 + x^18 + x^17 + x^14 + x^13 + x^12 + x^11 + x^10 + x^5 + x^3 + x^1 + 1",
+    "degree"     : 30,
+    "explicit"   : "0x55367C2B",
+    "koopman"    : "0x2A9B3E15",
+    "normal"     : "0x15367C2B"
+  },
+  "profile" : {
+    "record" : "# 0x2a9b3e15 HD=3 len=993 Example: Len=994 0x2a9b3e15 {0} (0x20000000) (Bits=2) # 0x2a9b3e15 HD=4 len=993 Example: Len=994 0x2a9b3e15 {0} (0x20000000) (Bits=2) # 0x2a9b3e15 HD=5 len=993 Example: Len=994 0x2a9b3e15 {0} (0x20000000) (Bits=2) # 0x2a9b3e15 HD=6 len=993 Example: Len=994 0x2a9b3e15 {0} (0x20000000) (Bits=2) # 0x2a9b3e15 HD=3 len=993 Example: Len=994 0x2a9b3e15 {0} (0x20000000) (Bits=2) # 0x2a9b3e15 HD=4 len=993 Example: Len=994 0x2a9b3e15 {0} (0x20000000) (Bits=2) # 0x2a9b3e15 HD=5 len=993 Example: Len=994 0x2a9b3e15 {0} (0x20000000) (Bits=2) # 0x2a9b3e15 HD=6 len=993 Example: Len=994 0x2a9b3e15 {0} (0x20000000) (Bits=2) # 0x2a9b3e15 HD=7 len=993 Example: Len=994 0x2a9b3e15 {0} (0x20000000) (Bits=2) # 0x2a9b3e15 HD=8 len=96 Example: Len=97 0x2a9b3e15 {0,50,61,68,84} (0x20001000) (Bits=7) # 0x2a9b3e15 HD=9 len=50 Example: Len=51 0x2a9b3e15 {0,5,10,16,29} (0x28001000) (Bits=8) # 0x2a9b3e15 HD=10 len=27 Example: Len=28 0x2a9b3e15 {0,2,4} (0x22006402) (Bits=9) # 0x2a9b3e15 HD=11 len=16 Example: Len=17 0x2a9b3e15 {0} (0x34090341) (Bits=10) # 0x2a9b3e15 HD=12 len=13 Example: Len=14 0x2a9b3e15 {0,1,6,10,13} (0x22209100) (Bits=11) # 0x2a9b3e15 HD=13 len=3 Example: Len=4 0x2a9b3e15 {0,3} (0x30230958) (Bits=12) # 0x2a9b3e15 HD=14 len=3 Example: Len=4 0x2a9b3e15 {0,3} (0x30230958) (Bits=12) # 0x2a9b3e15 HD=15 len=3 Example: Len=4 0x2a9b3e15 {0,3} (0x30230958) (Bits=12) # 0x2a9b3e15 HD=16 len=3 Example: Len=4 0x2a9b3e15 {0,3} (0x30230958) (Bits=12) # 0x2a9b3e15 HD=17 len=2 Example: Len=3 0x2a9b3e15 {0,1,2} (0x203df190) (Bits=16) # 0x2a9b3e15 HD=18 NONE Example: Len=1 0x2a9b3e15 {0} (0x2a9b3e15) (Bits=17) 0x2a9b3e15 {993,993,993,993,993,96,50,27,16,13,3,3,3,3,2}",
+    "HD"     : [null, null, null, 993, 993,993,993,993,96,50,27,16,13,3,3,3,3,2]
+  }
+}

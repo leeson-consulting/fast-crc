@@ -1,0 +1,13 @@
+{
+  "identity" : {
+    "polynomial" : "x^10 + x^8 + x^6 + x^5 + x^4 + x^1 + 1",
+    "degree"     : 10,
+    "explicit"   : "0x573",
+    "koopman"    : "0x2B9",
+    "normal"     : "0x173"
+  },
+  "profile" : {
+    "record" : "# 0x2b9 HD=3 len=21 Example: Len=22 0x2b9 {0} (0x200) (Bits=2) # 0x2b9 HD=4 len=21 Example: Len=22 0x2b9 {0} (0x200) (Bits=2) # 0x2b9 HD=5 len=21 Example: Len=22 0x2b9 {0} (0x200) (Bits=2) # 0x2b9 HD=6 len=3 Example: Len=4 0x2b9 {0,2,3} (0x240) (Bits=5) # 0x2b9 HD=7 len=3 Example: Len=4 0x2b9 {0} (0x31c) (Bits=6) # 0x2b9 HD=8 NONE Example: Len=1 0x2b9 {0} (0x2b9) (Bits=7) 0x2b9 {21,21,21,3,3}",
+    "HD"     : [null, null, null, 21, 21,21,3,3]
+  }
+}

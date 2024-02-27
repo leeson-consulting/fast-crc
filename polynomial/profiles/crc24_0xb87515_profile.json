@@ -1,0 +1,13 @@
+{
+  "identity" : {
+    "polynomial" : "x^24 + x^22 + x^21 + x^20 + x^15 + x^14 + x^13 + x^11 + x^9 + x^5 + x^3 + x^1 + 1",
+    "degree"     : 24,
+    "explicit"   : "0x170EA2B",
+    "koopman"    : "0xB87515",
+    "normal"     : "0x70EA2B"
+  },
+  "profile" : {
+    "record" : "# 0xb87515 HD=3 len=16777191 Example: Len=16777192 0xb87515 {0} (0x800000) (Bits=2) # 0xb87515 HD=4 len=4821 Example: Len=4822 0xb87515 {0,789} (0x800000) (Bits=3) # 0xb87515 HD=5 len=432 Example: Len=433 0xb87515 {0,78,327} (0x800000) (Bits=4) # 0xb87515 HD=6 len=88 Example: Len=89 0xb87515 {0,14,57} (0x810000) (Bits=5) # 0xb87515 HD=7 len=40 Example: Len=41 0xb87515 {0,26,31,40} (0x880000) (Bits=6) # 0xb87515 HD=8 len=31 Example: Len=32 0xb87515 {0,8,18,27} (0x810001) (Bits=7) # 0xb87515 HD=9 len=18 Example: Len=19 0xb87515 {0,4,7} (0x80c009) (Bits=8) # 0xb87515 HD=10 len=12 Example: Len=13 0xb87515 {0,2,4,7} (0xa40420) (Bits=9) # 0xb87515 HD=11 len=12 Example: Len=13 0xb87515 {0,2,4,7} (0xa40420) (Bits=9) # 0xb87515 HD=12 len=12 Example: Len=13 0xb87515 {0,2,4,7} (0xa40420) (Bits=9) # 0xb87515 HD=13 len=2 Example: Len=3 0xb87515 {0,1,2} (0x966850) (Bits=12) # 0xb87515 HD=14 NONE Example: Len=1 0xb87515 {0} (0xb87515) (Bits=13) 0xb87515 {16777191,4821,432,88,40,31,18,12,12,12,2}",
+    "HD"     : [null, null, null, 16777191, 4821,432,88,40,31,18,12,12,12,2]
+  }
+}

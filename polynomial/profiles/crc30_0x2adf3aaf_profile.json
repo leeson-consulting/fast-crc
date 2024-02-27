@@ -1,0 +1,13 @@
+{
+  "identity" : {
+    "polynomial" : "x^30 + x^28 + x^26 + x^24 + x^23 + x^21 + x^20 + x^19 + x^18 + x^17 + x^14 + x^13 + x^12 + x^10 + x^8 + x^6 + x^4 + x^3 + x^2 + x^1 + 1",
+    "degree"     : 30,
+    "explicit"   : "0x55BE755F",
+    "koopman"    : "0x2ADF3AAF",
+    "normal"     : "0x15BE755F"
+  },
+  "profile" : {
+    "record" : "# 0x2adf3aaf HD=3 len=32737 Example: Len=32738 0x2adf3aaf {0} (0x20000000) (Bits=2) # 0x2adf3aaf HD=4 len=32737 Example: Len=32738 0x2adf3aaf {0} (0x20000000) (Bits=2) # 0x2adf3aaf HD=5 len=32737 Example: Len=32738 0x2adf3aaf {0} (0x20000000) (Bits=2) # 0x2adf3aaf HD=6 len=514 Example: Len=515 0x2adf3aaf {0,15,215,464} (0x20000000) (Bits=5) # 0x2adf3aaf HD=7 len=237 Example: Len=238 0x2adf3aaf {0,53,141,168} (0x20020000) (Bits=6) # 0x2adf3aaf HD=8 len=74 Example: Len=75 0x2adf3aaf {0,22,56} (0x30200200) (Bits=7) # 0x2adf3aaf HD=9 len=23 Example: Len=24 0x2adf3aaf {0,15,19} (0x22280008) (Bits=8) # 0x2adf3aaf HD=10 len=23 Example: Len=24 0x2adf3aaf {0,15,19} (0x22280008) (Bits=8) # 0x2adf3aaf HD=11 len=16 Example: Len=17 0x2adf3aaf {0,4,7,10,14} (0x20002844) (Bits=10) # 0x2adf3aaf HD=12 len=5 Example: Len=6 0x2adf3aaf {0} (0x292430d0) (Bits=11) # 0x2adf3aaf HD=13 len=2 Example: Len=3 0x2adf3aaf {0,1} (0x2068f404) (Bits=12) # 0x2adf3aaf HD=14 len=2 Example: Len=3 0x2adf3aaf {0,1} (0x2068f404) (Bits=12) # 0x2adf3aaf HD=15 len=2 Example: Len=3 0x2adf3aaf {0,1} (0x2068f404) (Bits=12) # 0x2adf3aaf HD=16 len=2 Example: Len=3 0x2adf3aaf {0,1} (0x2068f404) (Bits=12) # 0x2adf3aaf HD=17 len=2 Example: Len=3 0x2adf3aaf {0,1} (0x2068f404) (Bits=12) # 0x2adf3aaf HD=18 len=2 Example: Len=3 0x2adf3aaf {0,2} (0x35076953) (Bits=17) # 0x2adf3aaf HD=19 len=2 Example: Len=3 0x2adf3aaf {0,2} (0x35076953) (Bits=17) # 0x2adf3aaf HD=20 len=2 Example: Len=3 0x2adf3aaf {0,2} (0x35076953) (Bits=17) # 0x2adf3aaf HD=21 len=1 Example: Len=2 0x2adf3aaf {0} (0x3fb0a7f8) (Bits=20) # 0x2adf3aaf HD=22 NONE Example: Len=1 0x2adf3aaf {0} (0x2adf3aaf) (Bits=21) 0x2adf3aaf {32737,32737,32737,514,237,74,23,23,16,5,2,2,2,2,2,2,2,2,1}",
+    "HD"     : [null, null, null, 32737, 32737,32737,514,237,74,23,23,16,5,2,2,2,2,2,2,2,2,1]
+  }
+}

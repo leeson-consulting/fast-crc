@@ -1,0 +1,13 @@
+{
+  "identity" : {
+    "polynomial" : "x^18 + x^15 + x^13 + x^12 + x^11 + x^10 + x^9 + x^7 + x^6 + x^4 + x^2 + 1",
+    "degree"     : 18,
+    "explicit"   : "0x4BED5",
+    "koopman"    : "0x25F6A",
+    "normal"     : "0xBED5"
+  },
+  "profile" : {
+    "record" : "# 0x25f6a HD=3 len=45 Example: Len=46 0x25f6a {0} (0x20000) (Bits=2) # 0x25f6a HD=4 len=45 Example: Len=46 0x25f6a {0} (0x20000) (Bits=2) # 0x25f6a HD=5 len=45 Example: Len=46 0x25f6a {0} (0x20000) (Bits=2) # 0x25f6a HD=6 len=45 Example: Len=46 0x25f6a {0} (0x20000) (Bits=2) # 0x25f6a HD=7 len=45 Example: Len=46 0x25f6a {0} (0x20000) (Bits=2) # 0x25f6a HD=8 len=45 Example: Len=46 0x25f6a {0} (0x20000) (Bits=2) # 0x25f6a HD=9 len=2 Example: Len=3 0x25f6a {0} (0x2c8b0) (Bits=8) # 0x25f6a HD=10 len=2 Example: Len=3 0x25f6a {0} (0x2c8b0) (Bits=8) # 0x25f6a HD=11 len=2 Example: Len=3 0x25f6a {0} (0x2c8b0) (Bits=8) # 0x25f6a HD=12 len=2 Example: Len=3 0x25f6a {0} (0x2c8b0) (Bits=8) # 0x25f6a HD=13 NONE Example: Len=1 0x25f6a {0} (0x25f6a) (Bits=12) 0x25f6a {45,45,45,45,45,45,2,2,2,2}",
+    "HD"     : [null, null, null, 45, 45,45,45,45,45,2,2,2,2]
+  }
+}

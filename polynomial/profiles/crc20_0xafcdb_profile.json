@@ -1,0 +1,13 @@
+{
+  "identity" : {
+    "polynomial" : "x^20 + x^18 + x^16 + x^15 + x^14 + x^13 + x^12 + x^11 + x^8 + x^7 + x^5 + x^4 + x^2 + x^1 + 1",
+    "degree"     : 20,
+    "explicit"   : "0x15F9B7",
+    "koopman"    : "0xAFCDB",
+    "normal"     : "0x5F9B7"
+  },
+  "profile" : {
+    "record" : "# 0xafcdb HD=3 len=1048555 Example: Len=1048556 0xafcdb {0} (0x80000) (Bits=2) # 0xafcdb HD=4 len=429 Example: Len=430 0xafcdb {0,246} (0x80000) (Bits=3) # 0xafcdb HD=5 len=85 Example: Len=86 0xafcdb {0,44} (0x80200) (Bits=4) # 0xafcdb HD=6 len=29 Example: Len=30 0xafcdb {0,7,21} (0x84000) (Bits=5) # 0xafcdb HD=7 len=12 Example: Len=13 0xafcdb {0,3} (0xe1000) (Bits=6) # 0xafcdb HD=8 len=12 Example: Len=13 0xafcdb {0,3} (0xe1000) (Bits=6) # 0xafcdb HD=9 len=8 Example: Len=9 0xafcdb {0,2,5} (0x92880) (Bits=8) # 0xafcdb HD=10 len=7 Example: Len=8 0xafcdb {0} (0x8d22a) (Bits=9) # 0xafcdb HD=11 len=7 Example: Len=8 0xafcdb {0} (0x8d22a) (Bits=9) # 0xafcdb HD=12 len=2 Example: Len=3 0xafcdb {0,2} (0xd3d80) (Bits=11) # 0xafcdb HD=13 len=1 Example: Len=2 0xafcdb {0} (0xf82b6) (Bits=12) # 0xafcdb HD=14 len=1 Example: Len=2 0xafcdb {0} (0xf82b6) (Bits=12) # 0xafcdb HD=15 len=1 Example: Len=2 0xafcdb {0} (0xf82b6) (Bits=12) # 0xafcdb HD=16 NONE Example: Len=1 0xafcdb {0} (0xafcdb) (Bits=15) 0xafcdb {1048555,429,85,29,12,12,8,7,7,2,1,1,1}",
+    "HD"     : [null, null, null, 1048555, 429,85,29,12,12,8,7,7,2,1,1,1]
+  }
+}

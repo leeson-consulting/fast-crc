@@ -1,0 +1,13 @@
+{
+  "identity" : {
+    "polynomial" : "x^31 + x^27 + x^26 + x^25 + x^24 + x^23 + x^21 + x^18 + x^16 + x^15 + x^13 + x^12 + x^9 + x^8 + x^6 + x^4 + x^2 + x^1 + 1",
+    "degree"     : 31,
+    "explicit"   : "0x8FA5B357",
+    "koopman"    : "0x47D2D9AB",
+    "normal"     : "0xFA5B357"
+  },
+  "profile" : {
+    "record" : "# 0x47d2d9ab HD=3 len=2147385314 Example: Len=2147385315 0x47d2d9ab {0} (0x40000000) (Bits=2) # 0x47d2d9ab HD=4 len=88286 Example: Len=88287 0x47d2d9ab {0,20698} (0x40000000) (Bits=3) # 0x47d2d9ab HD=5 len=2108 Example: Len=2109 0x47d2d9ab {0,353,454} (0x40000000) (Bits=4) # 0x47d2d9ab HD=6 len=669 Example: Len=670 0x47d2d9ab {0,65,116,376} (0x40000000) (Bits=5) # 0x47d2d9ab HD=7 len=191 Example: Len=192 0x47d2d9ab {0,42,121,128,177} (0x40000000) (Bits=6) # 0x47d2d9ab HD=8 len=49 Example: Len=50 0x47d2d9ab {0,27} (0x40808801) (Bits=7) # 0x47d2d9ab HD=9 len=49 Example: Len=50 0x47d2d9ab {0,27} (0x40808801) (Bits=7) # 0x47d2d9ab HD=10 len=29 Example: Len=30 0x47d2d9ab {0,3,8,18,28} (0x40400102) (Bits=9) # 0x47d2d9ab HD=11 len=15 Example: Len=16 0x47d2d9ab {0,4,10} (0x420010a6) (Bits=10) # 0x47d2d9ab HD=12 len=14 Example: Len=15 0x47d2d9ab {0,2,5,6,7,8,9} (0x40410200) (Bits=11) # 0x47d2d9ab HD=13 len=7 Example: Len=8 0x47d2d9ab {0,1,5,7} (0x58102a10) (Bits=12) # 0x47d2d9ab HD=14 len=6 Example: Len=7 0x47d2d9ab {0,3,4,5} (0x44f30400) (Bits=13) # 0x47d2d9ab HD=15 len=6 Example: Len=7 0x47d2d9ab {0,3,4,5} (0x44f30400) (Bits=13) # 0x47d2d9ab HD=16 len=6 Example: Len=7 0x47d2d9ab {0,3,4,5} (0x44f30400) (Bits=13) # 0x47d2d9ab HD=17 len=5 Example: Len=6 0x47d2d9ab {0,5} (0x5065d496) (Bits=16) # 0x47d2d9ab HD=18 len=2 Example: Len=3 0x47d2d9ab {0,2} (0x75cf0314) (Bits=17) # 0x47d2d9ab HD=19 len=2 Example: Len=3 0x47d2d9ab {0,2} (0x75cf0314) (Bits=17) # 0x47d2d9ab HD=20 NONE Example: Len=1 0x47d2d9ab {0} (0x47d2d9ab) (Bits=19) 0x47d2d9ab {2147385314,88286,2108,669,191,49,49,29,15,14,7,6,6,6,5,2,2}",
+    "HD"     : [null, null, null, 2147385314, 88286,2108,669,191,49,49,29,15,14,7,6,6,6,5,2,2]
+  }
+}

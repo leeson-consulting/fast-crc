@@ -1,0 +1,13 @@
+{
+  "identity" : {
+    "polynomial" : "x^7 + x^6 + x^3 + x^2 + x^1 + 1",
+    "degree"     : 7,
+    "explicit"   : "0xCF",
+    "koopman"    : "0x67",
+    "normal"     : "0x4F"
+  },
+  "profile" : {
+    "record" : "# 0x67 HD=3 len=7 Example: Len=8 0x67 {0} (0x40) (Bits=2) # 0x67 HD=4 len=7 Example: Len=8 0x67 {0} (0x40) (Bits=2) # 0x67 HD=5 len=1 Example: Len=2 0x67 {0} (0x54) (Bits=4) # 0x67 HD=6 len=1 Example: Len=2 0x67 {0} (0x54) (Bits=4) # 0x67 HD=7 NONE Example: Len=1 0x67 {0} (0x67) (Bits=6) 0x67 {7,7,1,1}",
+    "HD"     : [null, null, null, 7, 7,1,1]
+  }
+}

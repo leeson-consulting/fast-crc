@@ -1,0 +1,13 @@
+{
+  "identity" : {
+    "polynomial" : "x^32 + x^31 + x^30 + x^27 + x^23 + x^22 + x^21 + x^20 + x^18 + x^17 + x^15 + x^12 + x^11 + x^7 + x^5 + x^3 + x^2 + x^1 + 1",
+    "degree"     : 32,
+    "explicit"   : "0x1C8F698AF",
+    "koopman"    : "0xE47B4C57",
+    "normal"     : "0xC8F698AF"
+  },
+  "profile" : {
+    "record" : "# 0xe47b4c57 HD=3 len=4294967263 Example: Len=4294967264 0xe47b4c57 {0} (0x80000000) (Bits=2) # 0xe47b4c57 HD=4 len=58599 Example: Len=58600 0xe47b4c57 {0,42837} (0x80000000) (Bits=3) # 0xe47b4c57 HD=5 len=3333 Example: Len=3334 0xe47b4c57 {0,1551,1891} (0x80000000) (Bits=4) # 0xe47b4c57 HD=6 len=722 Example: Len=723 0xe47b4c57 {0,21,325,435} (0x80000000) (Bits=5) # 0xe47b4c57 HD=7 len=232 Example: Len=233 0xe47b4c57 {0,112,118,227} (0x80000001) (Bits=6) # 0xe47b4c57 HD=8 len=107 Example: Len=108 0xe47b4c57 {0,1,15,42,47} (0x80100000) (Bits=7) # 0xe47b4c57 HD=9 len=59 Example: Len=60 0xe47b4c57 {0,5,45,48,52} (0x80002004) (Bits=8) # 0xe47b4c57 HD=10 len=27 Example: Len=28 0xe47b4c57 {0,1,10} (0x92001003) (Bits=9) # 0xe47b4c57 HD=11 len=6 Example: Len=7 0xe47b4c57 {0,2,4} (0x803c0060) (Bits=10) # 0xe47b4c57 HD=12 len=6 Example: Len=7 0xe47b4c57 {0,2,4} (0x803c0060) (Bits=10) # 0xe47b4c57 HD=13 len=6 Example: Len=7 0xe47b4c57 {0,2,4} (0x803c0060) (Bits=10) # 0xe47b4c57 HD=14 len=6 Example: Len=7 0xe47b4c57 {0,2,4} (0x803c0060) (Bits=10) # 0xe47b4c57 HD=15 len=6 Example: Len=7 0xe47b4c57 {0,2,4} (0x803c0060) (Bits=10) # 0xe47b4c57 HD=16 len=6 Example: Len=7 0xe47b4c57 {0,2,4} (0x803c0060) (Bits=10) # 0xe47b4c57 HD=17 len=6 Example: Len=7 0xe47b4c57 {0,2,4} (0x803c0060) (Bits=10) # 0xe47b4c57 HD=18 len=4 Example: Len=5 0xe47b4c57 {0} (0xf6b39118) (Bits=17) # 0xe47b4c57 HD=19 len=1 Example: Len=2 0xe47b4c57 {0} (0x9646ea7c) (Bits=18) # 0xe47b4c57 HD=20 NONE Example: Len=1 0xe47b4c57 {0} (0xe47b4c57) (Bits=19) 0xe47b4c57 {4294967263,58599,3333,722,232,107,59,27,6,6,6,6,6,6,6,4,1}",
+    "HD"     : [null, null, null, 4294967263, 58599,3333,722,232,107,59,27,6,6,6,6,6,6,6,4,1]
+  }
+}
