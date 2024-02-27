@@ -1,0 +1,73 @@
+#!/usr/bin/env bash
+
+set -e
+
+###############################################################################
+
+function find_tmp_dir()
+{
+  local tmpdir
+
+  for tmpdir in "$TMPDIR" "$TMP" /var/tmp /tmp "$PWD" ; do
+    test -d "$tmpdir" && break
+  done
+
+  echo "$tmpdir"
+}
+
+###############################################################################
+
+function collect_hamming_profiles()
+{
+  # 1. Setup profile_folder
+
+  local download_folder="${1:-$(find_tmp_dir)/${SCRIPT_NAME}}"
+  local profile_folder="${download_folder}/polynomial_profiles"
+
+  mkdir -p "$profile_folder"
+
+  # 2. Give attribution to Philip Koopman
+
+  local copyright_holder='Philip Koopman'
+
+  mapfile -d '' cc4_attribution << EOF
+The material in this folder is Copyright (c) $(date +%Y) ${copyright_holder}
+
+It is reproduced here under the CC 4.0 International Attribution License:
+
+http://creativecommons.org/licenses/by/4.0/
+
+EOF
+
+  echo "${cc4_attribution}" > "${profile_folder}/License.txt"
+
+  # 2. Collect profile data
+
+  for (( i=3 ; i<=64 ; i++ )) ; do
+    printf -v width "%02d" "$i"
+
+    local -a hamming_profiles=( $(curl --silent "https://users.ece.cmu.edu/~koopman/crc/c${width}"/ \
+           | grep -o 'href=".*">' \
+           | grep '_len.txt' \
+           | sed 's/href="//;s/".*$//') )
+
+    for profile in "${hamming_profiles[@]}" ; do
+      curl --silent "https://users.ece.cmu.edu/~koopman/crc/c${width}/${profile}" -o "${profile_folder}/crc${width}_${profile}"
+    done
+  done
+}
+
+###############################################################################
+
+function main()
+{
+  local SCRIPT_PATH=$(realpath "${BASH_SOURCE[0]%/*}")
+  local SCRIPT_NAME="${BASH_SOURCE[0]##*/}"
+
+  collect_hamming_profiles "$@"
+}
+
+###############################################################################
+
+main "$@"
+
