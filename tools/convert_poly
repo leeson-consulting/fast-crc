@@ -161,7 +161,7 @@ function _koopman_to_explicit()
 
 ###############################################################################
 
-# NB. The print_poly function runs in a subshell.
+# NB. The convert_poly function runs in a subshell.
 #     This allows exit on error even when the script is sourced.
 
 function convert_poly()
@@ -247,6 +247,6 @@ function convert_poly()
 
 if [[ "${BASH_SOURCE[0]}" == "${0}" ]] then
   set -e
-  print_poly "$@"
+  convert_poly "$@"
   echo
 fi
