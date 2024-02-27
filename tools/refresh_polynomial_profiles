@@ -17,16 +17,14 @@ function find_tmp_dir()
 
 ###############################################################################
 
-function collect_hamming_profiles()
+function collect_polynomial_profiles()
 {
-  # 1. Setup profile_folder
+  # 1. Setup polynomial_root
 
-  local download_folder="${1:-$(find_tmp_dir)/${SCRIPT_NAME}}"
-  local profile_folder="${download_folder}/polynomial_profiles"
+  local polynomial_root="${1}"
+  local raw_profiles="${polynomial_root}/raw_profiles"
 
-  mkdir -p "$profile_folder"
-
-  # 2. Give attribution to Philip Koopman
+  mkdir -p "${raw_profiles}"
 
   local copyright_holder='Philip Koopman'
 
@@ -39,22 +37,95 @@ http://creativecommons.org/licenses/by/4.0/
 
 EOF
 
-  echo "${cc4_attribution}" > "${profile_folder}/License.txt"
+  echo "${cc4_attribution}" > "${polynomial_root}/License.txt"
 
   # 2. Collect profile data
+  #
+  mkdir -p 
 
   for (( i=3 ; i<=64 ; i++ )) ; do
     printf -v width "%02d" "$i"
 
-    local -a hamming_profiles=( $(curl --silent "https://users.ece.cmu.edu/~koopman/crc/c${width}"/ \
+    local -a profile_list=( $(curl --silent "https://users.ece.cmu.edu/~koopman/crc/c${width}"/ \
            | grep -o 'href=".*">' \
            | grep '_len.txt' \
            | sed 's/href="//;s/".*$//') )
 
-    for profile in "${hamming_profiles[@]}" ; do
-      curl --silent "https://users.ece.cmu.edu/~koopman/crc/c${width}/${profile}" -o "${profile_folder}/crc${width}_${profile}"
+    for profile in "${profile_list[@]}" ; do
+      curl --silent "https://users.ece.cmu.edu/~koopman/crc/c${width}/${profile}" -o "${raw_profiles}/crc${width}_${profile}"
     done
   done
+}
+
+###############################################################################
+
+function convert_hamming_lengths_to_json()
+{
+  local lengths_txt="${1}"
+  lengths_txt="${lengths_txt#*\{}"
+  lengths_txt="${lengths_txt%\}*}"
+
+  local -a lengths_data=( $(echo "${lengths_txt/,/ }") )
+  local -i max_hd=$(( ${#lengths_data[@]} + 2 ))
+
+  local -a json=('[')
+
+  for (( i=0 ; i<=${max_hd} ; i++ )) ; do
+    if (( i < 3 )) ; then
+      hd_line="null"
+    else
+      hd_line="${lengths_data[ $(( i - 3 )) ]}"
+    fi
+
+    if (( i < ${max_hd} )) ; then
+      hd_line="${hd_line}, "
+    fi
+
+    json+=("$hd_line")
+  done
+
+  json+=(']')
+
+  printf "%s" "${json[@]}"
+}
+
+###############################################################################
+
+function convert_polynomial_profiles_to_json()
+{
+  local polynomial_root="${1}"
+  local profiles="${polynomial_root}/profiles"
+
+  mkdir -p "${profiles}"
+
+  while read -r profile_txt ; do
+    local profile_path="${profile_txt%/*}"
+    local profile_txt_file="${profile_txt##*/}"
+    local identity="${profile_txt_file%_len.txt}"
+    local identity_crc="${identity%_*}"
+    local identity_koopman="${identity#*_}"
+    local profile_json_file="${identity}_profile.json"
+
+    echo "Converting \"${profile_txt_file}\" to \"${profile_json_file}\""
+
+    local -a profile_data
+    mapfile -t profile_data < "${profile_txt}"
+    local hamming_lengths="${profile_data[-1]}"
+    local hamming_lengths_json=$(convert_hamming_lengths_to_json "$hamming_lengths")
+
+    mapfile -d '' profile_json_data << EOF
+{
+  "identity" : $(${SCRIPT_PATH}/convert_poly k2j ${identity_koopman} | sed -e '$ { /^$/ d}' -e '1 ! s/\(^.*\)/  \1/'),
+  "profile" : {
+    "record" : "$(echo -n ${profile_data[@]})",
+    "HD"     : ${hamming_lengths_json}
+  }
+}
+EOF
+
+  echo -n "${profile_json_data}" > "${profiles}/${identity}_profile.json"
+
+  done < <(find "$polynomial_root/raw_profiles" -type f -iname \*_len.txt)
 }
 
 ###############################################################################
@@ -63,8 +134,31 @@ function main()
 {
   local SCRIPT_PATH=$(realpath "${BASH_SOURCE[0]%/*}")
   local SCRIPT_NAME="${BASH_SOURCE[0]##*/}"
+  local REPO_ROOT="$(git rev-parse --show-toplevel)"
 
-  collect_hamming_profiles "$@"
+  # 1. Setup polynomial_root
+
+  local polynomial_root="${1:-${REPO_ROOT}/polynomial}"
+  local collect_profile_data='No'
+
+  if [[ "${2}" == '-cpd' || "${2}" == '--collect-profile-data' ]] ; then
+    collect_profile_data='Yes'
+  fi
+
+  # 2. Collect profile data if requested
+
+  if [[ ! -d "$polynomial_root" ]] ; then
+    mkdir -p "$polynomial_root"
+    collect_profile_data='Yes'
+  fi
+
+  if [[ "$collect_profile_data" == 'Yes' ]] ; then
+    collect_polynomial_profiles "$polynomial_root"
+  fi
+
+  # 3. Convert profile txt data current JSON schema
+
+  convert_polynomial_profiles_to_json "$polynomial_root"
 }
 
 ###############################################################################
