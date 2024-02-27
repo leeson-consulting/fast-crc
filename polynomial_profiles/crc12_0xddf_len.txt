@@ -1,0 +1,11 @@
+# 0xddf  HD=3  len=4083  Example: Len=4084 0xddf {0} (0x800) (Bits=2)
+# 0xddf  HD=4  len=71  Example: Len=72 0xddf {0,19} (0x800) (Bits=3)
+# 0xddf  HD=5  len=10  Example: Len=11 0xddf {0,3,5} (0x800) (Bits=4)
+# 0xddf  HD=6  len=8  Example: Len=9 0xddf {0,2,7} (0x808) (Bits=5)
+# 0xddf  HD=7  len=1  Example: Len=2 0xddf {0} (0xb30) (Bits=6)
+# 0xddf  HD=8  len=1  Example: Len=2 0xddf {0} (0xb30) (Bits=6)
+# 0xddf  HD=9  len=1  Example: Len=2 0xddf {0} (0xb30) (Bits=6)
+# 0xddf  HD=10  len=1  Example: Len=2 0xddf {0} (0xb30) (Bits=6)
+# 0xddf  HD=11  len=1  Example: Len=2 0xddf {0} (0xb30) (Bits=6)
+# 0xddf  HD=12  NONE  Example: Len=1 0xddf {0} (0xddf) (Bits=11)
+0xddf {4083,71,10,8,1,1,1,1,1}

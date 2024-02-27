@@ -1,0 +1,11 @@
+# 0x4bacc  HD=3  len=524268  Example: Len=524269 0x4bacc {0} (0x40000) (Bits=2)
+# 0x4bacc  HD=4  len=373  Example: Len=374 0x4bacc {0,5} (0x40000) (Bits=3)
+# 0x4bacc  HD=5  len=98  Example: Len=99 0x4bacc {0,53} (0x40010) (Bits=4)
+# 0x4bacc  HD=6  len=88  Example: Len=89 0x4bacc {0,50,68} (0x40020) (Bits=5)
+# 0x4bacc  HD=7  len=23  Example: Len=24 0x4bacc {0,8,9,22} (0x40080) (Bits=6)
+# 0x4bacc  HD=8  len=12  Example: Len=13 0x4bacc {0,11} (0x41c04) (Bits=7)
+# 0x4bacc  HD=9  len=10  Example: Len=11 0x4bacc {0,3,4,10} (0x50208) (Bits=8)
+# 0x4bacc  HD=10  len=3  Example: Len=4 0x4bacc {0,1} (0x50326) (Bits=9)
+# 0x4bacc  HD=11  len=3  Example: Len=4 0x4bacc {0} (0x42d95) (Bits=10)
+# 0x4bacc  HD=12  NONE  Example: Len=1 0x4bacc {0} (0x4bacc) (Bits=11)
+0x4bacc {524268,373,98,88,23,12,10,3,3}

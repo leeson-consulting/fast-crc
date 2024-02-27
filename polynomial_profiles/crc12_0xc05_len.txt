@@ -1,0 +1,5 @@
+# 0xc05  HD=3  len=498  Example: Len=499 0xc05 {0} (0x800) (Bits=2)
+# 0xc05  HD=4  len=160  Example: Len=161 0xc05 {0,98} (0x800) (Bits=3)
+# 0xc05  HD=5  len=24  Example: Len=25 0xc05 {0,2,8} (0x800) (Bits=4)
+# 0xc05  HD=6  NONE  Example: Len=1 0xc05 {0} (0xc05) (Bits=5)
+0xc05 {498,160,24}

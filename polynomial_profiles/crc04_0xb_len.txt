@@ -1,0 +1,4 @@
+# 0xb  HD=3  len=3  Example: Len=4 0xb {0} (0x8) (Bits=2)
+# 0xb  HD=4  len=3  Example: Len=4 0xb {0} (0x8) (Bits=2)
+# 0xb  HD=5  NONE  Example: Len=1 0xb {0} (0xb) (Bits=4)
+0xb {3,3}

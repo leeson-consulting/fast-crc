@@ -1,0 +1,4 @@
+# 0xa001  HD=3  len=32751  Example: Len=32752 0xa001 {0} (0x8000) (Bits=2)
+# 0xa001  HD=4  len=32751  Example: Len=32752 0xa001 {0} (0x8000) (Bits=2)
+# 0xa001  HD=5  NONE  Example: Len=1 0xa001 {0} (0xa001) (Bits=4)
+0xa001 {32751,32751}

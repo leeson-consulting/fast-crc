@@ -1,0 +1,7 @@
+# 0xeb  HD=3  len=9  Example: Len=10 0xeb {0} (0x80) (Bits=2)
+# 0xeb  HD=4  len=9  Example: Len=10 0xeb {0} (0x80) (Bits=2)
+# 0xeb  HD=5  len=9  Example: Len=10 0xeb {0} (0x80) (Bits=2)
+# 0xeb  HD=6  len=2  Example: Len=3 0xeb {0,2} (0xa4) (Bits=5)
+# 0xeb  HD=7  len=1  Example: Len=2 0xeb {0} (0x9e) (Bits=6)
+# 0xeb  HD=8  NONE  Example: Len=1 0xeb {0} (0xeb) (Bits=7)
+0xeb {9,9,9,2,1}

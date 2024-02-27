@@ -1,0 +1,6 @@
+# 0x404b  HD=3  len=16368  Example: Len=16369 0x404b {0} (0x4000) (Bits=2)
+# 0x404b  HD=4  len=16368  Example: Len=16369 0x404b {0} (0x4000) (Bits=2)
+# 0x404b  HD=5  len=60  Example: Len=61 0x404b {0,50,60} (0x4000) (Bits=4)
+# 0x404b  HD=6  len=60  Example: Len=61 0x404b {0,50,60} (0x4000) (Bits=4)
+# 0x404b  HD=7  NONE  Example: Len=1 0x404b {0} (0x404b) (Bits=6)
+0x404b {16368,16368,60,60}

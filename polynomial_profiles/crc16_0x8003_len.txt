@@ -1,0 +1,4 @@
+# 0x8003  HD=3  len=32751  Example: Len=32752 0x8003 {0} (0x8000) (Bits=2)
+# 0x8003  HD=4  len=32751  Example: Len=32752 0x8003 {0} (0x8000) (Bits=2)
+# 0x8003  HD=5  NONE  Example: Len=1 0x8003 {0} (0x8003) (Bits=4)
+0x8003 {32751,32751}

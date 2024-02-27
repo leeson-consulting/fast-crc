@@ -1,0 +1,8 @@
+# 0x62cc  HD=3  len=112  Example: Len=113 0x62cc {0} (0x4000) (Bits=2)
+# 0x62cc  HD=4  len=112  Example: Len=113 0x62cc {0} (0x4000) (Bits=2)
+# 0x62cc  HD=5  len=112  Example: Len=113 0x62cc {0} (0x4000) (Bits=2)
+# 0x62cc  HD=6  len=112  Example: Len=113 0x62cc {0} (0x4000) (Bits=2)
+# 0x62cc  HD=7  len=7  Example: Len=8 0x62cc {0,1,4} (0x4022) (Bits=6)
+# 0x62cc  HD=8  len=7  Example: Len=8 0x62cc {0,1,4} (0x4022) (Bits=6)
+# 0x62cc  HD=9  NONE  Example: Len=1 0x62cc {0} (0x62cc) (Bits=8)
+0x62cc {112,112,112,112,7,7}

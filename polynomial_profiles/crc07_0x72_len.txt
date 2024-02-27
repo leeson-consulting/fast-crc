@@ -1,0 +1,5 @@
+# 0x72  HD=3  len=120  Example: Len=121 0x72 {0} (0x40) (Bits=2)
+# 0x72  HD=4  len=7  Example: Len=8 0x72 {0,1} (0x40) (Bits=3)
+# 0x72  HD=5  len=4  Example: Len=5 0x72 {0,3} (0x50) (Bits=4)
+# 0x72  HD=6  NONE  Example: Len=1 0x72 {0} (0x72) (Bits=5)
+0x72 {120,7,4}

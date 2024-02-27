@@ -1,0 +1,9 @@
+# 0x4809f  HD=3  len=524268  Example: Len=524269 0x4809f {0} (0x40000) (Bits=2)
+# 0x4809f  HD=4  len=1207  Example: Len=1208 0x4809f {0,883} (0x40000) (Bits=3)
+# 0x4809f  HD=5  len=174  Example: Len=175 0x4809f {0,80,163} (0x40000) (Bits=4)
+# 0x4809f  HD=6  len=48  Example: Len=49 0x4809f {0,10,31} (0x40001) (Bits=5)
+# 0x4809f  HD=7  len=31  Example: Len=32 0x4809f {0,6,9,31} (0x40010) (Bits=6)
+# 0x4809f  HD=8  len=20  Example: Len=21 0x4809f {0,11} (0x48a80) (Bits=7)
+# 0x4809f  HD=9  len=1  Example: Len=2 0x4809f {0} (0x6c0d0) (Bits=8)
+# 0x4809f  HD=10  NONE  Example: Len=1 0x4809f {0} (0x4809f) (Bits=9)
+0x4809f {524268,1207,174,48,31,20,1}

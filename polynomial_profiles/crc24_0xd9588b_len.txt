@@ -1,0 +1,13 @@
+# 0xd9588b  HD=3  len=28062  Example: Len=28063 0xd9588b {0} (0x800000) (Bits=2)
+# 0xd9588b  HD=4  len=5110  Example: Len=5111 0xd9588b {0,3926} (0x800000) (Bits=3)
+# 0xd9588b  HD=5  len=479  Example: Len=480 0xd9588b {0,377,456} (0x800000) (Bits=4)
+# 0xd9588b  HD=6  len=157  Example: Len=158 0xd9588b {0,2,46} (0x800020) (Bits=5)
+# 0xd9588b  HD=7  len=27  Example: Len=28 0xd9588b {0,17,18,21} (0x880000) (Bits=6)
+# 0xd9588b  HD=8  len=18  Example: Len=19 0xd9588b {0,1,8,15} (0x810080) (Bits=7)
+# 0xd9588b  HD=9  len=18  Example: Len=19 0xd9588b {0,1,8,15} (0x810080) (Bits=7)
+# 0xd9588b  HD=10  len=7  Example: Len=8 0xd9588b {0,3} (0xac080c) (Bits=9)
+# 0xd9588b  HD=11  len=7  Example: Len=8 0xd9588b {0,3} (0xac080c) (Bits=9)
+# 0xd9588b  HD=12  len=7  Example: Len=8 0xd9588b {0,3} (0xac080c) (Bits=9)
+# 0xd9588b  HD=13  len=7  Example: Len=8 0xd9588b {0} (0xd61ad0) (Bits=12)
+# 0xd9588b  HD=14  NONE  Example: Len=1 0xd9588b {0} (0xd9588b) (Bits=13)
+0xd9588b {28062,5110,479,157,27,18,18,7,7,7,7}

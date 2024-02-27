@@ -1,0 +1,4 @@
+# 0x4a  HD=3  len=56  Example: Len=57 0x4a {0} (0x40) (Bits=2)
+# 0x4a  HD=4  len=56  Example: Len=57 0x4a {0} (0x40) (Bits=2)
+# 0x4a  HD=5  NONE  Example: Len=1 0x4a {0} (0x4a) (Bits=4)
+0x4a {56,56}

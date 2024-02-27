@@ -1,0 +1,6 @@
+# 0x8003a  HD=3  len=524267  Example: Len=524268 0x8003a {0} (0x80000) (Bits=2)
+# 0x8003a  HD=4  len=524267  Example: Len=524268 0x8003a {0} (0x80000) (Bits=2)
+# 0x8003a  HD=5  len=74  Example: Len=75 0x8003a {0,7,70} (0x80000) (Bits=4)
+# 0x8003a  HD=6  len=74  Example: Len=75 0x8003a {0,7,70} (0x80000) (Bits=4)
+# 0x8003a  HD=7  NONE  Example: Len=1 0x8003a {0} (0x8003a) (Bits=6)
+0x8003a {524267,524267,74,74}

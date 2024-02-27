@@ -1,0 +1,6 @@
+# 0xcd  HD=3  len=119  Example: Len=120 0xcd {0} (0x80) (Bits=2)
+# 0xcd  HD=4  len=119  Example: Len=120 0xcd {0} (0x80) (Bits=2)
+# 0xcd  HD=5  len=2  Example: Len=3 0xcd {0} (0x98) (Bits=4)
+# 0xcd  HD=6  len=2  Example: Len=3 0xcd {0} (0x98) (Bits=4)
+# 0xcd  HD=7  NONE  Example: Len=1 0xcd {0} (0xcd) (Bits=6)
+0xcd {119,119,2,2}

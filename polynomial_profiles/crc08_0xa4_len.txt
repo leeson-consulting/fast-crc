@@ -1,0 +1,4 @@
+# 0xa4  HD=3  len=97  Example: Len=98 0xa4 {0} (0x80) (Bits=2)
+# 0xa4  HD=4  len=97  Example: Len=98 0xa4 {0} (0x80) (Bits=2)
+# 0xa4  HD=5  NONE  Example: Len=1 0xa4 {0} (0xa4) (Bits=4)
+0xa4 {97,97}

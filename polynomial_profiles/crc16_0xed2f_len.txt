@@ -1,0 +1,12 @@
+# 0xed2f  HD=3  len=32751  Example: Len=32752 0xed2f {0} (0x8000) (Bits=2)
+# 0xed2f  HD=4  len=32751  Example: Len=32752 0xed2f {0} (0x8000) (Bits=2)
+# 0xed2f  HD=5  len=46  Example: Len=47 0xed2f {0,3,19} (0x8000) (Bits=4)
+# 0xed2f  HD=6  len=46  Example: Len=47 0xed2f {0,3,19} (0x8000) (Bits=4)
+# 0xed2f  HD=7  len=8  Example: Len=9 0xed2f {0,2,4} (0x9080) (Bits=6)
+# 0xed2f  HD=8  len=8  Example: Len=9 0xed2f {0,2,4} (0x9080) (Bits=6)
+# 0xed2f  HD=9  len=5  Example: Len=6 0xed2f {0} (0xe494) (Bits=8)
+# 0xed2f  HD=10  len=5  Example: Len=6 0xed2f {0} (0xe494) (Bits=8)
+# 0xed2f  HD=11  len=1  Example: Len=2 0xed2f {0} (0x9bb8) (Bits=10)
+# 0xed2f  HD=12  len=1  Example: Len=2 0xed2f {0} (0x9bb8) (Bits=10)
+# 0xed2f  HD=13  NONE  Example: Len=1 0xed2f {0} (0xed2f) (Bits=12)
+0xed2f {32751,32751,46,46,8,8,5,5,1,1}

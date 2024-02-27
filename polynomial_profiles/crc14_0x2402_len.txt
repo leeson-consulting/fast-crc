@@ -1,0 +1,4 @@
+# 0x2402  HD=3  len=8177  Example: Len=8178 0x2402 {0} (0x2000) (Bits=2)
+# 0x2402  HD=4  len=8177  Example: Len=8178 0x2402 {0} (0x2000) (Bits=2)
+# 0x2402  HD=5  NONE  Example: Len=1 0x2402 {0} (0x2402) (Bits=4)
+0x2402 {8177,8177}

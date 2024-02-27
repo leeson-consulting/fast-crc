@@ -1,0 +1,4 @@
+# 0x2c  HD=3  len=25  Example: Len=26 0x2c {0} (0x20) (Bits=2)
+# 0x2c  HD=4  len=25  Example: Len=26 0x2c {0} (0x20) (Bits=2)
+# 0x2c  HD=5  NONE  Example: Len=1 0x2c {0} (0x2c) (Bits=4)
+0x2c {25,25}

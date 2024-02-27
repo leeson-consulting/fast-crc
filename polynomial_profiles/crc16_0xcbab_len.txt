@@ -1,0 +1,11 @@
+# 0xcbab  HD=3  len=299  Example: Len=300 0xcbab {0} (0x8000) (Bits=2)
+# 0xcbab  HD=4  len=299  Example: Len=300 0xcbab {0} (0x8000) (Bits=2)
+# 0xcbab  HD=5  len=59  Example: Len=60 0xcbab {0,26,56} (0x8000) (Bits=4)
+# 0xcbab  HD=6  len=59  Example: Len=60 0xcbab {0,26,56} (0x8000) (Bits=4)
+# 0xcbab  HD=7  len=6  Example: Len=7 0xcbab {0,4} (0x8092) (Bits=6)
+# 0xcbab  HD=8  len=3  Example: Len=4 0xcbab {0} (0xe034) (Bits=7)
+# 0xcbab  HD=9  len=3  Example: Len=4 0xcbab {0} (0xe034) (Bits=7)
+# 0xcbab  HD=10  len=2  Example: Len=3 0xcbab {0,2} (0x9c94) (Bits=9)
+# 0xcbab  HD=11  len=2  Example: Len=3 0xcbab {0,2} (0x9c94) (Bits=9)
+# 0xcbab  HD=12  NONE  Example: Len=1 0xcbab {0} (0xcbab) (Bits=11)
+0xcbab {299,299,59,59,6,3,3,2,2}

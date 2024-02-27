@@ -1,0 +1,11 @@
+# 0x12ca8e  HD=3  len=2097130  Example: Len=2097131 0x12ca8e {0} (0x100000) (Bits=2)
+# 0x12ca8e  HD=4  len=3088  Example: Len=3089 0x12ca8e {0,2761} (0x100000) (Bits=3)
+# 0x12ca8e  HD=5  len=241  Example: Len=242 0x12ca8e {0,163,217} (0x100000) (Bits=4)
+# 0x12ca8e  HD=6  len=52  Example: Len=53 0x12ca8e {0,46,51} (0x100002) (Bits=5)
+# 0x12ca8e  HD=7  len=19  Example: Len=20 0x12ca8e {0,3} (0x111008) (Bits=6)
+# 0x12ca8e  HD=8  len=19  Example: Len=20 0x12ca8e {0,3} (0x111008) (Bits=6)
+# 0x12ca8e  HD=9  len=19  Example: Len=20 0x12ca8e {0,13,15,16} (0x180090) (Bits=8)
+# 0x12ca8e  HD=10  len=5  Example: Len=6 0x12ca8e {0,3} (0x10058b) (Bits=9)
+# 0x12ca8e  HD=11  len=5  Example: Len=6 0x12ca8e {0,3} (0x10058b) (Bits=9)
+# 0x12ca8e  HD=12  NONE  Example: Len=1 0x12ca8e {0} (0x12ca8e) (Bits=11)
+0x12ca8e {2097130,3088,241,52,19,19,19,5,5}

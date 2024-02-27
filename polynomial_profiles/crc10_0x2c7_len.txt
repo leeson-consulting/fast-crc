@@ -1,0 +1,7 @@
+# 0x2c7  HD=3  len=1013  Example: Len=1014 0x2c7 {0} (0x200) (Bits=2)
+# 0x2c7  HD=4  len=7  Example: Len=8 0x2c7 {0} (0x220) (Bits=3)
+# 0x2c7  HD=5  len=7  Example: Len=8 0x2c7 {0} (0x220) (Bits=3)
+# 0x2c7  HD=6  len=6  Example: Len=7 0x2c7 {0,6} (0x308) (Bits=5)
+# 0x2c7  HD=7  len=1  Example: Len=2 0x2c7 {0} (0x3a4) (Bits=6)
+# 0x2c7  HD=8  NONE  Example: Len=1 0x2c7 {0} (0x2c7) (Bits=7)
+0x2c7 {1013,7,7,6,1}

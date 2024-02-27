@@ -1,0 +1,7 @@
+# 0x485c  HD=3  len=48  Example: Len=49 0x485c {0} (0x4000) (Bits=2)
+# 0x485c  HD=4  len=48  Example: Len=49 0x485c {0} (0x4000) (Bits=2)
+# 0x485c  HD=5  len=48  Example: Len=49 0x485c {0} (0x4000) (Bits=2)
+# 0x485c  HD=6  len=48  Example: Len=49 0x485c {0} (0x4000) (Bits=2)
+# 0x485c  HD=7  len=9  Example: Len=10 0x485c {0,2,6} (0x4280) (Bits=6)
+# 0x485c  HD=8  NONE  Example: Len=1 0x485c {0} (0x485c) (Bits=7)
+0x485c {48,48,48,48,9}

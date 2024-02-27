@@ -1,0 +1,4 @@
+# 0x83  HD=3  len=119  Example: Len=120 0x83 {0} (0x80) (Bits=2)
+# 0x83  HD=4  len=119  Example: Len=120 0x83 {0} (0x80) (Bits=2)
+# 0x83  HD=5  NONE  Example: Len=1 0x83 {0} (0x83) (Bits=4)
+0x83 {119,119}

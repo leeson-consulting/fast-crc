@@ -1,0 +1,7 @@
+# 0x167  HD=3  len=502  Example: Len=503 0x167 {0} (0x100) (Bits=2)
+# 0x167  HD=4  len=48  Example: Len=49 0x167 {0} (0x101) (Bits=3)
+# 0x167  HD=5  len=8  Example: Len=9 0x167 {0,1,5} (0x100) (Bits=4)
+# 0x167  HD=6  len=3  Example: Len=4 0x167 {0,3} (0x112) (Bits=5)
+# 0x167  HD=7  len=1  Example: Len=2 0x167 {0} (0x1d4) (Bits=6)
+# 0x167  HD=8  NONE  Example: Len=1 0x167 {0} (0x167) (Bits=7)
+0x167 {502,48,8,3,1}

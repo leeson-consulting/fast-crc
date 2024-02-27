@@ -1,0 +1,8 @@
+# 0xc86c  HD=3  len=135  Example: Len=136 0xc86c {0} (0x8000) (Bits=2)
+# 0xc86c  HD=4  len=135  Example: Len=136 0xc86c {0} (0x8000) (Bits=2)
+# 0xc86c  HD=5  len=135  Example: Len=136 0xc86c {0} (0x8000) (Bits=2)
+# 0xc86c  HD=6  len=135  Example: Len=136 0xc86c {0} (0x8000) (Bits=2)
+# 0xc86c  HD=7  len=5  Example: Len=6 0xc86c {0,5} (0x9802) (Bits=6)
+# 0xc86c  HD=8  len=5  Example: Len=6 0xc86c {0,5} (0x9802) (Bits=6)
+# 0xc86c  HD=9  NONE  Example: Len=1 0xc86c {0} (0xc86c) (Bits=8)
+0xc86c {135,135,135,135,5,5}

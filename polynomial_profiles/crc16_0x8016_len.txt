@@ -1,0 +1,5 @@
+# 0x8016  HD=3  len=65519  Example: Len=65520 0x8016 {0} (0x8000) (Bits=2)
+# 0x8016  HD=4  len=551  Example: Len=552 0x8016 {0,543} (0x8000) (Bits=3)
+# 0x8016  HD=5  len=40  Example: Len=41 0x8016 {0,15,24} (0x8000) (Bits=4)
+# 0x8016  HD=6  NONE  Example: Len=1 0x8016 {0} (0x8016) (Bits=5)
+0x8016 {65519,551,40}

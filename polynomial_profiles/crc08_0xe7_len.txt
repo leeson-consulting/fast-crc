@@ -1,0 +1,7 @@
+# 0xe7  HD=3  len=247  Example: Len=248 0xe7 {0} (0x80) (Bits=2)
+# 0xe7  HD=4  len=19  Example: Len=20 0xe7 {0,2} (0x80) (Bits=3)
+# 0xe7  HD=5  len=1  Example: Len=2 0xe7 {0} (0x94) (Bits=4)
+# 0xe7  HD=6  len=1  Example: Len=2 0xe7 {0} (0x94) (Bits=4)
+# 0xe7  HD=7  len=1  Example: Len=2 0xe7 {0} (0x94) (Bits=4)
+# 0xe7  HD=8  NONE  Example: Len=1 0xe7 {0} (0xe7) (Bits=7)
+0xe7 {247,19,1,1,1}

@@ -1,0 +1,6 @@
+# 0xd3  HD=3  len=119  Example: Len=120 0xd3 {0} (0x80) (Bits=2)
+# 0xd3  HD=4  len=119  Example: Len=120 0xd3 {0} (0x80) (Bits=2)
+# 0xd3  HD=5  len=3  Example: Len=4 0xd3 {0,1} (0xa0) (Bits=4)
+# 0xd3  HD=6  len=3  Example: Len=4 0xd3 {0,1} (0xa0) (Bits=4)
+# 0xd3  HD=7  NONE  Example: Len=1 0xd3 {0} (0xd3) (Bits=6)
+0xd3 {119,119,3,3}

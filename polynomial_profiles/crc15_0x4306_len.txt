@@ -1,0 +1,6 @@
+# 0x4306  HD=3  len=16368  Example: Len=16369 0x4306 {0} (0x4000) (Bits=2)
+# 0x4306  HD=4  len=16368  Example: Len=16369 0x4306 {0} (0x4000) (Bits=2)
+# 0x4306  HD=5  len=68  Example: Len=69 0x4306 {0,28} (0x6000) (Bits=4)
+# 0x4306  HD=6  len=68  Example: Len=69 0x4306 {0,28} (0x6000) (Bits=4)
+# 0x4306  HD=7  NONE  Example: Len=1 0x4306 {0} (0x4306) (Bits=6)
+0x4306 {16368,16368,68,68}

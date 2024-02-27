@@ -1,0 +1,5 @@
+# 0xa6  HD=3  len=247  Example: Len=248 0xa6 {0} (0x80) (Bits=2)
+# 0xa6  HD=4  len=15  Example: Len=16 0xa6 {0,1} (0x80) (Bits=3)
+# 0xa6  HD=5  len=6  Example: Len=7 0xa6 {0,5} (0xc0) (Bits=4)
+# 0xa6  HD=6  NONE  Example: Len=1 0xa6 {0} (0xa6) (Bits=5)
+0xa6 {247,15,6}

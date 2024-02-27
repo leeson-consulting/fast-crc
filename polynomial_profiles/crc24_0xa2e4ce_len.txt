@@ -1,0 +1,13 @@
+# 0xa2e4ce  HD=3  len=16777191  Example: Len=16777192 0xa2e4ce {0} (0x800000) (Bits=2)
+# 0xa2e4ce  HD=4  len=2562  Example: Len=2563 0xa2e4ce {0,2447} (0x800000) (Bits=3)
+# 0xa2e4ce  HD=5  len=457  Example: Len=458 0xa2e4ce {0,213,412} (0x800000) (Bits=4)
+# 0xa2e4ce  HD=6  len=248  Example: Len=249 0xa2e4ce {0,115,156,244} (0x800000) (Bits=5)
+# 0xa2e4ce  HD=7  len=70  Example: Len=71 0xa2e4ce {0,55} (0x804204) (Bits=6)
+# 0xa2e4ce  HD=8  len=30  Example: Len=31 0xa2e4ce {0,8,12,13,19} (0x810000) (Bits=7)
+# 0xa2e4ce  HD=9  len=11  Example: Len=12 0xa2e4ce {0,2,5} (0x8180c0) (Bits=8)
+# 0xa2e4ce  HD=10  len=9  Example: Len=10 0xa2e4ce {0} (0xf00981) (Bits=9)
+# 0xa2e4ce  HD=11  len=9  Example: Len=10 0xa2e4ce {0} (0xf00981) (Bits=9)
+# 0xa2e4ce  HD=12  len=6  Example: Len=7 0xa2e4ce {0,3,5} (0xaa4111) (Bits=11)
+# 0xa2e4ce  HD=13  len=4  Example: Len=5 0xa2e4ce {0,4} (0xd101d6) (Bits=12)
+# 0xa2e4ce  HD=14  NONE  Example: Len=1 0xa2e4ce {0} (0xa2e4ce) (Bits=13)
+0xa2e4ce {16777191,2562,457,248,70,30,11,9,9,6,4}

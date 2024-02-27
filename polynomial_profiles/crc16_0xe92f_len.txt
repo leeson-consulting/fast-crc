@@ -1,0 +1,11 @@
+# 0xe92f  HD=3  len=89  Example: Len=90 0xe92f {0} (0x8000) (Bits=2)
+# 0xe92f  HD=4  len=9  Example: Len=10 0xe92f {0,5} (0x8000) (Bits=3)
+# 0xe92f  HD=5  len=9  Example: Len=10 0xe92f {0,5} (0x8000) (Bits=3)
+# 0xe92f  HD=6  len=9  Example: Len=10 0xe92f {0,5} (0x8000) (Bits=3)
+# 0xe92f  HD=7  len=9  Example: Len=10 0xe92f {0,5} (0x8000) (Bits=3)
+# 0xe92f  HD=8  len=9  Example: Len=10 0xe92f {0,5} (0x8000) (Bits=3)
+# 0xe92f  HD=9  len=6  Example: Len=7 0xe92f {0,1} (0x908e) (Bits=8)
+# 0xe92f  HD=10  len=3  Example: Len=4 0xe92f {0,3} (0xce41) (Bits=9)
+# 0xe92f  HD=11  len=1  Example: Len=2 0xe92f {0} (0x9db8) (Bits=10)
+# 0xe92f  HD=12  NONE  Example: Len=1 0xe92f {0} (0xe92f) (Bits=11)
+0xe92f {89,9,9,9,9,9,6,3,1}

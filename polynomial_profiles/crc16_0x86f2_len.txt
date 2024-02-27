@@ -1,0 +1,9 @@
+# 0x86f2  HD=3  len=65519  Example: Len=65520 0x86f2 {0} (0x8000) (Bits=2)
+# 0x86f2  HD=4  len=83  Example: Len=84 0x86f2 {0,2} (0x8000) (Bits=3)
+# 0x86f2  HD=5  len=53  Example: Len=54 0x86f2 {0,30,45} (0x8000) (Bits=4)
+# 0x86f2  HD=6  len=40  Example: Len=41 0x86f2 {0,12} (0x8090) (Bits=5)
+# 0x86f2  HD=7  len=6  Example: Len=7 0x86f2 {0,1,2,6} (0x9000) (Bits=6)
+# 0x86f2  HD=8  len=6  Example: Len=7 0x86f2 {0,1,2,6} (0x9000) (Bits=6)
+# 0x86f2  HD=9  len=5  Example: Len=6 0x86f2 {0} (0xd162) (Bits=8)
+# 0x86f2  HD=10  NONE  Example: Len=1 0x86f2 {0} (0x86f2) (Bits=9)
+0x86f2 {65519,83,53,40,6,6,5}

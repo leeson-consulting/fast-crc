@@ -1,0 +1,7 @@
+# 0xa33  HD=3  len=4083  Example: Len=4084 0xa33 {0} (0x800) (Bits=2)
+# 0xa33  HD=4  len=149  Example: Len=150 0xa33 {0,107} (0x800) (Bits=3)
+# 0xa33  HD=5  len=10  Example: Len=11 0xa33 {0,1,10} (0x800) (Bits=4)
+# 0xa33  HD=6  len=6  Example: Len=7 0xa33 {0,5} (0x980) (Bits=5)
+# 0xa33  HD=7  len=6  Example: Len=7 0xa33 {0,5} (0x980) (Bits=5)
+# 0xa33  HD=8  NONE  Example: Len=1 0xa33 {0} (0xa33) (Bits=7)
+0xa33 {4083,149,10,6,6}

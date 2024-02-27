@@ -1,0 +1,9 @@
+# 0xbae  HD=3  len=53  Example: Len=54 0xbae {0} (0x800) (Bits=2)
+# 0xbae  HD=4  len=53  Example: Len=54 0xbae {0} (0x800) (Bits=2)
+# 0xbae  HD=5  len=53  Example: Len=54 0xbae {0} (0x800) (Bits=2)
+# 0xbae  HD=6  len=10  Example: Len=11 0xbae {0} (0x894) (Bits=5)
+# 0xbae  HD=7  len=2  Example: Len=3 0xbae {0} (0x945) (Bits=6)
+# 0xbae  HD=8  len=2  Example: Len=3 0xbae {0} (0x945) (Bits=6)
+# 0xbae  HD=9  len=2  Example: Len=3 0xbae {0} (0x945) (Bits=6)
+# 0xbae  HD=10  NONE  Example: Len=1 0xbae {0} (0xbae) (Bits=9)
+0xbae {53,53,53,10,2,2,2}

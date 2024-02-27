@@ -1,0 +1,8 @@
+# 0x8f3  HD=3  len=2035  Example: Len=2036 0x8f3 {0} (0x800) (Bits=2)
+# 0x8f3  HD=4  len=2035  Example: Len=2036 0x8f3 {0} (0x800) (Bits=2)
+# 0x8f3  HD=5  len=25  Example: Len=26 0x8f3 {0,3,4} (0x800) (Bits=4)
+# 0x8f3  HD=6  len=25  Example: Len=26 0x8f3 {0,3,4} (0x800) (Bits=4)
+# 0x8f3  HD=7  len=1  Example: Len=2 0x8f3 {0} (0xc8a) (Bits=6)
+# 0x8f3  HD=8  len=1  Example: Len=2 0x8f3 {0} (0xc8a) (Bits=6)
+# 0x8f3  HD=9  NONE  Example: Len=1 0x8f3 {0} (0x8f3) (Bits=8)
+0x8f3 {2035,2035,25,25,1,1}

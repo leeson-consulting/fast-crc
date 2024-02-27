@@ -1,0 +1,5 @@
+# 0x8d  HD=3  len=43  Example: Len=44 0x8d {0} (0x80) (Bits=2)
+# 0x8d  HD=4  len=26  Example: Len=27 0x8d {0,17} (0x80) (Bits=3)
+# 0x8d  HD=5  len=5  Example: Len=6 0x8d {0,5} (0x90) (Bits=4)
+# 0x8d  HD=6  NONE  Example: Len=1 0x8d {0} (0x8d) (Bits=5)
+0x8d {43,26,5}

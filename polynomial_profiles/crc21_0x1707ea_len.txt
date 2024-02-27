@@ -1,0 +1,13 @@
+# 0x1707ea  HD=3  len=2097130  Example: Len=2097131 0x1707ea {0} (0x100000) (Bits=2)
+# 0x1707ea  HD=4  len=8525  Example: Len=8526 0x1707ea {0,4279} (0x100000) (Bits=3)
+# 0x1707ea  HD=5  len=222  Example: Len=223 0x1707ea {0,133,161} (0x100000) (Bits=4)
+# 0x1707ea  HD=6  len=68  Example: Len=69 0x1707ea {0,30,35,39} (0x100000) (Bits=5)
+# 0x1707ea  HD=7  len=25  Example: Len=26 0x1707ea {0,2,18,25} (0x100010) (Bits=6)
+# 0x1707ea  HD=8  len=15  Example: Len=16 0x1707ea {0,9} (0x114102) (Bits=7)
+# 0x1707ea  HD=9  len=2  Example: Len=3 0x1707ea {0} (0x12c610) (Bits=8)
+# 0x1707ea  HD=10  len=2  Example: Len=3 0x1707ea {0} (0x12c610) (Bits=8)
+# 0x1707ea  HD=11  len=2  Example: Len=3 0x1707ea {0} (0x12c610) (Bits=8)
+# 0x1707ea  HD=12  len=2  Example: Len=3 0x1707ea {0} (0x12c610) (Bits=8)
+# 0x1707ea  HD=13  len=1  Example: Len=2 0x1707ea {0,1} (0x1c841f) (Bits=12)
+# 0x1707ea  HD=14  NONE  Example: Len=1 0x1707ea {0} (0x1707ea) (Bits=13)
+0x1707ea {2097130,8525,222,68,25,15,2,2,2,2,1}

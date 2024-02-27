@@ -1,0 +1,7 @@
+# 0x14f  HD=3  len=75  Example: Len=76 0x14f {0} (0x100) (Bits=2)
+# 0x14f  HD=4  len=11  Example: Len=12 0x14f {0,4} (0x100) (Bits=3)
+# 0x14f  HD=5  len=9  Example: Len=10 0x14f {0,9} (0x120) (Bits=4)
+# 0x14f  HD=6  len=4  Example: Len=5 0x14f {0,1,4} (0x108) (Bits=5)
+# 0x14f  HD=7  len=1  Example: Len=2 0x14f {0} (0x1e8) (Bits=6)
+# 0x14f  HD=8  NONE  Example: Len=1 0x14f {0} (0x14f) (Bits=7)
+0x14f {75,11,9,4,1}

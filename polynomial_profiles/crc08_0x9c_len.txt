@@ -1,0 +1,5 @@
+# 0x9c  HD=3  len=9  Example: Len=10 0x9c {0} (0x80) (Bits=2)
+# 0x9c  HD=4  len=9  Example: Len=10 0x9c {0} (0x80) (Bits=2)
+# 0x9c  HD=5  len=9  Example: Len=10 0x9c {0} (0x80) (Bits=2)
+# 0x9c  HD=6  NONE  Example: Len=1 0x9c {0} (0x9c) (Bits=5)
+0x9c {9,9,9}

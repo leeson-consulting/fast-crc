@@ -1,0 +1,6 @@
+# 0x1001b  HD=3  len=65518  Example: Len=65519 0x1001b {0} (0x10000) (Bits=2)
+# 0x1001b  HD=4  len=65518  Example: Len=65519 0x1001b {0} (0x10000) (Bits=2)
+# 0x1001b  HD=5  len=52  Example: Len=53 0x1001b {0,19,20} (0x10000) (Bits=4)
+# 0x1001b  HD=6  len=52  Example: Len=53 0x1001b {0,19,20} (0x10000) (Bits=4)
+# 0x1001b  HD=7  NONE  Example: Len=1 0x1001b {0} (0x1001b) (Bits=6)
+0x1001b {65518,65518,52,52}

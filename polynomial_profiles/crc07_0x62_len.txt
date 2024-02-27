@@ -1,0 +1,4 @@
+# 0x62  HD=3  len=56  Example: Len=57 0x62 {0} (0x40) (Bits=2)
+# 0x62  HD=4  len=56  Example: Len=57 0x62 {0} (0x40) (Bits=2)
+# 0x62  HD=5  NONE  Example: Len=1 0x62 {0} (0x62) (Bits=4)
+0x62 {56,56}

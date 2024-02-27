@@ -1,0 +1,10 @@
+# 0x3df  HD=3  len=501  Example: Len=502 0x3df {0} (0x200) (Bits=2)
+# 0x3df  HD=4  len=501  Example: Len=502 0x3df {0} (0x200) (Bits=2)
+# 0x3df  HD=5  len=1  Example: Len=2 0x3df {0} (0x230) (Bits=4)
+# 0x3df  HD=6  len=1  Example: Len=2 0x3df {0} (0x230) (Bits=4)
+# 0x3df  HD=7  len=1  Example: Len=2 0x3df {0} (0x230) (Bits=4)
+# 0x3df  HD=8  len=1  Example: Len=2 0x3df {0} (0x230) (Bits=4)
+# 0x3df  HD=9  len=1  Example: Len=2 0x3df {0} (0x230) (Bits=4)
+# 0x3df  HD=10  len=1  Example: Len=2 0x3df {0} (0x230) (Bits=4)
+# 0x3df  HD=11  NONE  Example: Len=1 0x3df {0} (0x3df) (Bits=10)
+0x3df {501,501,1,1,1,1,1,1}

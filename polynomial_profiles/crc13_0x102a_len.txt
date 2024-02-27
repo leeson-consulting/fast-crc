@@ -1,0 +1,5 @@
+# 0x102a  HD=3  len=2542  Example: Len=2543 0x102a {0} (0x1000) (Bits=2)
+# 0x102a  HD=4  len=2542  Example: Len=2543 0x102a {0} (0x1000) (Bits=2)
+# 0x102a  HD=5  len=2  Example: Len=3 0x102a {0} (0x1420) (Bits=4)
+# 0x102a  HD=6  NONE  Example: Len=1 0x102a {0} (0x102a) (Bits=5)
+0x102a {2542,2542,2}

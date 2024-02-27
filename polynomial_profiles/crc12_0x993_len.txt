@@ -1,0 +1,7 @@
+# 0x993  HD=3  len=498  Example: Len=499 0x993 {0} (0x800) (Bits=2)
+# 0x993  HD=4  len=74  Example: Len=75 0x993 {0,16} (0x800) (Bits=3)
+# 0x993  HD=5  len=24  Example: Len=25 0x993 {0,5} (0x810) (Bits=4)
+# 0x993  HD=6  len=8  Example: Len=9 0x993 {0} (0xa0a) (Bits=5)
+# 0x993  HD=7  len=8  Example: Len=9 0x993 {0} (0xa0a) (Bits=5)
+# 0x993  HD=8  NONE  Example: Len=1 0x993 {0} (0x993) (Bits=7)
+0x993 {498,74,24,8,8}

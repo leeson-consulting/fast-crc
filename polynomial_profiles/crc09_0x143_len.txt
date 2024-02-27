@@ -1,0 +1,5 @@
+# 0x143  HD=3  len=502  Example: Len=503 0x143 {0} (0x100) (Bits=2)
+# 0x143  HD=4  len=10  Example: Len=11 0x143 {0,8} (0x100) (Bits=3)
+# 0x143  HD=5  len=10  Example: Len=11 0x143 {0,8} (0x100) (Bits=3)
+# 0x143  HD=6  NONE  Example: Len=1 0x143 {0} (0x143) (Bits=5)
+0x143 {502,10,10}

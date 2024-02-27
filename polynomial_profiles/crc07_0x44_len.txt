@@ -1,0 +1,3 @@
+# 0x44  HD=3  len=120  Example: Len=121 0x44 {0} (0x40) (Bits=2)
+# 0x44  HD=4  NONE  Example: Len=1 0x44 {0} (0x44) (Bits=3)
+0x44 {120}
