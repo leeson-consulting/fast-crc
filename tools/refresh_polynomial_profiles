@@ -41,7 +41,6 @@ EOF
 
   # 2. Collect profile data
   #
-  mkdir -p 
 
   for (( i=3 ; i<=64 ; i++ )) ; do
     printf -v width "%02d" "$i"
