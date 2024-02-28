@@ -90,10 +90,13 @@ function convert_hamming_lengths_to_json()
 
 ###############################################################################
 
-function convert_polynomial_profiles_to_json()
+function make_polynomial_db()
 {
   local polynomial_root="${1}"
   local profiles="${polynomial_root}/profiles"
+  local polynomials_db="${polynomial_root}/polynomial_db.js"
+
+  echo "polynomials = [" > "${polynomials_db}"
 
   mkdir -p "${profiles}"
 
@@ -122,9 +125,12 @@ function convert_polynomial_profiles_to_json()
 }
 EOF
 
-  echo -n "${profile_json_data}" > "${profiles}/${identity}_profile.json"
+    echo -n "${profile_json_data}" > "${profiles}/${identity}_profile.json"
+    echo -n "${profile_json_data}," >> "${polynomials_db}"
 
   done < <(find "$polynomial_root/raw_profiles" -type f -iname \*_len.txt)
+
+  echo "];" >> "${polynomials_db}"
 }
 
 ###############################################################################
@@ -156,8 +162,9 @@ function main()
   fi
 
   # 3. Convert profile txt data current JSON schema
+  #    and concantenate the results to form a primitive JS database.
 
-  convert_polynomial_profiles_to_json "$polynomial_root"
+  make_polynomial_db "$polynomial_root"
 }
 
 ###############################################################################
