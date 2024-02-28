@@ -8661,7 +8661,6 @@ function Create_PolynomialDatabase(polynomials)
 
     if (constraints === null || constraints === undefined || constraints.HD === undefined) {
       constraints = {'HD' : 3, 'len_bytes' : 0, 'degree' : 64}
-      console.log("here");
     }
 
     if (constraints.len_bytes === undefined) {
@@ -8696,9 +8695,21 @@ function Create_PolynomialDatabase(polynomials)
 
     var candidates_final = [];
 
+    var degree_ok;
+
+    if (Array.isArray(constraints.degree)) {
+      degree_ok = function(candidate) {
+        return constraints.degree.indexOf(candidate.identity.degree) !== -1;
+      };
+    } else {
+      degree_ok = function(candidate) {
+        return candidate.identity.degree <= constraints.degree;
+      };
+    }
+
     for (candidate of candidates_min_len_bytes) {
 
-      if (candidate.identity.degree > constraints.degree) {
+      if (!degree_ok(candidate)) {
         continue;
       }
 
@@ -8709,6 +8720,14 @@ function Create_PolynomialDatabase(polynomials)
     if (candidates_final.length === 0) {
       return null;
     }
+
+    candidates_final.sort(function predicate(a, b){
+      if (a.identity.degree != b.identity.degree) {
+        return a.identity.degree - b.identity.degree
+      }
+
+      return b.profile.HD[constraints.HD] - a.profile.HD[constraints.HD];
+    });
 
     return candidates_final;
   }
