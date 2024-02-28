@@ -96,7 +96,7 @@ function make_polynomial_db()
   local profiles="${polynomial_root}/profiles"
   local all_polynomials="${polynomial_root}/all_polynomials.js"
 
-  echo "polynomials = [" > "${all_polynomials}"
+  echo "var polynomials = [" > "${all_polynomials}"
 
   mkdir -p "${profiles}"
 
@@ -138,7 +138,7 @@ EOF
 
   mapfile -d '' polynomial_db << EOF
 
-var polynomials = $(cat ${all_polynomials});
+$(cat ${all_polynomials});
 
 ///////////////////////////////////////////////////////////////////////////////
 //
