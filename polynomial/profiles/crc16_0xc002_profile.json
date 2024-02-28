@@ -1,0 +1,13 @@
+{
+  "identity" : {
+    "polynomial" : "x^16 + x^15 + x^2 + 1",
+    "degree"     : 16,
+    "explicit"   : "0x18005",
+    "koopman"    : "0xC002",
+    "normal"     : "0x8005"
+  },
+  "profile" : {
+    "record" : "# The 0x8005 16 polynomial in normal notation is the bit-reversed equivalent of the 0xa001 polynomial in Koopman notation. # # 0x8005 is widely referred to in Greg Cook's CRC catalogue in terms of algorithms using non-reversed inputs. # However Philip Koopman lists 0x8005 as a reversed polynomial in his CRC Zoo. # # In order to keep the peace, I've elected to duplicate the 0xa001 Hamming Profile here. # 0x8005 {32751,32751}",
+    "HD"     : [null, null, null, 32751, 32751]
+  }
+}
