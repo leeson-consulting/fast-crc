@@ -242,6 +242,14 @@ function Create_PolynomialDatabase(polynomials)
       return null;
     }
 
+    candidates_final.sort(function predicate(a, b){
+      if (a.identity.degree != b.identity.degree) {
+        return a.identity.degree - b.identity.degree
+      }
+
+      return b.profile.HD[constraints.HD] - a.profile.HD[constraints.HD];
+    });
+
     return candidates_final;
   }
 
