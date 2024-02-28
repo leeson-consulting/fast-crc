@@ -94,11 +94,13 @@ function make_polynomial_db()
 {
   local polynomial_root="${1}"
   local profiles="${polynomial_root}/profiles"
-  local polynomials_db="${polynomial_root}/polynomial_db.js"
+  local all_polynomials="${polynomial_root}/all_polynomials.js"
 
-  echo "polynomials = [" > "${polynomials_db}"
+  echo "polynomials = [" > "${all_polynomials}"
 
   mkdir -p "${profiles}"
+
+  # 1. Convert raw polynomial profile data to JSON
 
   while read -r profile_txt ; do
     local profile_path="${profile_txt%/*}"
@@ -126,11 +128,138 @@ function make_polynomial_db()
 EOF
 
     echo -n "${profile_json_data}" > "${profiles}/${identity}_profile.json"
-    echo -n "${profile_json_data}," >> "${polynomials_db}"
+    echo -n "${profile_json_data}," >> "${all_polynomials}"
 
   done < <(find "$polynomial_root/raw_profiles" -type f -iname \*_len.txt)
 
-  echo "];" >> "${polynomials_db}"
+  echo "];" >> "${all_polynomials}"
+
+  # 2. Make a primitive JS polynomial database
+
+  mapfile -d '' polynomial_db << EOF
+
+var polynomials = $(cat ${all_polynomials});
+
+///////////////////////////////////////////////////////////////////////////////
+//
+// Database Constructor
+//
+
+function Create_PolynomialDatabase(polynomials)
+{
+  var db = {};
+
+  db.degree = (function extract_polys_by_degree() {
+    var degree = []
+
+    for (i = 0 ; i <= 64 ; i++) {
+      degree[i] = null;
+    }
+
+    for (poly of polynomials) {
+      if (degree[poly.identity.degree] === null) {
+        degree[poly.identity.degree] = [ poly ];
+      } else {
+        degree[poly.identity.degree].push(poly);
+      }
+    }
+
+    return degree;
+  })();
+
+  db.HD = (function extract_polys_by_hd() {
+    var HD = []
+
+    for (i = 0 ; i <= 32 ; i++) {
+      HD[i] = null;
+    }
+
+    for (poly of polynomials) {
+
+      for (i = 3 ; i < poly.profile.HD.length ; i++) {
+        if (HD[i] === null) {
+          HD[i] = [ poly ];
+        } else {
+          HD[i].push(poly);
+        }
+      }
+
+    }
+
+    return HD;
+  })();
+
+  db.find = function(constraints) {
+
+    if (constraints === null || constraints === undefined || constraints.HD === undefined) {
+      constraints = {'HD' : 3, 'len_bytes' : 0, 'degree' : 64}
+      console.log("here");
+    }
+
+    if (constraints.len_bytes === undefined) {
+      constraints.len_bytes = 0
+    }
+
+    if (constraints.degree === undefined) {
+      constraints.degree = 64
+    }
+
+    var candidates_min_hd = db['HD'][constraints.HD];
+
+    if (candidates_min_hd === undefined || candidates_min_hd === null || candidates_min_hd.length === 0) {
+      return null;
+    }
+
+    var candidates_min_len_bytes = [];
+
+    for (candidate of candidates_min_hd) {
+
+      if (candidate.profile.HD[constraints.HD] / 8 < constraints.len_bytes) {
+        continue;
+      }
+
+      candidates_min_len_bytes.push(candidate);
+
+    }
+
+    if (candidates_min_len_bytes.length === 0) {
+      return null;
+    }
+
+    var candidates_final = [];
+
+    for (candidate of candidates_min_len_bytes) {
+
+      if (candidate.identity.degree > constraints.degree) {
+        continue;
+      }
+
+      candidates_final.push(candidate);
+
+    }
+
+    if (candidates_final.length === 0) {
+      return null;
+    }
+
+    return candidates_final;
+  }
+
+  return db;
+}
+
+var poly_db = Create_PolynomialDatabase(polynomials);
+
+console.log("Try these queries to get you started:\n");
+console.log("");
+console.log("poly_db.find({'HD' : 6});");
+console.log("poly_db.find({'HD' : 6, 'len_bytes' : 1000});");
+console.log("poly_db.find({'HD' : 6, 'len_bytes' : 13, 'degree' : 16});");
+console.log("poly_db.find({'HD' : 4, 'len_bytes' : 200, 'degree' : 12});");
+
+EOF
+
+  echo -n "${polynomial_db}" > "${polynomial_root}/polynomial_db.js"
 }
 
 ###############################################################################
