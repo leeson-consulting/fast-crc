@@ -137,7 +137,7 @@ function main()
 
   # 1. Setup polynomial_root
 
-  local polynomial_root="${1:-${REPO_ROOT}/polynomial}"
+  local polynomial_root="${1:-${REPO_ROOT}/db/polynomial}"
   local collect_profile_data='No'
 
   if [[ "${2}" == '-cpd' || "${2}" == '--collect-profile-data' ]] ; then
