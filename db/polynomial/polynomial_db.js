@@ -1,5 +1,5 @@
 
-var polynomials = polynomials = [
+var polynomials = [
 {
   "identity" : {
     "polynomial" : "x^26 + x^24 + x^21 + x^19 + x^16 + x^15 + x^14 + x^13 + x^11 + x^10 + x^9 + x^8 + x^5 + x^4 + x^3 + x^2 + 1",
