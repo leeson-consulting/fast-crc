@@ -8726,7 +8726,17 @@ function Create_PolynomialDatabase(polynomials)
         return a.identity.degree - b.identity.degree
       }
 
-      return b.profile.HD[constraints.HD] - a.profile.HD[constraints.HD];
+      var max_common_hd = (a.profile.HD.length < b.profile.HD.length ? a.profile.HD.length : b.profile.HD.length) - 1;
+
+      for (hd = constraints.HD ; hd <= max_common_hd ; hd++) {
+        if (a.profile.HD[hd] == b.profile.HD[hd]) {
+          continue;
+        }
+
+        return b.profile.HD[hd] - a.profile.HD[hd];
+      }
+
+      return b.profile.HD.length - a.profile.HD.length;
     });
 
     return candidates_final;
