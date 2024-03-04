@@ -1,13 +1,22 @@
 {
-  "identity" : {
+  "id" : {
     "polynomial" : "x^28 + x^27 + x^25 + x^24 + x^23 + x^22 + x^12 + x^10 + x^6 + x^3 + x^2 + x^1 + 1",
     "degree"     : 28,
     "explicit"   : "0x1BC0144F",
     "koopman"    : "0xDE00A27",
     "normal"     : "0xBC0144F"
   },
-  "profile" : {
-    "record" : "# 0xde00a27 HD=3 len=268435427 Example: Len=268435428 0xde00a27 {0} (0x8000000) (Bits=2) # 0xde00a27 HD=4 len=10170 Example: Len=10171 0xde00a27 {0,6309} (0x8000000) (Bits=3) # 0xde00a27 HD=5 len=1075 Example: Len=1076 0xde00a27 {0,374,812} (0x8000000) (Bits=4) # 0xde00a27 HD=6 len=147 Example: Len=148 0xde00a27 {0,33,77,86} (0x8000000) (Bits=5) # 0xde00a27 HD=7 len=115 Example: Len=116 0xde00a27 {0,23,76,83,90} (0x8000000) (Bits=6) # 0xde00a27 HD=8 len=34 Example: Len=35 0xde00a27 {0,12,33} (0x8a08000) (Bits=7) # 0xde00a27 HD=9 len=34 Example: Len=35 0xde00a27 {0,12,33} (0x8a08000) (Bits=7) # 0xde00a27 HD=10 len=33 Example: Len=34 0xde00a27 {0,16,30,32} (0x8100380) (Bits=9) # 0xde00a27 HD=11 len=16 Example: Len=17 0xde00a27 {0} (0x84641a2) (Bits=10) # 0xde00a27 HD=12 len=4 Example: Len=5 0xde00a27 {0} (0xc820bc1) (Bits=11) # 0xde00a27 HD=13 len=1 Example: Len=2 0xde00a27 {0} (0xb100f34) (Bits=12) # 0xde00a27 HD=14 NONE Example: Len=1 0xde00a27 {0} (0xde00a27) (Bits=13) 0xde00a27 {268435427,10170,1075,147,115,34,34,33,16,4,1}",
-    "HD"     : [null, null, null, 268435427, 10170,1075,147,115,34,34,33,16,4,1]
-  }
+  "hd" :     [null, null, null,
+    /* 3 */ { "bits"    : 268435427, "bytes"   : 33554428 },
+    /* 4 */ { "bits"    : 10170, "bytes"   : 1271 },
+    /* 5 */ { "bits"    : 1075, "bytes"   : 134 },
+    /* 6 */ { "bits"    : 147, "bytes"   : 18 },
+    /* 7 */ { "bits"    : 115, "bytes"   : 14 },
+    /* 8 */ { "bits"    : 34, "bytes"   : 4 },
+    /* 9 */ { "bits"    : 34, "bytes"   : 4 },
+    /* 10 */ { "bits"    : 33, "bytes"   : 4 },
+    /* 11 */ { "bits"    : 16, "bytes"   : 2 },
+    /* 12 */ { "bits"    : 4, "bytes"   : 0 },
+    /* 13 */ { "bits"    : 1, "bytes"   : 0 }
+  ],
 }

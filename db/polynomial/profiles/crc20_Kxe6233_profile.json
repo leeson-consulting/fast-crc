@@ -1,13 +1,20 @@
 {
-  "identity" : {
+  "id" : {
     "polynomial" : "x^20 + x^19 + x^18 + x^15 + x^14 + x^10 + x^6 + x^5 + x^2 + x^1 + 1",
     "degree"     : 20,
     "explicit"   : "0x1CC467",
     "koopman"    : "0xE6233",
     "normal"     : "0xCC467"
   },
-  "profile" : {
-    "record" : "# 0xe6233 HD=3 len=13 Example: Len=14 0xe6233 {0} (0x80000) (Bits=2) # 0xe6233 HD=4 len=13 Example: Len=14 0xe6233 {0} (0x80000) (Bits=2) # 0xe6233 HD=5 len=13 Example: Len=14 0xe6233 {0} (0x80000) (Bits=2) # 0xe6233 HD=6 len=13 Example: Len=14 0xe6233 {0} (0x80000) (Bits=2) # 0xe6233 HD=7 len=13 Example: Len=14 0xe6233 {0} (0x80000) (Bits=2) # 0xe6233 HD=8 len=13 Example: Len=14 0xe6233 {0} (0x80000) (Bits=2) # 0xe6233 HD=9 len=13 Example: Len=14 0xe6233 {0} (0x80000) (Bits=2) # 0xe6233 HD=10 len=13 Example: Len=14 0xe6233 {0} (0x80000) (Bits=2) # 0xe6233 HD=11 len=1 Example: Len=2 0xe6233 {0} (0x9532a) (Bits=10) # 0xe6233 HD=12 NONE Example: Len=1 0xe6233 {0} (0xe6233) (Bits=11) 0xe6233 {13,13,13,13,13,13,13,13,1}",
-    "HD"     : [null, null, null, 13, 13,13,13,13,13,13,13,1]
-  }
+  "hd" :     [null, null, null,
+    /* 3 */ { "bits"    : 13, "bytes"   : 1 },
+    /* 4 */ { "bits"    : 13, "bytes"   : 1 },
+    /* 5 */ { "bits"    : 13, "bytes"   : 1 },
+    /* 6 */ { "bits"    : 13, "bytes"   : 1 },
+    /* 7 */ { "bits"    : 13, "bytes"   : 1 },
+    /* 8 */ { "bits"    : 13, "bytes"   : 1 },
+    /* 9 */ { "bits"    : 13, "bytes"   : 1 },
+    /* 10 */ { "bits"    : 13, "bytes"   : 1 },
+    /* 11 */ { "bits"    : 1, "bytes"   : 0 }
+  ],
 }

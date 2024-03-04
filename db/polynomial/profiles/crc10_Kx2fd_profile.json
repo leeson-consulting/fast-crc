@@ -1,13 +1,18 @@
 {
-  "identity" : {
+  "id" : {
     "polynomial" : "x^10 + x^8 + x^7 + x^6 + x^5 + x^4 + x^3 + x^1 + 1",
     "degree"     : 10,
     "explicit"   : "0x5FB",
     "koopman"    : "0x2FD",
     "normal"     : "0x1FB"
   },
-  "profile" : {
-    "record" : "# 0x2fd HD=3 len=1013 Example: Len=1014 0x2fd {0} (0x200) (Bits=2) # 0x2fd HD=4 len=16 Example: Len=17 0x2fd {0,3} (0x200) (Bits=3) # 0x2fd HD=5 len=16 Example: Len=17 0x2fd {0,3} (0x200) (Bits=3) # 0x2fd HD=6 len=5 Example: Len=6 0x2fd {0,2} (0x304) (Bits=5) # 0x2fd HD=7 len=1 Example: Len=2 0x2fd {0} (0x383) (Bits=6) # 0x2fd HD=8 len=1 Example: Len=2 0x2fd {0} (0x383) (Bits=6) # 0x2fd HD=9 len=1 Example: Len=2 0x2fd {0} (0x383) (Bits=6) # 0x2fd HD=10 NONE Example: Len=1 0x2fd {0} (0x2fd) (Bits=9) 0x2fd {1013,16,16,5,1,1,1}",
-    "HD"     : [null, null, null, 1013, 16,16,5,1,1,1]
-  }
+  "hd" :     [null, null, null,
+    /* 3 */ { "bits"    : 1013, "bytes"   : 126 },
+    /* 4 */ { "bits"    : 16, "bytes"   : 2 },
+    /* 5 */ { "bits"    : 16, "bytes"   : 2 },
+    /* 6 */ { "bits"    : 5, "bytes"   : 0 },
+    /* 7 */ { "bits"    : 1, "bytes"   : 0 },
+    /* 8 */ { "bits"    : 1, "bytes"   : 0 },
+    /* 9 */ { "bits"    : 1, "bytes"   : 0 }
+  ],
 }

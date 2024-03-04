@@ -1,13 +1,23 @@
 {
-  "identity" : {
+  "id" : {
     "polynomial" : "x^21 + x^16 + x^15 + x^13 + x^12 + x^11 + x^10 + x^9 + x^8 + x^4 + x^3 + x^2 + x^1 + 1",
     "degree"     : 21,
     "explicit"   : "0x21BF1F",
     "koopman"    : "0x10DF8F",
     "normal"     : "0x1BF1F"
   },
-  "profile" : {
-    "record" : "# 0x10df8f HD=3 len=1048554 Example: Len=1048555 0x10df8f {0} (0x100000) (Bits=2) # 0x10df8f HD=4 len=1048554 Example: Len=1048555 0x10df8f {0} (0x100000) (Bits=2) # 0x10df8f HD=5 len=370 Example: Len=371 0x10df8f {0,49,233} (0x100000) (Bits=4) # 0x10df8f HD=6 len=370 Example: Len=371 0x10df8f {0,49,233} (0x100000) (Bits=4) # 0x10df8f HD=7 len=26 Example: Len=27 0x10df8f {0,8,24,25} (0x100010) (Bits=6) # 0x10df8f HD=8 len=26 Example: Len=27 0x10df8f {0,8,24,25} (0x100010) (Bits=6) # 0x10df8f HD=9 len=1 Example: Len=2 0x10df8f {0} (0x18b048) (Bits=8) # 0x10df8f HD=10 len=1 Example: Len=2 0x10df8f {0} (0x18b048) (Bits=8) # 0x10df8f HD=11 len=1 Example: Len=2 0x10df8f {0} (0x18b048) (Bits=8) # 0x10df8f HD=12 len=1 Example: Len=2 0x10df8f {0} (0x18b048) (Bits=8) # 0x10df8f HD=13 len=1 Example: Len=2 0x10df8f {0} (0x18b048) (Bits=8) # 0x10df8f HD=14 len=1 Example: Len=2 0x10df8f {0} (0x18b048) (Bits=8) # 0x10df8f HD=15 NONE Example: Len=1 0x10df8f {0} (0x10df8f) (Bits=14) 0x10df8f {1048554,1048554,370,370,26,26,1,1,1,1,1,1}",
-    "HD"     : [null, null, null, 1048554, 1048554,370,370,26,26,1,1,1,1,1,1]
-  }
+  "hd" :     [null, null, null,
+    /* 3 */ { "bits"    : 1048554, "bytes"   : 131069 },
+    /* 4 */ { "bits"    : 1048554, "bytes"   : 131069 },
+    /* 5 */ { "bits"    : 370, "bytes"   : 46 },
+    /* 6 */ { "bits"    : 370, "bytes"   : 46 },
+    /* 7 */ { "bits"    : 26, "bytes"   : 3 },
+    /* 8 */ { "bits"    : 26, "bytes"   : 3 },
+    /* 9 */ { "bits"    : 1, "bytes"   : 0 },
+    /* 10 */ { "bits"    : 1, "bytes"   : 0 },
+    /* 11 */ { "bits"    : 1, "bytes"   : 0 },
+    /* 12 */ { "bits"    : 1, "bytes"   : 0 },
+    /* 13 */ { "bits"    : 1, "bytes"   : 0 },
+    /* 14 */ { "bits"    : 1, "bytes"   : 0 }
+  ],
 }

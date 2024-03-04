@@ -1,13 +1,12 @@
 {
-  "identity" : {
+  "id" : {
     "polynomial" : "x^9 + x^4 + 1",
     "degree"     : 9,
     "explicit"   : "0x211",
     "koopman"    : "0x108",
     "normal"     : "0x11"
   },
-  "profile" : {
-    "record" : "# 0x108 HD=3 len=502 Example: Len=503 0x108 {0} (0x100) (Bits=2) # 0x108 HD=4 NONE Example: Len=1 0x108 {0} (0x108) (Bits=3) 0x108 {502}",
-    "HD"     : [null, null, null, 502]
-  }
+  "hd" :     [null, null, null,
+    /* 3 */ { "bits"    : 502, "bytes"   : 62 }
+  ],
 }

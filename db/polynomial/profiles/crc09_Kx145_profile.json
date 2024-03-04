@@ -1,13 +1,14 @@
 {
-  "identity" : {
+  "id" : {
     "polynomial" : "x^9 + x^7 + x^3 + x^1 + 1",
     "degree"     : 9,
     "explicit"   : "0x28B",
     "koopman"    : "0x145",
     "normal"     : "0x8B"
   },
-  "profile" : {
-    "record" : "# 0x145 HD=3 len=146 Example: Len=147 0x145 {0} (0x100) (Bits=2) # 0x145 HD=4 len=146 Example: Len=147 0x145 {0} (0x100) (Bits=2) # 0x145 HD=5 len=4 Example: Len=5 0x145 {0} (0x128) (Bits=4) # 0x145 HD=6 NONE Example: Len=1 0x145 {0} (0x145) (Bits=5) 0x145 {146,146,4}",
-    "HD"     : [null, null, null, 146, 146,4]
-  }
+  "hd" :     [null, null, null,
+    /* 3 */ { "bits"    : 146, "bytes"   : 18 },
+    /* 4 */ { "bits"    : 146, "bytes"   : 18 },
+    /* 5 */ { "bits"    : 4, "bytes"   : 0 }
+  ],
 }

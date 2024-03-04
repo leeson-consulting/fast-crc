@@ -1,13 +1,21 @@
 {
-  "identity" : {
+  "id" : {
     "polynomial" : "x^12 + x^10 + x^9 + x^8 + x^7 + x^6 + x^5 + x^4 + x^3 + x^2 + x^1 + 1",
     "degree"     : 12,
     "explicit"   : "0x17FF",
     "koopman"    : "0xBFF",
     "normal"     : "0x7FF"
   },
-  "profile" : {
-    "record" : "# 0xbff HD=3 len=2035 Example: Len=2036 0xbff {0} (0x800) (Bits=2) # 0xbff HD=4 len=2035 Example: Len=2036 0xbff {0} (0x800) (Bits=2) # 0xbff HD=5 len=1 Example: Len=2 0xbff {0} (0xe00) (Bits=4) # 0xbff HD=6 len=1 Example: Len=2 0xbff {0} (0xe00) (Bits=4) # 0xbff HD=7 len=1 Example: Len=2 0xbff {0} (0xe00) (Bits=4) # 0xbff HD=8 len=1 Example: Len=2 0xbff {0} (0xe00) (Bits=4) # 0xbff HD=9 len=1 Example: Len=2 0xbff {0} (0xe00) (Bits=4) # 0xbff HD=10 len=1 Example: Len=2 0xbff {0} (0xe00) (Bits=4) # 0xbff HD=11 len=1 Example: Len=2 0xbff {0} (0xe00) (Bits=4) # 0xbff HD=12 len=1 Example: Len=2 0xbff {0} (0xe00) (Bits=4) # 0xbff HD=13 NONE Example: Len=1 0xbff {0} (0xbff) (Bits=12) 0xbff {2035,2035,1,1,1,1,1,1,1,1}",
-    "HD"     : [null, null, null, 2035, 2035,1,1,1,1,1,1,1,1]
-  }
+  "hd" :     [null, null, null,
+    /* 3 */ { "bits"    : 2035, "bytes"   : 254 },
+    /* 4 */ { "bits"    : 2035, "bytes"   : 254 },
+    /* 5 */ { "bits"    : 1, "bytes"   : 0 },
+    /* 6 */ { "bits"    : 1, "bytes"   : 0 },
+    /* 7 */ { "bits"    : 1, "bytes"   : 0 },
+    /* 8 */ { "bits"    : 1, "bytes"   : 0 },
+    /* 9 */ { "bits"    : 1, "bytes"   : 0 },
+    /* 10 */ { "bits"    : 1, "bytes"   : 0 },
+    /* 11 */ { "bits"    : 1, "bytes"   : 0 },
+    /* 12 */ { "bits"    : 1, "bytes"   : 0 }
+  ],
 }

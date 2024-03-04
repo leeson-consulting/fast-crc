@@ -1,13 +1,14 @@
 {
-  "identity" : {
+  "id" : {
     "polynomial" : "x^13 + x^6 + x^4 + x^2 + 1",
     "degree"     : 13,
     "explicit"   : "0x2055",
     "koopman"    : "0x102A",
     "normal"     : "0x55"
   },
-  "profile" : {
-    "record" : "# 0x102a HD=3 len=2542 Example: Len=2543 0x102a {0} (0x1000) (Bits=2) # 0x102a HD=4 len=2542 Example: Len=2543 0x102a {0} (0x1000) (Bits=2) # 0x102a HD=5 len=2 Example: Len=3 0x102a {0} (0x1420) (Bits=4) # 0x102a HD=6 NONE Example: Len=1 0x102a {0} (0x102a) (Bits=5) 0x102a {2542,2542,2}",
-    "HD"     : [null, null, null, 2542, 2542,2]
-  }
+  "hd" :     [null, null, null,
+    /* 3 */ { "bits"    : 2542, "bytes"   : 317 },
+    /* 4 */ { "bits"    : 2542, "bytes"   : 317 },
+    /* 5 */ { "bits"    : 2, "bytes"   : 0 }
+  ],
 }

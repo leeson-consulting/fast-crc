@@ -1,13 +1,11 @@
 {
-  "identity" : {
+  "id" : {
     "polynomial" : "x^8 + 1",
     "degree"     : 8,
     "explicit"   : "0x101",
     "koopman"    : "0x80",
     "normal"     : "0x1"
   },
-  "profile" : {
-    "record" : "# 0x80 HD=3 NONE Example: Len=1 0x80 {0} (0x80) (Bits=2) 0x80 {}",
-    "HD"     : [null, null, null]
-  }
+  "hd" :     [null, null, null
+  ],
 }

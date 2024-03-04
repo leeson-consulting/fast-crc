@@ -1,13 +1,14 @@
 {
-  "identity" : {
+  "id" : {
     "polynomial" : "x^7 + x^6 + x^3 + x^1 + 1",
     "degree"     : 7,
     "explicit"   : "0xCB",
     "koopman"    : "0x65",
     "normal"     : "0x4B"
   },
-  "profile" : {
-    "record" : "# 0x65 HD=3 len=120 Example: Len=121 0x65 {0} (0x40) (Bits=2) # 0x65 HD=4 len=14 Example: Len=15 0x65 {0} (0x48) (Bits=3) # 0x65 HD=5 len=3 Example: Len=4 0x65 {0,3} (0x42) (Bits=4) # 0x65 HD=6 NONE Example: Len=1 0x65 {0} (0x65) (Bits=5) 0x65 {120,14,3}",
-    "HD"     : [null, null, null, 120, 14,3]
-  }
+  "hd" :     [null, null, null,
+    /* 3 */ { "bits"    : 120, "bytes"   : 15 },
+    /* 4 */ { "bits"    : 14, "bytes"   : 1 },
+    /* 5 */ { "bits"    : 3, "bytes"   : 0 }
+  ],
 }

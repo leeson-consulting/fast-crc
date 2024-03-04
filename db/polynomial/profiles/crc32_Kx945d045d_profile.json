@@ -1,13 +1,24 @@
 {
-  "identity" : {
+  "id" : {
     "polynomial" : "x^32 + x^29 + x^27 + x^23 + x^21 + x^20 + x^19 + x^17 + x^11 + x^7 + x^5 + x^4 + x^3 + x^1 + 1",
     "degree"     : 32,
     "explicit"   : "0x128BA08BB",
     "koopman"    : "0x945D045D",
     "normal"     : "0x28BA08BB"
   },
-  "profile" : {
-    "record" : "# 0x945d045d HD=3 len=4294967263 Example: Len=4294967264 0x945d045d {0} (0x80000000) (Bits=2) # 0x945d045d HD=4 len=184268 Example: Len=184269 0x945d045d {0,58577} (0x80000000) (Bits=3) # 0x945d045d HD=5 len=3603 Example: Len=3604 0x945d045d {0,301,2263} (0x80000000) (Bits=4) # 0x945d045d HD=6 len=526 Example: Len=527 0x945d045d {0,321,519} (0x80000800) (Bits=5) # 0x945d045d HD=7 len=136 Example: Len=137 0x945d045d {0,88,100,134} (0x80000400) (Bits=6) # 0x945d045d HD=8 len=100 Example: Len=101 0x945d045d {0,42,51,73,75} (0x82000000) (Bits=7) # 0x945d045d HD=9 len=48 Example: Len=49 0x945d045d {0,10,11,19,34,41} (0x81000000) (Bits=8) # 0x945d045d HD=10 len=38 Example: Len=39 0x945d045d {0,7,13,32,34} (0xc8000400) (Bits=9) # 0x945d045d HD=11 len=38 Example: Len=39 0x945d045d {0,11,18} (0x80441218) (Bits=10) # 0x945d045d HD=12 len=10 Example: Len=11 0x945d045d {0,6} (0x900488b8) (Bits=11) # 0x945d045d HD=13 len=10 Example: Len=11 0x945d045d {0,6} (0x900488b8) (Bits=11) # 0x945d045d HD=14 len=10 Example: Len=11 0x945d045d {0,6} (0x900488b8) (Bits=11) # 0x945d045d HD=15 len=4 Example: Len=5 0x945d045d {0,4} (0xaa843584) (Bits=14) # 0x945d045d HD=16 NONE Example: Len=1 0x945d045d {0} (0x945d045d) (Bits=15) 0x945d045d {4294967263,184268,3603,526,136,100,48,38,38,10,10,10,4}",
-    "HD"     : [null, null, null, 4294967263, 184268,3603,526,136,100,48,38,38,10,10,10,4]
-  }
+  "hd" :     [null, null, null,
+    /* 3 */ { "bits"    : 4294967263, "bytes"   : 536870907 },
+    /* 4 */ { "bits"    : 184268, "bytes"   : 23033 },
+    /* 5 */ { "bits"    : 3603, "bytes"   : 450 },
+    /* 6 */ { "bits"    : 526, "bytes"   : 65 },
+    /* 7 */ { "bits"    : 136, "bytes"   : 17 },
+    /* 8 */ { "bits"    : 100, "bytes"   : 12 },
+    /* 9 */ { "bits"    : 48, "bytes"   : 6 },
+    /* 10 */ { "bits"    : 38, "bytes"   : 4 },
+    /* 11 */ { "bits"    : 38, "bytes"   : 4 },
+    /* 12 */ { "bits"    : 10, "bytes"   : 1 },
+    /* 13 */ { "bits"    : 10, "bytes"   : 1 },
+    /* 14 */ { "bits"    : 10, "bytes"   : 1 },
+    /* 15 */ { "bits"    : 4, "bytes"   : 0 }
+  ],
 }

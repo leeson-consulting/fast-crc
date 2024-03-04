@@ -1,13 +1,20 @@
 {
-  "identity" : {
+  "id" : {
     "polynomial" : "x^22 + x^20 + x^18 + x^16 + x^13 + x^11 + x^9 + x^6 + x^4 + x^2 + 1",
     "degree"     : 22,
     "explicit"   : "0x552A55",
     "koopman"    : "0x2A952A",
     "normal"     : "0x152A55"
   },
-  "profile" : {
-    "record" : "# 0x2a952a HD=3 len=2025 Example: Len=2026 0x2a952a {0} (0x200000) (Bits=2) # 0x2a952a HD=4 len=2025 Example: Len=2026 0x2a952a {0} (0x200000) (Bits=2) # 0x2a952a HD=5 len=2025 Example: Len=2026 0x2a952a {0} (0x200000) (Bits=2) # 0x2a952a HD=6 len=158 Example: Len=159 0x2a952a {0,55,90,125} (0x200000) (Bits=5) # 0x2a952a HD=7 len=2 Example: Len=3 0x2a952a {0} (0x203060) (Bits=6) # 0x2a952a HD=8 len=2 Example: Len=3 0x2a952a {0} (0x203060) (Bits=6) # 0x2a952a HD=9 len=2 Example: Len=3 0x2a952a {0} (0x203060) (Bits=6) # 0x2a952a HD=10 len=2 Example: Len=3 0x2a952a {0} (0x203060) (Bits=6) # 0x2a952a HD=11 len=2 Example: Len=3 0x2a952a {0} (0x203060) (Bits=6) # 0x2a952a HD=12 NONE Example: Len=1 0x2a952a {0} (0x2a952a) (Bits=11) 0x2a952a {2025,2025,2025,158,2,2,2,2,2}",
-    "HD"     : [null, null, null, 2025, 2025,2025,158,2,2,2,2,2]
-  }
+  "hd" :     [null, null, null,
+    /* 3 */ { "bits"    : 2025, "bytes"   : 253 },
+    /* 4 */ { "bits"    : 2025, "bytes"   : 253 },
+    /* 5 */ { "bits"    : 2025, "bytes"   : 253 },
+    /* 6 */ { "bits"    : 158, "bytes"   : 19 },
+    /* 7 */ { "bits"    : 2, "bytes"   : 0 },
+    /* 8 */ { "bits"    : 2, "bytes"   : 0 },
+    /* 9 */ { "bits"    : 2, "bytes"   : 0 },
+    /* 10 */ { "bits"    : 2, "bytes"   : 0 },
+    /* 11 */ { "bits"    : 2, "bytes"   : 0 }
+  ],
 }

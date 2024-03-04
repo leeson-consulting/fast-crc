@@ -1,13 +1,16 @@
 {
-  "identity" : {
+  "id" : {
     "polynomial" : "x^11 + x^10 + x^7 + x^4 + x^3 + x^1 + 1",
     "degree"     : 11,
     "explicit"   : "0xC9B",
     "koopman"    : "0x64D",
     "normal"     : "0x49B"
   },
-  "profile" : {
-    "record" : "# 0x64d HD=3 len=2036 Example: Len=2037 0x64d {0} (0x400) (Bits=2) # 0x64d HD=4 len=131 Example: Len=132 0x64d {0,99} (0x400) (Bits=3) # 0x64d HD=5 len=6 Example: Len=7 0x64d {0} (0x602) (Bits=4) # 0x64d HD=6 len=6 Example: Len=7 0x64d {0} (0x602) (Bits=4) # 0x64d HD=7 len=3 Example: Len=4 0x64d {0,3} (0x431) (Bits=6) # 0x64d HD=8 NONE Example: Len=1 0x64d {0} (0x64d) (Bits=7) 0x64d {2036,131,6,6,3}",
-    "HD"     : [null, null, null, 2036, 131,6,6,3]
-  }
+  "hd" :     [null, null, null,
+    /* 3 */ { "bits"    : 2036, "bytes"   : 254 },
+    /* 4 */ { "bits"    : 131, "bytes"   : 16 },
+    /* 5 */ { "bits"    : 6, "bytes"   : 0 },
+    /* 6 */ { "bits"    : 6, "bytes"   : 0 },
+    /* 7 */ { "bits"    : 3, "bytes"   : 0 }
+  ],
 }

@@ -1,13 +1,24 @@
 {
-  "identity" : {
+  "id" : {
     "polynomial" : "x^24 + x^22 + x^21 + x^19 + x^18 + x^17 + x^14 + x^13 + x^12 + x^11 + x^10 + x^8 + x^5 + x^1 + 1",
     "degree"     : 24,
     "explicit"   : "0x16E7D23",
     "koopman"    : "0xB73E91",
     "normal"     : "0x6E7D23"
   },
-  "profile" : {
-    "record" : "# 0xb73e91 HD=3 len=6 Example: Len=7 0xb73e91 {0} (0x800000) (Bits=2) # 0xb73e91 HD=4 len=6 Example: Len=7 0xb73e91 {0} (0x800000) (Bits=2) # 0xb73e91 HD=5 len=6 Example: Len=7 0xb73e91 {0} (0x800000) (Bits=2) # 0xb73e91 HD=6 len=6 Example: Len=7 0xb73e91 {0} (0x800000) (Bits=2) # 0xb73e91 HD=7 len=6 Example: Len=7 0xb73e91 {0} (0x800000) (Bits=2) # 0xb73e91 HD=8 len=6 Example: Len=7 0xb73e91 {0} (0x800000) (Bits=2) # 0xb73e91 HD=9 len=6 Example: Len=7 0xb73e91 {0} (0x800000) (Bits=2) # 0xb73e91 HD=10 len=6 Example: Len=7 0xb73e91 {0} (0x800000) (Bits=2) # 0xb73e91 HD=11 len=6 Example: Len=7 0xb73e91 {0} (0x800000) (Bits=2) # 0xb73e91 HD=12 len=6 Example: Len=7 0xb73e91 {0} (0x800000) (Bits=2) # 0xb73e91 HD=13 len=6 Example: Len=7 0xb73e91 {0} (0x800000) (Bits=2) # 0xb73e91 HD=14 len=6 Example: Len=7 0xb73e91 {0} (0x800000) (Bits=2) # 0xb73e91 HD=15 len=1 Example: Len=2 0xb73e91 {0} (0xeca1d9) (Bits=14) # 0xb73e91 HD=16 NONE Example: Len=1 0xb73e91 {0} (0xb73e91) (Bits=15) 0xb73e91 {6,6,6,6,6,6,6,6,6,6,6,6,1}",
-    "HD"     : [null, null, null, 6, 6,6,6,6,6,6,6,6,6,6,6,1]
-  }
+  "hd" :     [null, null, null,
+    /* 3 */ { "bits"    : 6, "bytes"   : 0 },
+    /* 4 */ { "bits"    : 6, "bytes"   : 0 },
+    /* 5 */ { "bits"    : 6, "bytes"   : 0 },
+    /* 6 */ { "bits"    : 6, "bytes"   : 0 },
+    /* 7 */ { "bits"    : 6, "bytes"   : 0 },
+    /* 8 */ { "bits"    : 6, "bytes"   : 0 },
+    /* 9 */ { "bits"    : 6, "bytes"   : 0 },
+    /* 10 */ { "bits"    : 6, "bytes"   : 0 },
+    /* 11 */ { "bits"    : 6, "bytes"   : 0 },
+    /* 12 */ { "bits"    : 6, "bytes"   : 0 },
+    /* 13 */ { "bits"    : 6, "bytes"   : 0 },
+    /* 14 */ { "bits"    : 6, "bytes"   : 0 },
+    /* 15 */ { "bits"    : 1, "bytes"   : 0 }
+  ],
 }
