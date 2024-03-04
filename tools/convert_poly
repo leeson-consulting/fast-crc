@@ -140,7 +140,8 @@ obase=base_16
 normal_to_${target}(normal, degree)
 EOF
 
-  echo 0x$(echo "$bc_helper_script" | bc -l "${SCRIPT_PATH}/convert_poly.bc")
+  local result=0x$(echo "$bc_helper_script" | bc -l "${SCRIPT_PATH}/convert_poly.bc")
+  echo "${result,,}"
 }
 
 function _normal_to_explicit()
@@ -169,7 +170,8 @@ obase=base_10
 ${target}_to_normal_poly_degree(${poly})
 EOF
 
-  echo 0x$(echo "$bc_helper_script" | bc -l "${SCRIPT_PATH}/convert_poly.bc")
+  local result=0x$(echo "$bc_helper_script" | bc -l "${SCRIPT_PATH}/convert_poly.bc")
+  echo "${result,,}"
 }
 
 function _explicit_to_normal()
@@ -185,13 +187,15 @@ function _koopman_to_normal()
 function _explicit_to_koopman()
 {
   local explicit="${1#0x}" ; explicit="${explicit^^}"
-  echo 0x$(echo "obase=base_16; ibase=base_16; explicit_to_koopman(${explicit})" | bc -l "${SCRIPT_PATH}/convert_poly.bc")
+  local result=0x$(echo "obase=base_16; ibase=base_16; explicit_to_koopman(${explicit})" | bc -l "${SCRIPT_PATH}/convert_poly.bc")
+  echo "${result,,}"
 }
 
 function _koopman_to_explicit()
 {
   local koopman="${1#0x}" ; koopman="${koopman^^}"
-  echo 0x$(echo "obase=base_16; ibase=base_16; koopman_to_explicit(${koopman})" | bc -l "${SCRIPT_PATH}/convert_poly.bc")
+  local result=0x$(echo "obase=base_16; ibase=base_16; koopman_to_explicit(${koopman})" | bc -l "${SCRIPT_PATH}/convert_poly.bc")
+  echo "${result,,}"
 }
 
 function _koopman_to_json()
