@@ -8,7 +8,7 @@ function find_tmp_dir()
 {
   local tmpdir
 
-  for tmpdir in "$TMPDIR" "$TMP" /var/tmp /tmp "$PWD" ; do
+  for tmpdir in "$TMPDIR" "$TMP" /tmp /var/tmp "$PWD" ; do
     test -d "$tmpdir" && break
   done
 
@@ -94,11 +94,12 @@ function make_polynomial_db()
 {
   local polynomial_root="${1}"
   local profiles="${polynomial_root}/profiles"
-  local all_polynomials="${polynomial_root}/all_polynomials.js"
-
-  echo "var polynomials = [" > "${all_polynomials}"
+  local all_polynomials="${SCRIPT_TMPDIR}/all_polynomials.json"
 
   mkdir -p "${profiles}"
+  mkdir -p "${SCRIPT_TMPDIR}"
+
+  echo "[ " > "$all_polynomials"
 
   # 1. Convert raw polynomial profile data to JSON
 
@@ -127,18 +128,16 @@ function make_polynomial_db()
 }
 EOF
 
-    echo -n "${profile_json_data}" > "${profiles}/${identity}_profile.json"
+    echo -n "${profile_json_data}" > "${profiles}/${profile_json_file}"
     echo -n "${profile_json_data}," >> "${all_polynomials}"
 
   done < <(find "$polynomial_root/raw_profiles" -type f -iname \*_len.txt | sort)
 
-  echo "];" >> "${all_polynomials}"
+  echo "]" >> "${all_polynomials}"
 
   # 2. Make a primitive JS polynomial database
 
   mapfile -d '' polynomial_db << EOF
-
-$(cat ${all_polynomials});
 
 ///////////////////////////////////////////////////////////////////////////////
 //
@@ -277,14 +276,14 @@ function Create_PolynomialDatabase(polynomials)
   return db;
 }
 
-var poly_db = Create_PolynomialDatabase(polynomials);
+var polynomials = Create_PolynomialDatabase( $(cat ${all_polynomials}) );
 
 console.log("Try these queries to get you started:\n");
 console.log("");
-console.log("poly_db.find({'HD' : 6});");
-console.log("poly_db.find({'HD' : 6, 'len_bytes' : 1000});");
-console.log("poly_db.find({'HD' : 6, 'len_bytes' : 13, 'degree' : 16});");
-console.log("poly_db.find({'HD' : 4, 'len_bytes' : 200, 'degree' : 12});");
+console.log("polynomials.find({'HD' : 6});");
+console.log("polynomials.find({'HD' : 6, 'len_bytes' : 1000});");
+console.log("polynomials.find({'HD' : 6, 'len_bytes' : 13, 'degree' : 16});");
+console.log("polynomials.find({'HD' : 4, 'len_bytes' : 200, 'degree' : 12});");
 
 EOF
 
@@ -298,6 +297,16 @@ function main()
   local SCRIPT_PATH=$(realpath "${BASH_SOURCE[0]%/*}")
   local SCRIPT_NAME="${BASH_SOURCE[0]##*/}"
   local REPO_ROOT="$(git rev-parse --show-toplevel)"
+
+  CALLERS_WD="$PWD"
+
+  if [[ "${BASH_SOURCE[0]}" == "${0}" ]] then
+    SCRIPT_TMPDIR="$(find_tmp_dir)/${SCRIPT_NAME}"
+  else
+    SCRIPT_TMPDIR="$(find_tmp_dir)/bash_pid_$$"
+  fi
+
+  trap "clean_up ;" EXIT
 
   # 1. Setup polynomial_root
 
@@ -323,6 +332,14 @@ function main()
   #    and concantenate the results to form a primitive JS database.
 
   make_polynomial_db "$polynomial_root"
+}
+
+###############################################################################
+
+function clean_up()
+{
+  rm -rf "$SCRIPT_TMPDIR"
+  cd "$CALLERS_WD" &> /dev/null;
 }
 
 ###############################################################################
