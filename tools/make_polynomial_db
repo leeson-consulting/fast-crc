@@ -64,21 +64,33 @@ function convert_hamming_lengths_to_json()
   lengths_txt="${lengths_txt#*\{}"
   lengths_txt="${lengths_txt%\}*}"
 
-  local -a lengths_data=( $(echo "${lengths_txt/,/ }") )
+  local -a lengths_data=( $(echo "${lengths_txt//,/ }") )
   local -i max_hd=$(( ${#lengths_data[@]} + 2 ))
 
   local -a json=('[')
+  local hd_line
+  local json_comma
 
   for (( i=0 ; i<=${max_hd} ; i++ )) ; do
-    if (( i < 3 )) ; then
-      hd_line="null"
+    if (( i < ${max_hd} )) ; then
+      json_comma=","
     else
-      hd_line="${lengths_data[ $(( i - 3 )) ]}"
+      json_comma=""
     fi
 
-    if (( i < ${max_hd} )) ; then
-      hd_line="${hd_line}, "
+    if (( i < 2 )) ; then
+      hd_line="null${json_comma} "
+    elif (( i == 2 )) ; then
+      printf -v hd_line "null${json_comma}\n"
+    else
+      mapfile -d '' hd_line << EOF
+/* $i */ { "bits"    : ${lengths_data[ $(( i - 3 )) ]}, "bytes"   : $(( ${lengths_data[ $(( i - 3 )) ]} / 8 )) }${json_comma}
+EOF
     fi
+
+   # if (( i < ${max_hd} )) ; then
+   #   hd_line="${hd_line}, "
+   # fi
 
     json+=("$hd_line")
   done
@@ -120,11 +132,8 @@ function make_polynomial_db()
 
     mapfile -d '' profile_json_data << EOF
 {
-  "identity" : $(${SCRIPT_PATH}/convert_poly k2j ${identity_koopman} | sed -e '$ { /^$/ d}' -e '1 ! s/\(^.*\)/  \1/'),
-  "profile" : {
-    "record" : "$(echo -n ${profile_data[@]})",
-    "HD"     : ${hamming_lengths_json}
-  }
+  "id" : $(${SCRIPT_PATH}/convert_poly k2j ${identity_koopman} | sed -e '$ { /^$/ d}' -e '1 ! s/\(^.*\)/  \1/'),
+  "hd" : $(convert_hamming_lengths_to_json "$hamming_lengths" | sed -e '$ ! s/\(^.*\)/    \1/' -e '$ s/\(^.*\)/  \1/'),
 }
 EOF
 
@@ -156,10 +165,10 @@ function Create_PolynomialDatabase(polynomials)
     }
 
     for (poly of polynomials) {
-      if (degree[poly.identity.degree] === null) {
-        degree[poly.identity.degree] = [ poly ];
+      if (degree[poly.id.degree] === null) {
+        degree[poly.id.degree] = [ poly ];
       } else {
-        degree[poly.identity.degree].push(poly);
+        degree[poly.id.degree].push(poly);
       }
     }
 
@@ -175,7 +184,7 @@ function Create_PolynomialDatabase(polynomials)
 
     for (poly of polynomials) {
 
-      for (i = 3 ; i < poly.profile.HD.length ; i++) {
+      for (i = 3 ; i < poly.hd.length ; i++) {
         if (HD[i] === null) {
           HD[i] = [ poly ];
         } else {
@@ -212,7 +221,7 @@ function Create_PolynomialDatabase(polynomials)
 
     for (candidate of candidates_min_hd) {
 
-      if (candidate.profile.HD[constraints.HD] / 8 < constraints.len_bytes) {
+      if (candidate.hd[constraints.HD].bytes < constraints.len_bytes) {
         continue;
       }
 
@@ -230,11 +239,11 @@ function Create_PolynomialDatabase(polynomials)
 
     if (Array.isArray(constraints.degree)) {
       degree_ok = function(candidate) {
-        return constraints.degree.indexOf(candidate.identity.degree) !== -1;
+        return constraints.degree.indexOf(candidate.id.degree) !== -1;
       };
     } else {
       degree_ok = function(candidate) {
-        return candidate.identity.degree <= constraints.degree;
+        return candidate.id.degree <= constraints.degree;
       };
     }
 
@@ -253,21 +262,21 @@ function Create_PolynomialDatabase(polynomials)
     }
 
     candidates_final.sort(function predicate(a, b){
-      if (a.identity.degree != b.identity.degree) {
-        return a.identity.degree - b.identity.degree
+      if (a.id.degree != b.id.degree) {
+        return a.id.degree - b.id.degree
       }
 
-      var max_common_hd = (a.profile.HD.length < b.profile.HD.length ? a.profile.HD.length : b.profile.HD.length) - 1;
+      var max_common_hd = (a.hd.length < b.hd.length ? a.hd.length : b.hd.length) - 1;
 
-      for (hd = constraints.HD ; hd <= max_common_hd ; hd++) {
-        if (a.profile.HD[hd] == b.profile.HD[hd]) {
+      for (i = constraints.HD ; i <= max_common_hd ; i++) {
+        if (a.hd[i].bits == b.hd[i].bits) {
           continue;
         }
 
-        return b.profile.HD[hd] - a.profile.HD[hd];
+        return b.hd[i].bits - a.hd[i].bits;
       }
 
-      return b.profile.HD.length - a.profile.HD.length;
+      return b.hd.length - a.hd.length;
     });
 
     return candidates_final;
