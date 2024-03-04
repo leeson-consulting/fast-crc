@@ -130,7 +130,7 @@ EOF
     echo -n "${profile_json_data}" > "${profiles}/${identity}_profile.json"
     echo -n "${profile_json_data}," >> "${all_polynomials}"
 
-  done < <(find "$polynomial_root/raw_profiles" -type f -iname \*_len.txt)
+  done < <(find "$polynomial_root/raw_profiles" -type f -iname \*_len.txt | sort)
 
   echo "];" >> "${all_polynomials}"
 
