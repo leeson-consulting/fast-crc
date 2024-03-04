@@ -107,7 +107,7 @@ function make_polynomial_db()
     local profile_txt_file="${profile_txt##*/}"
     local identity="${profile_txt_file%_len.txt}"
     local identity_crc="${identity%_*}"
-    local identity_koopman="${identity#*_}"
+    local identity_koopman="${identity#*_}" ; identity_koopman="${identity_koopman/Kx/0x}"
     local profile_json_file="${identity}_profile.json"
 
     echo "Converting \"${profile_txt_file}\" to \"${profile_json_file}\""
