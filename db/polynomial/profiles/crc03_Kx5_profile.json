@@ -2,7 +2,7 @@
   "id" : {
     "polynomial" : "x^3 + x^1 + 1",
     "degree"     : 3,
-    "explicit"   : "0xB",
+    "explicit"   : "0xb",
     "koopman"    : "0x5",
     "normal"     : "0x3"
   },

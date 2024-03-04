@@ -2,7 +2,7 @@
   "id" : {
     "polynomial" : "x^7 + x^6 + x^4 + 1",
     "degree"     : 7,
-    "explicit"   : "0xD1",
+    "explicit"   : "0xd1",
     "koopman"    : "0x68",
     "normal"     : "0x51"
   },

@@ -2,7 +2,7 @@
   "id" : {
     "polynomial" : "x^11 + x^10 + x^8 + x^6 + x^5 + x^4 + x^2 + x^1 + 1",
     "degree"     : 11,
-    "explicit"   : "0xD77",
+    "explicit"   : "0xd77",
     "koopman"    : "0x6BB",
     "normal"     : "0x577"
   },

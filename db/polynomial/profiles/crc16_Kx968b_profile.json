@@ -2,9 +2,9 @@
   "id" : {
     "polynomial" : "x^16 + x^13 + x^11 + x^10 + x^8 + x^4 + x^2 + x^1 + 1",
     "degree"     : 16,
-    "explicit"   : "0x12D17",
+    "explicit"   : "0x12d17",
     "koopman"    : "0x968B",
-    "normal"     : "0x2D17"
+    "normal"     : "0x2d17"
   },
   "hd" :     [null, null, null,
     /* 3 */ { "bits"    : 16367, "bytes"   : 2045 },

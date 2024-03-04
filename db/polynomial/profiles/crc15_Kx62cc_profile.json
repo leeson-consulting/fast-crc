@@ -2,7 +2,7 @@
   "id" : {
     "polynomial" : "x^15 + x^14 + x^10 + x^8 + x^7 + x^4 + x^3 + 1",
     "degree"     : 15,
-    "explicit"   : "0xC599",
+    "explicit"   : "0xc599",
     "koopman"    : "0x62CC",
     "normal"     : "0x4599"
   },

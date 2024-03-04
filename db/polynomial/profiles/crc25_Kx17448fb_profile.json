@@ -2,9 +2,9 @@
   "id" : {
     "polynomial" : "x^25 + x^23 + x^22 + x^21 + x^19 + x^15 + x^12 + x^8 + x^7 + x^6 + x^5 + x^4 + x^2 + x^1 + 1",
     "degree"     : 25,
-    "explicit"   : "0x2E891F7",
+    "explicit"   : "0x2e891f7",
     "koopman"    : "0x17448FB",
-    "normal"     : "0xE891F7"
+    "normal"     : "0xe891f7"
   },
   "hd" :     [null, null, null,
     /* 3 */ { "bits"    : 33554406, "bytes"   : 4194300 },
