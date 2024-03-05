@@ -65,10 +65,14 @@ function make_tables()
 
   local forward_table_name
   local forward_poly_id
+  local forward_kernel_t8
+  local forward_kernel_t4
 
   if [[ -z "$sub_table" ]] ; then
     forward_table_name="Fx${poly_normal}"
     forward_poly_id="crc${poly_degree}_${forward_table_name}"
+    forward_kernel_t8="make_crc_kernel_f${poly_degree}_t8(${forward_table_name})"
+    forward_kernel_t4="make_crc_kernel_f${poly_degree}_t4(${forward_table_name})"
   else
     forward_table_name="Sx${poly_normal}"
     forward_poly_id="crcx_${forward_table_name}"
@@ -99,14 +103,14 @@ $(printf "${poly_info}" | sed -e 's:\(^.*\):// \1:')
 static ${crc_t} const ${forward_table_name}[256] =
 $($PYCRC --width=$poly_degree --poly=0x${poly_normal} --reflect-in=False --reflect-out=False --xor-in=0x0000 --xor-out=0x0000 --algorithm=table-driven --generate=table --table-idx-width=8);
 
-make_crc_kernel_f${poly_degree}_t8(${forward_table_name})
+${forward_kernel_t8}
 
 #else
 
 static ${crc_t} const ${forward_table_name}[16] =
 $($PYCRC --width=$poly_degree --poly=0x${poly_normal} --reflect-in=False --reflect-out=False --xor-in=0x0000 --xor-out=0x0000 --algorithm=table-driven --generate=table --table-idx-width=4);
 
-make_crc_kernel_f${poly_degree}_t4(${forward_table_name})
+${forward_kernel_t4}
 
 #endif
 EOF
