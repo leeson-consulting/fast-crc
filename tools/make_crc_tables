@@ -36,7 +36,7 @@ function make_tables()
 {
   local poly_degree="$1"
   local poly_normal="${2#0x}"
-  local crc_t=$(determine_crc_t "$poly_degree")
+  local crc_t="${3:-$(determine_crc_t "$poly_degree")}"
   local poly_koopman="$(convert_poly n2k $poly_normal $poly_degree)"
 
   # 1. See if there's a profile in the polynomial database
