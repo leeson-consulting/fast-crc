@@ -58,7 +58,7 @@ EOF
 
 ###############################################################################
 
-function convert_hamming_lengths_to_json()
+function convert_hamming_lengths_to_json5()
 {
   local lengths_txt="${1}"
   lengths_txt="${lengths_txt#*\{}"
@@ -67,37 +67,33 @@ function convert_hamming_lengths_to_json()
   local -a lengths_data=( $(echo "${lengths_txt//,/ }") )
   local -i max_hd=$(( ${#lengths_data[@]} + 2 ))
 
-  local -a json=('[')
+  local -a json5=('[')
   local hd_line
-  local json_comma
+  local json5_comma
 
   for (( i=0 ; i<=${max_hd} ; i++ )) ; do
     if (( i < ${max_hd} )) ; then
-      json_comma=","
+      json5_comma=","
     else
-      json_comma=""
+      json5_comma=""
     fi
 
     if (( i < 2 )) ; then
-      hd_line="null${json_comma} "
+      hd_line="null${json5_comma} "
     elif (( i == 2 )) ; then
-      printf -v hd_line "null${json_comma}\n"
+      printf -v hd_line "null${json5_comma}\n"
     else
       mapfile -d '' hd_line << EOF
-/* $i */ { "bits"    : ${lengths_data[ $(( i - 3 )) ]}, "bytes"   : $(( ${lengths_data[ $(( i - 3 )) ]} / 8 )) }${json_comma}
+/* $i */ { "bits"    : ${lengths_data[ $(( i - 3 )) ]}, "bytes"   : $(( ${lengths_data[ $(( i - 3 )) ]} / 8 )) }${json5_comma}
 EOF
     fi
 
-   # if (( i < ${max_hd} )) ; then
-   #   hd_line="${hd_line}, "
-   # fi
-
-    json+=("$hd_line")
+    json5+=("$hd_line")
   done
 
-  json+=(']')
+  json5+=(']')
 
-  printf "%s" "${json[@]}"
+  printf "%s" "${json5[@]}"
 }
 
 ###############################################################################
@@ -106,14 +102,14 @@ function make_polynomial_db()
 {
   local polynomial_root="${1}"
   local profiles="${polynomial_root}/profiles"
-  local all_polynomials="${SCRIPT_TMPDIR}/all_polynomials.json"
+  local all_polynomials="${SCRIPT_TMPDIR}/all_polynomials.json5"
 
   mkdir -p "${profiles}"
   mkdir -p "${SCRIPT_TMPDIR}"
 
   echo "[ " > "$all_polynomials"
 
-  # 1. Convert raw polynomial profile data to JSON
+  # 1. Convert raw polynomial profile data to JSON5
 
   while read -r profile_txt ; do
     local profile_path="${profile_txt%/*}"
@@ -121,24 +117,24 @@ function make_polynomial_db()
     local identity="${profile_txt_file%_len.txt}"
     local identity_crc="${identity%_*}"
     local identity_koopman="${identity#*_}" ; identity_koopman="${identity_koopman/Kx/0x}"
-    local profile_json_file="${identity}_profile.json"
+    local profile_json5_file="${identity}_profile.json5"
 
-    echo "Converting \"${profile_txt_file}\" to \"${profile_json_file}\""
+    echo "Converting \"${profile_txt_file}\" to \"${profile_json5_file}\""
 
     local -a profile_data
     mapfile -t profile_data < "${profile_txt}"
     local hamming_lengths="${profile_data[-1]}"
-    local hamming_lengths_json=$(convert_hamming_lengths_to_json "$hamming_lengths")
+    local hamming_lengths_json5=$(convert_hamming_lengths_to_json5 "$hamming_lengths")
 
-    mapfile -d '' profile_json_data << EOF
+    mapfile -d '' profile_json5_data << EOF
 {
   "id" : $(${SCRIPT_PATH}/convert_poly k2j ${identity_koopman} | sed -e '$ { /^$/ d}' -e '1 ! s/\(^.*\)/  \1/'),
-  "hd" : $(convert_hamming_lengths_to_json "$hamming_lengths" | sed -e '$ ! s/\(^.*\)/    \1/' -e '$ s/\(^.*\)/  \1/'),
+  "hd" : $(convert_hamming_lengths_to_json5 "$hamming_lengths" | sed -e '$ ! s/\(^.*\)/    \1/' -e '$ s/\(^.*\)/  \1/'),
 }
 EOF
 
-    echo -n "${profile_json_data}" > "${profiles}/${profile_json_file}"
-    echo -n "${profile_json_data}," >> "${all_polynomials}"
+    echo -n "${profile_json5_data}" > "${profiles}/${profile_json5_file}"
+    echo -n "${profile_json5_data}," >> "${all_polynomials}"
 
   done < <(find "$polynomial_root/raw_profiles" -type f -iname \*_len.txt | sort)
 
@@ -337,7 +333,7 @@ function main()
     collect_polynomial_profiles "$polynomial_root"
   fi
 
-  # 3. Convert profile txt data current JSON schema
+  # 3. Convert profile txt data current JSON5 schema
   #    and concantenate the results to form a primitive JS database.
 
   make_polynomial_db "$polynomial_root"

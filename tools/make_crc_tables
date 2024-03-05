@@ -41,7 +41,7 @@ function make_tables()
 
   # 1. See if there's a profile in the polynomial database
 
-  local poly_profile="${REPO_ROOT}/db/polynomial/profiles/crc${poly_degree}_Kx${poly_koopman#0x}_profile.json"
+  local poly_profile="${REPO_ROOT}/db/polynomial/profiles/crc${poly_degree}_Kx${poly_koopman#0x}_profile.json5"
   local poly_info
 
   if [[ -r "$poly_profile" ]] ; then
