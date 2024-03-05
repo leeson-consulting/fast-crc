@@ -208,7 +208,7 @@ function _koopman_to_json()
   "polynomial" : "${polynomial}",
   "degree"     : ${normal[1]},
   "explicit"   : "$(_koopman_to_explicit ${1})",
-  "koopman"    : "${koopman}",
+  "koopman"    : "${koopman,,}",
   "normal"     : "${normal[0]}"
 }
 EOF
@@ -225,7 +225,7 @@ function _explicit_to_json()
 {
   "polynomial" : "${polynomial}",
   "degree"     : ${normal[1]},
-  "explicit"   : "${explicit}",
+  "explicit"   : "${explicit,,}",
   "koopman"    : "$(_explicit_to_koopman ${1})",
   "normal"     : "${normal[0]}"
 }
@@ -244,7 +244,7 @@ function _normal_to_json()
   "degree"     : ${normal[1]},
   "explicit"   : "$(_normal_to_explicit ${1} ${2})",
   "koopman"    : "$(_normal_to_koopman ${1} ${2})",
-  "normal"     : "${normal[0]}"
+  "normal"     : "${normal[0],,}"
 }
 EOF
 
