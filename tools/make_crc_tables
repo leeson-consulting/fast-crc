@@ -129,8 +129,10 @@ EOF
 
 ###############################################################################
 
-function make_catalogued_polynomials()
+function make_catalogued_tables()
 {
+  printf "Making Cataloged Polynomial Tables...\n\n"
+
   # CRC-8 Polynomials
 
   make_tables 8 0x07
@@ -142,6 +144,10 @@ function make_catalogued_polynomials()
   make_tables 8 0xd5
   make_tables 8 0x9b
   make_tables 8 0xa7
+
+  # CRC-12 Polynomials
+
+  make_tables 12 0x80f
 
   # CRC-16 Polynomials
 
@@ -189,6 +195,30 @@ function make_catalogued_polynomials()
   make_tables 64 0x259c84cba6426349
   make_tables 64 0xad93d23594c935a9
   make_tables 64 0x42f0e1eba9ea3693
+
+  printf "\n"
+}
+
+###############################################################################
+
+function make_research_tables()
+{
+  printf "Making Research Polynomial Tables...\n\n"
+
+  # Koopman HD4 CRC-8
+
+  make_tables 8 0x4d
+
+  # Nguyen HD4 "Fast CRCs"
+
+  # Nguyen HD6 "Fast CRCs"
+
+  make_tables 16 0x011b
+  make_tables 24 0x018301
+  make_tables 32 0x0006c001
+  make_tables 64 0x000000000000002f
+
+  printf "\n"
 }
 
 ###############################################################################
@@ -273,7 +303,9 @@ function main()
 
   setup_pycrc
 
-  make_catalogued_polynomials
+  make_catalogued_tables
+
+  make_research_tables
 }
 
 ###############################################################################
