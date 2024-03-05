@@ -174,7 +174,8 @@ function make_sharded_table()
   local sub_table_name="Sx${sub_poly_normal}"
 
   local poly_degree="$3"
-  local poly_normal ; printf -v poly_normal "%0$(( ((poly_degree + 7) / 8) * 2))x" "$sub_poly_normal"
+  local poly_normal ; printf -v poly_normal "%0$(( ((poly_degree + 7) / 8) * 2))x" "0x${sub_poly_normal}"
+
   local crc_t=$(determine_crc_t "$poly_degree")
   local poly_info=$(print_poly_info "$poly_degree" "$poly_normal")
   local sharded_table_name="Fx${poly_normal}"
@@ -325,6 +326,8 @@ function make_research_tables()
 
   make_sharded_tables 8 0x07 8 16 24
 
+  make_sharded_tables 16 0x002f 64
+
   printf "\n"
 
   printf "Making Research Polynomial Tables...\n\n"
@@ -338,7 +341,6 @@ function make_research_tables()
   make_tables 16 0x011b
   make_tables 24 0x018301
   make_tables 32 0x0006c001
-  make_tables 64 0x000000000000002f
 
   printf "\n"
 }
