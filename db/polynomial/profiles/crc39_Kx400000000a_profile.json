@@ -3,7 +3,7 @@
     "polynomial" : "x^39 + x^4 + x^2 + 1",
     "degree"     : 39,
     "explicit"   : "0x8000000015",
-    "koopman"    : "0x400000000A",
+    "koopman"    : "0x400000000a",
     "normal"     : "0x15"
   },
   "hd" :     [null, null, null,

@@ -177,7 +177,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^4 + x^2 + x^1 + 1",
     "degree"     : 4,
     "explicit"   : "0x17",
-    "koopman"    : "0xB",
+    "koopman"    : "0xb",
     "normal"     : "0x7"
   },
   "hd" :     [null, null, null,
@@ -190,7 +190,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^4 + x^3 + x^2 + 1",
     "degree"     : 4,
     "explicit"   : "0x1d",
-    "koopman"    : "0xE",
+    "koopman"    : "0xe",
     "normal"     : "0xd"
   },
   "hd" :     [null, null, null,
@@ -203,7 +203,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^4 + x^3 + x^2 + x^1 + 1",
     "degree"     : 4,
     "explicit"   : "0x1f",
-    "koopman"    : "0xF",
+    "koopman"    : "0xf",
     "normal"     : "0xf"
   },
   "hd" :     [null, null, null,
@@ -242,7 +242,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^5 + x^4 + x^3 + x^2 + 1",
     "degree"     : 5,
     "explicit"   : "0x3d",
-    "koopman"    : "0x1E",
+    "koopman"    : "0x1e",
     "normal"     : "0x1d"
   },
   "hd" :     [null, null, null,
@@ -281,7 +281,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^6 + x^4 + x^3 + 1",
     "degree"     : 6,
     "explicit"   : "0x59",
-    "koopman"    : "0x2C",
+    "koopman"    : "0x2c",
     "normal"     : "0x19"
   },
   "hd" :     [null, null, null,
@@ -294,7 +294,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^6 + x^4 + x^3 + x^2 + 1",
     "degree"     : 6,
     "explicit"   : "0x5d",
-    "koopman"    : "0x2E",
+    "koopman"    : "0x2e",
     "normal"     : "0x1d"
   },
   "hd" :     [null, null, null,
@@ -361,7 +361,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^7 + x^4 + x^2 + 1",
     "degree"     : 7,
     "explicit"   : "0x95",
-    "koopman"    : "0x4A",
+    "koopman"    : "0x4a",
     "normal"     : "0x15"
   },
   "hd" :     [null, null, null,
@@ -374,7 +374,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^7 + x^4 + x^3 + x^1 + 1",
     "degree"     : 7,
     "explicit"   : "0x9b",
-    "koopman"    : "0x4D",
+    "koopman"    : "0x4d",
     "normal"     : "0x1b"
   },
   "hd" :     [null, null, null,
@@ -388,7 +388,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^7 + x^5 + x^4 + x^2 + x^1 + 1",
     "degree"     : 7,
     "explicit"   : "0xb7",
-    "koopman"    : "0x5B",
+    "koopman"    : "0x5b",
     "normal"     : "0x37"
   },
   "hd" :     [null, null, null,
@@ -512,7 +512,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^8 + x^4 + x^3 + x^1 + 1",
     "degree"     : 8,
     "explicit"   : "0x11b",
-    "koopman"    : "0x8D",
+    "koopman"    : "0x8d",
     "normal"     : "0x1b"
   },
   "hd" :     [null, null, null,
@@ -526,7 +526,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^8 + x^4 + x^3 + x^2 + 1",
     "degree"     : 8,
     "explicit"   : "0x11d",
-    "koopman"    : "0x8E",
+    "koopman"    : "0x8e",
     "normal"     : "0x1d"
   },
   "hd" :     [null, null, null,
@@ -568,7 +568,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^8 + x^5 + x^4 + x^2 + x^1 + 1",
     "degree"     : 8,
     "explicit"   : "0x137",
-    "koopman"    : "0x9B",
+    "koopman"    : "0x9b",
     "normal"     : "0x37"
   },
   "hd" :     [null, null, null,
@@ -583,7 +583,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^8 + x^5 + x^4 + x^3 + 1",
     "degree"     : 8,
     "explicit"   : "0x139",
-    "koopman"    : "0x9C",
+    "koopman"    : "0x9c",
     "normal"     : "0x39"
   },
   "hd" :     [null, null, null,
@@ -597,7 +597,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^8 + x^6 + x^3 + 1",
     "degree"     : 8,
     "explicit"   : "0x149",
-    "koopman"    : "0xA4",
+    "koopman"    : "0xa4",
     "normal"     : "0x49"
   },
   "hd" :     [null, null, null,
@@ -610,7 +610,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^8 + x^6 + x^3 + x^2 + 1",
     "degree"     : 8,
     "explicit"   : "0x14d",
-    "koopman"    : "0xA6",
+    "koopman"    : "0xa6",
     "normal"     : "0x4d"
   },
   "hd" :     [null, null, null,
@@ -624,7 +624,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^8 + x^6 + x^5 + x^1 + 1",
     "degree"     : 8,
     "explicit"   : "0x163",
-    "koopman"    : "0xB1",
+    "koopman"    : "0xb1",
     "normal"     : "0x63"
   },
   "hd" :     [null, null, null,
@@ -638,7 +638,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^8 + x^6 + x^5 + x^4 + x^3 + x^2 + x^1 + 1",
     "degree"     : 8,
     "explicit"   : "0x17f",
-    "koopman"    : "0xBF",
+    "koopman"    : "0xbf",
     "normal"     : "0x7f"
   },
   "hd" :     [null, null, null,
@@ -655,7 +655,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^8 + x^7 + x^4 + x^3 + x^1 + 1",
     "degree"     : 8,
     "explicit"   : "0x19b",
-    "koopman"    : "0xCD",
+    "koopman"    : "0xcd",
     "normal"     : "0x9b"
   },
   "hd" :     [null, null, null,
@@ -670,7 +670,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^8 + x^7 + x^5 + x^2 + x^1 + 1",
     "degree"     : 8,
     "explicit"   : "0x1a7",
-    "koopman"    : "0xD3",
+    "koopman"    : "0xd3",
     "normal"     : "0xa7"
   },
   "hd" :     [null, null, null,
@@ -685,7 +685,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^8 + x^7 + x^6 + x^3 + x^2 + x^1 + 1",
     "degree"     : 8,
     "explicit"   : "0x1cf",
-    "koopman"    : "0xE7",
+    "koopman"    : "0xe7",
     "normal"     : "0xcf"
   },
   "hd" :     [null, null, null,
@@ -701,7 +701,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^8 + x^7 + x^6 + x^4 + x^2 + 1",
     "degree"     : 8,
     "explicit"   : "0x1d5",
-    "koopman"    : "0xEA",
+    "koopman"    : "0xea",
     "normal"     : "0xd5"
   },
   "hd" :     [null, null, null,
@@ -716,7 +716,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^8 + x^7 + x^6 + x^4 + x^2 + x^1 + 1",
     "degree"     : 8,
     "explicit"   : "0x1d7",
-    "koopman"    : "0xEB",
+    "koopman"    : "0xeb",
     "normal"     : "0xd7"
   },
   "hd" :     [null, null, null,
@@ -744,7 +744,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^9 + x^4 + x^3 + x^2 + x^1 + 1",
     "degree"     : 9,
     "explicit"   : "0x21f",
-    "koopman"    : "0x10F",
+    "koopman"    : "0x10f",
     "normal"     : "0x1f"
   },
   "hd" :     [null, null, null,
@@ -802,7 +802,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^9 + x^6 + x^5 + x^4 + x^3 + 1",
     "degree"     : 9,
     "explicit"   : "0x279",
-    "koopman"    : "0x13C",
+    "koopman"    : "0x13c",
     "normal"     : "0x79"
   },
   "hd" :     [null, null, null,
@@ -817,7 +817,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^9 + x^6 + x^5 + x^4 + x^3 + x^1 + 1",
     "degree"     : 9,
     "explicit"   : "0x27b",
-    "koopman"    : "0x13D",
+    "koopman"    : "0x13d",
     "normal"     : "0x7b"
   },
   "hd" :     [null, null, null,
@@ -861,7 +861,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^9 + x^7 + x^4 + x^2 + x^1 + 1",
     "degree"     : 9,
     "explicit"   : "0x297",
-    "koopman"    : "0x14B",
+    "koopman"    : "0x14b",
     "normal"     : "0x97"
   },
   "hd" :     [null, null, null,
@@ -876,7 +876,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^9 + x^7 + x^4 + x^3 + x^2 + x^1 + 1",
     "degree"     : 9,
     "explicit"   : "0x29f",
-    "koopman"    : "0x14F",
+    "koopman"    : "0x14f",
     "normal"     : "0x9f"
   },
   "hd" :     [null, null, null,
@@ -924,7 +924,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^9 + x^7 + x^6 + x^5 + x^4 + x^3 + x^1 + 1",
     "degree"     : 9,
     "explicit"   : "0x2fb",
-    "koopman"    : "0x17D",
+    "koopman"    : "0x17d",
     "normal"     : "0xfb"
   },
   "hd" :     [null, null, null,
@@ -955,7 +955,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^9 + x^8 + x^6 + x^5 + x^4 + x^3 + x^2 + x^1 + 1",
     "degree"     : 9,
     "explicit"   : "0x37f",
-    "koopman"    : "0x1BF",
+    "koopman"    : "0x1bf",
     "normal"     : "0x17f"
   },
   "hd" :     [null, null, null,
@@ -1026,7 +1026,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^10 + x^7 + x^5 + x^4 + x^3 + x^1 + 1",
     "degree"     : 10,
     "explicit"   : "0x4bb",
-    "koopman"    : "0x25D",
+    "koopman"    : "0x25d",
     "normal"     : "0xbb"
   },
   "hd" :     [null, null, null,
@@ -1042,7 +1042,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^10 + x^8 + x^4 + x^3 + x^2 + 1",
     "degree"     : 10,
     "explicit"   : "0x51d",
-    "koopman"    : "0x28E",
+    "koopman"    : "0x28e",
     "normal"     : "0x11d"
   },
   "hd" :     [null, null, null,
@@ -1057,7 +1057,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^10 + x^8 + x^5 + x^4 + x^2 + x^1 + 1",
     "degree"     : 10,
     "explicit"   : "0x537",
-    "koopman"    : "0x29B",
+    "koopman"    : "0x29b",
     "normal"     : "0x137"
   },
   "hd" :     [null, null, null,
@@ -1073,7 +1073,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^10 + x^8 + x^6 + x^5 + x^4 + x^1 + 1",
     "degree"     : 10,
     "explicit"   : "0x573",
-    "koopman"    : "0x2B9",
+    "koopman"    : "0x2b9",
     "normal"     : "0x173"
   },
   "hd" :     [null, null, null,
@@ -1089,7 +1089,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^10 + x^8 + x^6 + x^5 + x^4 + x^2 + 1",
     "degree"     : 10,
     "explicit"   : "0x575",
-    "koopman"    : "0x2BA",
+    "koopman"    : "0x2ba",
     "normal"     : "0x175"
   },
   "hd" :     [null, null, null,
@@ -1105,7 +1105,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^10 + x^8 + x^7 + x^3 + x^2 + x^1 + 1",
     "degree"     : 10,
     "explicit"   : "0x58f",
-    "koopman"    : "0x2C7",
+    "koopman"    : "0x2c7",
     "normal"     : "0x18f"
   },
   "hd" :     [null, null, null,
@@ -1121,7 +1121,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^10 + x^8 + x^7 + x^5 + x^4 + x^3 + x^2 + 1",
     "degree"     : 10,
     "explicit"   : "0x5bd",
-    "koopman"    : "0x2DE",
+    "koopman"    : "0x2de",
     "normal"     : "0x1bd"
   },
   "hd" :     [null, null, null,
@@ -1138,7 +1138,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^10 + x^8 + x^7 + x^6 + x^5 + x^4 + x^3 + x^1 + 1",
     "degree"     : 10,
     "explicit"   : "0x5fb",
-    "koopman"    : "0x2FD",
+    "koopman"    : "0x2fd",
     "normal"     : "0x1fb"
   },
   "hd" :     [null, null, null,
@@ -1187,7 +1187,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^10 + x^9 + x^8 + x^7 + x^5 + x^4 + x^3 + x^2 + x^1 + 1",
     "degree"     : 10,
     "explicit"   : "0x7bf",
-    "koopman"    : "0x3DF",
+    "koopman"    : "0x3df",
     "normal"     : "0x3bf"
   },
   "hd" :     [null, null, null,
@@ -1206,7 +1206,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^10 + x^9 + x^8 + x^7 + x^6 + x^4 + x^3 + 1",
     "degree"     : 10,
     "explicit"   : "0x7d9",
-    "koopman"    : "0x3EC",
+    "koopman"    : "0x3ec",
     "normal"     : "0x3d9"
   },
   "hd" :     [null, null, null,
@@ -1279,7 +1279,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^11 + x^8 + x^7 + x^6 + x^5 + x^3 + x^1 + 1",
     "degree"     : 11,
     "explicit"   : "0x9eb",
-    "koopman"    : "0x4F5",
+    "koopman"    : "0x4f5",
     "normal"     : "0x1eb"
   },
   "hd" :     [null, null, null,
@@ -1342,7 +1342,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^11 + x^9 + x^8 + x^7 + x^2 + 1",
     "degree"     : 11,
     "explicit"   : "0xb85",
-    "koopman"    : "0x5C2",
+    "koopman"    : "0x5c2",
     "normal"     : "0x385"
   },
   "hd" :     [null, null, null,
@@ -1357,7 +1357,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^11 + x^9 + x^8 + x^7 + x^5 + x^3 + x^2 + x^1 + 1",
     "degree"     : 11,
     "explicit"   : "0xbaf",
-    "koopman"    : "0x5D7",
+    "koopman"    : "0x5d7",
     "normal"     : "0x3af"
   },
   "hd" :     [null, null, null,
@@ -1375,7 +1375,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^11 + x^9 + x^8 + x^7 + x^5 + x^4 + x^2 + x^1 + 1",
     "degree"     : 11,
     "explicit"   : "0xbb7",
-    "koopman"    : "0x5DB",
+    "koopman"    : "0x5db",
     "normal"     : "0x3b7"
   },
   "hd" :     [null, null, null,
@@ -1393,7 +1393,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^11 + x^9 + x^8 + x^7 + x^6 + x^4 + x^3 + x^2 + x^1 + 1",
     "degree"     : 11,
     "explicit"   : "0xbdf",
-    "koopman"    : "0x5EF",
+    "koopman"    : "0x5ef",
     "normal"     : "0x3df"
   },
   "hd" :     [null, null, null,
@@ -1412,7 +1412,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^11 + x^10 + x^6 + x^4 + x^2 + x^1 + 1",
     "degree"     : 11,
     "explicit"   : "0xc57",
-    "koopman"    : "0x62B",
+    "koopman"    : "0x62b",
     "normal"     : "0x457"
   },
   "hd" :     [null, null, null,
@@ -1428,7 +1428,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^11 + x^10 + x^7 + x^4 + x^3 + x^1 + 1",
     "degree"     : 11,
     "explicit"   : "0xc9b",
-    "koopman"    : "0x64D",
+    "koopman"    : "0x64d",
     "normal"     : "0x49b"
   },
   "hd" :     [null, null, null,
@@ -1444,7 +1444,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^11 + x^10 + x^8 + x^6 + x^5 + x^4 + x^2 + x^1 + 1",
     "degree"     : 11,
     "explicit"   : "0xd77",
-    "koopman"    : "0x6BB",
+    "koopman"    : "0x6bb",
     "normal"     : "0x577"
   },
   "hd" :     [null, null, null,
@@ -1462,7 +1462,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^11 + x^10 + x^8 + x^7 + x^6 + x^5 + x^4 + x^3 + x^1 + 1",
     "degree"     : 11,
     "explicit"   : "0xdfb",
-    "koopman"    : "0x6FD",
+    "koopman"    : "0x6fd",
     "normal"     : "0x5fb"
   },
   "hd" :     [null, null, null,
@@ -1481,7 +1481,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^11 + x^10 + x^9 + x^8 + x^7 + x^5 + x^4 + x^3 + x^2 + x^1 + 1",
     "degree"     : 11,
     "explicit"   : "0xfbf",
-    "koopman"    : "0x7DF",
+    "koopman"    : "0x7df",
     "normal"     : "0x7bf"
   },
   "hd" :     [null, null, null,
@@ -1530,7 +1530,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^12 + x^6 + x^5 + x^4 + x^3 + x^2 + 1",
     "degree"     : 12,
     "explicit"   : "0x107d",
-    "koopman"    : "0x83E",
+    "koopman"    : "0x83e",
     "normal"     : "0x7d"
   },
   "hd" :     [null, null, null,
@@ -1546,7 +1546,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^12 + x^8 + x^7 + x^6 + x^5 + x^2 + x^1 + 1",
     "degree"     : 12,
     "explicit"   : "0x11e7",
-    "koopman"    : "0x8F3",
+    "koopman"    : "0x8f3",
     "normal"     : "0x1e7"
   },
   "hd" :     [null, null, null,
@@ -1563,7 +1563,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^12 + x^8 + x^7 + x^6 + x^5 + x^4 + 1",
     "degree"     : 12,
     "explicit"   : "0x11f1",
-    "koopman"    : "0x8F8",
+    "koopman"    : "0x8f8",
     "normal"     : "0x1f1"
   },
   "hd" :     [null, null, null,
@@ -1611,7 +1611,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^12 + x^10 + x^6 + x^5 + x^2 + x^1 + 1",
     "degree"     : 12,
     "explicit"   : "0x1467",
-    "koopman"    : "0xA33",
+    "koopman"    : "0xa33",
     "normal"     : "0x467"
   },
   "hd" :     [null, null, null,
@@ -1627,7 +1627,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^12 + x^10 + x^7 + x^4 + x^3 + x^2 + x^1 + 1",
     "degree"     : 12,
     "explicit"   : "0x149f",
-    "koopman"    : "0xA4F",
+    "koopman"    : "0xa4f",
     "normal"     : "0x49f"
   },
   "hd" :     [null, null, null,
@@ -1644,7 +1644,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^12 + x^10 + x^7 + x^6 + x^4 + x^3 + x^2 + x^1 + 1",
     "degree"     : 12,
     "explicit"   : "0x14df",
-    "koopman"    : "0xA6F",
+    "koopman"    : "0xa6f",
     "normal"     : "0x4df"
   },
   "hd" :     [null, null, null,
@@ -1662,7 +1662,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^12 + x^10 + x^9 + x^7 + x^1 + 1",
     "degree"     : 12,
     "explicit"   : "0x1683",
-    "koopman"    : "0xB41",
+    "koopman"    : "0xb41",
     "normal"     : "0x683"
   },
   "hd" :     [null, null, null,
@@ -1677,7 +1677,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^12 + x^10 + x^9 + x^7 + x^6 + x^5 + x^3 + x^1 + 1",
     "degree"     : 12,
     "explicit"   : "0x16eb",
-    "koopman"    : "0xB75",
+    "koopman"    : "0xb75",
     "normal"     : "0x6eb"
   },
   "hd" :     [null, null, null,
@@ -1695,7 +1695,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^12 + x^10 + x^9 + x^8 + x^5 + x^1 + 1",
     "degree"     : 12,
     "explicit"   : "0x1723",
-    "koopman"    : "0xB91",
+    "koopman"    : "0xb91",
     "normal"     : "0x723"
   },
   "hd" :     [null, null, null,
@@ -1711,7 +1711,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^12 + x^10 + x^9 + x^8 + x^6 + x^4 + x^3 + x^2 + 1",
     "degree"     : 12,
     "explicit"   : "0x175d",
-    "koopman"    : "0xBAE",
+    "koopman"    : "0xbae",
     "normal"     : "0x75d"
   },
   "hd" :     [null, null, null,
@@ -1729,7 +1729,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^12 + x^10 + x^9 + x^8 + x^7 + x^5 + x^4 + x^3 + x^2 + x^1 + 1",
     "degree"     : 12,
     "explicit"   : "0x17bf",
-    "koopman"    : "0xBDF",
+    "koopman"    : "0xbdf",
     "normal"     : "0x7bf"
   },
   "hd" :     [null, null, null,
@@ -1749,7 +1749,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^12 + x^10 + x^9 + x^8 + x^7 + x^6 + x^5 + x^4 + x^3 + x^2 + x^1 + 1",
     "degree"     : 12,
     "explicit"   : "0x17ff",
-    "koopman"    : "0xBFF",
+    "koopman"    : "0xbff",
     "normal"     : "0x7ff"
   },
   "hd" :     [null, null, null,
@@ -1770,7 +1770,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^12 + x^11 + x^3 + x^1 + 1",
     "degree"     : 12,
     "explicit"   : "0x180b",
-    "koopman"    : "0xC05",
+    "koopman"    : "0xc05",
     "normal"     : "0x80b"
   },
   "hd" :     [null, null, null,
@@ -1784,7 +1784,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^12 + x^11 + x^3 + x^2 + 1",
     "degree"     : 12,
     "explicit"   : "0x180d",
-    "koopman"    : "0xC06",
+    "koopman"    : "0xc06",
     "normal"     : "0x80d"
   },
   "hd" :     [null, null, null,
@@ -1798,7 +1798,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^12 + x^11 + x^3 + x^2 + x^1 + 1",
     "degree"     : 12,
     "explicit"   : "0x180f",
-    "koopman"    : "0xC07",
+    "koopman"    : "0xc07",
     "normal"     : "0x80f"
   },
   "hd" :     [null, null, null,
@@ -1813,7 +1813,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^12 + x^11 + x^9 + x^8 + x^7 + x^5 + x^4 + x^3 + x^2 + x^1 + 1",
     "degree"     : 12,
     "explicit"   : "0x1bbf",
-    "koopman"    : "0xDDF",
+    "koopman"    : "0xddf",
     "normal"     : "0xbbf"
   },
   "hd" :     [null, null, null,
@@ -1833,7 +1833,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^12 + x^11 + x^10 + x^8 + x^5 + x^4 + 1",
     "degree"     : 12,
     "explicit"   : "0x1d31",
-    "koopman"    : "0xE98",
+    "koopman"    : "0xe98",
     "normal"     : "0xd31"
   },
   "hd" :     [null, null, null,
@@ -1849,7 +1849,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^12 + x^11 + x^10 + x^9 + x^8 + x^4 + x^1 + 1",
     "degree"     : 12,
     "explicit"   : "0x1f13",
-    "koopman"    : "0xF89",
+    "koopman"    : "0xf89",
     "normal"     : "0xf13"
   },
   "hd" :     [null, null, null,
@@ -1866,7 +1866,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^13 + x^4 + x^3 + x^1 + 1",
     "degree"     : 13,
     "explicit"   : "0x201b",
-    "koopman"    : "0x100D",
+    "koopman"    : "0x100d",
     "normal"     : "0x1b"
   },
   "hd" :     [null, null, null,
@@ -1880,7 +1880,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^13 + x^6 + x^4 + x^2 + 1",
     "degree"     : 13,
     "explicit"   : "0x2055",
-    "koopman"    : "0x102A",
+    "koopman"    : "0x102a",
     "normal"     : "0x55"
   },
   "hd" :     [null, null, null,
@@ -1894,7 +1894,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^13 + x^6 + x^4 + x^3 + x^1 + 1",
     "degree"     : 13,
     "explicit"   : "0x205b",
-    "koopman"    : "0x102D",
+    "koopman"    : "0x102d",
     "normal"     : "0x5b"
   },
   "hd" :     [null, null, null,
@@ -1924,7 +1924,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^13 + x^8 + x^6 + x^5 + x^3 + x^2 + x^1 + 1",
     "degree"     : 13,
     "explicit"   : "0x216f",
-    "koopman"    : "0x10B7",
+    "koopman"    : "0x10b7",
     "normal"     : "0x16f"
   },
   "hd" :     [null, null, null,
@@ -1941,7 +1941,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^13 + x^9 + x^5 + x^4 + x^3 + x^1 + 1",
     "degree"     : 13,
     "explicit"   : "0x223b",
-    "koopman"    : "0x111D",
+    "koopman"    : "0x111d",
     "normal"     : "0x23b"
   },
   "hd" :     [null, null, null,
@@ -1957,7 +1957,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^13 + x^9 + x^6 + x^4 + x^3 + x^1 + 1",
     "degree"     : 13,
     "explicit"   : "0x225b",
-    "koopman"    : "0x112D",
+    "koopman"    : "0x112d",
     "normal"     : "0x25b"
   },
   "hd" :     [null, null, null,
@@ -1973,7 +1973,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^13 + x^10 + x^8 + x^6 + x^3 + x^1 + 1",
     "degree"     : 13,
     "explicit"   : "0x254b",
-    "koopman"    : "0x12A5",
+    "koopman"    : "0x12a5",
     "normal"     : "0x54b"
   },
   "hd" :     [null, null, null,
@@ -1989,7 +1989,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^13 + x^10 + x^8 + x^7 + x^6 + x^3 + x^2 + 1",
     "degree"     : 13,
     "explicit"   : "0x25cd",
-    "koopman"    : "0x12E6",
+    "koopman"    : "0x12e6",
     "normal"     : "0x5cd"
   },
   "hd" :     [null, null, null,
@@ -2058,7 +2058,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^13 + x^11 + x^10 + x^9 + x^8 + x^7 + x^6 + x^5 + x^4 + x^3 + x^2 + x^1 + 1",
     "degree"     : 13,
     "explicit"   : "0x2fff",
-    "koopman"    : "0x17FF",
+    "koopman"    : "0x17ff",
     "normal"     : "0xfff"
   },
   "hd" :     [null, null, null,
@@ -2113,7 +2113,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^13 + x^12 + x^10 + x^8 + x^6 + x^5 + x^4 + x^3 + x^2 + x^1 + 1",
     "degree"     : 13,
     "explicit"   : "0x357f",
-    "koopman"    : "0x1ABF",
+    "koopman"    : "0x1abf",
     "normal"     : "0x157f"
   },
   "hd" :     [null, null, null,
@@ -2133,7 +2133,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^13 + x^12 + x^10 + x^8 + x^7 + x^6 + x^4 + x^2 + x^1 + 1",
     "degree"     : 13,
     "explicit"   : "0x35d7",
-    "koopman"    : "0x1AEB",
+    "koopman"    : "0x1aeb",
     "normal"     : "0x15d7"
   },
   "hd" :     [null, null, null,
@@ -2152,7 +2152,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^13 + x^12 + x^11 + x^7 + x^6 + x^4 + x^2 + x^1 + 1",
     "degree"     : 13,
     "explicit"   : "0x38d7",
-    "koopman"    : "0x1C6B",
+    "koopman"    : "0x1c6b",
     "normal"     : "0x18d7"
   },
   "hd" :     [null, null, null,
@@ -2170,7 +2170,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^13 + x^12 + x^11 + x^9 + x^8 + x^7 + x^6 + x^5 + x^3 + x^2 + x^1 + 1",
     "degree"     : 13,
     "explicit"   : "0x3bef",
-    "koopman"    : "0x1DF7",
+    "koopman"    : "0x1df7",
     "normal"     : "0x1bef"
   },
   "hd" :     [null, null, null,
@@ -2191,7 +2191,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^13 + x^12 + x^11 + x^10 + x^7 + x^6 + x^5 + x^4 + x^2 + 1",
     "degree"     : 13,
     "explicit"   : "0x3cf5",
-    "koopman"    : "0x1E7A",
+    "koopman"    : "0x1e7a",
     "normal"     : "0x1cf5"
   },
   "hd" :     [null, null, null,
@@ -2210,7 +2210,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^13 + x^12 + x^11 + x^10 + x^8 + x^5 + x^3 + x^2 + x^1 + 1",
     "degree"     : 13,
     "explicit"   : "0x3d2f",
-    "koopman"    : "0x1E97",
+    "koopman"    : "0x1e97",
     "normal"     : "0x1d2f"
   },
   "hd" :     [null, null, null,
@@ -2256,7 +2256,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^14 + x^8 + x^7 + x^6 + x^4 + x^3 + x^2 + 1",
     "degree"     : 14,
     "explicit"   : "0x41dd",
-    "koopman"    : "0x20EE",
+    "koopman"    : "0x20ee",
     "normal"     : "0x1dd"
   },
   "hd" :     [null, null, null,
@@ -2273,7 +2273,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^14 + x^9 + x^6 + x^4 + x^3 + x^1 + 1",
     "degree"     : 14,
     "explicit"   : "0x425b",
-    "koopman"    : "0x212D",
+    "koopman"    : "0x212d",
     "normal"     : "0x25b"
   },
   "hd" :     [null, null, null,
@@ -2289,7 +2289,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^14 + x^9 + x^8 + x^7 + x^6 + x^4 + 1",
     "degree"     : 14,
     "explicit"   : "0x43d1",
-    "koopman"    : "0x21E8",
+    "koopman"    : "0x21e8",
     "normal"     : "0x3d1"
   },
   "hd" :     [null, null, null,
@@ -2305,7 +2305,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^14 + x^10 + x^9 + x^5 + x^4 + x^3 + x^2 + 1",
     "degree"     : 14,
     "explicit"   : "0x463d",
-    "koopman"    : "0x231E",
+    "koopman"    : "0x231e",
     "normal"     : "0x63d"
   },
   "hd" :     [null, null, null,
@@ -2385,7 +2385,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^14 + x^11 + x^10 + x^9 + x^8 + x^7 + x^4 + x^3 + x^2 + x^1 + 1",
     "degree"     : 14,
     "explicit"   : "0x4f9f",
-    "koopman"    : "0x27CF",
+    "koopman"    : "0x27cf",
     "normal"     : "0xf9f"
   },
   "hd" :     [null, null, null,
@@ -2405,7 +2405,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^14 + x^12 + x^8 + x^6 + x^4 + x^1 + 1",
     "degree"     : 14,
     "explicit"   : "0x5153",
-    "koopman"    : "0x28A9",
+    "koopman"    : "0x28a9",
     "normal"     : "0x1153"
   },
   "hd" :     [null, null, null,
@@ -2421,7 +2421,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^14 + x^12 + x^8 + x^7 + x^6 + x^4 + x^3 + x^2 + 1",
     "degree"     : 14,
     "explicit"   : "0x51dd",
-    "koopman"    : "0x28EE",
+    "koopman"    : "0x28ee",
     "normal"     : "0x11dd"
   },
   "hd" :     [null, null, null,
@@ -2439,7 +2439,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^14 + x^12 + x^10 + x^7 + x^4 + x^3 + x^2 + x^1 + 1",
     "degree"     : 14,
     "explicit"   : "0x549f",
-    "koopman"    : "0x2A4F",
+    "koopman"    : "0x2a4f",
     "normal"     : "0x149f"
   },
   "hd" :     [null, null, null,
@@ -2457,7 +2457,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^14 + x^12 + x^10 + x^8 + x^7 + x^4 + x^3 + x^2 + 1",
     "degree"     : 14,
     "explicit"   : "0x559d",
-    "koopman"    : "0x2ACE",
+    "koopman"    : "0x2ace",
     "normal"     : "0x159d"
   },
   "hd" :     [null, null, null,
@@ -2475,7 +2475,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^14 + x^12 + x^11 + x^10 + x^8 + x^7 + x^6 + x^5 + x^4 + x^3 + x^1 + 1",
     "degree"     : 14,
     "explicit"   : "0x5dfb",
-    "koopman"    : "0x2EFD",
+    "koopman"    : "0x2efd",
     "normal"     : "0x1dfb"
   },
   "hd" :     [null, null, null,
@@ -2496,7 +2496,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^14 + x^12 + x^11 + x^10 + x^9 + x^8 + x^7 + x^6 + x^5 + x^4 + x^2 + x^1 + 1",
     "degree"     : 14,
     "explicit"   : "0x5ff7",
-    "koopman"    : "0x2FFB",
+    "koopman"    : "0x2ffb",
     "normal"     : "0x1ff7"
   },
   "hd" :     [null, null, null,
@@ -2533,7 +2533,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^14 + x^13 + x^10 + x^9 + x^8 + x^6 + x^4 + x^2 + x^1 + 1",
     "degree"     : 14,
     "explicit"   : "0x6757",
-    "koopman"    : "0x33AB",
+    "koopman"    : "0x33ab",
     "normal"     : "0x2757"
   },
   "hd" :     [null, null, null,
@@ -2570,7 +2570,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^14 + x^13 + x^11 + x^10 + x^9 + x^6 + x^4 + x^2 + x^1 + 1",
     "degree"     : 14,
     "explicit"   : "0x6e57",
-    "koopman"    : "0x372B",
+    "koopman"    : "0x372b",
     "normal"     : "0x2e57"
   },
   "hd" :     [null, null, null,
@@ -2589,7 +2589,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^14 + x^13 + x^11 + x^10 + x^9 + x^8 + x^7 + x^6 + x^4 + x^3 + x^2 + x^1 + 1",
     "degree"     : 14,
     "explicit"   : "0x6fdf",
-    "koopman"    : "0x37EF",
+    "koopman"    : "0x37ef",
     "normal"     : "0x2fdf"
   },
   "hd" :     [null, null, null,
@@ -2611,7 +2611,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^14 + x^13 + x^11 + x^10 + x^9 + x^8 + x^7 + x^6 + x^5 + x^4 + x^3 + x^2 + x^1 + 1",
     "degree"     : 14,
     "explicit"   : "0x6fff",
-    "koopman"    : "0x37FF",
+    "koopman"    : "0x37ff",
     "normal"     : "0x2fff"
   },
   "hd" :     [null, null, null,
@@ -2634,7 +2634,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^14 + x^13 + x^12 + x^10 + x^8 + x^6 + x^5 + x^4 + x^2 + x^1 + 1",
     "degree"     : 14,
     "explicit"   : "0x7577",
-    "koopman"    : "0x3ABB",
+    "koopman"    : "0x3abb",
     "normal"     : "0x3577"
   },
   "hd" :     [null, null, null,
@@ -2654,7 +2654,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^14 + x^13 + x^12 + x^11 + x^10 + x^8 + x^7 + x^6 + x^4 + x^3 + x^2 + x^1 + 1",
     "degree"     : 14,
     "explicit"   : "0x7ddf",
-    "koopman"    : "0x3EEF",
+    "koopman"    : "0x3eef",
     "normal"     : "0x3ddf"
   },
   "hd" :     [null, null, null,
@@ -2701,7 +2701,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^15 + x^7 + x^4 + x^2 + x^1 + 1",
     "degree"     : 15,
     "explicit"   : "0x8097",
-    "koopman"    : "0x404B",
+    "koopman"    : "0x404b",
     "normal"     : "0x97"
   },
   "hd" :     [null, null, null,
@@ -2731,7 +2731,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^15 + x^12 + x^7 + x^5 + x^4 + x^3 + 1",
     "degree"     : 15,
     "explicit"   : "0x90b9",
-    "koopman"    : "0x485C",
+    "koopman"    : "0x485c",
     "normal"     : "0x10b9"
   },
   "hd" :     [null, null, null,
@@ -2765,7 +2765,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^15 + x^12 + x^10 + x^9 + x^8 + x^7 + x^6 + x^5 + x^4 + x^1 + 1",
     "degree"     : 15,
     "explicit"   : "0x97f3",
-    "koopman"    : "0x4BF9",
+    "koopman"    : "0x4bf9",
     "normal"     : "0x17f3"
   },
   "hd" :     [null, null, null,
@@ -2785,7 +2785,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^15 + x^12 + x^11 + x^9 + x^6 + x^5 + x^4 + x^3 + 1",
     "degree"     : 15,
     "explicit"   : "0x9a79",
-    "koopman"    : "0x4D3C",
+    "koopman"    : "0x4d3c",
     "normal"     : "0x1a79"
   },
   "hd" :     [null, null, null,
@@ -2803,7 +2803,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^15 + x^12 + x^11 + x^9 + x^7 + x^6 + x^3 + x^1 + 1",
     "degree"     : 15,
     "explicit"   : "0x9acb",
-    "koopman"    : "0x4D65",
+    "koopman"    : "0x4d65",
     "normal"     : "0x1acb"
   },
   "hd" :     [null, null, null,
@@ -2821,7 +2821,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^15 + x^12 + x^11 + x^10 + x^9 + x^6 + x^2 + x^1 + 1",
     "degree"     : 15,
     "explicit"   : "0x9e47",
-    "koopman"    : "0x4F23",
+    "koopman"    : "0x4f23",
     "normal"     : "0x1e47"
   },
   "hd" :     [null, null, null,
@@ -2839,7 +2839,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^15 + x^12 + x^11 + x^10 + x^9 + x^7 + x^5 + x^1 + 1",
     "degree"     : 15,
     "explicit"   : "0x9ea3",
-    "koopman"    : "0x4F51",
+    "koopman"    : "0x4f51",
     "normal"     : "0x1ea3"
   },
   "hd" :     [null, null, null,
@@ -2857,7 +2857,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^15 + x^13 + x^11 + x^8 + x^7 + x^5 + x^3 + x^2 + 1",
     "degree"     : 15,
     "explicit"   : "0xa9ad",
-    "koopman"    : "0x54D6",
+    "koopman"    : "0x54d6",
     "normal"     : "0x29ad"
   },
   "hd" :     [null, null, null,
@@ -2875,7 +2875,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^15 + x^13 + x^11 + x^10 + x^9 + x^6 + x^5 + x^4 + x^2 + 1",
     "degree"     : 15,
     "explicit"   : "0xae75",
-    "koopman"    : "0x573A",
+    "koopman"    : "0x573a",
     "normal"     : "0x2e75"
   },
   "hd" :     [null, null, null,
@@ -2894,7 +2894,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^15 + x^13 + x^11 + x^10 + x^9 + x^8 + x^7 + x^6 + x^3 + x^2 + x^1 + 1",
     "degree"     : 15,
     "explicit"   : "0xafcf",
-    "koopman"    : "0x57E7",
+    "koopman"    : "0x57e7",
     "normal"     : "0x2fcf"
   },
   "hd" :     [null, null, null,
@@ -2915,7 +2915,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^15 + x^13 + x^12 + x^10 + x^7 + x^3 + x^2 + x^1 + 1",
     "degree"     : 15,
     "explicit"   : "0xb48f",
-    "koopman"    : "0x5A47",
+    "koopman"    : "0x5a47",
     "normal"     : "0x348f"
   },
   "hd" :     [null, null, null,
@@ -2933,7 +2933,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^15 + x^13 + x^12 + x^10 + x^9 + x^7 + x^5 + x^3 + x^2 + x^1 + 1",
     "degree"     : 15,
     "explicit"   : "0xb6af",
-    "koopman"    : "0x5B57",
+    "koopman"    : "0x5b57",
     "normal"     : "0x36af"
   },
   "hd" :     [null, null, null,
@@ -2953,7 +2953,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^15 + x^13 + x^12 + x^10 + x^9 + x^8 + x^7 + x^5 + x^3 + x^1 + 1",
     "degree"     : 15,
     "explicit"   : "0xb7ab",
-    "koopman"    : "0x5BD5",
+    "koopman"    : "0x5bd5",
     "normal"     : "0x37ab"
   },
   "hd" :     [null, null, null,
@@ -2973,7 +2973,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^15 + x^13 + x^12 + x^11 + x^8 + x^7 + x^5 + x^4 + x^3 + x^2 + 1",
     "degree"     : 15,
     "explicit"   : "0xb9bd",
-    "koopman"    : "0x5CDE",
+    "koopman"    : "0x5cde",
     "normal"     : "0x39bd"
   },
   "hd" :     [null, null, null,
@@ -2993,7 +2993,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^15 + x^13 + x^12 + x^11 + x^10 + x^9 + x^8 + x^7 + x^6 + x^5 + x^4 + x^3 + x^2 + x^1 + 1",
     "degree"     : 15,
     "explicit"   : "0xbfff",
-    "koopman"    : "0x5FFF",
+    "koopman"    : "0x5fff",
     "normal"     : "0x3fff"
   },
   "hd" :     [null, null, null,
@@ -3017,7 +3017,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^15 + x^14 + x^10 + x^8 + x^7 + x^4 + x^3 + 1",
     "degree"     : 15,
     "explicit"   : "0xc599",
-    "koopman"    : "0x62CC",
+    "koopman"    : "0x62cc",
     "normal"     : "0x4599"
   },
   "hd" :     [null, null, null,
@@ -3034,7 +3034,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^15 + x^14 + x^10 + x^9 + x^4 + x^2 + x^1 + 1",
     "degree"     : 15,
     "explicit"   : "0xc617",
-    "koopman"    : "0x630B",
+    "koopman"    : "0x630b",
     "normal"     : "0x4617"
   },
   "hd" :     [null, null, null,
@@ -3051,7 +3051,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^15 + x^14 + x^11 + x^10 + x^9 + x^8 + x^6 + x^3 + x^1 + 1",
     "degree"     : 15,
     "explicit"   : "0xcf4b",
-    "koopman"    : "0x67A5",
+    "koopman"    : "0x67a5",
     "normal"     : "0x4f4b"
   },
   "hd" :     [null, null, null,
@@ -3070,7 +3070,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^15 + x^14 + x^12 + x^10 + x^8 + x^4 + x^3 + x^1 + 1",
     "degree"     : 15,
     "explicit"   : "0xd51b",
-    "koopman"    : "0x6A8D",
+    "koopman"    : "0x6a8d",
     "normal"     : "0x551b"
   },
   "hd" :     [null, null, null,
@@ -3088,7 +3088,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^15 + x^14 + x^13 + x^11 + x^4 + x^2 + 1",
     "degree"     : 15,
     "explicit"   : "0xe815",
-    "koopman"    : "0x740A",
+    "koopman"    : "0x740a",
     "normal"     : "0x6815"
   },
   "hd" :     [null, null, null,
@@ -3104,7 +3104,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^15 + x^14 + x^13 + x^11 + x^10 + x^9 + x^8 + x^6 + x^5 + x^4 + x^3 + x^2 + x^1 + 1",
     "degree"     : 15,
     "explicit"   : "0xef7f",
-    "koopman"    : "0x77BF",
+    "koopman"    : "0x77bf",
     "normal"     : "0x6f7f"
   },
   "hd" :     [null, null, null,
@@ -3154,7 +3154,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^16 + x^8 + x^4 + x^3 + x^1 + 1",
     "degree"     : 16,
     "explicit"   : "0x1011b",
-    "koopman"    : "0x808D",
+    "koopman"    : "0x808d",
     "normal"     : "0x11b"
   },
   "hd" :     [null, null, null,
@@ -3169,7 +3169,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^16 + x^10 + x^8 + x^7 + x^3 + 1",
     "degree"     : 16,
     "explicit"   : "0x10589",
-    "koopman"    : "0x82C4",
+    "koopman"    : "0x82c4",
     "normal"     : "0x589"
   },
   "hd" :     [null, null, null,
@@ -3184,7 +3184,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^16 + x^11 + x^10 + x^8 + x^7 + x^6 + x^5 + x^2 + 1",
     "degree"     : 16,
     "explicit"   : "0x10de5",
-    "koopman"    : "0x86F2",
+    "koopman"    : "0x86f2",
     "normal"     : "0xde5"
   },
   "hd" :     [null, null, null,
@@ -3215,7 +3215,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^16 + x^12 + x^8 + x^7 + x^6 + x^5 + x^4 + x^1 + 1",
     "degree"     : 16,
     "explicit"   : "0x111f3",
-    "koopman"    : "0x88F9",
+    "koopman"    : "0x88f9",
     "normal"     : "0x11f3"
   },
   "hd" :     [null, null, null,
@@ -3233,7 +3233,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^16 + x^12 + x^11 + x^9 + x^8 + x^5 + x^3 + x^1 + 1",
     "degree"     : 16,
     "explicit"   : "0x11b2b",
-    "koopman"    : "0x8D95",
+    "koopman"    : "0x8d95",
     "normal"     : "0x1b2b"
   },
   "hd" :     [null, null, null,
@@ -3251,7 +3251,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^16 + x^12 + x^11 + x^10 + x^8 + x^7 + x^6 + x^3 + x^2 + x^1 + 1",
     "degree"     : 16,
     "explicit"   : "0x11dcf",
-    "koopman"    : "0x8EE7",
+    "koopman"    : "0x8ee7",
     "normal"     : "0x1dcf"
   },
   "hd" :     [null, null, null,
@@ -3271,7 +3271,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^16 + x^12 + x^11 + x^10 + x^9 + x^8 + x^7 + x^5 + x^4 + x^2 + x^1 + 1",
     "degree"     : 16,
     "explicit"   : "0x11fb7",
-    "koopman"    : "0x8FDB",
+    "koopman"    : "0x8fdb",
     "normal"     : "0x1fb7"
   },
   "hd" :     [null, null, null,
@@ -3292,7 +3292,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^16 + x^13 + x^10 + x^9 + x^7 + x^5 + x^4 + x^2 + 1",
     "degree"     : 16,
     "explicit"   : "0x126b5",
-    "koopman"    : "0x935A",
+    "koopman"    : "0x935a",
     "normal"     : "0x26b5"
   },
   "hd" :     [null, null, null,
@@ -3328,7 +3328,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^16 + x^13 + x^11 + x^10 + x^8 + x^4 + x^2 + x^1 + 1",
     "degree"     : 16,
     "explicit"   : "0x12d17",
-    "koopman"    : "0x968B",
+    "koopman"    : "0x968b",
     "normal"     : "0x2d17"
   },
   "hd" :     [null, null, null,
@@ -3365,7 +3365,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^16 + x^13 + x^11 + x^10 + x^9 + x^8 + x^4 + x^2 + 1",
     "degree"     : 16,
     "explicit"   : "0x12f15",
-    "koopman"    : "0x978A",
+    "koopman"    : "0x978a",
     "normal"     : "0x2f15"
   },
   "hd" :     [null, null, null,
@@ -3383,7 +3383,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^16 + x^13 + x^11 + x^10 + x^9 + x^8 + x^5 + x^4 + x^3 + x^2 + 1",
     "degree"     : 16,
     "explicit"   : "0x12f3d",
-    "koopman"    : "0x979E",
+    "koopman"    : "0x979e",
     "normal"     : "0x2f3d"
   },
   "hd" :     [null, null, null,
@@ -3403,7 +3403,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^16 + x^13 + x^12 + x^11 + x^10 + x^8 + x^6 + x^5 + x^2 + 1",
     "degree"     : 16,
     "explicit"   : "0x13d65",
-    "koopman"    : "0x9EB2",
+    "koopman"    : "0x9eb2",
     "normal"     : "0x3d65"
   },
   "hd" :     [null, null, null,
@@ -3422,7 +3422,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^16 + x^14 + x^1 + 1",
     "degree"     : 16,
     "explicit"   : "0x14003",
-    "koopman"    : "0xA001",
+    "koopman"    : "0xa001",
     "normal"     : "0x4003"
   },
   "hd" :     [null, null, null,
@@ -3435,7 +3435,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^16 + x^14 + x^9 + x^4 + x^3 + x^2 + 1",
     "degree"     : 16,
     "explicit"   : "0x1421d",
-    "koopman"    : "0xA10E",
+    "koopman"    : "0xa10e",
     "normal"     : "0x421d"
   },
   "hd" :     [null, null, null,
@@ -3451,7 +3451,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^16 + x^14 + x^11 + x^10 + x^9 + x^7 + x^5 + x^3 + x^1 + 1",
     "degree"     : 16,
     "explicit"   : "0x14eab",
-    "koopman"    : "0xA755",
+    "koopman"    : "0xa755",
     "normal"     : "0x4eab"
   },
   "hd" :     [null, null, null,
@@ -3470,7 +3470,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^16 + x^14 + x^12 + x^11 + x^7 + x^6 + x^4 + x^3 + x^2 + x^1 + 1",
     "degree"     : 16,
     "explicit"   : "0x158df",
-    "koopman"    : "0xAC6F",
+    "koopman"    : "0xac6f",
     "normal"     : "0x58df"
   },
   "hd" :     [null, null, null,
@@ -3490,7 +3490,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^16 + x^14 + x^12 + x^11 + x^8 + x^5 + x^4 + x^2 + 1",
     "degree"     : 16,
     "explicit"   : "0x15935",
-    "koopman"    : "0xAC9A",
+    "koopman"    : "0xac9a",
     "normal"     : "0x5935"
   },
   "hd" :     [null, null, null,
@@ -3508,7 +3508,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^16 + x^14 + x^12 + x^11 + x^9 + x^8 + x^7 + x^4 + x^1 + 1",
     "degree"     : 16,
     "explicit"   : "0x15b93",
-    "koopman"    : "0xADC9",
+    "koopman"    : "0xadc9",
     "normal"     : "0x5b93"
   },
   "hd" :     [null, null, null,
@@ -3527,7 +3527,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^16 + x^14 + x^13 + x^11 + x^9 + x^7 + x^6 + x^5 + x^4 + x^3 + x^1 + 1",
     "degree"     : 16,
     "explicit"   : "0x16afb",
-    "koopman"    : "0xB57D",
+    "koopman"    : "0xb57d",
     "normal"     : "0x6afb"
   },
   "hd" :     [null, null, null,
@@ -3548,7 +3548,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^16 + x^14 + x^13 + x^11 + x^10 + x^9 + x^8 + x^6 + x^5 + x^1 + 1",
     "degree"     : 16,
     "explicit"   : "0x16f63",
-    "koopman"    : "0xB7B1",
+    "koopman"    : "0xb7b1",
     "normal"     : "0x6f63"
   },
   "hd" :     [null, null, null,
@@ -3568,7 +3568,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^16 + x^14 + x^13 + x^12 + x^6 + x^4 + x^3 + x^1 + 1",
     "degree"     : 16,
     "explicit"   : "0x1705b",
-    "koopman"    : "0xB82D",
+    "koopman"    : "0xb82d",
     "normal"     : "0x705b"
   },
   "hd" :     [null, null, null,
@@ -3586,7 +3586,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^16 + x^14 + x^13 + x^12 + x^10 + x^8 + x^6 + x^4 + x^3 + x^1 + 1",
     "degree"     : 16,
     "explicit"   : "0x1755b",
-    "koopman"    : "0xBAAD",
+    "koopman"    : "0xbaad",
     "normal"     : "0x755b"
   },
   "hd" :     [null, null, null,
@@ -3606,7 +3606,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^16 + x^15 + x^2 + 1",
     "degree"     : 16,
     "explicit"   : "0x18005",
-    "koopman"    : "0xC002",
+    "koopman"    : "0xc002",
     "normal"     : "0x8005"
   },
   "hd" :     [null, null, null,
@@ -3619,7 +3619,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^16 + x^15 + x^11 + x^8 + x^6 + x^5 + x^4 + x^3 + x^1 + 1",
     "degree"     : 16,
     "explicit"   : "0x1897b",
-    "koopman"    : "0xC4BD",
+    "koopman"    : "0xc4bd",
     "normal"     : "0x897b"
   },
   "hd" :     [null, null, null,
@@ -3638,7 +3638,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^16 + x^15 + x^11 + x^9 + x^8 + x^7 + x^5 + x^4 + x^2 + x^1 + 1",
     "degree"     : 16,
     "explicit"   : "0x18bb7",
-    "koopman"    : "0xC5DB",
+    "koopman"    : "0xc5db",
     "normal"     : "0x8bb7"
   },
   "hd" :     [null, null, null,
@@ -3658,7 +3658,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^16 + x^15 + x^11 + x^10 + x^9 + x^8 + x^6 + x^4 + x^2 + x^1 + 1",
     "degree"     : 16,
     "explicit"   : "0x18f57",
-    "koopman"    : "0xC7AB",
+    "koopman"    : "0xc7ab",
     "normal"     : "0x8f57"
   },
   "hd" :     [null, null, null,
@@ -3678,7 +3678,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^16 + x^15 + x^12 + x^7 + x^6 + x^4 + x^3 + 1",
     "degree"     : 16,
     "explicit"   : "0x190d9",
-    "koopman"    : "0xC86C",
+    "koopman"    : "0xc86c",
     "normal"     : "0x90d9"
   },
   "hd" :     [null, null, null,
@@ -3695,7 +3695,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^16 + x^15 + x^12 + x^10 + x^9 + x^8 + x^6 + x^4 + x^2 + x^1 + 1",
     "degree"     : 16,
     "explicit"   : "0x19757",
-    "koopman"    : "0xCBAB",
+    "koopman"    : "0xcbab",
     "normal"     : "0x9757"
   },
   "hd" :     [null, null, null,
@@ -3715,7 +3715,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^16 + x^15 + x^13 + x^5 + x^3 + x^1 + 1",
     "degree"     : 16,
     "explicit"   : "0x1a02b",
-    "koopman"    : "0xD015",
+    "koopman"    : "0xd015",
     "normal"     : "0xa02b"
   },
   "hd" :     [null, null, null,
@@ -3731,7 +3731,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^16 + x^15 + x^13 + x^7 + x^4 + x^2 + x^1 + 1",
     "degree"     : 16,
     "explicit"   : "0x1a097",
-    "koopman"    : "0xD04B",
+    "koopman"    : "0xd04b",
     "normal"     : "0xa097"
   },
   "hd" :     [null, null, null,
@@ -3748,7 +3748,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^16 + x^15 + x^13 + x^9 + x^7 + x^6 + x^5 + x^3 + x^1 + 1",
     "degree"     : 16,
     "explicit"   : "0x1a2eb",
-    "koopman"    : "0xD175",
+    "koopman"    : "0xd175",
     "normal"     : "0xa2eb"
   },
   "hd" :     [null, null, null,
@@ -3767,7 +3767,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^16 + x^15 + x^13 + x^10 + x^9 + x^8 + x^7 + x^6 + x^4 + x^1 + 1",
     "degree"     : 16,
     "explicit"   : "0x1a7d3",
-    "koopman"    : "0xD3E9",
+    "koopman"    : "0xd3e9",
     "normal"     : "0xa7d3"
   },
   "hd" :     [null, null, null,
@@ -3787,7 +3787,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^16 + x^15 + x^14 + x^11 + x^6 + x^5 + x^2 + x^1 + 1",
     "degree"     : 16,
     "explicit"   : "0x1c867",
-    "koopman"    : "0xE433",
+    "koopman"    : "0xe433",
     "normal"     : "0xc867"
   },
   "hd" :     [null, null, null,
@@ -3805,7 +3805,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^16 + x^15 + x^14 + x^12 + x^9 + x^6 + x^4 + x^3 + x^2 + x^1 + 1",
     "degree"     : 16,
     "explicit"   : "0x1d25f",
-    "koopman"    : "0xE92F",
+    "koopman"    : "0xe92f",
     "normal"     : "0xd25f"
   },
   "hd" :     [null, null, null,
@@ -3825,7 +3825,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^16 + x^15 + x^14 + x^12 + x^11 + x^9 + x^6 + x^4 + x^3 + x^2 + x^1 + 1",
     "degree"     : 16,
     "explicit"   : "0x1da5f",
-    "koopman"    : "0xED2F",
+    "koopman"    : "0xed2f",
     "normal"     : "0xda5f"
   },
   "hd" :     [null, null, null,
@@ -3846,7 +3846,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^16 + x^15 + x^14 + x^12 + x^11 + x^10 + x^9 + x^8 + x^7 + x^6 + x^5 + x^4 + x^3 + x^2 + x^1 + 1",
     "degree"     : 16,
     "explicit"   : "0x1dfff",
-    "koopman"    : "0xEFFF",
+    "koopman"    : "0xefff",
     "normal"     : "0xdfff"
   },
   "hd" :     [null, null, null,
@@ -3871,7 +3871,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^16 + x^15 + x^14 + x^13 + x^12 + x^9 + x^7 + x^4 + x^3 + x^2 + x^1 + 1",
     "degree"     : 16,
     "explicit"   : "0x1f29f",
-    "koopman"    : "0xF94F",
+    "koopman"    : "0xf94f",
     "normal"     : "0xf29f"
   },
   "hd" :     [null, null, null,
@@ -3892,7 +3892,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^16 + x^15 + x^14 + x^13 + x^12 + x^11 + x^9 + x^8 + x^6 + x^5 + x^4 + x^3 + x^2 + x^1 + 1",
     "degree"     : 16,
     "explicit"   : "0x1fb7f",
-    "koopman"    : "0xFDBF",
+    "koopman"    : "0xfdbf",
     "normal"     : "0xfb7f"
   },
   "hd" :     [null, null, null,
@@ -3928,7 +3928,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^17 + x^5 + x^4 + x^2 + x^1 + 1",
     "degree"     : 17,
     "explicit"   : "0x20037",
-    "koopman"    : "0x1001B",
+    "koopman"    : "0x1001b",
     "normal"     : "0x37"
   },
   "hd" :     [null, null, null,
@@ -3958,7 +3958,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^17 + x^12 + x^11 + x^6 + x^4 + x^1 + 1",
     "degree"     : 17,
     "explicit"   : "0x21853",
-    "koopman"    : "0x10C29",
+    "koopman"    : "0x10c29",
     "normal"     : "0x1853"
   },
   "hd" :     [null, null, null,
@@ -3974,7 +3974,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^17 + x^13 + x^11 + x^10 + x^7 + x^5 + x^4 + x^3 + x^1 + 1",
     "degree"     : 17,
     "explicit"   : "0x22cbb",
-    "koopman"    : "0x1165D",
+    "koopman"    : "0x1165d",
     "normal"     : "0x2cbb"
   },
   "hd" :     [null, null, null,
@@ -3993,7 +3993,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^17 + x^13 + x^12 + x^10 + x^9 + x^8 + x^7 + x^6 + x^5 + x^3 + x^1 + 1",
     "degree"     : 17,
     "explicit"   : "0x237eb",
-    "koopman"    : "0x11BF5",
+    "koopman"    : "0x11bf5",
     "normal"     : "0x37eb"
   },
   "hd" :     [null, null, null,
@@ -4014,7 +4014,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^17 + x^14 + x^10 + x^9 + x^8 + x^6 + x^5 + x^4 + x^3 + x^1 + 1",
     "degree"     : 17,
     "explicit"   : "0x2477b",
-    "koopman"    : "0x123BD",
+    "koopman"    : "0x123bd",
     "normal"     : "0x477b"
   },
   "hd" :     [null, null, null,
@@ -4052,7 +4052,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^17 + x^15 + x^14 + x^12 + x^11 + x^10 + x^9 + x^8 + x^6 + x^3 + x^2 + x^1 + 1",
     "degree"     : 17,
     "explicit"   : "0x2df4f",
-    "koopman"    : "0x16FA7",
+    "koopman"    : "0x16fa7",
     "normal"     : "0xdf4f"
   },
   "hd" :     [null, null, null,
@@ -4074,7 +4074,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^17 + x^15 + x^14 + x^13 + x^10 + x^7 + x^4 + x^3 + x^2 + 1",
     "degree"     : 17,
     "explicit"   : "0x2e49d",
-    "koopman"    : "0x1724E",
+    "koopman"    : "0x1724e",
     "normal"     : "0xe49d"
   },
   "hd" :     [null, null, null,
@@ -4093,7 +4093,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^17 + x^15 + x^14 + x^13 + x^11 + x^9 + x^5 + x^4 + x^2 + x^1 + 1",
     "degree"     : 17,
     "explicit"   : "0x2ea37",
-    "koopman"    : "0x1751B",
+    "koopman"    : "0x1751b",
     "normal"     : "0xea37"
   },
   "hd" :     [null, null, null,
@@ -4113,7 +4113,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^17 + x^15 + x^14 + x^13 + x^11 + x^10 + x^8 + x^6 + x^3 + x^2 + x^1 + 1",
     "degree"     : 17,
     "explicit"   : "0x2ed4f",
-    "koopman"    : "0x176A7",
+    "koopman"    : "0x176a7",
     "normal"     : "0xed4f"
   },
   "hd" :     [null, null, null,
@@ -4134,7 +4134,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^17 + x^16 + x^13 + x^12 + x^11 + x^9 + x^5 + x^3 + x^2 + x^1 + 1",
     "degree"     : 17,
     "explicit"   : "0x33a2f",
-    "koopman"    : "0x19D17",
+    "koopman"    : "0x19d17",
     "normal"     : "0x13a2f"
   },
   "hd" :     [null, null, null,
@@ -4154,7 +4154,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^17 + x^16 + x^13 + x^12 + x^11 + x^10 + x^9 + x^7 + x^5 + x^3 + x^2 + x^1 + 1",
     "degree"     : 17,
     "explicit"   : "0x33eaf",
-    "koopman"    : "0x19F57",
+    "koopman"    : "0x19f57",
     "normal"     : "0x13eaf"
   },
   "hd" :     [null, null, null,
@@ -4176,7 +4176,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^17 + x^16 + x^14 + x^13 + x^11 + x^6 + x^4 + x^3 + x^1 + 1",
     "degree"     : 17,
     "explicit"   : "0x3685b",
-    "koopman"    : "0x1B42D",
+    "koopman"    : "0x1b42d",
     "normal"     : "0x1685b"
   },
   "hd" :     [null, null, null,
@@ -4195,7 +4195,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^17 + x^16 + x^14 + x^13 + x^12 + x^7 + x^5 + x^4 + x^2 + x^1 + 1",
     "degree"     : 17,
     "explicit"   : "0x370b7",
-    "koopman"    : "0x1B85B",
+    "koopman"    : "0x1b85b",
     "normal"     : "0x170b7"
   },
   "hd" :     [null, null, null,
@@ -4242,7 +4242,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^18 + x^8 + x^7 + x^6 + x^3 + x^2 + x^1 + 1",
     "degree"     : 18,
     "explicit"   : "0x401cf",
-    "koopman"    : "0x200E7",
+    "koopman"    : "0x200e7",
     "normal"     : "0x1cf"
   },
   "hd" :     [null, null, null,
@@ -4259,7 +4259,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^18 + x^13 + x^12 + x^10 + x^9 + x^8 + x^6 + x^4 + x^2 + x^1 + 1",
     "degree"     : 18,
     "explicit"   : "0x43757",
-    "koopman"    : "0x21BAB",
+    "koopman"    : "0x21bab",
     "normal"     : "0x3757"
   },
   "hd" :     [null, null, null,
@@ -4279,7 +4279,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^18 + x^14 + x^13 + x^12 + x^8 + x^6 + x^5 + x^4 + x^3 + x^2 + 1",
     "degree"     : 18,
     "explicit"   : "0x4717d",
-    "koopman"    : "0x238BE",
+    "koopman"    : "0x238be",
     "normal"     : "0x717d"
   },
   "hd" :     [null, null, null,
@@ -4319,7 +4319,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^18 + x^15 + x^13 + x^12 + x^11 + x^10 + x^9 + x^7 + x^5 + x^2 + x^1 + 1",
     "degree"     : 18,
     "explicit"   : "0x4bea7",
-    "koopman"    : "0x25F53",
+    "koopman"    : "0x25f53",
     "normal"     : "0xbea7"
   },
   "hd" :     [null, null, null,
@@ -4340,7 +4340,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^18 + x^15 + x^13 + x^12 + x^11 + x^10 + x^9 + x^7 + x^6 + x^4 + x^2 + 1",
     "degree"     : 18,
     "explicit"   : "0x4bed5",
-    "koopman"    : "0x25F6A",
+    "koopman"    : "0x25f6a",
     "normal"     : "0xbed5"
   },
   "hd" :     [null, null, null,
@@ -4361,7 +4361,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^18 + x^15 + x^14 + x^12 + x^10 + x^6 + x^5 + x^4 + x^3 + x^1 + 1",
     "degree"     : 18,
     "explicit"   : "0x4d47b",
-    "koopman"    : "0x26A3D",
+    "koopman"    : "0x26a3d",
     "normal"     : "0xd47b"
   },
   "hd" :     [null, null, null,
@@ -4381,7 +4381,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^18 + x^15 + x^14 + x^13 + x^12 + x^10 + x^9 + x^8 + x^6 + x^5 + x^4 + x^3 + 1",
     "degree"     : 18,
     "explicit"   : "0x4f779",
-    "koopman"    : "0x27BBC",
+    "koopman"    : "0x27bbc",
     "normal"     : "0xf779"
   },
   "hd" :     [null, null, null,
@@ -4403,7 +4403,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^18 + x^16 + x^11 + x^10 + x^9 + x^8 + x^6 + x^5 + x^4 + x^1 + 1",
     "degree"     : 18,
     "explicit"   : "0x50f73",
-    "koopman"    : "0x287B9",
+    "koopman"    : "0x287b9",
     "normal"     : "0x10f73"
   },
   "hd" :     [null, null, null,
@@ -4423,7 +4423,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^18 + x^16 + x^14 + x^13 + x^12 + x^11 + x^10 + x^8 + x^7 + x^5 + x^3 + x^2 + 1",
     "degree"     : 18,
     "explicit"   : "0x57dad",
-    "koopman"    : "0x2BED6",
+    "koopman"    : "0x2bed6",
     "normal"     : "0x17dad"
   },
   "hd" :     [null, null, null,
@@ -4445,7 +4445,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^18 + x^16 + x^15 + x^13 + x^8 + x^5 + x^4 + x^3 + x^2 + x^1 + 1",
     "degree"     : 18,
     "explicit"   : "0x5a13f",
-    "koopman"    : "0x2D09F",
+    "koopman"    : "0x2d09f",
     "normal"     : "0x1a13f"
   },
   "hd" :     [null, null, null,
@@ -4465,7 +4465,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^18 + x^16 + x^15 + x^14 + x^11 + x^10 + x^9 + x^8 + x^7 + x^5 + x^4 + x^3 + x^2 + 1",
     "degree"     : 18,
     "explicit"   : "0x5cfbd",
-    "koopman"    : "0x2E7DE",
+    "koopman"    : "0x2e7de",
     "normal"     : "0x1cfbd"
   },
   "hd" :     [null, null, null,
@@ -4488,7 +4488,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^18 + x^16 + x^15 + x^14 + x^12 + x^11 + x^10 + x^7 + x^4 + x^1 + 1",
     "degree"     : 18,
     "explicit"   : "0x5dc93",
-    "koopman"    : "0x2EE49",
+    "koopman"    : "0x2ee49",
     "normal"     : "0x1dc93"
   },
   "hd" :     [null, null, null,
@@ -4508,7 +4508,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^18 + x^17 + x^14 + x^12 + x^11 + x^7 + x^6 + x^4 + x^1 + 1",
     "degree"     : 18,
     "explicit"   : "0x658d3",
-    "koopman"    : "0x32C69",
+    "koopman"    : "0x32c69",
     "normal"     : "0x258d3"
   },
   "hd" :     [null, null, null,
@@ -4574,7 +4574,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^19 + x^8 + x^7 + x^6 + x^5 + 1",
     "degree"     : 19,
     "explicit"   : "0x801e1",
-    "koopman"    : "0x400F0",
+    "koopman"    : "0x400f0",
     "normal"     : "0x1e1"
   },
   "hd" :     [null, null, null,
@@ -4589,7 +4589,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^19 + x^12 + x^9 + x^8 + x^6 + x^5 + x^4 + x^2 + 1",
     "degree"     : 19,
     "explicit"   : "0x81375",
-    "koopman"    : "0x409BA",
+    "koopman"    : "0x409ba",
     "normal"     : "0x1375"
   },
   "hd" :     [null, null, null,
@@ -4607,7 +4607,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^19 + x^15 + x^12 + x^11 + x^10 + x^9 + x^7 + x^6 + x^5 + x^3 + x^1 + 1",
     "degree"     : 19,
     "explicit"   : "0x89eeb",
-    "koopman"    : "0x44F75",
+    "koopman"    : "0x44f75",
     "normal"     : "0x9eeb"
   },
   "hd" :     [null, null, null,
@@ -4628,7 +4628,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^19 + x^15 + x^13 + x^12 + x^11 + x^10 + x^9 + x^5 + x^4 + x^3 + 1",
     "degree"     : 19,
     "explicit"   : "0x8be39",
-    "koopman"    : "0x45F1C",
+    "koopman"    : "0x45f1c",
     "normal"     : "0xbe39"
   },
   "hd" :     [null, null, null,
@@ -4648,7 +4648,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^19 + x^16 + x^8 + x^5 + x^4 + x^3 + x^2 + x^1 + 1",
     "degree"     : 19,
     "explicit"   : "0x9013f",
-    "koopman"    : "0x4809F",
+    "koopman"    : "0x4809f",
     "normal"     : "0x1013f"
   },
   "hd" :     [null, null, null,
@@ -4666,7 +4666,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^19 + x^16 + x^14 + x^13 + x^12 + x^10 + x^8 + x^7 + x^4 + x^3 + 1",
     "degree"     : 19,
     "explicit"   : "0x97599",
-    "koopman"    : "0x4BACC",
+    "koopman"    : "0x4bacc",
     "normal"     : "0x17599"
   },
   "hd" :     [null, null, null,
@@ -4686,7 +4686,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^19 + x^16 + x^15 + x^14 + x^13 + x^11 + x^10 + x^8 + x^6 + x^2 + 1",
     "degree"     : 19,
     "explicit"   : "0x9ed45",
-    "koopman"    : "0x4F6A2",
+    "koopman"    : "0x4f6a2",
     "normal"     : "0x1ed45"
   },
   "hd" :     [null, null, null,
@@ -4706,7 +4706,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^19 + x^17 + x^12 + x^10 + x^9 + x^7 + x^4 + x^1 + 1",
     "degree"     : 19,
     "explicit"   : "0xa1693",
-    "koopman"    : "0x50B49",
+    "koopman"    : "0x50b49",
     "normal"     : "0x21693"
   },
   "hd" :     [null, null, null,
@@ -4724,7 +4724,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^19 + x^17 + x^13 + x^12 + x^11 + x^9 + x^7 + x^6 + x^5 + x^4 + x^1 + 1",
     "degree"     : 19,
     "explicit"   : "0xa3af3",
-    "koopman"    : "0x51D79",
+    "koopman"    : "0x51d79",
     "normal"     : "0x23af3"
   },
   "hd" :     [null, null, null,
@@ -4745,7 +4745,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^19 + x^17 + x^15 + x^14 + x^12 + x^7 + x^5 + x^4 + x^2 + 1",
     "degree"     : 19,
     "explicit"   : "0xad0b5",
-    "koopman"    : "0x5685A",
+    "koopman"    : "0x5685a",
     "normal"     : "0x2d0b5"
   },
   "hd" :     [null, null, null,
@@ -4764,7 +4764,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^19 + x^18 + x^16 + x^15 + x^13 + x^9 + x^6 + x^5 + x^2 + x^1 + 1",
     "degree"     : 19,
     "explicit"   : "0xda267",
-    "koopman"    : "0x6D133",
+    "koopman"    : "0x6d133",
     "normal"     : "0x5a267"
   },
   "hd" :     [null, null, null,
@@ -4784,7 +4784,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^19 + x^18 + x^16 + x^15 + x^14 + x^13 + x^12 + x^10 + x^9 + x^7 + x^5 + x^3 + x^2 + x^1 + 1",
     "degree"     : 19,
     "explicit"   : "0xdf6af",
-    "koopman"    : "0x6FB57",
+    "koopman"    : "0x6fb57",
     "normal"     : "0x5f6af"
   },
   "hd" :     [null, null, null,
@@ -4808,7 +4808,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^19 + x^18 + x^17 + x^15 + x^13 + x^11 + x^10 + x^9 + x^6 + x^5 + x^4 + x^3 + x^2 + x^1 + 1",
     "degree"     : 19,
     "explicit"   : "0xeae7f",
-    "koopman"    : "0x7573F",
+    "koopman"    : "0x7573f",
     "normal"     : "0x6ae7f"
   },
   "hd" :     [null, null, null,
@@ -4832,7 +4832,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^19 + x^18 + x^17 + x^15 + x^14 + x^13 + x^12 + x^9 + x^8 + x^7 + x^3 + x^2 + x^1 + 1",
     "degree"     : 19,
     "explicit"   : "0xef38f",
-    "koopman"    : "0x779C7",
+    "koopman"    : "0x779c7",
     "normal"     : "0x6f38f"
   },
   "hd" :     [null, null, null,
@@ -4855,7 +4855,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^19 + x^18 + x^17 + x^15 + x^14 + x^13 + x^12 + x^10 + x^9 + x^4 + x^3 + x^2 + x^1 + 1",
     "degree"     : 19,
     "explicit"   : "0xef61f",
-    "koopman"    : "0x77B0F",
+    "koopman"    : "0x77b0f",
     "normal"     : "0x6f61f"
   },
   "hd" :     [null, null, null,
@@ -4890,7 +4890,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^20 + x^6 + x^5 + x^4 + x^2 + 1",
     "degree"     : 20,
     "explicit"   : "0x100075",
-    "koopman"    : "0x8003A",
+    "koopman"    : "0x8003a",
     "normal"     : "0x75"
   },
   "hd" :     [null, null, null,
@@ -4920,7 +4920,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^20 + x^16 + x^9 + x^4 + x^3 + x^2 + 1",
     "degree"     : 20,
     "explicit"   : "0x11021d",
-    "koopman"    : "0x8810E",
+    "koopman"    : "0x8810e",
     "normal"     : "0x1021d"
   },
   "hd" :     [null, null, null,
@@ -4936,7 +4936,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^20 + x^16 + x^15 + x^13 + x^10 + x^9 + x^8 + x^7 + x^4 + x^3 + 1",
     "degree"     : 20,
     "explicit"   : "0x11a799",
-    "koopman"    : "0x8D3CC",
+    "koopman"    : "0x8d3cc",
     "normal"     : "0x1a799"
   },
   "hd" :     [null, null, null,
@@ -4956,7 +4956,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^20 + x^17 + x^16 + x^15 + x^13 + x^11 + x^9 + x^8 + x^3 + x^2 + x^1 + 1",
     "degree"     : 20,
     "explicit"   : "0x13ab0f",
-    "koopman"    : "0x9D587",
+    "koopman"    : "0x9d587",
     "normal"     : "0x3ab0f"
   },
   "hd" :     [null, null, null,
@@ -4977,7 +4977,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^20 + x^18 + x^16 + x^12 + x^8 + x^7 + x^4 + x^1 + 1",
     "degree"     : 20,
     "explicit"   : "0x151193",
-    "koopman"    : "0xA88C9",
+    "koopman"    : "0xa88c9",
     "normal"     : "0x51193"
   },
   "hd" :     [null, null, null,
@@ -4995,7 +4995,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^20 + x^18 + x^16 + x^15 + x^14 + x^13 + x^11 + x^9 + x^7 + x^6 + x^4 + x^3 + x^2 + x^1 + 1",
     "degree"     : 20,
     "explicit"   : "0x15eadf",
-    "koopman"    : "0xAF56F",
+    "koopman"    : "0xaf56f",
     "normal"     : "0x5eadf"
   },
   "hd" :     [null, null, null,
@@ -5019,7 +5019,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^20 + x^18 + x^16 + x^15 + x^14 + x^13 + x^12 + x^11 + x^8 + x^7 + x^5 + x^4 + x^2 + x^1 + 1",
     "degree"     : 20,
     "explicit"   : "0x15f9b7",
-    "koopman"    : "0xAFCDB",
+    "koopman"    : "0xafcdb",
     "normal"     : "0x5f9b7"
   },
   "hd" :     [null, null, null,
@@ -5043,7 +5043,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^20 + x^18 + x^17 + x^15 + x^11 + x^10 + x^8 + x^6 + x^5 + x^3 + x^2 + x^1 + 1",
     "degree"     : 20,
     "explicit"   : "0x168d6f",
-    "koopman"    : "0xB46B7",
+    "koopman"    : "0xb46b7",
     "normal"     : "0x68d6f"
   },
   "hd" :     [null, null, null,
@@ -5065,7 +5065,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^20 + x^18 + x^17 + x^15 + x^13 + x^12 + x^6 + x^3 + x^2 + x^1 + 1",
     "degree"     : 20,
     "explicit"   : "0x16b04f",
-    "koopman"    : "0xB5827",
+    "koopman"    : "0xb5827",
     "normal"     : "0x6b04f"
   },
   "hd" :     [null, null, null,
@@ -5085,7 +5085,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^20 + x^18 + x^17 + x^16 + x^14 + x^10 + x^7 + x^4 + x^2 + x^1 + 1",
     "degree"     : 20,
     "explicit"   : "0x174497",
-    "koopman"    : "0xBA24B",
+    "koopman"    : "0xba24b",
     "normal"     : "0x74497"
   },
   "hd" :     [null, null, null,
@@ -5105,7 +5105,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^20 + x^18 + x^17 + x^16 + x^15 + x^14 + x^11 + x^10 + x^9 + x^6 + x^5 + x^4 + x^3 + x^2 + 1",
     "degree"     : 20,
     "explicit"   : "0x17ce7d",
-    "koopman"    : "0xBE73E",
+    "koopman"    : "0xbe73e",
     "normal"     : "0x7ce7d"
   },
   "hd" :     [null, null, null,
@@ -5129,7 +5129,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^20 + x^19 + x^13 + x^12 + x^10 + x^8 + x^7 + x^4 + x^3 + x^2 + x^1 + 1",
     "degree"     : 20,
     "explicit"   : "0x18359f",
-    "koopman"    : "0xC1ACF",
+    "koopman"    : "0xc1acf",
     "normal"     : "0x8359f"
   },
   "hd" :     [null, null, null,
@@ -5150,7 +5150,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^20 + x^19 + x^15 + x^12 + x^11 + x^9 + x^8 + x^3 + x^2 + x^1 + 1",
     "degree"     : 20,
     "explicit"   : "0x189b0f",
-    "koopman"    : "0xC4D87",
+    "koopman"    : "0xc4d87",
     "normal"     : "0x89b0f"
   },
   "hd" :     [null, null, null,
@@ -5170,7 +5170,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^20 + x^19 + x^16 + x^12 + x^10 + x^8 + x^4 + x^1 + 1",
     "degree"     : 20,
     "explicit"   : "0x191513",
-    "koopman"    : "0xC8A89",
+    "koopman"    : "0xc8a89",
     "normal"     : "0x91513"
   },
   "hd" :     [null, null, null,
@@ -5188,7 +5188,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^20 + x^19 + x^16 + x^15 + x^13 + x^12 + x^11 + x^10 + x^8 + x^7 + x^6 + x^5 + x^4 + x^1 + 1",
     "degree"     : 20,
     "explicit"   : "0x19bdf3",
-    "koopman"    : "0xCDEF9",
+    "koopman"    : "0xcdef9",
     "normal"     : "0x9bdf3"
   },
   "hd" :     [null, null, null,
@@ -5212,7 +5212,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^20 + x^19 + x^17 + x^15 + x^9 + x^8 + x^7 + x^4 + x^3 + x^2 + x^1 + 1",
     "degree"     : 20,
     "explicit"   : "0x1a839f",
-    "koopman"    : "0xD41CF",
+    "koopman"    : "0xd41cf",
     "normal"     : "0xa839f"
   },
   "hd" :     [null, null, null,
@@ -5233,7 +5233,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^20 + x^19 + x^18 + x^14 + x^6 + x^2 + x^1 + 1",
     "degree"     : 20,
     "explicit"   : "0x1c4047",
-    "koopman"    : "0xE2023",
+    "koopman"    : "0xe2023",
     "normal"     : "0xc4047"
   },
   "hd" :     [null, null, null,
@@ -5250,7 +5250,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^20 + x^19 + x^18 + x^15 + x^14 + x^10 + x^6 + x^5 + x^2 + x^1 + 1",
     "degree"     : 20,
     "explicit"   : "0x1cc467",
-    "koopman"    : "0xE6233",
+    "koopman"    : "0xe6233",
     "normal"     : "0xcc467"
   },
   "hd" :     [null, null, null,
@@ -5312,7 +5312,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^21 + x^16 + x^15 + x^13 + x^12 + x^11 + x^10 + x^9 + x^8 + x^4 + x^3 + x^2 + x^1 + 1",
     "degree"     : 21,
     "explicit"   : "0x21bf1f",
-    "koopman"    : "0x10DF8F",
+    "koopman"    : "0x10df8f",
     "normal"     : "0x1bf1f"
   },
   "hd" :     [null, null, null,
@@ -5335,7 +5335,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^21 + x^17 + x^14 + x^13 + x^12 + x^10 + x^8 + x^6 + x^5 + x^4 + 1",
     "degree"     : 21,
     "explicit"   : "0x227571",
-    "koopman"    : "0x113AB8",
+    "koopman"    : "0x113ab8",
     "normal"     : "0x27571"
   },
   "hd" :     [null, null, null,
@@ -5355,7 +5355,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^21 + x^18 + x^16 + x^15 + x^12 + x^10 + x^8 + x^4 + x^3 + x^2 + 1",
     "degree"     : 21,
     "explicit"   : "0x25951d",
-    "koopman"    : "0x12CA8E",
+    "koopman"    : "0x12ca8e",
     "normal"     : "0x5951d"
   },
   "hd" :     [null, null, null,
@@ -5375,7 +5375,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^21 + x^18 + x^16 + x^15 + x^14 + x^13 + x^12 + x^10 + x^8 + x^6 + x^3 + x^1 + 1",
     "degree"     : 21,
     "explicit"   : "0x25f54b",
-    "koopman"    : "0x12FAA5",
+    "koopman"    : "0x12faa5",
     "normal"     : "0x5f54b"
   },
   "hd" :     [null, null, null,
@@ -5397,7 +5397,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^21 + x^18 + x^17 + x^14 + x^12 + x^10 + x^9 + x^7 + x^6 + x^5 + x^4 + x^2 + 1",
     "degree"     : 21,
     "explicit"   : "0x2656f5",
-    "koopman"    : "0x132B7A",
+    "koopman"    : "0x132b7a",
     "normal"     : "0x656f5"
   },
   "hd" :     [null, null, null,
@@ -5460,7 +5460,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^21 + x^19 + x^18 + x^16 + x^14 + x^12 + x^11 + x^10 + x^6 + x^5 + x^2 + x^1 + 1",
     "degree"     : 21,
     "explicit"   : "0x2d5c67",
-    "koopman"    : "0x16AE33",
+    "koopman"    : "0x16ae33",
     "normal"     : "0xd5c67"
   },
   "hd" :     [null, null, null,
@@ -5482,7 +5482,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^21 + x^19 + x^18 + x^16 + x^15 + x^14 + x^12 + x^9 + x^7 + x^6 + x^5 + x^3 + x^2 + 1",
     "degree"     : 21,
     "explicit"   : "0x2dd2ed",
-    "koopman"    : "0x16E976",
+    "koopman"    : "0x16e976",
     "normal"     : "0xdd2ed"
   },
   "hd" :     [null, null, null,
@@ -5505,7 +5505,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^21 + x^19 + x^18 + x^17 + x^11 + x^10 + x^9 + x^8 + x^7 + x^6 + x^4 + x^2 + 1",
     "degree"     : 21,
     "explicit"   : "0x2e0fd5",
-    "koopman"    : "0x1707EA",
+    "koopman"    : "0x1707ea",
     "normal"     : "0xe0fd5"
   },
   "hd" :     [null, null, null,
@@ -5527,7 +5527,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^21 + x^20 + x^13 + x^11 + x^7 + x^4 + x^3 + 1",
     "degree"     : 21,
     "explicit"   : "0x302899",
-    "koopman"    : "0x18144C",
+    "koopman"    : "0x18144c",
     "normal"     : "0x102899"
   },
   "hd" :     [null, null, null,
@@ -5563,7 +5563,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^21 + x^20 + x^18 + x^16 + x^14 + x^13 + x^10 + x^9 + x^7 + x^3 + 1",
     "degree"     : 21,
     "explicit"   : "0x356689",
-    "koopman"    : "0x1AB344",
+    "koopman"    : "0x1ab344",
     "normal"     : "0x156689"
   },
   "hd" :     [null, null, null,
@@ -5583,7 +5583,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^21 + x^20 + x^19 + x^15 + x^14 + x^13 + x^12 + x^11 + x^9 + x^7 + x^6 + x^5 + x^2 + x^1 + 1",
     "degree"     : 21,
     "explicit"   : "0x38fae7",
-    "koopman"    : "0x1C7D73",
+    "koopman"    : "0x1c7d73",
     "normal"     : "0x18fae7"
   },
   "hd" :     [null, null, null,
@@ -5607,7 +5607,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^21 + x^20 + x^19 + x^17 + x^14 + x^13 + x^12 + x^10 + x^9 + x^8 + x^2 + x^1 + 1",
     "degree"     : 21,
     "explicit"   : "0x3a7707",
-    "koopman"    : "0x1D3B83",
+    "koopman"    : "0x1d3b83",
     "normal"     : "0x1a7707"
   },
   "hd" :     [null, null, null,
@@ -5629,7 +5629,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^21 + x^20 + x^19 + x^18 + x^16 + x^15 + x^13 + x^12 + x^11 + x^10 + x^9 + x^8 + x^6 + x^5 + x^3 + x^2 + x^1 + 1",
     "degree"     : 21,
     "explicit"   : "0x3dbf6f",
-    "koopman"    : "0x1EDFB7",
+    "koopman"    : "0x1edfb7",
     "normal"     : "0x1dbf6f"
   },
   "hd" :     [null, null, null,
@@ -5698,7 +5698,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^22 + x^18 + x^16 + x^15 + x^14 + x^12 + x^11 + x^10 + x^9 + x^8 + x^6 + x^5 + x^3 + x^2 + x^1 + 1",
     "degree"     : 22,
     "explicit"   : "0x45df6f",
-    "koopman"    : "0x22EFB7",
+    "koopman"    : "0x22efb7",
     "normal"     : "0x5df6f"
   },
   "hd" :     [null, null, null,
@@ -5723,7 +5723,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^22 + x^19 + x^15 + x^14 + x^13 + x^12 + x^10 + x^9 + x^8 + x^7 + x^3 + 1",
     "degree"     : 22,
     "explicit"   : "0x48f789",
-    "koopman"    : "0x247BC4",
+    "koopman"    : "0x247bc4",
     "normal"     : "0x8f789"
   },
   "hd" :     [null, null, null,
@@ -5763,7 +5763,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^22 + x^19 + x^17 + x^16 + x^15 + x^13 + x^11 + x^7 + x^6 + x^3 + x^2 + x^1 + 1",
     "degree"     : 22,
     "explicit"   : "0x4ba8cf",
-    "koopman"    : "0x25D467",
+    "koopman"    : "0x25d467",
     "normal"     : "0xba8cf"
   },
   "hd" :     [null, null, null,
@@ -5785,7 +5785,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^22 + x^19 + x^17 + x^16 + x^15 + x^14 + x^12 + x^11 + x^10 + x^9 + x^7 + x^6 + x^5 + x^4 + x^3 + x^1 + 1",
     "degree"     : 22,
     "explicit"   : "0x4bdefb",
-    "koopman"    : "0x25EF7D",
+    "koopman"    : "0x25ef7d",
     "normal"     : "0xbdefb"
   },
   "hd" :     [null, null, null,
@@ -5811,7 +5811,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^22 + x^19 + x^18 + x^17 + x^14 + x^12 + x^9 + x^8 + x^6 + x^5 + x^3 + x^1 + 1",
     "degree"     : 22,
     "explicit"   : "0x4e536b",
-    "koopman"    : "0x2729B5",
+    "koopman"    : "0x2729b5",
     "normal"     : "0xe536b"
   },
   "hd" :     [null, null, null,
@@ -5833,7 +5833,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^22 + x^20 + x^16 + x^13 + x^12 + x^11 + x^8 + x^7 + x^6 + x^5 + x^4 + x^3 + x^2 + 1",
     "degree"     : 22,
     "explicit"   : "0x5139fd",
-    "koopman"    : "0x289CFE",
+    "koopman"    : "0x289cfe",
     "normal"     : "0x1139fd"
   },
   "hd" :     [null, null, null,
@@ -5856,7 +5856,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^22 + x^20 + x^17 + x^15 + x^12 + x^11 + x^9 + x^7 + x^5 + x^3 + 1",
     "degree"     : 22,
     "explicit"   : "0x529aa9",
-    "koopman"    : "0x294D54",
+    "koopman"    : "0x294d54",
     "normal"     : "0x129aa9"
   },
   "hd" :     [null, null, null,
@@ -5876,7 +5876,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^22 + x^20 + x^18 + x^16 + x^13 + x^11 + x^9 + x^6 + x^4 + x^2 + 1",
     "degree"     : 22,
     "explicit"   : "0x552a55",
-    "koopman"    : "0x2A952A",
+    "koopman"    : "0x2a952a",
     "normal"     : "0x152a55"
   },
   "hd" :     [null, null, null,
@@ -5896,7 +5896,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^22 + x^20 + x^18 + x^16 + x^15 + x^14 + x^12 + x^11 + x^9 + x^8 + x^7 + x^5 + x^2 + x^1 + 1",
     "degree"     : 22,
     "explicit"   : "0x55dba7",
-    "koopman"    : "0x2AEDD3",
+    "koopman"    : "0x2aedd3",
     "normal"     : "0x15dba7"
   },
   "hd" :     [null, null, null,
@@ -5920,7 +5920,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^22 + x^20 + x^19 + x^17 + x^16 + x^15 + x^12 + x^11 + x^10 + x^8 + x^5 + x^1 + 1",
     "degree"     : 22,
     "explicit"   : "0x5b9d23",
-    "koopman"    : "0x2DCE91",
+    "koopman"    : "0x2dce91",
     "normal"     : "0x1b9d23"
   },
   "hd" :     [null, null, null,
@@ -5942,7 +5942,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^22 + x^21 + x^16 + x^12 + x^11 + x^10 + x^9 + x^8 + x^7 + x^5 + x^2 + x^1 + 1",
     "degree"     : 22,
     "explicit"   : "0x611fa7",
-    "koopman"    : "0x308FD3",
+    "koopman"    : "0x308fd3",
     "normal"     : "0x211fa7"
   },
   "hd" :     [null, null, null,
@@ -5964,7 +5964,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^22 + x^21 + x^19 + x^18 + x^16 + x^15 + x^14 + x^8 + x^5 + x^4 + 1",
     "degree"     : 22,
     "explicit"   : "0x6dc131",
-    "koopman"    : "0x36E098",
+    "koopman"    : "0x36e098",
     "normal"     : "0x2dc131"
   },
   "hd" :     [null, null, null,
@@ -5984,7 +5984,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^22 + x^21 + x^19 + x^18 + x^16 + x^15 + x^14 + x^11 + 1",
     "degree"     : 22,
     "explicit"   : "0x6dc801",
-    "koopman"    : "0x36E400",
+    "koopman"    : "0x36e400",
     "normal"     : "0x2dc801"
   },
   "hd" :     [null, null, null,
@@ -6002,7 +6002,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^22 + x^21 + x^19 + x^18 + x^16 + x^15 + x^14 + x^13 + x^11 + x^10 + x^6 + x^3 + x^2 + x^1 + 1",
     "degree"     : 22,
     "explicit"   : "0x6dec4f",
-    "koopman"    : "0x36F627",
+    "koopman"    : "0x36f627",
     "normal"     : "0x2dec4f"
   },
   "hd" :     [null, null, null,
@@ -6026,7 +6026,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^22 + x^21 + x^20 + x^16 + x^14 + x^13 + x^8 + x^7 + x^5 + x^2 + 1",
     "degree"     : 22,
     "explicit"   : "0x7161a5",
-    "koopman"    : "0x38B0D2",
+    "koopman"    : "0x38b0d2",
     "normal"     : "0x3161a5"
   },
   "hd" :     [null, null, null,
@@ -6046,7 +6046,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^22 + x^21 + x^20 + x^17 + x^13 + x^11 + x^9 + x^8 + x^7 + x^6 + x^4 + x^1 + 1",
     "degree"     : 22,
     "explicit"   : "0x722bd3",
-    "koopman"    : "0x3915E9",
+    "koopman"    : "0x3915e9",
     "normal"     : "0x322bd3"
   },
   "hd" :     [null, null, null,
@@ -6068,7 +6068,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^22 + x^21 + x^20 + x^17 + x^15 + x^13 + x^12 + x^10 + x^9 + x^7 + x^5 + x^2 + x^1 + 1",
     "degree"     : 22,
     "explicit"   : "0x72b6a7",
-    "koopman"    : "0x395B53",
+    "koopman"    : "0x395b53",
     "normal"     : "0x32b6a7"
   },
   "hd" :     [null, null, null,
@@ -6091,7 +6091,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^22 + x^21 + x^20 + x^18 + x^17 + x^16 + x^15 + x^10 + x^9 + x^5 + x^3 + x^2 + 1",
     "degree"     : 22,
     "explicit"   : "0x77862d",
-    "koopman"    : "0x3BC316",
+    "koopman"    : "0x3bc316",
     "normal"     : "0x37862d"
   },
   "hd" :     [null, null, null,
@@ -6113,7 +6113,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^22 + x^21 + x^20 + x^19 + x^18 + x^16 + x^15 + x^14 + x^13 + x^12 + x^8 + x^6 + x^5 + x^1 + 1",
     "degree"     : 22,
     "explicit"   : "0x7df163",
-    "koopman"    : "0x3EF8B1",
+    "koopman"    : "0x3ef8b1",
     "normal"     : "0x3df163"
   },
   "hd" :     [null, null, null,
@@ -6149,7 +6149,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^23 + x^5 + x^4 + x^2 + x^1 + 1",
     "degree"     : 23,
     "explicit"   : "0x800037",
-    "koopman"    : "0x40001B",
+    "koopman"    : "0x40001b",
     "normal"     : "0x37"
   },
   "hd" :     [null, null, null,
@@ -6164,7 +6164,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^23 + x^7 + x^6 + x^5 + x^4 + x^2 + x^1 + 1",
     "degree"     : 23,
     "explicit"   : "0x8000f7",
-    "koopman"    : "0x40007B",
+    "koopman"    : "0x40007b",
     "normal"     : "0xf7"
   },
   "hd" :     [null, null, null,
@@ -6196,7 +6196,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^23 + x^18 + x^15 + x^12 + x^11 + x^10 + x^9 + x^6 + x^5 + x^4 + x^2 + x^1 + 1",
     "degree"     : 23,
     "explicit"   : "0x849e77",
-    "koopman"    : "0x424F3B",
+    "koopman"    : "0x424f3b",
     "normal"     : "0x49e77"
   },
   "hd" :     [null, null, null,
@@ -6218,7 +6218,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^23 + x^18 + x^16 + x^13 + x^11 + x^10 + x^9 + x^8 + x^6 + x^5 + 1",
     "degree"     : 23,
     "explicit"   : "0x852f61",
-    "koopman"    : "0x4297B0",
+    "koopman"    : "0x4297b0",
     "normal"     : "0x52f61"
   },
   "hd" :     [null, null, null,
@@ -6238,7 +6238,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^23 + x^19 + x^18 + x^14 + x^13 + x^12 + x^10 + x^9 + x^7 + x^6 + x^5 + x^3 + x^2 + x^1 + 1",
     "degree"     : 23,
     "explicit"   : "0x8c76ef",
-    "koopman"    : "0x463B77",
+    "koopman"    : "0x463b77",
     "normal"     : "0xc76ef"
   },
   "hd" :     [null, null, null,
@@ -6262,7 +6262,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^23 + x^19 + x^18 + x^16 + x^13 + x^12 + x^11 + x^9 + x^7 + x^6 + x^5 + x^4 + x^3 + 1",
     "degree"     : 23,
     "explicit"   : "0x8d3af9",
-    "koopman"    : "0x469D7C",
+    "koopman"    : "0x469d7c",
     "normal"     : "0xd3af9"
   },
   "hd" :     [null, null, null,
@@ -6285,7 +6285,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^23 + x^19 + x^18 + x^16 + x^14 + x^13 + x^9 + x^8 + x^6 + x^4 + x^2 + x^1 + 1",
     "degree"     : 23,
     "explicit"   : "0x8d6357",
-    "koopman"    : "0x46B1AB",
+    "koopman"    : "0x46b1ab",
     "normal"     : "0xd6357"
   },
   "hd" :     [null, null, null,
@@ -6307,7 +6307,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^23 + x^20 + x^17 + x^16 + x^14 + x^12 + x^11 + x^9 + x^7 + x^5 + x^2 + 1",
     "degree"     : 23,
     "explicit"   : "0x935aa5",
-    "koopman"    : "0x49AD52",
+    "koopman"    : "0x49ad52",
     "normal"     : "0x135aa5"
   },
   "hd" :     [null, null, null,
@@ -6328,7 +6328,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^23 + x^20 + x^18 + x^17 + x^15 + x^13 + x^12 + x^7 + x^5 + x^4 + 1",
     "degree"     : 23,
     "explicit"   : "0x96b0b1",
-    "koopman"    : "0x4B5858",
+    "koopman"    : "0x4b5858",
     "normal"     : "0x16b0b1"
   },
   "hd" :     [null, null, null,
@@ -6348,7 +6348,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^23 + x^20 + x^18 + x^17 + x^15 + x^14 + x^13 + x^12 + x^9 + x^8 + x^7 + x^5 + x^1 + 1",
     "degree"     : 23,
     "explicit"   : "0x96f3a3",
-    "koopman"    : "0x4B79D1",
+    "koopman"    : "0x4b79d1",
     "normal"     : "0x16f3a3"
   },
   "hd" :     [null, null, null,
@@ -6371,7 +6371,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^23 + x^21 + x^18 + x^17 + x^16 + x^15 + x^13 + x^12 + x^11 + x^10 + x^9 + x^7 + x^6 + x^4 + x^3 + x^2 + 1",
     "degree"     : 23,
     "explicit"   : "0xa7bedd",
-    "koopman"    : "0x53DF6E",
+    "koopman"    : "0x53df6e",
     "normal"     : "0x27bedd"
   },
   "hd" :     [null, null, null,
@@ -6397,7 +6397,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^23 + x^21 + x^19 + x^12 + x^11 + x^9 + x^8 + x^7 + x^6 + x^5 + 1",
     "degree"     : 23,
     "explicit"   : "0xa81be1",
-    "koopman"    : "0x540DF0",
+    "koopman"    : "0x540df0",
     "normal"     : "0x281be1"
   },
   "hd" :     [null, null, null,
@@ -6417,7 +6417,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^23 + x^21 + x^20 + x^18 + x^17 + x^14 + x^13 + x^12 + x^11 + x^8 + x^6 + x^3 + 1",
     "degree"     : 23,
     "explicit"   : "0xb67949",
-    "koopman"    : "0x5B3CA4",
+    "koopman"    : "0x5b3ca4",
     "normal"     : "0x367949"
   },
   "hd" :     [null, null, null,
@@ -6439,7 +6439,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^23 + x^21 + x^20 + x^19 + x^18 + x^14 + x^11 + x^5 + x^4 + x^1 + 1",
     "degree"     : 23,
     "explicit"   : "0xbc4833",
-    "koopman"    : "0x5E2419",
+    "koopman"    : "0x5e2419",
     "normal"     : "0x3c4833"
   },
   "hd" :     [null, null, null,
@@ -6459,7 +6459,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^23 + x^21 + x^20 + x^19 + x^18 + x^15 + x^14 + x^13 + x^12 + x^10 + x^9 + x^6 + x^2 + x^1 + 1",
     "degree"     : 23,
     "explicit"   : "0xbcf647",
-    "koopman"    : "0x5E7B23",
+    "koopman"    : "0x5e7b23",
     "normal"     : "0x3cf647"
   },
   "hd" :     [null, null, null,
@@ -6505,7 +6505,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^23 + x^22 + x^20 + x^18 + x^17 + x^16 + x^15 + x^8 + x^7 + x^6 + x^5 + x^3 + x^1 + 1",
     "degree"     : 23,
     "explicit"   : "0xd781eb",
-    "koopman"    : "0x6BC0F5",
+    "koopman"    : "0x6bc0f5",
     "normal"     : "0x5781eb"
   },
   "hd" :     [null, null, null,
@@ -6541,7 +6541,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^24 + x^4 + x^3 + x^1 + 1",
     "degree"     : 24,
     "explicit"   : "0x100001b",
-    "koopman"    : "0x80000D",
+    "koopman"    : "0x80000d",
     "normal"     : "0x1b"
   },
   "hd" :     [null, null, null,
@@ -6555,7 +6555,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^24 + x^8 + x^5 + x^4 + x^2 + 1",
     "degree"     : 24,
     "explicit"   : "0x1000135",
-    "koopman"    : "0x80009A",
+    "koopman"    : "0x80009a",
     "normal"     : "0x135"
   },
   "hd" :     [null, null, null,
@@ -6570,7 +6570,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^24 + x^10 + x^9 + x^6 + x^4 + x^3 + x^1 + 1",
     "degree"     : 24,
     "explicit"   : "0x100065b",
-    "koopman"    : "0x80032D",
+    "koopman"    : "0x80032d",
     "normal"     : "0x65b"
   },
   "hd" :     [null, null, null,
@@ -6587,7 +6587,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^24 + x^20 + x^12 + x^11 + x^10 + x^8 + x^7 + x^6 + x^3 + x^2 + 1",
     "degree"     : 24,
     "explicit"   : "0x1101dcd",
-    "koopman"    : "0x880EE6",
+    "koopman"    : "0x880ee6",
     "normal"     : "0x101dcd"
   },
   "hd" :     [null, null, null,
@@ -6607,7 +6607,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^24 + x^20 + x^19 + x^16 + x^15 + x^13 + x^12 + x^9 + x^6 + x^4 + x^1 + 1",
     "degree"     : 24,
     "explicit"   : "0x119b253",
-    "koopman"    : "0x8CD929",
+    "koopman"    : "0x8cd929",
     "normal"     : "0x19b253"
   },
   "hd" :     [null, null, null,
@@ -6628,7 +6628,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^24 + x^20 + x^19 + x^17 + x^14 + x^13 + x^12 + x^11 + x^7 + x^6 + x^5 + x^2 + 1",
     "degree"     : 24,
     "explicit"   : "0x11a78e5",
-    "koopman"    : "0x8D3C72",
+    "koopman"    : "0x8d3c72",
     "normal"     : "0x1a78e5"
   },
   "hd" :     [null, null, null,
@@ -6650,7 +6650,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^24 + x^20 + x^19 + x^18 + x^17 + x^16 + x^13 + x^8 + x^7 + x^6 + x^2 + x^1 + 1",
     "degree"     : 24,
     "explicit"   : "0x11f21c7",
-    "koopman"    : "0x8F90E3",
+    "koopman"    : "0x8f90e3",
     "normal"     : "0x1f21c7"
   },
   "hd" :     [null, null, null,
@@ -6672,7 +6672,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^24 + x^21 + x^18 + x^17 + x^16 + x^15 + x^12 + x^10 + x^9 + x^7 + x^4 + x^3 + x^2 + x^1 + 1",
     "degree"     : 24,
     "explicit"   : "0x127969f",
-    "koopman"    : "0x93CB4F",
+    "koopman"    : "0x93cb4f",
     "normal"     : "0x27969f"
   },
   "hd" :     [null, null, null,
@@ -6716,7 +6716,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^24 + x^21 + x^20 + x^16 + x^15 + x^14 + x^13 + x^12 + x^11 + x^10 + x^9 + x^8 + x^4 + x^3 + 1",
     "degree"     : 24,
     "explicit"   : "0x131ff19",
-    "koopman"    : "0x98FF8C",
+    "koopman"    : "0x98ff8c",
     "normal"     : "0x31ff19"
   },
   "hd" :     [null, null, null,
@@ -6757,7 +6757,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^24 + x^21 + x^20 + x^17 + x^15 + x^11 + x^9 + x^8 + x^6 + x^5 + x^1 + 1",
     "degree"     : 24,
     "explicit"   : "0x1328b63",
-    "koopman"    : "0x9945B1",
+    "koopman"    : "0x9945b1",
     "normal"     : "0x328b63"
   },
   "hd" :     [null, null, null,
@@ -6778,7 +6778,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^24 + x^22 + x^12 + x^10 + x^9 + x^2 + x^1 + 1",
     "degree"     : 24,
     "explicit"   : "0x1401607",
-    "koopman"    : "0xA00B03",
+    "koopman"    : "0xa00b03",
     "normal"     : "0x401607"
   },
   "hd" :     [null, null, null,
@@ -6795,7 +6795,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^24 + x^22 + x^18 + x^16 + x^15 + x^14 + x^11 + x^8 + x^7 + x^4 + x^3 + x^2 + 1",
     "degree"     : 24,
     "explicit"   : "0x145c99d",
-    "koopman"    : "0xA2E4CE",
+    "koopman"    : "0xa2e4ce",
     "normal"     : "0x45c99d"
   },
   "hd" :     [null, null, null,
@@ -6817,7 +6817,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^24 + x^22 + x^18 + x^17 + x^15 + x^13 + x^11 + x^10 + x^7 + x^6 + x^5 + x^3 + x^2 + x^1 + 1",
     "degree"     : 24,
     "explicit"   : "0x146acef",
-    "koopman"    : "0xA35677",
+    "koopman"    : "0xa35677",
     "normal"     : "0x46acef"
   },
   "hd" :     [null, null, null,
@@ -6841,7 +6841,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^24 + x^22 + x^19 + x^18 + x^17 + x^14 + x^13 + x^11 + x^9 + x^8 + x^6 + x^3 + x^2 + x^1 + 1",
     "degree"     : 24,
     "explicit"   : "0x14e6b4f",
-    "koopman"    : "0xA735A7",
+    "koopman"    : "0xa735a7",
     "normal"     : "0x4e6b4f"
   },
   "hd" :     [null, null, null,
@@ -6865,7 +6865,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^24 + x^22 + x^20 + x^19 + x^17 + x^16 + x^15 + x^14 + x^10 + x^7 + x^6 + x^5 + x^4 + x^2 + 1",
     "degree"     : 24,
     "explicit"   : "0x15bc4f5",
-    "koopman"    : "0xADE27A",
+    "koopman"    : "0xade27a",
     "normal"     : "0x5bc4f5"
   },
   "hd" :     [null, null, null,
@@ -6889,7 +6889,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^24 + x^22 + x^20 + x^19 + x^18 + x^16 + x^14 + x^13 + x^11 + x^10 + x^8 + x^7 + x^6 + x^3 + x^1 + 1",
     "degree"     : 24,
     "explicit"   : "0x15d6dcb",
-    "koopman"    : "0xAEB6E5",
+    "koopman"    : "0xaeb6e5",
     "normal"     : "0x5d6dcb"
   },
   "hd" :     [null, null, null,
@@ -6914,7 +6914,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^24 + x^22 + x^21 + x^19 + x^18 + x^17 + x^14 + x^13 + x^12 + x^11 + x^10 + x^8 + x^5 + x^1 + 1",
     "degree"     : 24,
     "explicit"   : "0x16e7d23",
-    "koopman"    : "0xB73E91",
+    "koopman"    : "0xb73e91",
     "normal"     : "0x6e7d23"
   },
   "hd" :     [null, null, null,
@@ -6938,7 +6938,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^24 + x^22 + x^21 + x^19 + x^18 + x^17 + x^15 + x^13 + x^12 + x^11 + x^10 + x^8 + x^6 + x^4 + x^2 + x^1 + 1",
     "degree"     : 24,
     "explicit"   : "0x16ebd57",
-    "koopman"    : "0xB75EAB",
+    "koopman"    : "0xb75eab",
     "normal"     : "0x6ebd57"
   },
   "hd" :     [null, null, null,
@@ -6964,7 +6964,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^24 + x^22 + x^21 + x^20 + x^15 + x^14 + x^13 + x^11 + x^9 + x^5 + x^3 + x^1 + 1",
     "degree"     : 24,
     "explicit"   : "0x170ea2b",
-    "koopman"    : "0xB87515",
+    "koopman"    : "0xb87515",
     "normal"     : "0x70ea2b"
   },
   "hd" :     [null, null, null,
@@ -6986,7 +6986,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^24 + x^22 + x^21 + x^20 + x^19 + x^17 + x^16 + x^8 + x^7 + x^5 + x^4 + x^3 + x^2 + 1",
     "degree"     : 24,
     "explicit"   : "0x17b01bd",
-    "koopman"    : "0xBD80DE",
+    "koopman"    : "0xbd80de",
     "normal"     : "0x7b01bd"
   },
   "hd" :     [null, null, null,
@@ -7009,7 +7009,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^24 + x^22 + x^21 + x^20 + x^19 + x^17 + x^16 + x^14 + x^11 + x^8 + x^7 + x^5 + x^3 + x^1 + 1",
     "degree"     : 24,
     "explicit"   : "0x17b49ab",
-    "koopman"    : "0xBDA4D5",
+    "koopman"    : "0xbda4d5",
     "normal"     : "0x7b49ab"
   },
   "hd" :     [null, null, null,
@@ -7033,7 +7033,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^24 + x^23 + x^6 + x^5 + x^1 + 1",
     "degree"     : 24,
     "explicit"   : "0x1800063",
-    "koopman"    : "0xC00031",
+    "koopman"    : "0xc00031",
     "normal"     : "0x800063"
   },
   "hd" :     [null, null, null,
@@ -7048,7 +7048,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^24 + x^23 + x^14 + x^12 + x^8 + 1",
     "degree"     : 24,
     "explicit"   : "0x1805101",
-    "koopman"    : "0xC02880",
+    "koopman"    : "0xc02880",
     "normal"     : "0x805101"
   },
   "hd" :     [null, null, null,
@@ -7063,7 +7063,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^24 + x^23 + x^18 + x^17 + x^14 + x^11 + x^10 + x^7 + x^6 + x^5 + x^4 + x^3 + x^1 + 1",
     "degree"     : 24,
     "explicit"   : "0x1864cfb",
-    "koopman"    : "0xC3267D",
+    "koopman"    : "0xc3267d",
     "normal"     : "0x864cfb"
   },
   "hd" :     [null, null, null,
@@ -7086,7 +7086,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^24 + x^23 + x^19 + x^18 + x^17 + x^16 + x^14 + x^12 + x^11 + x^9 + x^8 + x^4 + x^1 + 1",
     "degree"     : 24,
     "explicit"   : "0x18f5b13",
-    "koopman"    : "0xC7AD89",
+    "koopman"    : "0xc7ad89",
     "normal"     : "0x8f5b13"
   },
   "hd" :     [null, null, null,
@@ -7109,7 +7109,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^24 + x^23 + x^20 + x^18 + x^17 + x^16 + x^14 + x^11 + x^10 + x^9 + x^8 + x^3 + x^1 + 1",
     "degree"     : 24,
     "explicit"   : "0x1974f0b",
-    "koopman"    : "0xCBA785",
+    "koopman"    : "0xcba785",
     "normal"     : "0x974f0b"
   },
   "hd" :     [null, null, null,
@@ -7132,7 +7132,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^24 + x^23 + x^21 + x^20 + x^17 + x^15 + x^13 + x^12 + x^8 + x^4 + x^2 + x^1 + 1",
     "degree"     : 24,
     "explicit"   : "0x1b2b117",
-    "koopman"    : "0xD9588B",
+    "koopman"    : "0xd9588b",
     "normal"     : "0xb2b117"
   },
   "hd" :     [null, null, null,
@@ -7154,7 +7154,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^24 + x^23 + x^22 + x^20 + x^19 + x^17 + x^16 + x^13 + x^10 + x^9 + x^8 + x^6 + x^5 + x^4 + x^2 + x^1 + 1",
     "degree"     : 24,
     "explicit"   : "0x1db2777",
-    "koopman"    : "0xED93BB",
+    "koopman"    : "0xed93bb",
     "normal"     : "0xdb2777"
   },
   "hd" :     [null, null, null,
@@ -7192,7 +7192,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^25 + x^5 + x^4 + x^2 + x^1 + 1",
     "degree"     : 25,
     "explicit"   : "0x2000037",
-    "koopman"    : "0x100001B",
+    "koopman"    : "0x100001b",
     "normal"     : "0x37"
   },
   "hd" :     [null, null, null,
@@ -7207,7 +7207,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^25 + x^7 + x^4 + x^2 + x^1 + 1",
     "degree"     : 25,
     "explicit"   : "0x2000097",
-    "koopman"    : "0x100004B",
+    "koopman"    : "0x100004b",
     "normal"     : "0x97"
   },
   "hd" :     [null, null, null,
@@ -7222,7 +7222,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^25 + x^17 + x^15 + x^14 + x^12 + x^9 + x^4 + x^3 + 1",
     "degree"     : 25,
     "explicit"   : "0x202d219",
-    "koopman"    : "0x101690C",
+    "koopman"    : "0x101690c",
     "normal"     : "0x2d219"
   },
   "hd" :     [null, null, null,
@@ -7240,7 +7240,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^25 + x^20 + x^18 + x^17 + x^16 + x^14 + x^13 + x^12 + x^10 + x^6 + x^4 + x^3 + x^1 + 1",
     "degree"     : 25,
     "explicit"   : "0x217745b",
-    "koopman"    : "0x10BBA2D",
+    "koopman"    : "0x10bba2d",
     "normal"     : "0x17745b"
   },
   "hd" :     [null, null, null,
@@ -7263,7 +7263,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^25 + x^22 + x^19 + x^18 + x^17 + x^14 + x^12 + x^8 + x^6 + x^5 + x^4 + x^3 + x^2 + x^1 + 1",
     "degree"     : 25,
     "explicit"   : "0x24e517f",
-    "koopman"    : "0x12728BF",
+    "koopman"    : "0x12728bf",
     "normal"     : "0x4e517f"
   },
   "hd" :     [null, null, null,
@@ -7287,7 +7287,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^25 + x^22 + x^20 + x^17 + x^13 + x^12 + x^11 + x^8 + x^7 + x^4 + x^3 + x^2 + x^1 + 1",
     "degree"     : 25,
     "explicit"   : "0x252399f",
-    "koopman"    : "0x1291CCF",
+    "koopman"    : "0x1291ccf",
     "normal"     : "0x52399f"
   },
   "hd" :     [null, null, null,
@@ -7310,7 +7310,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^25 + x^22 + x^20 + x^18 + x^17 + x^8 + x^7 + x^5 + x^3 + 1",
     "degree"     : 25,
     "explicit"   : "0x25601a9",
-    "koopman"    : "0x12B00D4",
+    "koopman"    : "0x12b00d4",
     "normal"     : "0x5601a9"
   },
   "hd" :     [null, null, null,
@@ -7329,7 +7329,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^25 + x^22 + x^21 + x^19 + x^18 + x^16 + x^15 + x^14 + x^13 + x^12 + x^11 + x^9 + x^6 + x^5 + x^1 + 1",
     "degree"     : 25,
     "explicit"   : "0x26dfa63",
-    "koopman"    : "0x136FD31",
+    "koopman"    : "0x136fd31",
     "normal"     : "0x6dfa63"
   },
   "hd" :     [null, null, null,
@@ -7354,7 +7354,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^25 + x^22 + x^21 + x^20 + x^19 + x^17 + x^16 + x^14 + x^13 + x^12 + x^8 + x^6 + x^4 + x^1 + 1",
     "degree"     : 25,
     "explicit"   : "0x27b7153",
-    "koopman"    : "0x13DB8A9",
+    "koopman"    : "0x13db8a9",
     "normal"     : "0x7b7153"
   },
   "hd" :     [null, null, null,
@@ -7400,7 +7400,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^25 + x^23 + x^21 + x^20 + x^18 + x^17 + x^14 + x^8 + x^7 + x^6 + x^4 + x^1 + 1",
     "degree"     : 25,
     "explicit"   : "0x2b641d3",
-    "koopman"    : "0x15B20E9",
+    "koopman"    : "0x15b20e9",
     "normal"     : "0xb641d3"
   },
   "hd" :     [null, null, null,
@@ -7422,7 +7422,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^25 + x^23 + x^21 + x^20 + x^19 + x^18 + x^16 + x^15 + x^13 + x^11 + x^10 + x^8 + x^6 + x^4 + x^1 + 1",
     "degree"     : 25,
     "explicit"   : "0x2bdad53",
-    "koopman"    : "0x15ED6A9",
+    "koopman"    : "0x15ed6a9",
     "normal"     : "0xbdad53"
   },
   "hd" :     [null, null, null,
@@ -7447,7 +7447,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^25 + x^23 + x^22 + x^17 + x^16 + x^15 + x^13 + x^8 + x^2 + x^1 + 1",
     "degree"     : 25,
     "explicit"   : "0x2c3a107",
-    "koopman"    : "0x161D083",
+    "koopman"    : "0x161d083",
     "normal"     : "0xc3a107"
   },
   "hd" :     [null, null, null,
@@ -7467,7 +7467,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^25 + x^23 + x^22 + x^18 + x^11 + x^9 + x^7 + x^4 + x^2 + x^1 + 1",
     "degree"     : 25,
     "explicit"   : "0x2c40a97",
-    "koopman"    : "0x162054B",
+    "koopman"    : "0x162054b",
     "normal"     : "0xc40a97"
   },
   "hd" :     [null, null, null,
@@ -7507,7 +7507,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^25 + x^23 + x^22 + x^21 + x^18 + x^17 + x^16 + x^11 + x^10 + x^9 + x^7 + x^6 + x^5 + x^4 + x^3 + x^1 + 1",
     "degree"     : 25,
     "explicit"   : "0x2e70efb",
-    "koopman"    : "0x173877D",
+    "koopman"    : "0x173877d",
     "normal"     : "0xe70efb"
   },
   "hd" :     [null, null, null,
@@ -7533,7 +7533,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^25 + x^23 + x^22 + x^21 + x^19 + x^15 + x^12 + x^8 + x^7 + x^6 + x^5 + x^4 + x^2 + x^1 + 1",
     "degree"     : 25,
     "explicit"   : "0x2e891f7",
-    "koopman"    : "0x17448FB",
+    "koopman"    : "0x17448fb",
     "normal"     : "0xe891f7"
   },
   "hd" :     [null, null, null,
@@ -7557,7 +7557,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^25 + x^24 + x^22 + x^19 + x^11 + x^10 + x^9 + x^6 + x^4 + x^3 + x^2 + x^1 + 1",
     "degree"     : 25,
     "explicit"   : "0x3480e5f",
-    "koopman"    : "0x1A4072F",
+    "koopman"    : "0x1a4072f",
     "normal"     : "0x1480e5f"
   },
   "hd" :     [null, null, null,
@@ -7579,7 +7579,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^25 + x^24 + x^22 + x^21 + x^19 + x^15 + x^13 + x^11 + x^10 + x^6 + x^4 + x^3 + x^2 + x^1 + 1",
     "degree"     : 25,
     "explicit"   : "0x368ac5f",
-    "koopman"    : "0x1B4562F",
+    "koopman"    : "0x1b4562f",
     "normal"     : "0x168ac5f"
   },
   "hd" :     [null, null, null,
@@ -7603,7 +7603,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^25 + x^24 + x^22 + x^21 + x^20 + x^17 + x^13 + x^12 + x^8 + x^5 + x^4 + x^3 + x^1 + 1",
     "degree"     : 25,
     "explicit"   : "0x372313b",
-    "koopman"    : "0x1B9189D",
+    "koopman"    : "0x1b9189d",
     "normal"     : "0x172313b"
   },
   "hd" :     [null, null, null,
@@ -7626,7 +7626,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^25 + x^24 + x^23 + x^20 + x^18 + x^17 + x^16 + x^13 + x^12 + x^11 + x^10 + x^8 + x^4 + x^3 + x^2 + x^1 + 1",
     "degree"     : 25,
     "explicit"   : "0x3973d1f",
-    "koopman"    : "0x1CB9E8F",
+    "koopman"    : "0x1cb9e8f",
     "normal"     : "0x1973d1f"
   },
   "hd" :     [null, null, null,
@@ -7652,7 +7652,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^25 + x^24 + x^23 + x^21 + x^19 + x^18 + x^17 + x^16 + x^13 + x^10 + x^9 + x^8 + x^4 + x^3 + 1",
     "degree"     : 25,
     "explicit"   : "0x3af2719",
-    "koopman"    : "0x1D7938C",
+    "koopman"    : "0x1d7938c",
     "normal"     : "0x1af2719"
   },
   "hd" :     [null, null, null,
@@ -7718,7 +7718,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^26 + x^21 + x^20 + x^15 + x^14 + x^12 + x^11 + x^6 + x^5 + 1",
     "degree"     : 26,
     "explicit"   : "0x430d861",
-    "koopman"    : "0x2186C30",
+    "koopman"    : "0x2186c30",
     "normal"     : "0x30d861"
   },
   "hd" :     [null, null, null,
@@ -7737,7 +7737,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^26 + x^22 + x^21 + x^20 + x^18 + x^17 + x^16 + x^14 + x^13 + x^11 + x^10 + x^5 + x^2 + 1",
     "degree"     : 26,
     "explicit"   : "0x4776c25",
-    "koopman"    : "0x23BB612",
+    "koopman"    : "0x23bb612",
     "normal"     : "0x776c25"
   },
   "hd" :     [null, null, null,
@@ -7760,7 +7760,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^26 + x^23 + x^20 + x^16 + x^15 + x^13 + x^10 + x^9 + x^8 + x^6 + x^5 + x^4 + x^3 + x^2 + 1",
     "degree"     : 26,
     "explicit"   : "0x491a77d",
-    "koopman"    : "0x248D3BE",
+    "koopman"    : "0x248d3be",
     "normal"     : "0x91a77d"
   },
   "hd" :     [null, null, null,
@@ -7784,7 +7784,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^26 + x^23 + x^21 + x^17 + x^16 + x^15 + x^14 + x^13 + x^11 + x^10 + x^7 + x^6 + x^4 + x^2 + x^1 + 1",
     "degree"     : 26,
     "explicit"   : "0x4a3ecd7",
-    "koopman"    : "0x251F66B",
+    "koopman"    : "0x251f66b",
     "normal"     : "0xa3ecd7"
   },
   "hd" :     [null, null, null,
@@ -7809,7 +7809,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^26 + x^23 + x^22 + x^21 + x^20 + x^16 + x^14 + x^13 + x^11 + x^8 + x^5 + x^3 + x^1 + 1",
     "degree"     : 26,
     "explicit"   : "0x4f1692b",
-    "koopman"    : "0x278B495",
+    "koopman"    : "0x278b495",
     "normal"     : "0xf1692b"
   },
   "hd" :     [null, null, null,
@@ -7832,7 +7832,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^26 + x^23 + x^22 + x^21 + x^20 + x^19 + x^18 + x^16 + x^14 + x^13 + x^11 + x^10 + x^9 + x^8 + x^6 + x^5 + x^2 + x^1 + 1",
     "degree"     : 26,
     "explicit"   : "0x4fd6f67",
-    "koopman"    : "0x27EB7B3",
+    "koopman"    : "0x27eb7b3",
     "normal"     : "0xfd6f67"
   },
   "hd" :     [null, null, null,
@@ -7860,7 +7860,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^26 + x^24 + x^21 + x^16 + x^14 + x^10 + x^8 + x^7 + x^6 + x^5 + x^4 + x^2 + 1",
     "degree"     : 26,
     "explicit"   : "0x52145f5",
-    "koopman"    : "0x290A2FA",
+    "koopman"    : "0x290a2fa",
     "normal"     : "0x12145f5"
   },
   "hd" :     [null, null, null,
@@ -7882,7 +7882,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^26 + x^24 + x^21 + x^19 + x^16 + x^15 + x^14 + x^13 + x^11 + x^10 + x^9 + x^8 + x^5 + x^4 + x^3 + x^2 + 1",
     "degree"     : 26,
     "explicit"   : "0x529ef3d",
-    "koopman"    : "0x294F79E",
+    "koopman"    : "0x294f79e",
     "normal"     : "0x129ef3d"
   },
   "hd" :     [null, null, null,
@@ -7908,7 +7908,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^26 + x^24 + x^22 + x^21 + x^20 + x^19 + x^17 + x^16 + x^12 + x^9 + x^6 + x^5 + x^4 + x^2 + x^1 + 1",
     "degree"     : 26,
     "explicit"   : "0x57b1277",
-    "koopman"    : "0x2BD893B",
+    "koopman"    : "0x2bd893b",
     "normal"     : "0x17b1277"
   },
   "hd" :     [null, null, null,
@@ -7933,7 +7933,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^26 + x^24 + x^22 + x^21 + x^20 + x^19 + x^18 + x^17 + x^16 + x^14 + x^13 + x^12 + x^11 + x^9 + x^8 + x^4 + x^3 + x^2 + x^1 + 1",
     "degree"     : 26,
     "explicit"   : "0x57f7b1f",
-    "koopman"    : "0x2BFBD8F",
+    "koopman"    : "0x2bfbd8f",
     "normal"     : "0x17f7b1f"
   },
   "hd" :     [null, null, null,
@@ -7962,7 +7962,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^26 + x^24 + x^23 + x^19 + x^15 + x^13 + x^11 + x^7 + x^3 + x^2 + 1",
     "degree"     : 26,
     "explicit"   : "0x588a88d",
-    "koopman"    : "0x2C45446",
+    "koopman"    : "0x2c45446",
     "normal"     : "0x188a88d"
   },
   "hd" :     [null, null, null,
@@ -7982,7 +7982,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^26 + x^24 + x^23 + x^21 + x^19 + x^18 + x^17 + x^16 + x^14 + x^7 + x^6 + x^3 + x^2 + x^1 + 1",
     "degree"     : 26,
     "explicit"   : "0x5af40cf",
-    "koopman"    : "0x2D7A067",
+    "koopman"    : "0x2d7a067",
     "normal"     : "0x1af40cf"
   },
   "hd" :     [null, null, null,
@@ -8006,7 +8006,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^26 + x^24 + x^23 + x^21 + x^20 + x^14 + x^13 + x^12 + x^10 + x^9 + x^8 + x^5 + x^4 + x^3 + x^2 + x^1 + 1",
     "degree"     : 26,
     "explicit"   : "0x5b0773f",
-    "koopman"    : "0x2D83B9F",
+    "koopman"    : "0x2d83b9f",
     "normal"     : "0x1b0773f"
   },
   "hd" :     [null, null, null,
@@ -8032,7 +8032,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^26 + x^24 + x^23 + x^22 + x^20 + x^12 + x^11 + x^10 + x^9 + x^8 + x^6 + x^3 + x^2 + x^1 + 1",
     "degree"     : 26,
     "explicit"   : "0x5d01f4f",
-    "koopman"    : "0x2E80FA7",
+    "koopman"    : "0x2e80fa7",
     "normal"     : "0x1d01f4f"
   },
   "hd" :     [null, null, null,
@@ -8056,7 +8056,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^26 + x^25 + x^19 + x^18 + x^16 + x^15 + x^14 + x^13 + x^12 + x^11 + x^10 + x^7 + x^6 + x^5 + x^3 + x^1 + 1",
     "degree"     : 26,
     "explicit"   : "0x60dfceb",
-    "koopman"    : "0x306FE75",
+    "koopman"    : "0x306fe75",
     "normal"     : "0x20dfceb"
   },
   "hd" :     [null, null, null,
@@ -8082,7 +8082,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^26 + x^25 + x^21 + x^17 + x^16 + x^15 + x^14 + x^12 + x^9 + x^8 + x^6 + x^4 + x^3 + x^1 + 1",
     "degree"     : 26,
     "explicit"   : "0x623d35b",
-    "koopman"    : "0x311E9AD",
+    "koopman"    : "0x311e9ad",
     "normal"     : "0x223d35b"
   },
   "hd" :     [null, null, null,
@@ -8106,7 +8106,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^26 + x^25 + x^22 + x^20 + x^19 + x^17 + x^16 + x^15 + x^14 + x^12 + x^11 + x^10 + x^9 + x^7 + x^6 + x^4 + x^1 + 1",
     "degree"     : 26,
     "explicit"   : "0x65bded3",
-    "koopman"    : "0x32DEF69",
+    "koopman"    : "0x32def69",
     "normal"     : "0x25bded3"
   },
   "hd" :     [null, null, null,
@@ -8133,7 +8133,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^26 + x^25 + x^22 + x^21 + x^20 + x^19 + x^13 + x^12 + x^9 + x^8 + x^7 + x^6 + x^4 + x^3 + x^2 + x^1 + 1",
     "degree"     : 26,
     "explicit"   : "0x67833df",
-    "koopman"    : "0x33C19EF",
+    "koopman"    : "0x33c19ef",
     "normal"     : "0x27833df"
   },
   "hd" :     [null, null, null,
@@ -8159,7 +8159,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^26 + x^25 + x^23 + x^22 + x^19 + x^16 + x^14 + x^12 + x^10 + x^8 + x^7 + x^4 + x^2 + x^1 + 1",
     "degree"     : 26,
     "explicit"   : "0x6c95597",
-    "koopman"    : "0x364AACB",
+    "koopman"    : "0x364aacb",
     "normal"     : "0x2c95597"
   },
   "hd" :     [null, null, null,
@@ -8183,7 +8183,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^26 + x^25 + x^24 + x^22 + x^19 + x^16 + x^14 + x^13 + x^12 + x^11 + x^10 + x^7 + x^4 + x^3 + x^2 + x^1 + 1",
     "degree"     : 26,
     "explicit"   : "0x7497c9f",
-    "koopman"    : "0x3A4BE4F",
+    "koopman"    : "0x3a4be4f",
     "normal"     : "0x3497c9f"
   },
   "hd" :     [null, null, null,
@@ -8209,7 +8209,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^26 + x^25 + x^24 + x^22 + x^19 + x^18 + x^15 + x^14 + x^12 + x^11 + x^10 + x^7 + x^4 + x^3 + x^2 + x^1 + 1",
     "degree"     : 26,
     "explicit"   : "0x74cdc9f",
-    "koopman"    : "0x3A66E4F",
+    "koopman"    : "0x3a66e4f",
     "normal"     : "0x34cdc9f"
   },
   "hd" :     [null, null, null,
@@ -8235,7 +8235,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^26 + x^25 + x^24 + x^22 + x^21 + x^19 + x^18 + x^13 + x^11 + x^7 + x^6 + x^3 + x^2 + x^1 + 1",
     "degree"     : 26,
     "explicit"   : "0x76c28cf",
-    "koopman"    : "0x3B61467",
+    "koopman"    : "0x3b61467",
     "normal"     : "0x36c28cf"
   },
   "hd" :     [null, null, null,
@@ -8259,7 +8259,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^26 + x^25 + x^24 + x^23 + x^22 + x^20 + x^17 + x^16 + x^13 + x^9 + x^6 + x^4 + x^2 + x^1 + 1",
     "degree"     : 26,
     "explicit"   : "0x7d32257",
-    "koopman"    : "0x3E9912B",
+    "koopman"    : "0x3e9912b",
     "normal"     : "0x3d32257"
   },
   "hd" :     [null, null, null,
@@ -8325,7 +8325,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^27 + x^22 + x^19 + x^17 + x^16 + x^12 + x^11 + x^4 + x^3 + x^2 + x^1 + 1",
     "degree"     : 27,
     "explicit"   : "0x84b181f",
-    "koopman"    : "0x4258C0F",
+    "koopman"    : "0x4258c0f",
     "normal"     : "0x4b181f"
   },
   "hd" :     [null, null, null,
@@ -8346,7 +8346,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^27 + x^22 + x^21 + x^20 + x^19 + x^16 + x^15 + x^13 + x^12 + x^10 + x^8 + x^7 + x^6 + x^4 + x^3 + x^1 + 1",
     "degree"     : 27,
     "explicit"   : "0x879b5db",
-    "koopman"    : "0x43CDAED",
+    "koopman"    : "0x43cdaed",
     "normal"     : "0x79b5db"
   },
   "hd" :     [null, null, null,
@@ -8392,7 +8392,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^27 + x^23 + x^22 + x^19 + x^17 + x^15 + x^14 + x^12 + x^9 + x^8 + x^7 + x^6 + x^5 + x^4 + x^2 + x^1 + 1",
     "degree"     : 27,
     "explicit"   : "0x8cad3f7",
-    "koopman"    : "0x46569FB",
+    "koopman"    : "0x46569fb",
     "normal"     : "0xcad3f7"
   },
   "hd" :     [null, null, null,
@@ -8418,7 +8418,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^27 + x^23 + x^22 + x^21 + x^18 + x^16 + x^15 + x^13 + x^11 + x^5 + x^4 + x^3 + 1",
     "degree"     : 27,
     "explicit"   : "0x8e5a839",
-    "koopman"    : "0x472D41C",
+    "koopman"    : "0x472d41c",
     "normal"     : "0xe5a839"
   },
   "hd" :     [null, null, null,
@@ -8440,7 +8440,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^27 + x^23 + x^22 + x^21 + x^19 + x^16 + x^15 + x^14 + x^13 + x^12 + x^11 + x^9 + x^7 + x^3 + x^2 + x^1 + 1",
     "degree"     : 27,
     "explicit"   : "0x8e9fa8f",
-    "koopman"    : "0x474FD47",
+    "koopman"    : "0x474fd47",
     "normal"     : "0xe9fa8f"
   },
   "hd" :     [null, null, null,
@@ -8466,7 +8466,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^27 + x^24 + x^23 + x^20 + x^18 + x^17 + x^15 + x^14 + x^11 + x^9 + x^8 + x^4 + x^3 + x^2 + x^1 + 1",
     "degree"     : 27,
     "explicit"   : "0x996cb1f",
-    "koopman"    : "0x4CB658F",
+    "koopman"    : "0x4cb658f",
     "normal"     : "0x196cb1f"
   },
   "hd" :     [null, null, null,
@@ -8491,7 +8491,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^27 + x^24 + x^23 + x^20 + x^18 + x^17 + x^16 + x^14 + x^12 + x^11 + x^10 + x^9 + x^7 + x^1 + 1",
     "degree"     : 27,
     "explicit"   : "0x9975e83",
-    "koopman"    : "0x4CBAF41",
+    "koopman"    : "0x4cbaf41",
     "normal"     : "0x1975e83"
   },
   "hd" :     [null, null, null,
@@ -8515,7 +8515,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^27 + x^24 + x^23 + x^22 + x^21 + x^18 + x^16 + x^15 + x^14 + x^12 + x^9 + x^8 + x^7 + x^6 + x^3 + x^2 + 1",
     "degree"     : 27,
     "explicit"   : "0x9e5d3cd",
-    "koopman"    : "0x4F2E9E6",
+    "koopman"    : "0x4f2e9e6",
     "normal"     : "0x1e5d3cd"
   },
   "hd" :     [null, null, null,
@@ -8541,7 +8541,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^27 + x^24 + x^23 + x^22 + x^21 + x^19 + x^18 + x^17 + x^12 + x^10 + x^9 + x^8 + x^7 + x^5 + x^4 + x^1 + 1",
     "degree"     : 27,
     "explicit"   : "0x9ee17b3",
-    "koopman"    : "0x4F70BD9",
+    "koopman"    : "0x4f70bd9",
     "normal"     : "0x1ee17b3"
   },
   "hd" :     [null, null, null,
@@ -8567,7 +8567,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^27 + x^25 + x^21 + x^20 + x^18 + x^16 + x^15 + x^14 + x^13 + x^12 + x^11 + x^10 + x^9 + x^8 + x^5 + x^4 + x^2 + 1",
     "degree"     : 27,
     "explicit"   : "0xa35ff35",
-    "koopman"    : "0x51AFF9A",
+    "koopman"    : "0x51aff9a",
     "normal"     : "0x235ff35"
   },
   "hd" :     [null, null, null,
@@ -8594,7 +8594,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^27 + x^25 + x^22 + x^17 + x^16 + x^15 + x^14 + x^13 + x^11 + x^10 + x^7 + x^4 + x^2 + x^1 + 1",
     "degree"     : 27,
     "explicit"   : "0xa43ec97",
-    "koopman"    : "0x521F64B",
+    "koopman"    : "0x521f64b",
     "normal"     : "0x243ec97"
   },
   "hd" :     [null, null, null,
@@ -8618,7 +8618,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^27 + x^25 + x^24 + x^19 + x^18 + x^16 + x^13 + x^11 + x^9 + x^8 + x^7 + x^6 + x^2 + x^1 + 1",
     "degree"     : 27,
     "explicit"   : "0xb0d2bc7",
-    "koopman"    : "0x58695E3",
+    "koopman"    : "0x58695e3",
     "normal"     : "0x30d2bc7"
   },
   "hd" :     [null, null, null,
@@ -8642,7 +8642,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^27 + x^25 + x^24 + x^23 + x^22 + x^15 + x^11 + x^10 + x^6 + x^5 + x^3 + x^1 + 1",
     "degree"     : 27,
     "explicit"   : "0xbc08c6b",
-    "koopman"    : "0x5E04635",
+    "koopman"    : "0x5e04635",
     "normal"     : "0x3c08c6b"
   },
   "hd" :     [null, null, null,
@@ -8664,7 +8664,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^27 + x^26 + x^22 + x^21 + x^20 + x^16 + x^15 + x^14 + x^12 + x^8 + x^5 + x^3 + x^2 + x^1 + 1",
     "degree"     : 27,
     "explicit"   : "0xc71d12f",
-    "koopman"    : "0x638E897",
+    "koopman"    : "0x638e897",
     "normal"     : "0x471d12f"
   },
   "hd" :     [null, null, null,
@@ -8688,7 +8688,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^27 + x^26 + x^23 + x^21 + x^20 + x^18 + x^17 + x^16 + x^15 + x^13 + x^11 + x^9 + x^5 + x^2 + x^1 + 1",
     "degree"     : 27,
     "explicit"   : "0xcb7aa27",
-    "koopman"    : "0x65BD513",
+    "koopman"    : "0x65bd513",
     "normal"     : "0x4b7aa27"
   },
   "hd" :     [null, null, null,
@@ -8735,7 +8735,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^27 + x^26 + x^24 + x^22 + x^18 + x^13 + x^12 + x^11 + x^10 + x^7 + x^4 + x^3 + x^2 + x^1 + 1",
     "degree"     : 27,
     "explicit"   : "0xd443c9f",
-    "koopman"    : "0x6A21E4F",
+    "koopman"    : "0x6a21e4f",
     "normal"     : "0x5443c9f"
   },
   "hd" :     [null, null, null,
@@ -8759,7 +8759,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^27 + x^26 + x^24 + x^22 + x^19 + x^18 + x^13 + x^9 + x^8 + x^6 + x^5 + x^4 + x^3 + x^2 + x^1 + 1",
     "degree"     : 27,
     "explicit"   : "0xd4c237f",
-    "koopman"    : "0x6A611BF",
+    "koopman"    : "0x6a611bf",
     "normal"     : "0x54c237f"
   },
   "hd" :     [null, null, null,
@@ -8784,7 +8784,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^27 + x^26 + x^24 + x^22 + x^20 + x^19 + x^18 + x^16 + x^11 + x^7 + x^6 + x^4 + x^3 + x^1 + 1",
     "degree"     : 27,
     "explicit"   : "0xd5d08db",
-    "koopman"    : "0x6AE846D",
+    "koopman"    : "0x6ae846d",
     "normal"     : "0x55d08db"
   },
   "hd" :     [null, null, null,
@@ -8808,7 +8808,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^27 + x^26 + x^24 + x^23 + x^18 + x^17 + x^16 + x^15 + x^14 + x^13 + x^12 + x^11 + x^10 + x^9 + x^4 + x^3 + x^1 + 1",
     "degree"     : 27,
     "explicit"   : "0xd87fe1b",
-    "koopman"    : "0x6C3FF0D",
+    "koopman"    : "0x6c3ff0d",
     "normal"     : "0x587fe1b"
   },
   "hd" :     [null, null, null,
@@ -8835,7 +8835,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^27 + x^26 + x^25 + x^23 + x^19 + x^17 + x^16 + x^15 + x^14 + x^12 + x^8 + x^6 + x^5 + x^4 + x^3 + x^2 + x^1 + 1",
     "degree"     : 27,
     "explicit"   : "0xe8bd17f",
-    "koopman"    : "0x745E8BF",
+    "koopman"    : "0x745e8bf",
     "normal"     : "0x68bd17f"
   },
   "hd" :     [null, null, null,
@@ -8909,7 +8909,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^28 + x^7 + x^4 + x^3 + x^1 + 1",
     "degree"     : 28,
     "explicit"   : "0x1000009b",
-    "koopman"    : "0x800004D",
+    "koopman"    : "0x800004d",
     "normal"     : "0x9b"
   },
   "hd" :     [null, null, null,
@@ -8924,7 +8924,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^28 + x^21 + x^19 + x^18 + x^14 + x^8 + x^7 + x^6 + x^3 + x^1 + 1",
     "degree"     : 28,
     "explicit"   : "0x102c41cb",
-    "koopman"    : "0x81620E5",
+    "koopman"    : "0x81620e5",
     "normal"     : "0x2c41cb"
   },
   "hd" :     [null, null, null,
@@ -8944,7 +8944,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^28 + x^23 + x^22 + x^20 + x^18 + x^17 + x^15 + x^14 + x^11 + x^9 + x^7 + x^5 + x^4 + x^3 + 1",
     "degree"     : 28,
     "explicit"   : "0x10d6cab9",
-    "koopman"    : "0x86B655C",
+    "koopman"    : "0x86b655c",
     "normal"     : "0xd6cab9"
   },
   "hd" :     [null, null, null,
@@ -8968,7 +8968,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^28 + x^24 + x^21 + x^19 + x^17 + x^11 + x^10 + x^7 + x^5 + x^4 + x^3 + x^2 + 1",
     "degree"     : 28,
     "explicit"   : "0x112a0cbd",
-    "koopman"    : "0x895065E",
+    "koopman"    : "0x895065e",
     "normal"     : "0x12a0cbd"
   },
   "hd" :     [null, null, null,
@@ -8990,7 +8990,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^28 + x^24 + x^22 + x^21 + x^20 + x^18 + x^14 + x^13 + x^12 + x^11 + x^9 + x^7 + x^6 + x^4 + x^2 + x^1 + 1",
     "degree"     : 28,
     "explicit"   : "0x11747ad7",
-    "koopman"    : "0x8BA3D6B",
+    "koopman"    : "0x8ba3d6b",
     "normal"     : "0x1747ad7"
   },
   "hd" :     [null, null, null,
@@ -9036,7 +9036,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^28 + x^25 + x^21 + x^20 + x^19 + x^17 + x^16 + x^15 + x^9 + x^8 + x^7 + x^6 + x^2 + x^1 + 1",
     "degree"     : 28,
     "explicit"   : "0x123b83c7",
-    "koopman"    : "0x91DC1E3",
+    "koopman"    : "0x91dc1e3",
     "normal"     : "0x23b83c7"
   },
   "hd" :     [null, null, null,
@@ -9060,7 +9060,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^28 + x^25 + x^23 + x^21 + x^20 + x^18 + x^16 + x^15 + x^14 + x^13 + x^12 + x^11 + x^9 + x^6 + x^5 + x^4 + x^3 + x^2 + 1",
     "degree"     : 28,
     "explicit"   : "0x12b5fa7d",
-    "koopman"    : "0x95AFD3E",
+    "koopman"    : "0x95afd3e",
     "normal"     : "0x2b5fa7d"
   },
   "hd" :     [null, null, null,
@@ -9088,7 +9088,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^28 + x^26 + x^24 + x^23 + x^20 + x^18 + x^17 + x^15 + x^14 + x^12 + x^10 + x^8 + x^7 + x^6 + x^4 + x^3 + x^1 + 1",
     "degree"     : 28,
     "explicit"   : "0x1596d5db",
-    "koopman"    : "0xACB6AED",
+    "koopman"    : "0xacb6aed",
     "normal"     : "0x596d5db"
   },
   "hd" :     [null, null, null,
@@ -9115,7 +9115,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^28 + x^26 + x^24 + x^23 + x^22 + x^21 + x^19 + x^18 + x^17 + x^15 + x^12 + x^11 + x^10 + x^9 + x^8 + x^7 + x^3 + x^2 + x^1 + 1",
     "degree"     : 28,
     "explicit"   : "0x15ee9f8f",
-    "koopman"    : "0xAF74FC7",
+    "koopman"    : "0xaf74fc7",
     "normal"     : "0x5ee9f8f"
   },
   "hd" :     [null, null, null,
@@ -9144,7 +9144,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^28 + x^26 + x^25 + x^20 + x^17 + x^15 + x^12 + x^10 + x^6 + x^5 + x^4 + x^3 + x^2 + 1",
     "degree"     : 28,
     "explicit"   : "0x1612947d",
-    "koopman"    : "0xB094A3E",
+    "koopman"    : "0xb094a3e",
     "normal"     : "0x612947d"
   },
   "hd" :     [null, null, null,
@@ -9167,7 +9167,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^28 + x^26 + x^25 + x^23 + x^20 + x^19 + x^18 + x^16 + x^15 + x^12 + x^4 + x^3 + x^2 + x^1 + 1",
     "degree"     : 28,
     "explicit"   : "0x169d901f",
-    "koopman"    : "0xB4EC80F",
+    "koopman"    : "0xb4ec80f",
     "normal"     : "0x69d901f"
   },
   "hd" :     [null, null, null,
@@ -9191,7 +9191,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^28 + x^26 + x^25 + x^23 + x^22 + x^18 + x^16 + x^12 + x^8 + x^5 + x^4 + x^1 + 1",
     "degree"     : 28,
     "explicit"   : "0x16c51133",
-    "koopman"    : "0xB628899",
+    "koopman"    : "0xb628899",
     "normal"     : "0x6c51133"
   },
   "hd" :     [null, null, null,
@@ -9213,7 +9213,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^28 + x^26 + x^25 + x^23 + x^22 + x^19 + x^18 + x^17 + x^16 + x^14 + x^13 + x^11 + x^9 + x^5 + x^1 + 1",
     "degree"     : 28,
     "explicit"   : "0x16cf6a23",
-    "koopman"    : "0xB67B511",
+    "koopman"    : "0xb67b511",
     "normal"     : "0x6cf6a23"
   },
   "hd" :     [null, null, null,
@@ -9238,7 +9238,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^28 + x^26 + x^25 + x^23 + x^22 + x^21 + x^18 + x^17 + x^16 + x^15 + x^14 + x^12 + x^9 + x^5 + x^4 + x^1 + 1",
     "degree"     : 28,
     "explicit"   : "0x16e7d233",
-    "koopman"    : "0xB73E919",
+    "koopman"    : "0xb73e919",
     "normal"     : "0x6e7d233"
   },
   "hd" :     [null, null, null,
@@ -9264,7 +9264,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^28 + x^26 + x^25 + x^24 + x^21 + x^20 + x^19 + x^16 + x^15 + x^12 + x^10 + x^9 + x^7 + x^6 + x^5 + x^3 + x^1 + 1",
     "degree"     : 28,
     "explicit"   : "0x173996eb",
-    "koopman"    : "0xB9CCB75",
+    "koopman"    : "0xb9ccb75",
     "normal"     : "0x73996eb"
   },
   "hd" :     [null, null, null,
@@ -9291,7 +9291,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^28 + x^26 + x^25 + x^24 + x^23 + x^21 + x^15 + x^14 + x^13 + x^11 + x^7 + x^5 + x^2 + x^1 + 1",
     "degree"     : 28,
     "explicit"   : "0x17a0e8a7",
-    "koopman"    : "0xBD07453",
+    "koopman"    : "0xbd07453",
     "normal"     : "0x7a0e8a7"
   },
   "hd" :     [null, null, null,
@@ -9315,7 +9315,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^28 + x^27 + x^24 + x^23 + x^22 + x^21 + x^17 + x^13 + x^12 + x^10 + x^9 + x^8 + x^5 + x^3 + x^1 + 1",
     "degree"     : 28,
     "explicit"   : "0x19e2372b",
-    "koopman"    : "0xCF11B95",
+    "koopman"    : "0xcf11b95",
     "normal"     : "0x9e2372b"
   },
   "hd" :     [null, null, null,
@@ -9340,7 +9340,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^28 + x^27 + x^24 + x^23 + x^22 + x^21 + x^19 + x^18 + x^16 + x^13 + x^9 + x^8 + x^5 + x^3 + x^2 + x^1 + 1",
     "degree"     : 28,
     "explicit"   : "0x19ed232f",
-    "koopman"    : "0xCF69197",
+    "koopman"    : "0xcf69197",
     "normal"     : "0x9ed232f"
   },
   "hd" :     [null, null, null,
@@ -9366,7 +9366,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^28 + x^27 + x^25 + x^21 + x^18 + x^10 + x^7 + x^3 + x^1 + 1",
     "degree"     : 28,
     "explicit"   : "0x1a24048b",
-    "koopman"    : "0xD120245",
+    "koopman"    : "0xd120245",
     "normal"     : "0xa24048b"
   },
   "hd" :     [null, null, null,
@@ -9385,7 +9385,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^28 + x^27 + x^25 + x^24 + x^23 + x^22 + x^12 + x^10 + x^6 + x^3 + x^2 + x^1 + 1",
     "degree"     : 28,
     "explicit"   : "0x1bc0144f",
-    "koopman"    : "0xDE00A27",
+    "koopman"    : "0xde00a27",
     "normal"     : "0xbc0144f"
   },
   "hd" :     [null, null, null,
@@ -9407,7 +9407,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^28 + x^27 + x^26 + x^24 + x^21 + x^20 + x^19 + x^17 + x^16 + x^14 + x^12 + x^11 + x^9 + x^8 + x^7 + x^4 + x^2 + x^1 + 1",
     "degree"     : 28,
     "explicit"   : "0x1d3b5b97",
-    "koopman"    : "0xE9DADCB",
+    "koopman"    : "0xe9dadcb",
     "normal"     : "0xd3b5b97"
   },
   "hd" :     [null, null, null,
@@ -9435,7 +9435,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^28 + x^27 + x^26 + x^24 + x^22 + x^20 + x^18 + x^15 + x^14 + x^13 + x^10 + x^8 + x^6 + x^4 + x^2 + x^1 + 1",
     "degree"     : 28,
     "explicit"   : "0x1d54e557",
-    "koopman"    : "0xEAA72AB",
+    "koopman"    : "0xeaa72ab",
     "normal"     : "0xd54e557"
   },
   "hd" :     [null, null, null,
@@ -9473,7 +9473,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^29 + x^7 + x^5 + x^4 + x^3 + x^2 + x^1 + 1",
     "degree"     : 29,
     "explicit"   : "0x200000bf",
-    "koopman"    : "0x1000005F",
+    "koopman"    : "0x1000005f",
     "normal"     : "0xbf"
   },
   "hd" :     [null, null, null,
@@ -9490,7 +9490,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^29 + x^8 + x^7 + x^6 + x^5 + x^3 + x^1 + 1",
     "degree"     : 29,
     "explicit"   : "0x200001eb",
-    "koopman"    : "0x100000F5",
+    "koopman"    : "0x100000f5",
     "normal"     : "0x1eb"
   },
   "hd" :     [null, null, null,
@@ -9507,7 +9507,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^29 + x^23 + x^21 + x^19 + x^18 + x^17 + x^16 + x^15 + x^12 + x^9 + x^5 + x^4 + x^2 + x^1 + 1",
     "degree"     : 29,
     "explicit"   : "0x20af9237",
-    "koopman"    : "0x1057C91B",
+    "koopman"    : "0x1057c91b",
     "normal"     : "0xaf9237"
   },
   "hd" :     [null, null, null,
@@ -9531,7 +9531,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^29 + x^24 + x^23 + x^22 + x^19 + x^18 + x^17 + x^11 + x^10 + x^7 + x^6 + x^5 + x^3 + x^2 + 1",
     "degree"     : 29,
     "explicit"   : "0x21ce0ced",
-    "koopman"    : "0x10E70676",
+    "koopman"    : "0x10e70676",
     "normal"     : "0x1ce0ced"
   },
   "hd" :     [null, null, null,
@@ -9555,7 +9555,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^29 + x^25 + x^22 + x^20 + x^18 + x^17 + x^16 + x^13 + x^11 + x^9 + x^8 + x^6 + x^4 + x^1 + 1",
     "degree"     : 29,
     "explicit"   : "0x22572b53",
-    "koopman"    : "0x112B95A9",
+    "koopman"    : "0x112b95a9",
     "normal"     : "0x2572b53"
   },
   "hd" :     [null, null, null,
@@ -9579,7 +9579,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^29 + x^25 + x^24 + x^23 + x^19 + x^16 + x^15 + x^13 + x^12 + x^11 + x^10 + x^9 + x^8 + x^6 + x^5 + x^3 + x^1 + 1",
     "degree"     : 29,
     "explicit"   : "0x2389bf6b",
-    "koopman"    : "0x11C4DFB5",
+    "koopman"    : "0x11c4dfb5",
     "normal"     : "0x389bf6b"
   },
   "hd" :     [null, null, null,
@@ -9606,7 +9606,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^29 + x^25 + x^24 + x^23 + x^22 + x^21 + x^19 + x^17 + x^15 + x^7 + x^6 + x^2 + 1",
     "degree"     : 29,
     "explicit"   : "0x23ea80c5",
-    "koopman"    : "0x11F54062",
+    "koopman"    : "0x11f54062",
     "normal"     : "0x3ea80c5"
   },
   "hd" :     [null, null, null,
@@ -9628,7 +9628,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^29 + x^26 + x^21 + x^20 + x^18 + x^17 + x^16 + x^13 + x^12 + x^10 + x^9 + x^8 + x^7 + x^6 + x^5 + x^4 + x^2 + x^1 + 1",
     "degree"     : 29,
     "explicit"   : "0x243737f7",
-    "koopman"    : "0x121B9BFB",
+    "koopman"    : "0x121b9bfb",
     "normal"     : "0x43737f7"
   },
   "hd" :     [null, null, null,
@@ -9656,7 +9656,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^29 + x^26 + x^22 + x^21 + x^19 + x^16 + x^14 + x^12 + x^11 + x^8 + x^7 + x^6 + x^5 + x^4 + x^2 + x^1 + 1",
     "degree"     : 29,
     "explicit"   : "0x246959f7",
-    "koopman"    : "0x1234ACFB",
+    "koopman"    : "0x1234acfb",
     "normal"     : "0x46959f7"
   },
   "hd" :     [null, null, null,
@@ -9682,7 +9682,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^29 + x^26 + x^24 + x^23 + x^22 + x^19 + x^18 + x^17 + x^15 + x^14 + x^13 + x^12 + x^11 + x^8 + x^7 + x^3 + x^2 + x^1 + 1",
     "degree"     : 29,
     "explicit"   : "0x25cef98f",
-    "koopman"    : "0x12E77CC7",
+    "koopman"    : "0x12e77cc7",
     "normal"     : "0x5cef98f"
   },
   "hd" :     [null, null, null,
@@ -9710,7 +9710,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^29 + x^26 + x^24 + x^23 + x^22 + x^20 + x^16 + x^14 + x^13 + x^11 + x^9 + x^8 + x^6 + x^5 + x^3 + x^2 + 1",
     "degree"     : 29,
     "explicit"   : "0x25d16b6d",
-    "koopman"    : "0x12E8B5B6",
+    "koopman"    : "0x12e8b5b6",
     "normal"     : "0x5d16b6d"
   },
   "hd" :     [null, null, null,
@@ -9736,7 +9736,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^29 + x^26 + x^24 + x^23 + x^22 + x^21 + x^20 + x^19 + x^18 + x^17 + x^14 + x^13 + x^12 + x^9 + x^6 + x^5 + x^4 + x^2 + 1",
     "degree"     : 29,
     "explicit"   : "0x25fe7275",
-    "koopman"    : "0x12FF393A",
+    "koopman"    : "0x12ff393a",
     "normal"     : "0x5fe7275"
   },
   "hd" :     [null, null, null,
@@ -9764,7 +9764,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^29 + x^26 + x^25 + x^21 + x^15 + x^14 + x^13 + x^10 + x^8 + x^4 + x^3 + x^1 + 1",
     "degree"     : 29,
     "explicit"   : "0x2620e51b",
-    "koopman"    : "0x1310728D",
+    "koopman"    : "0x1310728d",
     "normal"     : "0x620e51b"
   },
   "hd" :     [null, null, null,
@@ -9786,7 +9786,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^29 + x^26 + x^25 + x^24 + x^22 + x^19 + x^15 + x^14 + x^11 + x^10 + x^9 + x^7 + x^5 + x^3 + x^1 + 1",
     "degree"     : 29,
     "explicit"   : "0x2748ceab",
-    "koopman"    : "0x13A46755",
+    "koopman"    : "0x13a46755",
     "normal"     : "0x748ceab"
   },
   "hd" :     [null, null, null,
@@ -9811,7 +9811,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^29 + x^26 + x^25 + x^24 + x^22 + x^19 + x^18 + x^16 + x^15 + x^14 + x^13 + x^11 + x^10 + x^7 + x^5 + x^4 + x^3 + 1",
     "degree"     : 29,
     "explicit"   : "0x274decb9",
-    "koopman"    : "0x13A6F65C",
+    "koopman"    : "0x13a6f65c",
     "normal"     : "0x74decb9"
   },
   "hd" :     [null, null, null,
@@ -9838,7 +9838,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^29 + x^27 + x^22 + x^19 + x^17 + x^11 + x^10 + x^9 + x^8 + x^6 + x^5 + x^4 + x^2 + x^1 + 1",
     "degree"     : 29,
     "explicit"   : "0x284a0f77",
-    "koopman"    : "0x142507BB",
+    "koopman"    : "0x142507bb",
     "normal"     : "0x84a0f77"
   },
   "hd" :     [null, null, null,
@@ -9862,7 +9862,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^29 + x^27 + x^25 + x^24 + x^23 + x^22 + x^17 + x^15 + x^14 + x^11 + x^9 + x^8 + x^6 + x^3 + x^2 + 1",
     "degree"     : 29,
     "explicit"   : "0x2bc2cb4d",
-    "koopman"    : "0x15E165A6",
+    "koopman"    : "0x15e165a6",
     "normal"     : "0xbc2cb4d"
   },
   "hd" :     [null, null, null,
@@ -9887,7 +9887,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^29 + x^27 + x^26 + x^24 + x^23 + x^21 + x^20 + x^19 + x^18 + x^17 + x^16 + x^14 + x^13 + x^12 + x^11 + x^10 + x^9 + x^7 + x^5 + x^1 + 1",
     "degree"     : 29,
     "explicit"   : "0x2dbf7ea3",
-    "koopman"    : "0x16DFBF51",
+    "koopman"    : "0x16dfbf51",
     "normal"     : "0xdbf7ea3"
   },
   "hd" :     [null, null, null,
@@ -9917,7 +9917,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^29 + x^27 + x^26 + x^25 + x^22 + x^21 + x^20 + x^19 + x^18 + x^17 + x^15 + x^14 + x^12 + x^11 + x^10 + x^9 + x^6 + x^1 + 1",
     "degree"     : 29,
     "explicit"   : "0x2e7ede43",
-    "koopman"    : "0x173F6F21",
+    "koopman"    : "0x173f6f21",
     "normal"     : "0xe7ede43"
   },
   "hd" :     [null, null, null,
@@ -9967,7 +9967,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^29 + x^28 + x^26 + x^23 + x^20 + x^18 + x^16 + x^13 + x^12 + x^11 + x^8 + x^7 + x^6 + x^4 + x^3 + x^1 + 1",
     "degree"     : 29,
     "explicit"   : "0x349539db",
-    "koopman"    : "0x1A4A9CED",
+    "koopman"    : "0x1a4a9ced",
     "normal"     : "0x149539db"
   },
   "hd" :     [null, null, null,
@@ -9993,7 +9993,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^29 + x^28 + x^27 + x^22 + x^19 + x^18 + x^17 + x^16 + x^14 + x^13 + x^12 + x^11 + x^9 + x^8 + x^4 + x^2 + x^1 + 1",
     "degree"     : 29,
     "explicit"   : "0x384f7b17",
-    "koopman"    : "0x1C27BD8B",
+    "koopman"    : "0x1c27bd8b",
     "normal"     : "0x184f7b17"
   },
   "hd" :     [null, null, null,
@@ -10020,7 +10020,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^29 + x^28 + x^27 + x^24 + x^23 + x^22 + x^21 + x^19 + x^16 + x^13 + x^10 + x^8 + x^7 + x^6 + x^5 + x^2 + x^1 + 1",
     "degree"     : 29,
     "explicit"   : "0x39e925e7",
-    "koopman"    : "0x1CF492F3",
+    "koopman"    : "0x1cf492f3",
     "normal"     : "0x19e925e7"
   },
   "hd" :     [null, null, null,
@@ -10047,7 +10047,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^29 + x^28 + x^27 + x^26 + x^21 + x^19 + x^17 + x^12 + x^10 + x^8 + x^3 + x^2 + x^1 + 1",
     "degree"     : 29,
     "explicit"   : "0x3c2a150f",
-    "koopman"    : "0x1E150A87",
+    "koopman"    : "0x1e150a87",
     "normal"     : "0x1c2a150f"
   },
   "hd" :     [null, null, null,
@@ -10099,7 +10099,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^30 + x^7 + x^5 + x^4 + x^3 + 1",
     "degree"     : 30,
     "explicit"   : "0x400000b9",
-    "koopman"    : "0x2000005C",
+    "koopman"    : "0x2000005c",
     "normal"     : "0xb9"
   },
   "hd" :     [null, null, null,
@@ -10114,7 +10114,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^30 + x^21 + x^19 + x^18 + x^17 + x^16 + x^15 + x^14 + x^12 + x^11 + x^9 + x^7 + x^6 + x^4 + x^2 + 1",
     "degree"     : 30,
     "explicit"   : "0x402fdad5",
-    "koopman"    : "0x2017ED6A",
+    "koopman"    : "0x2017ed6a",
     "normal"     : "0x2fdad5"
   },
   "hd" :     [null, null, null,
@@ -10139,7 +10139,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^30 + x^24 + x^22 + x^21 + x^18 + x^17 + x^14 + x^13 + x^12 + x^11 + x^7 + x^4 + 1",
     "degree"     : 30,
     "explicit"   : "0x41667891",
-    "koopman"    : "0x20B33C48",
+    "koopman"    : "0x20b33c48",
     "normal"     : "0x1667891"
   },
   "hd" :     [null, null, null,
@@ -10183,7 +10183,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^30 + x^26 + x^23 + x^21 + x^19 + x^14 + x^13 + x^10 + x^8 + x^5 + x^4 + x^3 + x^1 + 1",
     "degree"     : 30,
     "explicit"   : "0x44a8653b",
-    "koopman"    : "0x2254329D",
+    "koopman"    : "0x2254329d",
     "normal"     : "0x4a8653b"
   },
   "hd" :     [null, null, null,
@@ -10206,7 +10206,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^30 + x^26 + x^24 + x^21 + x^20 + x^19 + x^17 + x^16 + x^15 + x^14 + x^13 + x^9 + x^8 + x^6 + x^4 + x^3 + 1",
     "degree"     : 30,
     "explicit"   : "0x453be359",
-    "koopman"    : "0x229DF1AC",
+    "koopman"    : "0x229df1ac",
     "normal"     : "0x53be359"
   },
   "hd" :     [null, null, null,
@@ -10232,7 +10232,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^30 + x^26 + x^25 + x^21 + x^18 + x^17 + x^15 + x^14 + x^12 + x^11 + x^10 + x^7 + x^5 + x^3 + x^2 + 1",
     "degree"     : 30,
     "explicit"   : "0x4626dcad",
-    "koopman"    : "0x23136E56",
+    "koopman"    : "0x23136e56",
     "normal"     : "0x626dcad"
   },
   "hd" :     [null, null, null,
@@ -10257,7 +10257,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^30 + x^26 + x^25 + x^23 + x^22 + x^20 + x^17 + x^16 + x^10 + x^8 + x^7 + x^6 + x^2 + x^1 + 1",
     "degree"     : 30,
     "explicit"   : "0x46d305c7",
-    "koopman"    : "0x236982E3",
+    "koopman"    : "0x236982e3",
     "normal"     : "0x6d305c7"
   },
   "hd" :     [null, null, null,
@@ -10281,7 +10281,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^30 + x^27 + x^22 + x^20 + x^19 + x^11 + x^10 + x^8 + x^3 + 1",
     "degree"     : 30,
     "explicit"   : "0x48580d09",
-    "koopman"    : "0x242C0684",
+    "koopman"    : "0x242c0684",
     "normal"     : "0x8580d09"
   },
   "hd" :     [null, null, null,
@@ -10300,7 +10300,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^30 + x^27 + x^23 + x^22 + x^20 + x^16 + x^15 + x^11 + x^10 + x^8 + x^5 + x^4 + x^3 + 1",
     "degree"     : 30,
     "explicit"   : "0x48d18d39",
-    "koopman"    : "0x2468C69C",
+    "koopman"    : "0x2468c69c",
     "normal"     : "0x8d18d39"
   },
   "hd" :     [null, null, null,
@@ -10345,7 +10345,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^30 + x^27 + x^26 + x^24 + x^23 + x^21 + x^18 + x^17 + x^13 + x^12 + x^11 + x^9 + x^6 + x^5 + x^4 + x^3 + 1",
     "degree"     : 30,
     "explicit"   : "0x4da63a79",
-    "koopman"    : "0x26D31D3C",
+    "koopman"    : "0x26d31d3c",
     "normal"     : "0xda63a79"
   },
   "hd" :     [null, null, null,
@@ -10371,7 +10371,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^30 + x^27 + x^26 + x^25 + x^22 + x^20 + x^16 + x^15 + x^14 + x^13 + x^12 + x^10 + x^9 + x^8 + x^6 + x^4 + x^3 + x^1 + 1",
     "degree"     : 30,
     "explicit"   : "0x4e51f75b",
-    "koopman"    : "0x2728FBAD",
+    "koopman"    : "0x2728fbad",
     "normal"     : "0xe51f75b"
   },
   "hd" :     [null, null, null,
@@ -10399,7 +10399,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^30 + x^28 + x^24 + x^21 + x^19 + x^18 + x^17 + x^16 + x^15 + x^14 + x^13 + x^12 + x^7 + x^6 + x^3 + x^1 + 1",
     "degree"     : 30,
     "explicit"   : "0x512ff0cb",
-    "koopman"    : "0x2897F865",
+    "koopman"    : "0x2897f865",
     "normal"     : "0x112ff0cb"
   },
   "hd" :     [null, null, null,
@@ -10425,7 +10425,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^30 + x^28 + x^25 + x^20 + x^19 + x^17 + x^15 + x^14 + x^12 + x^11 + x^9 + x^4 + x^3 + x^2 + 1",
     "degree"     : 30,
     "explicit"   : "0x521ada1d",
-    "koopman"    : "0x290D6D0E",
+    "koopman"    : "0x290d6d0e",
     "normal"     : "0x121ada1d"
   },
   "hd" :     [null, null, null,
@@ -10449,7 +10449,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^30 + x^28 + x^26 + x^23 + x^21 + x^20 + x^18 + x^17 + x^16 + x^13 + x^9 + x^8 + x^5 + x^4 + x^3 + x^1 + 1",
     "degree"     : 30,
     "explicit"   : "0x54b7233b",
-    "koopman"    : "0x2A5B919D",
+    "koopman"    : "0x2a5b919d",
     "normal"     : "0x14b7233b"
   },
   "hd" :     [null, null, null,
@@ -10475,7 +10475,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^30 + x^28 + x^26 + x^24 + x^21 + x^20 + x^18 + x^17 + x^14 + x^13 + x^12 + x^11 + x^10 + x^5 + x^3 + x^1 + 1",
     "degree"     : 30,
     "explicit"   : "0x55367c2b",
-    "koopman"    : "0x2A9B3E15",
+    "koopman"    : "0x2a9b3e15",
     "normal"     : "0x15367c2b"
   },
   "hd" :     [null, null, null,
@@ -10501,7 +10501,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^30 + x^28 + x^26 + x^24 + x^23 + x^21 + x^19 + x^16 + x^14 + x^11 + x^9 + x^7 + x^6 + x^4 + x^2 + 1",
     "degree"     : 30,
     "explicit"   : "0x55a94ad5",
-    "koopman"    : "0x2AD4A56A",
+    "koopman"    : "0x2ad4a56a",
     "normal"     : "0x15a94ad5"
   },
   "hd" :     [null, null, null,
@@ -10526,7 +10526,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^30 + x^28 + x^26 + x^24 + x^23 + x^21 + x^20 + x^19 + x^18 + x^17 + x^14 + x^13 + x^12 + x^10 + x^8 + x^6 + x^4 + x^3 + x^2 + x^1 + 1",
     "degree"     : 30,
     "explicit"   : "0x55be755f",
-    "koopman"    : "0x2ADF3AAF",
+    "koopman"    : "0x2adf3aaf",
     "normal"     : "0x15be755f"
   },
   "hd" :     [null, null, null,
@@ -10556,7 +10556,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^30 + x^28 + x^26 + x^25 + x^24 + x^21 + x^19 + x^18 + x^15 + x^14 + x^13 + x^12 + x^11 + x^10 + x^8 + x^7 + x^6 + x^5 + x^4 + x^1 + 1",
     "degree"     : 30,
     "explicit"   : "0x572cfdf3",
-    "koopman"    : "0x2B967EF9",
+    "koopman"    : "0x2b967ef9",
     "normal"     : "0x172cfdf3"
   },
   "hd" :     [null, null, null,
@@ -10586,7 +10586,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^30 + x^28 + x^27 + x^26 + x^24 + x^23 + x^22 + x^21 + x^20 + x^18 + x^17 + x^15 + x^10 + x^8 + x^6 + x^4 + x^2 + x^1 + 1",
     "degree"     : 30,
     "explicit"   : "0x5df68557",
-    "koopman"    : "0x2EFB42AB",
+    "koopman"    : "0x2efb42ab",
     "normal"     : "0x1df68557"
   },
   "hd" :     [null, null, null,
@@ -10614,7 +10614,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^30 + x^29 + x^21 + x^20 + x^15 + x^13 + x^12 + x^11 + x^8 + x^7 + x^6 + x^2 + x^1 + 1",
     "degree"     : 30,
     "explicit"   : "0x6030b9c7",
-    "koopman"    : "0x30185CE3",
+    "koopman"    : "0x30185ce3",
     "normal"     : "0x2030b9c7"
   },
   "hd" :     [null, null, null,
@@ -10659,7 +10659,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^30 + x^29 + x^25 + x^22 + x^21 + x^19 + x^14 + x^12 + x^10 + x^6 + x^4 + x^3 + x^2 + x^1 + 1",
     "degree"     : 30,
     "explicit"   : "0x6268545f",
-    "koopman"    : "0x31342A2F",
+    "koopman"    : "0x31342a2f",
     "normal"     : "0x2268545f"
   },
   "hd" :     [null, null, null,
@@ -10683,7 +10683,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^30 + x^29 + x^27 + x^23 + x^21 + x^18 + x^16 + x^14 + x^12 + x^9 + x^8 + x^6 + x^2 + x^1 + 1",
     "degree"     : 30,
     "explicit"   : "0x68a55347",
-    "koopman"    : "0x3452A9A3",
+    "koopman"    : "0x3452a9a3",
     "normal"     : "0x28a55347"
   },
   "hd" :     [null, null, null,
@@ -10707,7 +10707,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^30 + x^29 + x^27 + x^24 + x^23 + x^20 + x^16 + x^15 + x^14 + x^4 + x^3 + x^1 + 1",
     "degree"     : 30,
     "explicit"   : "0x6991c01b",
-    "koopman"    : "0x34C8E00D",
+    "koopman"    : "0x34c8e00d",
     "normal"     : "0x2991c01b"
   },
   "hd" :     [null, null, null,
@@ -10729,7 +10729,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^30 + x^29 + x^27 + x^25 + x^24 + x^22 + x^21 + x^20 + x^16 + x^15 + x^13 + x^8 + x^6 + x^5 + x^4 + x^3 + x^2 + x^1 + 1",
     "degree"     : 30,
     "explicit"   : "0x6b71a17f",
-    "koopman"    : "0x35B8D0BF",
+    "koopman"    : "0x35b8d0bf",
     "normal"     : "0x2b71a17f"
   },
   "hd" :     [null, null, null,
@@ -10757,7 +10757,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^30 + x^29 + x^28 + x^27 + x^24 + x^21 + x^20 + x^18 + x^12 + x^10 + x^9 + x^6 + x^3 + x^2 + x^1 + 1",
     "degree"     : 30,
     "explicit"   : "0x7934164f",
-    "koopman"    : "0x3C9A0B27",
+    "koopman"    : "0x3c9a0b27",
     "normal"     : "0x3934164f"
   },
   "hd" :     [null, null, null,
@@ -10782,7 +10782,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^30 + x^29 + x^28 + x^27 + x^25 + x^23 + x^22 + x^13 + x^12 + x^9 + x^8 + x^5 + x^4 + x^3 + x^2 + x^1 + 1",
     "degree"     : 30,
     "explicit"   : "0x7ac0333f",
-    "koopman"    : "0x3D60199F",
+    "koopman"    : "0x3d60199f",
     "normal"     : "0x3ac0333f"
   },
   "hd" :     [null, null, null,
@@ -10820,7 +10820,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^31 + x^7 + x^4 + x^2 + x^1 + 1",
     "degree"     : 31,
     "explicit"   : "0x80000097",
-    "koopman"    : "0x4000004B",
+    "koopman"    : "0x4000004b",
     "normal"     : "0x97"
   },
   "hd" :     [null, null, null,
@@ -10835,7 +10835,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^31 + x^8 + x^6 + x^5 + x^4 + x^2 + x^1 + 1",
     "degree"     : 31,
     "explicit"   : "0x80000177",
-    "koopman"    : "0x400000BB",
+    "koopman"    : "0x400000bb",
     "normal"     : "0x177"
   },
   "hd" :     [null, null, null,
@@ -10867,7 +10867,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^31 + x^23 + x^22 + x^20 + x^18 + x^12 + x^11 + x^8 + x^7 + x^6 + x^5 + x^4 + x^3 + x^2 + x^1 + 1",
     "degree"     : 31,
     "explicit"   : "0x80d419ff",
-    "koopman"    : "0x406A0CFF",
+    "koopman"    : "0x406a0cff",
     "normal"     : "0xd419ff"
   },
   "hd" :     [null, null, null,
@@ -10892,7 +10892,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^31 + x^24 + x^23 + x^21 + x^19 + x^17 + x^16 + x^15 + x^14 + x^12 + x^9 + x^8 + x^3 + x^1 + 1",
     "degree"     : 31,
     "explicit"   : "0x81abd30b",
-    "koopman"    : "0x40D5E985",
+    "koopman"    : "0x40d5e985",
     "normal"     : "0x1abd30b"
   },
   "hd" :     [null, null, null,
@@ -10916,7 +10916,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^31 + x^25 + x^24 + x^23 + x^21 + x^20 + x^19 + x^18 + x^17 + x^14 + x^12 + x^10 + x^7 + x^3 + x^2 + x^1 + 1",
     "degree"     : 31,
     "explicit"   : "0x83be548f",
-    "koopman"    : "0x41DF2A47",
+    "koopman"    : "0x41df2a47",
     "normal"     : "0x3be548f"
   },
   "hd" :     [null, null, null,
@@ -10942,7 +10942,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^31 + x^27 + x^25 + x^23 + x^22 + x^20 + x^18 + x^14 + x^13 + x^11 + x^9 + x^1 + 1",
     "degree"     : 31,
     "explicit"   : "0x8ad46a03",
-    "koopman"    : "0x456A3501",
+    "koopman"    : "0x456a3501",
     "normal"     : "0xad46a03"
   },
   "hd" :     [null, null, null,
@@ -10964,7 +10964,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^31 + x^27 + x^26 + x^20 + x^19 + x^18 + x^16 + x^15 + x^14 + x^10 + x^9 + x^8 + x^6 + x^5 + x^4 + x^3 + x^2 + x^1 + 1",
     "degree"     : 31,
     "explicit"   : "0x8c1dc77f",
-    "koopman"    : "0x460EE3BF",
+    "koopman"    : "0x460ee3bf",
     "normal"     : "0xc1dc77f"
   },
   "hd" :     [null, null, null,
@@ -10992,7 +10992,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^31 + x^27 + x^26 + x^24 + x^23 + x^22 + x^19 + x^17 + x^15 + x^14 + x^12 + x^10 + x^7 + x^6 + x^5 + x^4 + x^3 + 1",
     "degree"     : 31,
     "explicit"   : "0x8dcad4f9",
-    "koopman"    : "0x46E56A7C",
+    "koopman"    : "0x46e56a7c",
     "normal"     : "0xdcad4f9"
   },
   "hd" :     [null, null, null,
@@ -11019,7 +11019,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^31 + x^27 + x^26 + x^25 + x^23 + x^20 + x^19 + x^18 + x^10 + x^9 + x^8 + x^6 + x^4 + x^3 + 1",
     "degree"     : 31,
     "explicit"   : "0x8e9c0759",
-    "koopman"    : "0x474E03AC",
+    "koopman"    : "0x474e03ac",
     "normal"     : "0xe9c0759"
   },
   "hd" :     [null, null, null,
@@ -11043,7 +11043,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^31 + x^27 + x^26 + x^25 + x^24 + x^23 + x^21 + x^18 + x^16 + x^15 + x^13 + x^12 + x^9 + x^8 + x^6 + x^4 + x^2 + x^1 + 1",
     "degree"     : 31,
     "explicit"   : "0x8fa5b357",
-    "koopman"    : "0x47D2D9AB",
+    "koopman"    : "0x47d2d9ab",
     "normal"     : "0xfa5b357"
   },
   "hd" :     [null, null, null,
@@ -11071,7 +11071,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^31 + x^27 + x^26 + x^25 + x^24 + x^23 + x^22 + x^19 + x^18 + x^14 + x^11 + x^9 + x^7 + x^6 + x^3 + 1",
     "degree"     : 31,
     "explicit"   : "0x8fcc4ac9",
-    "koopman"    : "0x47E62564",
+    "koopman"    : "0x47e62564",
     "normal"     : "0xfcc4ac9"
   },
   "hd" :     [null, null, null,
@@ -11096,7 +11096,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^31 + x^28 + x^25 + x^24 + x^23 + x^22 + x^21 + x^18 + x^16 + x^15 + x^14 + x^13 + x^10 + x^8 + x^6 + x^5 + x^3 + x^1 + 1",
     "degree"     : 31,
     "explicit"   : "0x93e5e56b",
-    "koopman"    : "0x49F2F2B5",
+    "koopman"    : "0x49f2f2b5",
     "normal"     : "0x13e5e56b"
   },
   "hd" :     [null, null, null,
@@ -11124,7 +11124,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^31 + x^28 + x^26 + x^22 + x^21 + x^16 + x^15 + x^12 + x^11 + x^10 + x^9 + x^8 + x^7 + x^5 + x^3 + x^2 + 1",
     "degree"     : 31,
     "explicit"   : "0x94619fad",
-    "koopman"    : "0x4A30CFD6",
+    "koopman"    : "0x4a30cfd6",
     "normal"     : "0x14619fad"
   },
   "hd" :     [null, null, null,
@@ -11150,7 +11150,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^31 + x^28 + x^26 + x^22 + x^21 + x^20 + x^19 + x^18 + x^16 + x^15 + x^13 + x^11 + x^10 + x^7 + x^6 + x^4 + x^2 + x^1 + 1",
     "degree"     : 31,
     "explicit"   : "0x947dacd7",
-    "koopman"    : "0x4A3ED66B",
+    "koopman"    : "0x4a3ed66b",
     "normal"     : "0x147dacd7"
   },
   "hd" :     [null, null, null,
@@ -11178,7 +11178,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^31 + x^28 + x^26 + x^23 + x^21 + x^20 + x^17 + x^16 + x^15 + x^14 + x^10 + x^9 + x^8 + x^1 + 1",
     "degree"     : 31,
     "explicit"   : "0x94b3c703",
-    "koopman"    : "0x4A59E381",
+    "koopman"    : "0x4a59e381",
     "normal"     : "0x14b3c703"
   },
   "hd" :     [null, null, null,
@@ -11202,7 +11202,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^31 + x^28 + x^26 + x^25 + x^24 + x^23 + x^22 + x^21 + x^19 + x^14 + x^13 + x^12 + x^10 + x^8 + x^7 + x^6 + x^4 + x^1 + 1",
     "degree"     : 31,
     "explicit"   : "0x97e875d3",
-    "koopman"    : "0x4BF43AE9",
+    "koopman"    : "0x4bf43ae9",
     "normal"     : "0x17e875d3"
   },
   "hd" :     [null, null, null,
@@ -11230,7 +11230,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^31 + x^28 + x^27 + x^26 + x^25 + x^24 + x^23 + x^22 + x^20 + x^18 + x^15 + x^14 + x^12 + x^10 + x^6 + x^5 + x^4 + x^2 + 1",
     "degree"     : 31,
     "explicit"   : "0x9fd4d475",
-    "koopman"    : "0x4FEA6A3A",
+    "koopman"    : "0x4fea6a3a",
     "normal"     : "0x1fd4d475"
   },
   "hd" :     [null, null, null,
@@ -11258,7 +11258,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^31 + x^29 + x^26 + x^24 + x^22 + x^20 + x^18 + x^15 + x^10 + x^9 + x^6 + x^5 + x^2 + 1",
     "degree"     : 31,
     "explicit"   : "0xa5548665",
-    "koopman"    : "0x52AA4332",
+    "koopman"    : "0x52aa4332",
     "normal"     : "0x25548665"
   },
   "hd" :     [null, null, null,
@@ -11281,7 +11281,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^31 + x^29 + x^26 + x^24 + x^23 + x^21 + x^18 + x^15 + x^11 + x^10 + x^8 + x^7 + x^6 + x^1 + 1",
     "degree"     : 31,
     "explicit"   : "0xa5a48dc3",
-    "koopman"    : "0x52D246E1",
+    "koopman"    : "0x52d246e1",
     "normal"     : "0x25a48dc3"
   },
   "hd" :     [null, null, null,
@@ -11305,7 +11305,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^31 + x^29 + x^28 + x^25 + x^24 + x^22 + x^21 + x^19 + x^17 + x^13 + x^11 + x^10 + x^9 + x^6 + x^3 + x^1 + 1",
     "degree"     : 31,
     "explicit"   : "0xb36a2e4b",
-    "koopman"    : "0x59B51725",
+    "koopman"    : "0x59b51725",
     "normal"     : "0x336a2e4b"
   },
   "hd" :     [null, null, null,
@@ -11331,7 +11331,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^31 + x^30 + x^24 + x^23 + x^22 + x^21 + x^18 + x^16 + x^13 + x^10 + x^4 + x^2 + x^1 + 1",
     "degree"     : 31,
     "explicit"   : "0xc1e52417",
-    "koopman"    : "0x60F2920B",
+    "koopman"    : "0x60f2920b",
     "normal"     : "0x41e52417"
   },
   "hd" :     [null, null, null,
@@ -11354,7 +11354,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^31 + x^30 + x^27 + x^26 + x^22 + x^19 + x^16 + x^14 + x^13 + x^10 + x^8 + x^7 + x^6 + x^4 + x^2 + x^1 + 1",
     "degree"     : 31,
     "explicit"   : "0xcc4965d7",
-    "koopman"    : "0x6624B2EB",
+    "koopman"    : "0x6624b2eb",
     "normal"     : "0x4c4965d7"
   },
   "hd" :     [null, null, null,
@@ -11380,7 +11380,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^31 + x^30 + x^27 + x^26 + x^24 + x^23 + x^20 + x^19 + x^17 + x^14 + x^13 + x^11 + x^9 + x^6 + x^5 + x^3 + x^2 + x^1 + 1",
     "degree"     : 31,
     "explicit"   : "0xcd9a6a6f",
-    "koopman"    : "0x66CD3537",
+    "koopman"    : "0x66cd3537",
     "normal"     : "0x4d9a6a6f"
   },
   "hd" :     [null, null, null,
@@ -11408,7 +11408,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^31 + x^30 + x^28 + x^25 + x^19 + x^18 + x^16 + x^15 + x^11 + x^9 + x^7 + 1",
     "degree"     : 31,
     "explicit"   : "0xd20d8a81",
-    "koopman"    : "0x6906C540",
+    "koopman"    : "0x6906c540",
     "normal"     : "0x520d8a81"
   },
   "hd" :     [null, null, null,
@@ -11429,7 +11429,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^31 + x^30 + x^28 + x^26 + x^25 + x^24 + x^23 + x^22 + x^20 + x^19 + x^18 + x^14 + x^12 + x^6 + x^5 + x^4 + x^3 + x^2 + x^1 + 1",
     "degree"     : 31,
     "explicit"   : "0xd7dc507f",
-    "koopman"    : "0x6BEE283F",
+    "koopman"    : "0x6bee283f",
     "normal"     : "0x57dc507f"
   },
   "hd" :     [null, null, null,
@@ -11458,7 +11458,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^31 + x^30 + x^28 + x^27 + x^23 + x^22 + x^21 + x^19 + x^12 + x^10 + x^9 + x^8 + x^4 + x^3 + x^1 + 1",
     "degree"     : 31,
     "explicit"   : "0xd8e8171b",
-    "koopman"    : "0x6C740B8D",
+    "koopman"    : "0x6c740b8d",
     "normal"     : "0x58e8171b"
   },
   "hd" :     [null, null, null,
@@ -11483,7 +11483,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^31 + x^30 + x^28 + x^27 + x^25 + x^20 + x^17 + x^15 + x^12 + x^11 + x^7 + x^5 + x^4 + x^3 + x^1 + 1",
     "degree"     : 31,
     "explicit"   : "0xda1298bb",
-    "koopman"    : "0x6D094C5D",
+    "koopman"    : "0x6d094c5d",
     "normal"     : "0x5a1298bb"
   },
   "hd" :     [null, null, null,
@@ -11508,7 +11508,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^31 + x^30 + x^29 + x^23 + x^21 + x^20 + x^18 + x^14 + x^13 + x^12 + x^9 + x^8 + x^6 + x^4 + x^2 + x^1 + 1",
     "degree"     : 31,
     "explicit"   : "0xe0b47357",
-    "koopman"    : "0x705A39AB",
+    "koopman"    : "0x705a39ab",
     "normal"     : "0x60b47357"
   },
   "hd" :     [null, null, null,
@@ -11534,7 +11534,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^31 + x^30 + x^29 + x^26 + x^25 + x^23 + x^22 + x^21 + x^20 + x^19 + x^18 + x^14 + x^13 + x^9 + x^6 + x^4 + x^2 + x^1 + 1",
     "degree"     : 31,
     "explicit"   : "0xe6fc6257",
-    "koopman"    : "0x737E312B",
+    "koopman"    : "0x737e312b",
     "normal"     : "0x66fc6257"
   },
   "hd" :     [null, null, null,
@@ -11562,7 +11562,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^31 + x^30 + x^29 + x^27 + x^24 + x^23 + x^22 + x^21 + x^20 + x^17 + x^16 + x^15 + x^14 + x^11 + x^10 + x^9 + x^8 + x^7 + x^4 + x^2 + x^1 + 1",
     "degree"     : 31,
     "explicit"   : "0xe9f3cf97",
-    "koopman"    : "0x74F9E7CB",
+    "koopman"    : "0x74f9e7cb",
     "normal"     : "0x69f3cf97"
   },
   "hd" :     [null, null, null,
@@ -11635,7 +11635,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^32 + x^8 + x^7 + x^6 + x^5 + x^3 + x^2 + 1",
     "degree"     : 32,
     "explicit"   : "0x1000001ed",
-    "koopman"    : "0x800000F6",
+    "koopman"    : "0x800000f6",
     "normal"     : "0x1ed"
   },
   "hd" :     [null, null, null,
@@ -11652,7 +11652,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^32 + x^14 + x^12 + x^10 + x^9 + x^8 + x^4 + x^3 + x^1 + 1",
     "degree"     : 32,
     "explicit"   : "0x10000571b",
-    "koopman"    : "0x80002B8D",
+    "koopman"    : "0x80002b8d",
     "normal"     : "0x571b"
   },
   "hd" :     [null, null, null,
@@ -11685,7 +11685,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^32 + x^24 + x^23 + x^22 + x^21 + x^20 + x^19 + x^16 + x^14 + x^13 + x^7 + x^6 + x^5 + x^3 + x^2 + x^1 + 1",
     "degree"     : 32,
     "explicit"   : "0x101f960ef",
-    "koopman"    : "0x80FCB077",
+    "koopman"    : "0x80fcb077",
     "normal"     : "0x1f960ef"
   },
   "hd" :     [null, null, null,
@@ -11711,7 +11711,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^32 + x^25 + x^24 + x^23 + x^21 + x^19 + x^18 + x^17 + x^16 + x^15 + x^14 + x^11 + x^10 + x^9 + x^7 + x^3 + x^2 + x^1 + 1",
     "degree"     : 32,
     "explicit"   : "0x103afce8f",
-    "koopman"    : "0x81D7E747",
+    "koopman"    : "0x81d7e747",
     "normal"     : "0x3afce8f"
   },
   "hd" :     [null, null, null,
@@ -11739,7 +11739,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^32 + x^26 + x^23 + x^16 + x^12 + x^11 + x^10 + x^8 + x^7 + x^5 + x^4 + x^2 + x^1 + 1",
     "degree"     : 32,
     "explicit"   : "0x104811db7",
-    "koopman"    : "0x82408EDB",
+    "koopman"    : "0x82408edb",
     "normal"     : "0x4811db7"
   },
   "hd" :     [null, null, null,
@@ -11762,7 +11762,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^32 + x^26 + x^23 + x^22 + x^16 + x^12 + x^11 + x^10 + x^8 + x^7 + x^5 + x^4 + x^2 + x^1 + 1",
     "degree"     : 32,
     "explicit"   : "0x104c11db7",
-    "koopman"    : "0x82608EDB",
+    "koopman"    : "0x82608edb",
     "normal"     : "0x4c11db7"
   },
   "hd" :     [null, null, null,
@@ -11786,7 +11786,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^32 + x^27 + x^25 + x^24 + x^22 + x^21 + x^20 + x^17 + x^15 + x^13 + x^11 + x^10 + x^5 + x^4 + x^3 + x^1 + 1",
     "degree"     : 32,
     "explicit"   : "0x10b72ac3b",
-    "koopman"    : "0x85B9561D",
+    "koopman"    : "0x85b9561d",
     "normal"     : "0xb72ac3b"
   },
   "hd" :     [null, null, null,
@@ -11812,7 +11812,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^32 + x^27 + x^26 + x^25 + x^23 + x^17 + x^16 + x^15 + x^11 + x^10 + x^9 + x^6 + x^3 + x^2 + 1",
     "degree"     : 32,
     "explicit"   : "0x10e838e4d",
-    "koopman"    : "0x8741C726",
+    "koopman"    : "0x8741c726",
     "normal"     : "0xe838e4d"
   },
   "hd" :     [null, null, null,
@@ -11860,7 +11860,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^32 + x^28 + x^27 + x^23 + x^22 + x^21 + x^19 + x^15 + x^14 + x^12 + x^11 + x^10 + x^8 + x^7 + x^5 + x^3 + 1",
     "degree"     : 32,
     "explicit"   : "0x118e8dda9",
-    "koopman"    : "0x8C746ED4",
+    "koopman"    : "0x8c746ed4",
     "normal"     : "0x18e8dda9"
   },
   "hd" :     [null, null, null,
@@ -11886,7 +11886,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^32 + x^28 + x^27 + x^26 + x^22 + x^18 + x^17 + x^15 + x^14 + x^13 + x^9 + x^8 + x^7 + x^6 + x^4 + x^3 + x^2 + x^1 + 1",
     "degree"     : 32,
     "explicit"   : "0x11c46e3df",
-    "koopman"    : "0x8E2371EF",
+    "koopman"    : "0x8e2371ef",
     "normal"     : "0x1c46e3df"
   },
   "hd" :     [null, null, null,
@@ -11914,7 +11914,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^32 + x^28 + x^27 + x^26 + x^24 + x^23 + x^22 + x^19 + x^17 + x^14 + x^13 + x^11 + x^10 + x^8 + x^4 + x^3 + x^2 + x^1 + 1",
     "degree"     : 32,
     "explicit"   : "0x11dca6d1f",
-    "koopman"    : "0x8EE5368F",
+    "koopman"    : "0x8ee5368f",
     "normal"     : "0x1dca6d1f"
   },
   "hd" :     [null, null, null,
@@ -11942,7 +11942,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^32 + x^28 + x^27 + x^26 + x^24 + x^23 + x^22 + x^21 + x^20 + x^19 + x^17 + x^15 + x^12 + x^10 + x^9 + x^8 + x^7 + x^4 + x^3 + x^1 + 1",
     "degree"     : 32,
     "explicit"   : "0x11dfa979b",
-    "koopman"    : "0x8EFD4BCD",
+    "koopman"    : "0x8efd4bcd",
     "normal"     : "0x1dfa979b"
   },
   "hd" :     [null, null, null,
@@ -11972,7 +11972,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^32 + x^28 + x^27 + x^26 + x^25 + x^23 + x^22 + x^20 + x^19 + x^18 + x^14 + x^13 + x^11 + x^10 + x^9 + x^8 + x^6 + 1",
     "degree"     : 32,
     "explicit"   : "0x11edc6f41",
-    "koopman"    : "0x8F6E37A0",
+    "koopman"    : "0x8f6e37a0",
     "normal"     : "0x1edc6f41"
   },
   "hd" :     [null, null, null,
@@ -12014,7 +12014,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^32 + x^29 + x^26 + x^25 + x^24 + x^22 + x^21 + x^18 + x^17 + x^16 + x^13 + x^12 + x^10 + x^9 + x^5 + x^4 + x^2 + x^1 + 1",
     "degree"     : 32,
     "explicit"   : "0x127673637",
-    "koopman"    : "0x93B39B1B",
+    "koopman"    : "0x93b39b1b",
     "normal"     : "0x27673637"
   },
   "hd" :     [null, null, null,
@@ -12042,7 +12042,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^32 + x^29 + x^27 + x^23 + x^21 + x^20 + x^19 + x^17 + x^11 + x^7 + x^5 + x^4 + x^3 + x^1 + 1",
     "degree"     : 32,
     "explicit"   : "0x128ba08bb",
-    "koopman"    : "0x945D045D",
+    "koopman"    : "0x945d045d",
     "normal"     : "0x28ba08bb"
   },
   "hd" :     [null, null, null,
@@ -12066,7 +12066,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^32 + x^29 + x^27 + x^25 + x^20 + x^19 + x^18 + x^16 + x^14 + x^13 + x^12 + x^11 + x^10 + x^9 + x^8 + x^6 + x^4 + x^3 + x^2 + 1",
     "degree"     : 32,
     "explicit"   : "0x12a1d7f5d",
-    "koopman"    : "0x950EBFAE",
+    "koopman"    : "0x950ebfae",
     "normal"     : "0x2a1d7f5d"
   },
   "hd" :     [null, null, null,
@@ -12095,7 +12095,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^32 + x^29 + x^27 + x^26 + x^25 + x^22 + x^21 + x^20 + x^18 + x^16 + x^15 + x^14 + x^13 + x^12 + x^10 + x^9 + x^7 + x^5 + x^1 + 1",
     "degree"     : 32,
     "explicit"   : "0x12e75f6a3",
-    "koopman"    : "0x973AFB51",
+    "koopman"    : "0x973afb51",
     "normal"     : "0x2e75f6a3"
   },
   "hd" :     [null, null, null,
@@ -12124,7 +12124,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^32 + x^29 + x^28 + x^25 + x^22 + x^20 + x^19 + x^13 + x^12 + x^10 + x^7 + x^4 + x^3 + 1",
     "degree"     : 32,
     "explicit"   : "0x132583499",
-    "koopman"    : "0x992C1A4C",
+    "koopman"    : "0x992c1a4c",
     "normal"     : "0x32583499"
   },
   "hd" :     [null, null, null,
@@ -12147,7 +12147,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^32 + x^29 + x^28 + x^25 + x^23 + x^22 + x^10 + x^9 + x^7 + x^4 + x^3 + 1",
     "degree"     : 32,
     "explicit"   : "0x132c00699",
-    "koopman"    : "0x9960034C",
+    "koopman"    : "0x9960034c",
     "normal"     : "0x32c00699"
   },
   "hd" :     [null, null, null,
@@ -12168,7 +12168,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^32 + x^29 + x^28 + x^27 + x^25 + x^23 + x^22 + x^21 + x^20 + x^19 + x^18 + x^17 + x^16 + x^13 + x^11 + x^10 + x^9 + x^8 + x^7 + x^5 + x^3 + x^2 + 1",
     "degree"     : 32,
     "explicit"   : "0x13aff2fad",
-    "koopman"    : "0x9D7F97D6",
+    "koopman"    : "0x9d7f97d6",
     "normal"     : "0x3aff2fad"
   },
   "hd" :     [null, null, null,
@@ -12200,7 +12200,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^32 + x^29 + x^28 + x^27 + x^25 + x^24 + x^21 + x^20 + x^17 + x^15 + x^11 + x^10 + x^9 + x^8 + x^7 + x^6 + x^5 + x^4 + x^3 + x^1 + 1",
     "degree"     : 32,
     "explicit"   : "0x13b328ffb",
-    "koopman"    : "0x9D9947FD",
+    "koopman"    : "0x9d9947fd",
     "normal"     : "0x3b328ffb"
   },
   "hd" :     [null, null, null,
@@ -12230,7 +12230,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^32 + x^30 + x^24 + x^21 + x^19 + x^16 + x^14 + x^12 + x^11 + x^10 + x^9 + x^8 + x^6 + x^5 + x^3 + x^1 + 1",
     "degree"     : 32,
     "explicit"   : "0x141295f6b",
-    "koopman"    : "0xA094AFB5",
+    "koopman"    : "0xa094afb5",
     "normal"     : "0x41295f6b"
   },
   "hd" :     [null, null, null,
@@ -12256,7 +12256,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^32 + x^30 + x^26 + x^23 + x^21 + x^19 + x^18 + x^17 + x^14 + x^12 + x^9 + x^7 + x^6 + x^2 + 1",
     "degree"     : 32,
     "explicit"   : "0x144ae52c5",
-    "koopman"    : "0xA2572962",
+    "koopman"    : "0xa2572962",
     "normal"     : "0x44ae52c5"
   },
   "hd" :     [null, null, null,
@@ -12280,7 +12280,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^32 + x^30 + x^28 + x^23 + x^22 + x^20 + x^18 + x^17 + x^16 + x^15 + x^14 + x^11 + x^8 + x^7 + x^5 + x^4 + x^2 + x^1 + 1",
     "degree"     : 32,
     "explicit"   : "0x150d7c9b7",
-    "koopman"    : "0xA86BE4DB",
+    "koopman"    : "0xa86be4db",
     "normal"     : "0x50d7c9b7"
   },
   "hd" :     [null, null, null,
@@ -12308,7 +12308,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^32 + x^30 + x^28 + x^26 + x^25 + x^24 + x^21 + x^19 + x^18 + x^16 + x^14 + x^13 + x^12 + x^9 + x^7 + x^2 + 1",
     "degree"     : 32,
     "explicit"   : "0x1572d7285",
-    "koopman"    : "0xAB96B942",
+    "koopman"    : "0xab96b942",
     "normal"     : "0x572d7285"
   },
   "hd" :     [null, null, null,
@@ -12334,7 +12334,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^32 + x^30 + x^28 + x^27 + x^25 + x^19 + x^14 + x^11 + x^8 + x^7 + x^6 + x^5 + x^2 + x^1 + 1",
     "degree"     : 32,
     "explicit"   : "0x15a0849e7",
-    "koopman"    : "0xAD0424F3",
+    "koopman"    : "0xad0424f3",
     "normal"     : "0x5a0849e7"
   },
   "hd" :     [null, null, null,
@@ -12358,7 +12358,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^32 + x^30 + x^29 + x^26 + x^25 + x^22 + x^21 + x^20 + x^16 + x^14 + x^12 + x^11 + x^9 + x^8 + x^7 + x^5 + x^3 + x^2 + 1",
     "degree"     : 32,
     "explicit"   : "0x166715bad",
-    "koopman"    : "0xB338ADD6",
+    "koopman"    : "0xb338add6",
     "normal"     : "0x66715bad"
   },
   "hd" :     [null, null, null,
@@ -12386,7 +12386,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^32 + x^30 + x^29 + x^27 + x^24 + x^21 + x^20 + x^19 + x^13 + x^12 + x^11 + x^8 + x^5 + x^3 + x^2 + 1",
     "degree"     : 32,
     "explicit"   : "0x16938392d",
-    "koopman"    : "0xB49C1C96",
+    "koopman"    : "0xb49c1c96",
     "normal"     : "0x6938392d"
   },
   "hd" :     [null, null, null,
@@ -12411,7 +12411,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^32 + x^30 + x^29 + x^28 + x^26 + x^20 + x^19 + x^17 + x^16 + x^15 + x^11 + x^10 + x^7 + x^6 + x^4 + x^2 + x^1 + 1",
     "degree"     : 32,
     "explicit"   : "0x1741b8cd7",
-    "koopman"    : "0xBA0DC66B",
+    "koopman"    : "0xba0dc66b",
     "normal"     : "0x741b8cd7"
   },
   "hd" :     [null, null, null,
@@ -12438,7 +12438,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^32 + x^31 + x^24 + x^22 + x^16 + x^14 + x^8 + x^7 + x^5 + x^3 + x^1 + 1",
     "degree"     : 32,
     "explicit"   : "0x1814141ab",
-    "koopman"    : "0xC0A0A0D5",
+    "koopman"    : "0xc0a0a0d5",
     "normal"     : "0x814141ab"
   },
   "hd" :     [null, null, null,
@@ -12459,7 +12459,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^32 + x^31 + x^28 + x^25 + x^24 + x^23 + x^21 + x^18 + x^11 + x^8 + x^7 + x^6 + x^5 + x^3 + x^1 + 1",
     "degree"     : 32,
     "explicit"   : "0x193a409eb",
-    "koopman"    : "0xC9D204F5",
+    "koopman"    : "0xc9d204f5",
     "normal"     : "0x93a409eb"
   },
   "hd" :     [null, null, null,
@@ -12484,7 +12484,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^32 + x^31 + x^29 + x^26 + x^24 + x^23 + x^16 + x^15 + x^14 + x^12 + x^11 + x^10 + x^9 + x^3 + x^2 + x^1 + 1",
     "degree"     : 32,
     "explicit"   : "0x1a581de0f",
-    "koopman"    : "0xD2C0EF07",
+    "koopman"    : "0xd2c0ef07",
     "normal"     : "0xa581de0f"
   },
   "hd" :     [null, null, null,
@@ -12510,7 +12510,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^32 + x^31 + x^29 + x^27 + x^21 + x^20 + x^17 + x^16 + x^15 + x^12 + x^11 + x^5 + x^3 + x^1 + 1",
     "degree"     : 32,
     "explicit"   : "0x1a833982b",
-    "koopman"    : "0xD419CC15",
+    "koopman"    : "0xd419cc15",
     "normal"     : "0xa833982b"
   },
   "hd" :     [null, null, null,
@@ -12534,7 +12534,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^32 + x^31 + x^30 + x^27 + x^23 + x^22 + x^21 + x^20 + x^18 + x^17 + x^15 + x^12 + x^11 + x^7 + x^5 + x^3 + x^2 + x^1 + 1",
     "degree"     : 32,
     "explicit"   : "0x1c8f698af",
-    "koopman"    : "0xE47B4C57",
+    "koopman"    : "0xe47b4c57",
     "normal"     : "0xc8f698af"
   },
   "hd" :     [null, null, null,
@@ -12562,7 +12562,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^32 + x^31 + x^30 + x^28 + x^24 + x^21 + x^15 + x^14 + x^9 + x^8 + x^7 + x^5 + x^4 + x^2 + x^1 + 1",
     "degree"     : 32,
     "explicit"   : "0x1d120c3b7",
-    "koopman"    : "0xE89061DB",
+    "koopman"    : "0xe89061db",
     "normal"     : "0xd120c3b7"
   },
   "hd" :     [null, null, null,
@@ -12587,7 +12587,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^32 + x^31 + x^30 + x^29 + x^28 + x^24 + x^23 + x^20 + x^17 + x^13 + x^11 + x^4 + x^2 + 1",
     "degree"     : 32,
     "explicit"   : "0x1f1922815",
-    "koopman"    : "0xF8C9140A",
+    "koopman"    : "0xf8c9140a",
     "normal"     : "0xf1922815"
   },
   "hd" :     [null, null, null,
@@ -12610,7 +12610,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^32 + x^31 + x^30 + x^29 + x^28 + x^26 + x^23 + x^21 + x^19 + x^18 + x^15 + x^14 + x^13 + x^12 + x^11 + x^9 + x^8 + x^4 + x^1 + 1",
     "degree"     : 32,
     "explicit"   : "0x1f4acfb13",
-    "koopman"    : "0xFA567D89",
+    "koopman"    : "0xfa567d89",
     "normal"     : "0xf4acfb13"
   },
   "hd" :     [null, null, null,
@@ -12639,7 +12639,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^32 + x^31 + x^30 + x^29 + x^28 + x^26 + x^25 + x^23 + x^21 + x^19 + x^18 + x^15 + x^14 + x^13 + x^12 + x^11 + x^9 + x^8 + x^4 + x^1 + 1",
     "degree"     : 32,
     "explicit"   : "0x1f6acfb13",
-    "koopman"    : "0xFB567D89",
+    "koopman"    : "0xfb567d89",
     "normal"     : "0xf6acfb13"
   },
   "hd" :     [null, null, null,
@@ -12669,7 +12669,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^33 + x^4 + x^3 + x^2 + x^1 + 1",
     "degree"     : 33,
     "explicit"   : "0x20000001f",
-    "koopman"    : "0x10000000F",
+    "koopman"    : "0x10000000f",
     "normal"     : "0x1f"
   },
   "hd" :     [null, null, null,
@@ -12698,7 +12698,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^33 + x^7 + x^4 + x^3 + x^2 + 1",
     "degree"     : 33,
     "explicit"   : "0x20000009d",
-    "koopman"    : "0x10000004E",
+    "koopman"    : "0x10000004e",
     "normal"     : "0x9d"
   },
   "hd" :     [null, null, null,
@@ -12742,7 +12742,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^34 + x^8 + x^7 + x^6 + x^1 + 1",
     "degree"     : 34,
     "explicit"   : "0x4000001c3",
-    "koopman"    : "0x2000000E1",
+    "koopman"    : "0x2000000e1",
     "normal"     : "0x1c3"
   },
   "hd" :     [null, null, null,
@@ -12782,7 +12782,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^35 + x^5 + x^4 + x^2 + x^1 + 1",
     "degree"     : 35,
     "explicit"   : "0x800000037",
-    "koopman"    : "0x40000001B",
+    "koopman"    : "0x40000001b",
     "normal"     : "0x37"
   },
   "hd" :     [null, null, null,
@@ -12812,7 +12812,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^36 + x^6 + x^5 + x^4 + x^2 + x^1 + 1",
     "degree"     : 36,
     "explicit"   : "0x1000000077",
-    "koopman"    : "0x80000003B",
+    "koopman"    : "0x80000003b",
     "normal"     : "0x77"
   },
   "hd" :     [null, null, null,
@@ -12828,7 +12828,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^36 + x^8 + x^7 + x^6 + x^5 + x^4 + x^3 + 1",
     "degree"     : 36,
     "explicit"   : "0x10000001f9",
-    "koopman"    : "0x8000000FC",
+    "koopman"    : "0x8000000fc",
     "normal"     : "0x1f9"
   },
   "hd" :     [null, null, null,
@@ -12845,7 +12845,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^37 + x^5 + x^4 + x^3 + x^2 + x^1 + 1",
     "degree"     : 37,
     "explicit"   : "0x200000003f",
-    "koopman"    : "0x100000001F",
+    "koopman"    : "0x100000001f",
     "normal"     : "0x3f"
   },
   "hd" :     [null, null, null,
@@ -12943,7 +12943,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^39 + x^4 + x^2 + 1",
     "degree"     : 39,
     "explicit"   : "0x8000000015",
-    "koopman"    : "0x400000000A",
+    "koopman"    : "0x400000000a",
     "normal"     : "0x15"
   },
   "hd" :     [null, null, null,
@@ -12969,7 +12969,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^40 + x^5 + x^4 + x^3 + 1",
     "degree"     : 40,
     "explicit"   : "0x10000000039",
-    "koopman"    : "0x800000001C",
+    "koopman"    : "0x800000001c",
     "normal"     : "0x39"
   },
   "hd" :     [null, null, null,
@@ -12983,7 +12983,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^40 + x^8 + x^7 + x^6 + x^5 + x^2 + x^1 + 1",
     "degree"     : 40,
     "explicit"   : "0x100000001e7",
-    "koopman"    : "0x80000000F3",
+    "koopman"    : "0x80000000f3",
     "normal"     : "0x1e7"
   },
   "hd" :     [null, null, null,
@@ -13027,7 +13027,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^42 + x^5 + x^4 + x^3 + x^2 + x^1 + 1",
     "degree"     : 42,
     "explicit"   : "0x4000000003f",
-    "koopman"    : "0x2000000001F",
+    "koopman"    : "0x2000000001f",
     "normal"     : "0x3f"
   },
   "hd" :     [null, null, null,
@@ -13056,7 +13056,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^43 + x^6 + x^4 + x^3 + 1",
     "degree"     : 43,
     "explicit"   : "0x80000000059",
-    "koopman"    : "0x4000000002C",
+    "koopman"    : "0x4000000002c",
     "normal"     : "0x59"
   },
   "hd" :     [null, null, null,
@@ -13085,7 +13085,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^44 + x^6 + x^4 + x^3 + x^2 + 1",
     "degree"     : 44,
     "explicit"   : "0x10000000005d",
-    "koopman"    : "0x8000000002E",
+    "koopman"    : "0x8000000002e",
     "normal"     : "0x5d"
   },
   "hd" :     [null, null, null,
@@ -13114,7 +13114,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^44 + x^8 + x^7 + x^5 + x^1 + 1",
     "degree"     : 44,
     "explicit"   : "0x1000000001a3",
-    "koopman"    : "0x800000000D1",
+    "koopman"    : "0x800000000d1",
     "normal"     : "0x1a3"
   },
   "hd" :     [null, null, null,
@@ -13129,7 +13129,7 @@ var polynomials = Create_PolynomialDatabase( [
     "polynomial" : "x^45 + x^4 + x^3 + x^1 + 1",
     "degree"     : 45,
     "explicit"   : "0x20000000001b",
-    "koopman"    : "0x10000000000D",
+    "koopman"    : "0x10000000000d",
     "normal"     : "0x1b"
   },
   "hd" :     [null, null, null,

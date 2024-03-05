@@ -3,7 +3,7 @@
     "polynomial" : "x^24 + x^10 + x^9 + x^6 + x^4 + x^3 + x^1 + 1",
     "degree"     : 24,
     "explicit"   : "0x100065b",
-    "koopman"    : "0x80032D",
+    "koopman"    : "0x80032d",
     "normal"     : "0x65b"
   },
   "hd" :     [null, null, null,

@@ -3,7 +3,7 @@
     "polynomial" : "x^16 + x^11 + x^10 + x^8 + x^7 + x^6 + x^5 + x^2 + 1",
     "degree"     : 16,
     "explicit"   : "0x10de5",
-    "koopman"    : "0x86F2",
+    "koopman"    : "0x86f2",
     "normal"     : "0xde5"
   },
   "hd" :     [null, null, null,

@@ -3,7 +3,7 @@
     "polynomial" : "x^32 + x^29 + x^28 + x^27 + x^25 + x^24 + x^21 + x^20 + x^17 + x^15 + x^11 + x^10 + x^9 + x^8 + x^7 + x^6 + x^5 + x^4 + x^3 + x^1 + 1",
     "degree"     : 32,
     "explicit"   : "0x13b328ffb",
-    "koopman"    : "0x9D9947FD",
+    "koopman"    : "0x9d9947fd",
     "normal"     : "0x3b328ffb"
   },
   "hd" :     [null, null, null,
