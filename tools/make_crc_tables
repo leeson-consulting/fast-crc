@@ -19,6 +19,7 @@ function find_tmp_dir()
 
 function determine_crc_t()
 {
+  local poly_degree="$1"
   local -i bytes_required=$(( ((poly_degree + 7) / 8) ))
 
   case $bytes_required in
@@ -32,15 +33,14 @@ function determine_crc_t()
 
 ###############################################################################
 
-function make_tables()
+function print_poly_info()
 {
+  # Use the polynomial profile from database if available,
+  # otherwise generate human readable poly_info from poly_degree and poly_normal
+
   local poly_degree="$1"
   local poly_normal="${2#0x}"
-  local crc_t="${3:-$(determine_crc_t "$poly_degree")}"
   local poly_koopman="$(convert_poly n2k $poly_normal $poly_degree)"
-
-  # 1. Use the polynomial profile from database if available otherwise generate human readable poly_info
-
   local poly_profile="${REPO_ROOT}/db/polynomial/profiles/crc${poly_degree}_Kx${poly_koopman#0x}_profile.json5"
   local poly_info
 
@@ -50,7 +50,31 @@ function make_tables()
     poly_info=$(convert_poly k2j "$poly_koopman")
   fi
 
-  printf "Generating tables for Polynomial(${poly_degree}, Nx${poly_normal})\n"
+  printf "$poly_info"
+}
+
+###############################################################################
+
+function make_tables()
+{
+  local poly_degree="$1"
+  local poly_normal="${2#0x}"
+  local crc_t="${3:-$(determine_crc_t "$poly_degree")}" # optional
+  local sub_table="${4}" # optional, used when generating sharded tables
+  local poly_info=$(print_poly_info "$poly_degree" "$poly_normal")
+
+  local forward_table_name
+  local forward_poly_id
+
+  if [[ -z "$sub_table" ]] ; then
+    forward_table_name="Fx${poly_normal}"
+    forward_poly_id="crc${poly_degree}_${forward_table_name}"
+  else
+    forward_table_name="Sx${poly_normal}"
+    forward_poly_id="crcx_${forward_table_name}"
+  fi
+
+  printf "Generating Forward Lookup Table for Polynomial(${poly_degree}, Fx${poly_normal})\n"
 
   # 2. Make Forward Polynomial Lookup Tables
 
@@ -63,7 +87,7 @@ function make_tables()
 //
 // Forward Polynomial Lookup Tables
 //
-// crc${poly_degree}_Nx${poly_normal}_Profile =
+// ${forward_poly_id}_Profile =
 $(printf "${poly_info}" | sed -e 's:\(^.*\):// \1:')
 //
 ///////////////////////////////////////////////////////////////////////////////
@@ -72,24 +96,34 @@ $(printf "${poly_info}" | sed -e 's:\(^.*\):// \1:')
 
 #if defined(USE_CRC_KERNEL_TABLE8)
 
-static ${crc_t} const Fx${poly_normal}[256] =
+static ${crc_t} const ${forward_table_name}[256] =
 $($PYCRC --width=$poly_degree --poly=0x${poly_normal} --reflect-in=False --reflect-out=False --xor-in=0x0000 --xor-out=0x0000 --algorithm=table-driven --generate=table --table-idx-width=8);
 
-make_crc_kernel_f${poly_degree}_t8(Fx${poly_normal})
+make_crc_kernel_f${poly_degree}_t8(${forward_table_name})
 
 #else
 
-static ${crc_t} const Fx${poly_normal}[16] =
+static ${crc_t} const ${forward_table_name}[16] =
 $($PYCRC --width=$poly_degree --poly=0x${poly_normal} --reflect-in=False --reflect-out=False --xor-in=0x0000 --xor-out=0x0000 --algorithm=table-driven --generate=table --table-idx-width=4);
 
-make_crc_kernel_f${poly_degree}_t4(Fx${poly_normal})
+make_crc_kernel_f${poly_degree}_t4(${forward_table_name})
 
 #endif
 EOF
 
-  echo -n "$poly_tables" > "${POLYNOMIAL_EXPORT_PATH}/crc${poly_degree}_Fx${poly_normal}.h"
+  echo -n "$poly_tables" > "${POLYNOMIAL_EXPORT_PATH}/${forward_poly_id}.h"
 
-  # 3. Make Reverse Polynomial Lookup Tables
+  # 3. Return early if this is a subordinate table, since these can't be reversed
+
+  if [[ ! -z "$sub_table" ]] ; then
+    return 0
+  fi
+
+  # 4. Make Reverse Polynomial Lookup Tables
+
+  printf "Generating Reverse Lookup Table for Polynomial(${poly_degree}, Fx${poly_normal})\n"
+
+  local reverse_table_name="Rx${poly_normal}"
 
   poly_tables=''
 
@@ -100,7 +134,7 @@ EOF
 //
 // Reverse Polynomial Lookup Tables
 //
-// crc${poly_degree}_Nx${poly_normal}_Profile =
+// crc${poly_degree}_${reverse_table_name}_Profile =
 $(printf "${poly_info}" | sed -e 's:\(^.*\):// \1:')
 //
 ///////////////////////////////////////////////////////////////////////////////
@@ -109,22 +143,95 @@ $(printf "${poly_info}" | sed -e 's:\(^.*\):// \1:')
 
 #if defined(USE_CRC_KERNEL_TABLE8)
 
-static ${crc_t} const Rx${poly_normal}[256] =
+static ${crc_t} const ${reverse_table_name}[256] =
 $($PYCRC --width=$poly_degree --poly=0x${poly_normal} --reflect-in=True --reflect-out=True --xor-in=0x0000 --xor-out=0x0000 --algorithm=table-driven --generate=table --table-idx-width=8);
 
-make_crc_kernel_r${poly_degree}_t8(Rx${poly_normal})
+make_crc_kernel_r${poly_degree}_t8(${reverse_table_name})
 
 #else
 
-static ${crc_t} const Rx${poly_normal}[16] =
+static ${crc_t} const ${reverse_table_name}[16] =
 $($PYCRC --width=$poly_degree --poly=0x${poly_normal} --reflect-in=True --reflect-out=True --xor-in=0x0000 --xor-out=0x0000 --algorithm=table-driven --generate=table --table-idx-width=4);
 
-make_crc_kernel_r${poly_degree}_t4(Rx${poly_normal})
+make_crc_kernel_r${poly_degree}_t4(${reverse_table_name})
 
 #endif
 EOF
 
-  echo -n "$poly_tables" > "${POLYNOMIAL_EXPORT_PATH}/crc${poly_degree}_Rx${poly_normal}.h"
+  echo -n "$poly_tables" > "${POLYNOMIAL_EXPORT_PATH}/crc${poly_degree}_${reverse_table_name}.h"
+}
+
+###############################################################################
+
+function make_sharded_table()
+{
+  local sub_poly_degree="$1"
+  local sub_poly_normal="${2#0x}"
+  local sub_table_name="Sx${sub_poly_normal}"
+
+  local poly_degree="$3"
+  local poly_normal ; printf -v poly_normal "%0$(( ((poly_degree + 7) / 8) * 2))x" "$sub_poly_normal"
+  local crc_t=$(determine_crc_t "$poly_degree")
+  local poly_info=$(print_poly_info "$poly_degree" "$poly_normal")
+  local sharded_table_name="Fx${poly_normal}"
+
+  printf "Generating Sharded Table for Polynomial(${poly_degree}, Fx${poly_normal})\n"
+
+  # 2. Make Forward Polynomial Lookup Tables
+
+  local poly_tables
+
+  mapfile -d '' poly_tables << EOF
+#pragma once
+
+///////////////////////////////////////////////////////////////////////////////
+//
+// Sharded Polynomial Lookup Tables
+//
+// crc${poly_degree}_Fx${poly_normal}_Profile =
+$(printf "${poly_info}" | sed -e 's:\(^.*\):// \1:')
+//
+///////////////////////////////////////////////////////////////////////////////
+
+#include "crc_kernels/crc_kernel_tables.h"
+
+#include "crcx_Sx${sub_poly_normal}.h"
+
+#define ${sharded_table_name} (${sub_table_name})
+
+#if defined(USE_CRC_KERNEL_TABLE8)
+
+make_crc_kernel_f${poly_degree}_t8(${sharded_table_name})
+
+#else
+
+make_crc_kernel_f${poly_degree}_t4(${sharded_table_name})
+
+#endif
+EOF
+
+  echo -n "$poly_tables" > "${POLYNOMIAL_EXPORT_PATH}/crc${poly_degree}_Fx${poly_normal}.h"
+}
+
+###############################################################################
+
+function make_sharded_tables()
+{
+  # 1. Make the Subordinate Table
+
+  local sub_poly_degree="$1"
+  local sub_poly_normal="${2#0x}"
+  local sub_crc_t=$(determine_crc_t "$sub_poly_degree")
+
+  make_tables "$sub_poly_degree" "$sub_poly_normal" "$sub_crc_t" "make_subordinate_table"
+
+  # 2. Make the Sharded Tables
+
+  shift 2
+
+  for poly_degree in "${@}" ; do
+    make_sharded_table "$sub_poly_degree" "$sub_poly_normal" "$poly_degree"
+  done
 }
 
 ###############################################################################
@@ -203,13 +310,24 @@ function make_catalogued_tables()
 
 function make_research_tables()
 {
+  printf "Making Sharded Polynomial Tables...\n\n"
+
+  # Nguyen's HD4 "Fast CRCs"
+  #
+  # The HD4 "Fast CRCs" can be implemented in sharded lookup tables.
+  # This offers a pretty decent space saving,
+  # since the whole family can share one uint8_t lookup table.
+  #
+
+  make_sharded_tables 8 0x07 8 16 24
+
+  printf "\n"
+
   printf "Making Research Polynomial Tables...\n\n"
 
   # Koopman HD4 CRC-8
 
   make_tables 8 0x4d
-
-  # Nguyen HD4 "Fast CRCs"
 
   # Nguyen HD6 "Fast CRCs"
 
