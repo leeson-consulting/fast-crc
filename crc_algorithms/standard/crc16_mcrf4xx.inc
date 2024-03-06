@@ -3,7 +3,7 @@
 #include "crc_algorithms/interface.h"
 
 make_crc16_interface(
-  /* .name     =  */    MCRFXX,
+  /* .name     =  */    MCRF4XX,
   /* .poly     =  */    Rx1021,
   /* .init     =  */    0xffff,
   /* .refin    =  */    true,
@@ -17,7 +17,7 @@ make_crc16_interface(
 #include "crc_tables/standard/crc16_Rx1021.h"
 
 make_crc16_implementation(
-  /* .name     =  */    MCRFXX,
+  /* .name     =  */    MCRF4XX,
   /* .poly     =  */    Rx1021,
   /* .init     =  */    0xffff,
   /* .xorout   =  */    0x0000)

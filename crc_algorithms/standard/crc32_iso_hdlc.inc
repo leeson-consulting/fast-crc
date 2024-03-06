@@ -6,8 +6,8 @@ make_crc32_interface(
   /* .name     =  */    ISO_HDLC,
   /* .poly     =  */    Rx04c11db7,
   /* .init     =  */    0xffffffff,
-  /* .refin    =  */    false,
-  /* .refout   =  */    false,
+  /* .refin    =  */    true,
+  /* .refout   =  */    true,
   /* .xorout   =  */    0xffffffff,
   /* .check    =  */    0xcbf43926,
   /* .residue  =  */    0xdebb20e3)

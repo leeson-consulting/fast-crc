@@ -162,9 +162,9 @@ int main(void)
 
   test_crc16(crc16_CCITT);
   test_crc16(crc16_DDS_110);
-  test_crc16(crc16_IBM3740);
-  test_crc16(crc16_Kermit);
-  test_crc16(crc16_MCRFXX);
+  test_crc16(crc16_IBM_3740);
+  test_crc16(crc16_KERMIT);
+  test_crc16(crc16_MCRF4XX);
   test_crc16(crc16_MODBUS);
 
   test_crc16(crc16_Nguyen_Fx0007);

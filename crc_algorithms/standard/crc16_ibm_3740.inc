@@ -3,7 +3,7 @@
 #include "crc_algorithms/interface.h"
 
 make_crc16_interface(
-  /* .name     =  */    IBM3740,
+  /* .name     =  */    IBM_3740,
   /* .poly     =  */    Fx1021,
   /* .init     =  */    0xffff,
   /* .refin    =  */    false,
@@ -17,7 +17,7 @@ make_crc16_interface(
 #include "crc_tables/standard/crc16_Fx1021.h"
 
 make_crc16_implementation(
-  /* .name     =  */    IBM3740,
+  /* .name     =  */    IBM_3740,
   /* .poly     =  */    Fx1021,
   /* .init     =  */    0xffff,
   /* .xorout   =  */    0x0000)
