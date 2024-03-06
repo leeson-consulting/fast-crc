@@ -14,7 +14,7 @@ make_crc64_interface(
 
 #elif crc_algorithms_inc == INCLUDE_IMPLEMENTATION
 
-#include "crc_polynomials/HD8+/Rx42f0e1eba9ea3693.h"
+#include "crc_tables/standard/crc64_Rx42f0e1eba9ea3693.h"
 
 make_crc64_implementation(
   /* .name     =  */    XZ,

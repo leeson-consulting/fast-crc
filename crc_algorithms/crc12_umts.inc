@@ -22,7 +22,7 @@ make_crc12_interface(
 
 #elif crc_algorithms_inc == INCLUDE_IMPLEMENTATION
 
-#include "crc_polynomials/HD6/Fx80f.h"
+#include "crc_tables/standard/crc12_Fx80f.h"
 
 uint16_t crc12_UMTS_start(uint8_t const *data, size_t const data_len)
 {

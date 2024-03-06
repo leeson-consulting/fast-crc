@@ -14,7 +14,7 @@ make_crc32_interface(
 
 #elif crc_algorithms_inc == INCLUDE_IMPLEMENTATION
 
-#include "crc_polynomials/HD8+/Rx04c11db7.h"
+#include "crc_tables/standard/crc32_Rx04c11db7.h"
 
 make_crc32_implementation(
   /* .name     =  */    ISO_HDLC,

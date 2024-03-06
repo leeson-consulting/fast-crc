@@ -18,7 +18,7 @@ make_crc16_interface(
 
 #elif crc_algorithms_inc == INCLUDE_IMPLEMENTATION
 
-#include "crc_polynomials/HD4/Rx1021.h"
+#include "crc_tables/standard/crc16_Rx1021.h"
 
 make_crc16_implementation(
   /* .name     =  */    CCITT,

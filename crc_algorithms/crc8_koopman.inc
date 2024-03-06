@@ -35,7 +35,7 @@ make_crc8_interface(
 
 #elif crc_algorithms_inc == INCLUDE_IMPLEMENTATION
 
-#include "crc_polynomials/HD4/Rx4d.h"
+#include "crc_tables/research/crc8_Rx4d.h"
 
 make_crc8_implementation(
   /* .name     =  */    Koopman,

@@ -14,7 +14,7 @@ make_crc32_interface(
 
 #elif crc_algorithms_inc == INCLUDE_IMPLEMENTATION
 
-#include "crc_polynomials/HD6/Fx0006c001.h"
+#include "crc_tables/research/crc32_Fx0006c001.h"
 
 make_crc32_implementation(
   /* .name     =  */    Nguyen_Fx0006c001,

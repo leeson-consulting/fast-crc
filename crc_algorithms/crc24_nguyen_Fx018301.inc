@@ -14,7 +14,7 @@ make_crc24_interface(
 
 #elif crc_algorithms_inc == INCLUDE_IMPLEMENTATION
 
-#include "crc_polynomials/HD6/Fx018301.h"
+#include "crc_tables/research/crc24_Fx018301.h"
 
 make_crc24_implementation(
   /* .name     =  */    Nguyen_Fx018301,

@@ -14,7 +14,7 @@ make_crc64_interface(
 
 #elif crc_algorithms_inc == INCLUDE_IMPLEMENTATION
 
-#include "crc_polynomials/HD6/Fx000000000000002f.h"
+#include "crc_tables/sharded/crc64_Fx000000000000002f.h"
 
 make_crc64_implementation(
   /* .name     =  */    Nguyen_Fx000000000000002f,

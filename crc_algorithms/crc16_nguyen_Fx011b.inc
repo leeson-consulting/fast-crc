@@ -14,7 +14,7 @@ make_crc16_interface(
 
 #elif crc_algorithms_inc == INCLUDE_IMPLEMENTATION
 
-#include "crc_polynomials/HD6/Fx011b.h"
+#include "crc_tables/research/crc16_Fx011b.h"
 
 make_crc16_implementation(
   /* .name     =  */    Nguyen_Fx011b,
