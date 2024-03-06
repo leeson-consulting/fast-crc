@@ -29,6 +29,7 @@
 #include "crc_algorithms/standard/crc16_mcrf4xx.inc"
 #include "crc_algorithms/standard/crc16_modbus.inc"
 #include "crc_algorithms/standard/crc32_iso_hdlc.inc"
+#include "crc_algorithms/standard/crc32_iscsi.inc"
 #include "crc_algorithms/standard/crc64_xz.inc"
 
 #include "crc_algorithms/sharded/crc16_nguyen_Fx0007.inc"

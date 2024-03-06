@@ -184,6 +184,7 @@ int main(void)
   // CRC-32 Algorithms
 
   test_crc32(crc32_ISO_HDLC);
+  test_crc32(crc32_ISCSI);
 
   test_crc32(crc32_Nguyen_Fx0006c001);
   test_crc32(crc32_Fast6);
