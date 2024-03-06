@@ -1,6 +1,6 @@
 #if crc_algorithms_inc == INCLUDE_INTERFACE
 
-#include "crc_interface.h"
+#include "crc_algorithms/interface.h"
 
 //  CRC-8/Koopman is mentioned here:
 //

@@ -1,6 +1,6 @@
 #if crc_algorithms_inc == INCLUDE_INTERFACE
 
-#include "crc_interface.h"
+#include "crc_algorithms/interface.h"
 
 make_crc24_interface(
   /* .name     =  */    Fast6,

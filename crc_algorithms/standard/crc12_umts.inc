@@ -1,6 +1,6 @@
 #if crc_algorithms_inc == INCLUDE_INTERFACE
 
-#include "crc_interface.h"
+#include "crc_algorithms/interface.h"
 
 // CRC-12/UMTS is a special case with .refin != .refout
 // This means that the CRC value needs reversed prior to return.

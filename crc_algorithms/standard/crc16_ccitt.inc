@@ -1,6 +1,6 @@
 #if crc_algorithms_inc == INCLUDE_INTERFACE
 
-#include "crc_interface.h"
+#include "crc_algorithms/interface.h"
 
 // NB. CRC-16/CCITT is an alias for CRC-16/Kermit
 // See Greg Cook's CRC Catalogue for details:
