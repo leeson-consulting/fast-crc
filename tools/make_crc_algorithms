@@ -1,0 +1,176 @@
+#!/usr/bin/env bash
+
+set -e
+
+###############################################################################
+
+function find_tmp_dir()
+{
+  local tmpdir
+
+  for tmpdir in "$TMPDIR" "$TMP" /tmp /var/tmp "$PWD" ; do
+    test -d "$tmpdir" && break
+  done
+
+  echo "$tmpdir"
+}
+
+###############################################################################
+
+function check_exclusions()
+{
+  local file_name="$1"
+
+  case "$file_name" in
+    'crc12_umts.inc') echo "exclude" ;;
+    *)                echo "ok" ;;
+  esac
+}
+
+###############################################################################
+
+function make_crc_algorithms()
+{
+  # 0. Parse and Validate args
+
+  local catalog_root="$1"
+  local crc_catalog="${catalog_root}/allcrcs.txt"
+
+  if [[ ! -r "${crc_catalog}" ]] ; then
+    echo "CRC Catalog is unreadable: \"${crc_catalog}\""
+    exit 1
+  fi
+
+  local export_path="$2"
+  mkdir -p "$export_path"
+
+  if [[ ! -d "${export_path}" ]] ; then
+    echo "Export Path is invalid: \"${export_path}\""
+    exit 2
+  fi
+
+  # 1. Read the raw catalog,
+  #    which contains one key-value parameterised algorithm per line
+
+  local width
+  local poly
+  local init
+  local refin
+  local refout
+  local xorout
+  local check
+  local residue
+  local name
+  local file_name
+
+  local algorithm_inc
+
+  while read -r width poly init refin refout xorout check residue name ; do
+    width="${width##*=}"
+    poly="${poly##*=}"
+    init="${init##*=}"
+    refin="${refin##*=}"
+    refout="${refout##*=}"
+    xorout="${xorout##*=}"
+    check="${check##*=}"
+    residue="${residue##*=}"
+
+    name="${name//\"/}"
+    name="${name##*=}"
+    name="${name##*/}"
+    name="${name//-/_}"
+
+    # 2. Encode Polynomial Reflection in the 'F'orward / 'R'everse polynomial prefix,
+    #    which is used to distinguish between table types in the generated C source
+
+    if [[ "${refin,,}" == "false" ]] ; then
+      poly="${poly/0x/Fx}"
+    else
+      poly="${poly/0x/Rx}"
+    fi
+
+    # 3. Coerce name into something friendly for file-systems
+
+    file_name="crc${width}_${name,,}.inc"
+
+    # 4. Generate the ".inc" source, which is expanded by C Preprocessor macros at build time
+
+    printf "Generating Algorithm for \"${file_name}\"\n"
+
+    mapfile -d '' algorithm_inc << EOF
+#if crc_algorithms_inc == INCLUDE_INTERFACE
+
+#include "crc_algorithms/interface.h"
+
+make_crc${width}_interface(
+  /* .name     =  */    ${name},
+  /* .poly     =  */    ${poly},
+  /* .init     =  */    ${init},
+  /* .refin    =  */    ${refin},
+  /* .refout   =  */    ${refout},
+  /* .xorout   =  */    ${xorout},
+  /* .check    =  */    ${check},
+  /* .residue  =  */    ${residue})
+
+#elif crc_algorithms_inc == INCLUDE_IMPLEMENTATION
+
+#include "crc_tables/standard/crc${width}_${poly}.h"
+
+make_crc${width}_implementation(
+  /* .name     =  */    ${name},
+  /* .poly     =  */    ${poly},
+  /* .init     =  */    ${init},
+  /* .xorout   =  */    ${xorout})
+
+#endif
+EOF
+
+    if [[ $(check_exclusions "$file_name") == 'exclude' ]] ; then
+      printf "  !!!  EXCLUDING \"${file_name}\" -- See \"check_exclusions\" in \"${SCRIPT_NAME}\"  !!!\n"
+    else
+      echo -n "${algorithm_inc}" > "${export_path}/${file_name}"
+    fi
+
+  done < "$crc_catalog"
+}
+
+###############################################################################
+
+function main()
+{
+  local SCRIPT_PATH=$(realpath "${BASH_SOURCE[0]%/*}")
+  local SCRIPT_NAME="${BASH_SOURCE[0]##*/}"
+  local REPO_ROOT="$(git rev-parse --show-toplevel)"
+
+  CALLERS_WD="$PWD"
+
+  if [[ "${BASH_SOURCE[0]}" == "${0}" ]] then
+    SCRIPT_TMPDIR="$(find_tmp_dir)/${SCRIPT_NAME}"
+  else
+    SCRIPT_TMPDIR="$(find_tmp_dir)/bash_pid_$$"
+  fi
+
+  trap "clean_up ;" EXIT
+
+  # 1. Setup catalog_root and export_path
+
+  local catalog_root="${1:-${REPO_ROOT}/db/algorithm/raw_catalog}"
+  local export_path="${2:-${REPO_ROOT}/crc_algorithms/standard}"
+
+  # 2. Convert allcrcs.txt catalog to Fast-CRC table based algorithms
+
+  make_crc_algorithms "$catalog_root" "$export_path"
+}
+
+###############################################################################
+
+function clean_up()
+{
+  rm -rf "$SCRIPT_TMPDIR"
+  cd "$CALLERS_WD" &> /dev/null;
+}
+
+###############################################################################
+
+main "$@"
+
