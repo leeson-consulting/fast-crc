@@ -78,6 +78,8 @@ function make_tables()
     forward_poly_id="crcx_${forward_table_name}"
   fi
 
+  mkdir -p "$POLYNOMIAL_EXPORT_PATH"
+
   printf "Generating Forward Lookup Table for Polynomial(${poly_degree}, Fx${poly_normal})\n"
 
   # 2. Make Forward Polynomial Lookup Tables
@@ -167,7 +169,7 @@ EOF
 
 ###############################################################################
 
-function make_sharded_table()
+function shard_table()
 {
   local sub_poly_degree="$1"
   local sub_poly_normal="${2#0x}"
@@ -220,7 +222,7 @@ EOF
 
 ###############################################################################
 
-function make_sharded_tables()
+function make_sharded_table()
 {
   # 1. Make the Subordinate Table
 
@@ -235,15 +237,17 @@ function make_sharded_tables()
   shift 2
 
   for poly_degree in "${@}" ; do
-    make_sharded_table "$sub_poly_degree" "$sub_poly_normal" "$poly_degree"
+    shard_table "$sub_poly_degree" "$sub_poly_normal" "$poly_degree"
   done
 }
 
 ###############################################################################
 
-function make_catalogued_tables()
+function make_standard_tables()
 {
-  printf "Making Cataloged Polynomial Tables...\n\n"
+  printf "Making Standard Polynomial Tables...\n\n"
+
+  local POLYNOMIAL_EXPORT_PATH="${POLYNOMIAL_BASE_PATH}/standard"
 
   # CRC-8 Polynomials
 
@@ -313,9 +317,11 @@ function make_catalogued_tables()
 
 ###############################################################################
 
-function make_research_tables()
+function make_sharded_tables()
 {
   printf "Making Sharded Polynomial Tables...\n\n"
+
+  local POLYNOMIAL_EXPORT_PATH="${POLYNOMIAL_BASE_PATH}/sharded"
 
   # Nguyen's HD4 "Fast CRCs"
   #
@@ -324,13 +330,20 @@ function make_research_tables()
   # since the whole family can share one uint8_t lookup table.
   #
 
-  make_sharded_tables 8 0x07 8 16 24
+  make_sharded_table 8 0x07 8 16 24
 
-  make_sharded_tables 16 0x002f 64
+  make_sharded_table 16 0x002f 64
 
   printf "\n"
+}
 
+###############################################################################
+
+function make_research_tables()
+{
   printf "Making Research Polynomial Tables...\n\n"
+
+  local POLYNOMIAL_EXPORT_PATH="${POLYNOMIAL_BASE_PATH}/research"
 
   # Koopman HD4 CRC-8
 
@@ -419,15 +432,17 @@ function main()
 
   source "${SCRIPT_PATH}/convert_poly"
 
-  POLYNOMIAL_EXPORT_PATH="${1:-${CALLERS_WD}/crc_tables}"
+  POLYNOMIAL_BASE_PATH="${1:-${CALLERS_WD}/crc_tables}"
 
-  mkdir -p "$POLYNOMIAL_EXPORT_PATH"
+  mkdir -p "$POLYNOMIAL_BASE_PATH"
 
-  cd "$POLYNOMIAL_EXPORT_PATH" ; POLYNOMIAL_EXPORT_PATH="$PWD" ; cd - > /dev/null
+  cd "$POLYNOMIAL_BASE_PATH" ; POLYNOMIAL_BASE_PATH="$PWD" ; cd - > /dev/null
 
   setup_pycrc
 
-  make_catalogued_tables
+  make_standard_tables
+
+  make_sharded_tables
 
   make_research_tables
 }
