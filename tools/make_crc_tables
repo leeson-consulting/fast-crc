@@ -264,6 +264,8 @@ function make_standard_tables()
   # CRC-12 Polynomials
 
   make_tables 12 0x80f
+  make_tables 12 0xf13
+  make_tables 12 0xd31
 
   # CRC-16 Polynomials
 
@@ -311,6 +313,23 @@ function make_standard_tables()
   make_tables 64 0x259c84cba6426349
   make_tables 64 0xad93d23594c935a9
   make_tables 64 0x42f0e1eba9ea3693
+
+  # CRC "Odds and Sods" Polynomials
+
+  make_tables  3 0x3
+  make_tables  7 0x45
+  make_tables 10 0x175
+  make_tables 10 0x3d9
+  make_tables 11 0x385
+  make_tables 11 0x307
+  make_tables 13 0x1cf5
+  make_tables 14 0x202d
+  make_tables 15 0x4599
+  make_tables 15 0x6815
+  make_tables 17 0x1685b
+  make_tables 21 0x102899
+  make_tables 30 0x2030b9c7
+  make_tables 40 0x0004820009
 
   printf "\n"
 }
