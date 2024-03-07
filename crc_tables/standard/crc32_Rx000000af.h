@@ -24,7 +24,7 @@
 //
 ///////////////////////////////////////////////////////////////////////////////
 
-#include "crc_kernels/crc_kernel_tables.h"
+#include "crc_kernels/crc_tables.h"
 
 #if defined(USE_CRC_KERNEL_TABLE8)
 

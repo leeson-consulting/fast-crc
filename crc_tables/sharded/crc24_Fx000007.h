@@ -21,7 +21,7 @@
 //
 ///////////////////////////////////////////////////////////////////////////////
 
-#include "crc_kernels/crc_kernel_tables.h"
+#include "crc_kernels/crc_tables.h"
 
 #include "crcx_Sx07.h"
 
