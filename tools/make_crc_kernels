@@ -1,0 +1,243 @@
+#!/usr/bin/env bash
+
+set -e
+
+###############################################################################
+
+function find_tmp_dir()
+{
+  local tmpdir
+
+  for tmpdir in "$TMPDIR" "$TMP" /tmp /var/tmp "$PWD" ; do
+    test -d "$tmpdir" && break
+  done
+
+  echo "$tmpdir"
+}
+
+###############################################################################
+
+function determine_crc_t()
+{
+  local poly_degree="$1"
+  local -i bytes_required=$(( ((poly_degree + 7) / 8) ))
+  local sub_category="$2"
+
+  case "$bytes_required" in
+    1)          echo "uint${sub_category}8_t"  ;;
+    2)          echo "uint${sub_category}16_t" ;;
+    3|4)        echo "uint${sub_category}32_t" ;;
+    5|6|7|8)    echo "uint${sub_category}64_t" ;;
+    *)          echo "Bytes required for CRC (${bytes_required}) exceeds width of max integer!" >&2 ; exit 1 ;;
+  esac
+}
+
+###############################################################################
+
+function determine_poly_mask()
+{
+  local poly_degree="$1"
+
+  if (( poly_degree > 64 )) then
+    # Numeric Overflow
+    return 1
+  fi
+
+  if (( poly_degree == 64 )) then
+    printf '0xffffffffffffffff'
+    return 0
+  fi
+
+  printf "0x%x" $(( (1 << $poly_degree) - 1 ))
+}
+
+###############################################################################
+
+function make_crc_kernel_helpers()
+{
+  local -i poly_degree="$1"
+  local poly_mask=$(determine_poly_mask $poly_degree)
+  local fast_t="${2:-$(determine_crc_t "$poly_degree" '_fast')}" # optional
+  local crc_kernel_helpers
+
+  mapfile -d '' crc_kernel_helpers << EOF
+static inline ${fast_t} crc${poly_degree}_byte_##poly(${fast_t} const crc, uint8_t const data_byte) \\
+{ \\
+  return crc${poly_degree}_byte_##poly##_impl(crc, data_byte) & ${poly_mask}; \\
+} \\
+\\
+static ${fast_t} crc${poly_degree}_##poly(${fast_t} const init, uint8_t const * data, size_t data_len) \\
+{ \\
+  ${fast_t} crc = init; \\
+\\
+  for (size_t i = 0 ; i < data_len ; ++i) { \\
+    crc = crc${poly_degree}_byte_##poly##_impl(crc, data[i]); \\
+  } \\
+\\
+  return crc & ${poly_mask}; \\
+} \\
+EOF
+
+  echo -n "${crc_kernel_helpers}"
+}
+
+###############################################################################
+
+function make_crc_kernel_n()
+{
+  local -i poly_degree="$1"
+  local fast_t="${2:-$(determine_crc_t "$poly_degree" '_fast')}" # optional
+
+  # 1. Avoid UB in C for special case of (crc >> 0), which is triggered by poly_degree == 8
+
+  local f8_t8_kernel
+
+  if (( poly_degree == 8 )) then
+    f8_t8_kernel="return poly[(crc ^ data_byte) & 0xff] ^ (crc << 8);"
+  else
+    f8_t8_kernel="return poly[((crc >> (${poly_degree} - 8)) ^ data_byte) & 0xff] ^ (crc << 8);"
+  fi
+
+  # 1. Make the CRC-N Kernel Macros
+
+  local crc_kernel
+  local kernel_helpers=$(make_crc_kernel_helpers ${poly_degree} ${fast_t})
+
+  mapfile -d '' crc_kernel << EOF
+
+///////////////////////////////////////////////////////////////////////////////
+//
+// CRC-${poly_degree} Kernels
+//
+///////////////////////////////////////////////////////////////////////////////
+
+#define make_crc_kernel_f${poly_degree}_t4(poly) \\
+static inline ${fast_t} crc${poly_degree}_byte_##poly##_impl(${fast_t} crc, uint8_t const data_byte) \\
+{ \\
+  crc = poly[((crc >> (${poly_degree} - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \\
+  crc = poly[((crc >> (${poly_degree} - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \\
+  return crc; \\
+} \\
+\\
+${kernel_helpers}
+
+#define make_crc_kernel_r${poly_degree}_t4(poly) \\
+static inline ${fast_t} crc${poly_degree}_byte_##poly##_impl(${fast_t} crc, uint8_t const data_byte) \\
+{ \\
+  crc = poly[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \\
+  crc = poly[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \\
+  return crc; \\
+} \\
+\\
+${kernel_helpers}
+
+#define make_crc_kernel_f${poly_degree}_t8(poly) \\
+static inline ${fast_t} crc${poly_degree}_byte_##poly##_impl(${fast_t} const crc, uint8_t const data_byte) \\
+{ \\
+  ${f8_t8_kernel} \\
+} \\
+\\
+${kernel_helpers}
+
+#define make_crc_kernel_r${poly_degree}_t8(poly) \\
+static inline ${fast_t} crc${poly_degree}_byte_##poly##_impl(${fast_t} const crc, uint8_t const data_byte) \\
+{ \\
+  return poly[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \\
+} \\
+\\
+${kernel_helpers}
+
+EOF
+
+  echo "${crc_kernel}"
+}
+
+###############################################################################
+
+function make_crc_kernels()
+{
+  local export_path="$1"
+  mkdir -p "$export_path"
+
+  if [[ ! -d "${export_path}" ]] ; then
+    echo "Export Path is invalid: \"${export_path}\""
+    exit 1
+  fi
+
+  local crc_table_kernel="${export_path}/crc_table_kernel.h"
+
+  # 1. Make the CRC-8 kernel by itself.
+  #    The normal expansion of CRC-8 f8_t8 triggers UB in C with an unnecessary ' >> 0 ' operation.
+  #    So this generator doesn't do the CRC downshift as an edge case.
+
+  local crc_kernel_notes
+
+  mapfile -d '' crc_kernel_notes << EOF
+#pragma once
+
+///////////////////////////////////////////////////////////////////////////////
+//
+// These CRC Table-Kernel macros have been generated by ".${SCRIPT_PATH##${REPO_ROOT}}/${SCRIPT_NAME}"
+//
+// The functions expanded by the macros use the following naming conventions:
+//
+// 'f#'     ==> 'Forward  CRC-# Polynomial', eg. f12 is 'Forward CRC-12 Polynomial'
+// 'r#'     ==> 'Reversed CRC-# Polynomial', eg. r24 is 'Reversed CRC-24 Polynomial'
+// 't4'     ==> '4-bit Lookup Table', ie. data processed nibble at a time
+// 't8'     ==> '8-bit Lookup table', ie. data processed byte at a time
+//
+///////////////////////////////////////////////////////////////////////////////
+
+#include <stdint.h>
+EOF
+
+  echo -n "${crc_kernel_notes}" > "${crc_table_kernel}"
+
+  # 2. Make the remaining CRC-8 to CRC-64 kernel macros in a loop
+
+  for ((degree = 8 ; degree <= 64 ; degree++ )) ; do
+
+    echo "$(make_crc_kernel_n ${degree})" >> "${crc_table_kernel}"
+
+  done
+
+  # 3. Avoid C preprocessor warning about trailing backslash on last line
+
+  echo "" >> "${crc_table_kernel}"
+}
+
+###############################################################################
+
+function main()
+{
+  local SCRIPT_PATH=$(realpath "${BASH_SOURCE[0]%/*}")
+  local SCRIPT_NAME="${BASH_SOURCE[0]##*/}"
+  local REPO_ROOT="$(git rev-parse --show-toplevel)"
+
+  CALLERS_WD="$PWD"
+
+  if [[ "${BASH_SOURCE[0]}" == "${0}" ]] then
+    SCRIPT_TMPDIR="$(find_tmp_dir)/${SCRIPT_NAME}"
+  else
+    SCRIPT_TMPDIR="$(find_tmp_dir)/bash_pid_$$"
+  fi
+
+  trap "clean_up ;" EXIT
+
+  local export_path="${1:-${REPO_ROOT}/crc_kernels}"
+
+  make_crc_kernels "${export_path}"
+}
+
+###############################################################################
+
+function clean_up()
+{
+  rm -rf "$SCRIPT_TMPDIR"
+  cd "$CALLERS_WD" &> /dev/null;
+}
+
+###############################################################################
+
+main "$@"
+
