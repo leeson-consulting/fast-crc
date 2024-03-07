@@ -98,7 +98,7 @@ $(printf "${poly_info}" | sed -e 's:\(^.*\):// \1:')
 //
 ///////////////////////////////////////////////////////////////////////////////
 
-#include "crc_kernels/crc_kernel_tables.h"
+#include "crc_kernels/crc_tables.h"
 
 #if defined(USE_CRC_KERNEL_TABLE8)
 
@@ -145,7 +145,7 @@ $(printf "${poly_info}" | sed -e 's:\(^.*\):// \1:')
 //
 ///////////////////////////////////////////////////////////////////////////////
 
-#include "crc_kernels/crc_kernel_tables.h"
+#include "crc_kernels/crc_tables.h"
 
 #if defined(USE_CRC_KERNEL_TABLE8)
 
@@ -200,7 +200,7 @@ $(printf "${poly_info}" | sed -e 's:\(^.*\):// \1:')
 //
 ///////////////////////////////////////////////////////////////////////////////
 
-#include "crc_kernels/crc_kernel_tables.h"
+#include "crc_kernels/crc_tables.h"
 
 #include "crcx_Sx${sub_poly_normal}.h"
 

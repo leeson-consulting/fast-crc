@@ -164,7 +164,7 @@ function make_crc_kernels()
     exit 1
   fi
 
-  local crc_table_kernel="${export_path}/crc_table_kernel.h"
+  local crc_table_kernel="${export_path}/crc_tables.h"
 
   # 1. Make the CRC-8 kernel by itself.
   #    The normal expansion of CRC-8 f8_t8 triggers UB in C with an unnecessary ' >> 0 ' operation.
