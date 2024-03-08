@@ -42,7 +42,7 @@ uint16_t crc16_Fast4_Fx0007(uint16_t const init, uint8_t const * data, size_t da
 
   // 1. Process unaligned data prefix if necessary at a cost of 8 ops
 
-  if ((uintptr_t) data % sizeof(uint16_t) != 0) {
+  if (data_len > 0 && (uintptr_t) data % sizeof(uint16_t) != 0) {
     crc = crc16_Fast4_u8(crc, data[0]);
     data++;
     data_len--;
@@ -67,10 +67,24 @@ uint16_t crc16_Fast4_Fx0007(uint16_t const init, uint8_t const * data, size_t da
   return crc;
 }
 
-make_crc16_implementation(
-  /* .name     =  */    Fast4,
-  /* .poly     =  */    Fx0007,
-  /* .init     =  */    0x0000,
-  /* .xorout   =  */    0x0000)
+uint16_t crc16_Fast4_start(uint8_t const *data, size_t const data_len)
+{
+  return crc16_Fast4_Fx0007(/* init = */ 0x0000, data, data_len);
+}
+
+uint16_t crc16_Fast4_continue(uint16_t const crc, uint8_t const *data, size_t const data_len)
+{
+  return crc16_Fast4_Fx0007(crc, data, data_len);
+}
+
+uint16_t crc16_Fast4_finish(uint16_t const crc, uint8_t const *data, size_t const data_len)
+{
+  return crc16_Fast4_Fx0007(crc, data, data_len);
+}
+
+uint16_t crc16_Fast4(uint8_t const *data, size_t const data_len)
+{
+  return crc16_Fast4_Fx0007(/* init = */ 0x0000, data, data_len);
+}
 
 #endif

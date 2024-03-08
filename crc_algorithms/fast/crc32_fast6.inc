@@ -44,7 +44,7 @@ uint32_t crc32_Fast6_Fx0006c001(uint32_t const init, uint8_t const * data, size_
 
   // 1. Process unaligned data prefix if necessary at a cost of 12 ops
 
-  if ((uintptr_t) data % sizeof(uint16_t) != 0) {
+  if (data_len > 0 && (uintptr_t) data % sizeof(uint16_t) != 0) {
     crc = crc32_Fast6_u8(crc, *data);
     data++;
     data_len--;
@@ -67,10 +67,24 @@ uint32_t crc32_Fast6_Fx0006c001(uint32_t const init, uint8_t const * data, size_
   return crc32_Fast6_u8(crc, data[data_len - 1]);
 }
 
-make_crc32_implementation(
-  /* .name     =  */    Fast6,
-  /* .poly     =  */    Fx0006c001,
-  /* .init     =  */    0x00000000,
-  /* .xorout   =  */    0x00000000)
+uint32_t crc32_Fast6_start(uint8_t const *data, size_t const data_len)
+{
+  return crc32_Fast6_Fx0006c001(/* init = */ 0x00000000, data, data_len);
+}
+
+uint32_t crc32_Fast6_continue(uint32_t const crc, uint8_t const *data, size_t const data_len)
+{
+  return crc32_Fast6_Fx0006c001(crc, data, data_len);
+}
+
+uint32_t crc32_Fast6_finish(uint32_t const crc, uint8_t const *data, size_t const data_len)
+{
+  return crc32_Fast6_Fx0006c001(crc, data, data_len);
+}
+
+uint32_t crc32_Fast6(uint8_t const *data, size_t const data_len)
+{
+  return crc32_Fast6_Fx0006c001(/* init = */ 0x00000000, data, data_len);
+}
 
 #endif

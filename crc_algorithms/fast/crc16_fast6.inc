@@ -30,10 +30,24 @@ uint16_t crc16_Fast6_Fx011b(uint16_t crc, uint8_t const * data, size_t data_len)
   return crc;                                                           //   15 ops/u8
 }
 
-make_crc16_implementation(
-  /* .name     =  */    Fast6,
-  /* .poly     =  */    Fx011b,
-  /* .init     =  */    0x0000,
-  /* .xorout   =  */    0x0000)
+uint16_t crc16_Fast6_start(uint8_t const *data, size_t const data_len)
+{
+  return crc16_Fast6_Fx011b(/* init = */ 0x0000, data, data_len);
+}
+
+uint16_t crc16_Fast6_continue(uint16_t const crc, uint8_t const *data, size_t const data_len)
+{
+  return crc16_Fast6_Fx011b(crc, data, data_len);
+}
+
+uint16_t crc16_Fast6_finish(uint16_t const crc, uint8_t const *data, size_t const data_len)
+{
+  return crc16_Fast6_Fx011b(crc, data, data_len);
+}
+
+uint16_t crc16_Fast6(uint8_t const *data, size_t const data_len)
+{
+  return crc16_Fast6_Fx011b(/* init = */ 0x0000, data, data_len);
+}
 
 #endif

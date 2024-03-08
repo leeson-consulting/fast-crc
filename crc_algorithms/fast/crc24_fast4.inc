@@ -32,10 +32,24 @@ uint32_t crc24_Fast4_Fx000007(uint32_t const init, uint8_t const * data, size_t 
   return crc;                                                           //   15 ops/u8
 }
 
-make_crc24_implementation(
-  /* .name     =  */    Fast4,
-  /* .poly     =  */    Fx000007,
-  /* .init     =  */    0x000000,
-  /* .xorout   =  */    0x000000)
+uint32_t crc24_Fast4_start(uint8_t const *data, size_t const data_len)
+{
+  return crc24_Fast4_Fx000007(/* init = */ 0x000000, data, data_len);
+}
+
+uint32_t crc24_Fast4_continue(uint32_t const crc, uint8_t const *data, size_t const data_len)
+{
+  return crc24_Fast4_Fx000007(crc, data, data_len);
+}
+
+uint32_t crc24_Fast4_finish(uint32_t const crc, uint8_t const *data, size_t const data_len)
+{
+  return crc24_Fast4_Fx000007(crc, data, data_len);
+}
+
+uint32_t crc24_Fast4(uint8_t const *data, size_t const data_len)
+{
+  return crc24_Fast4_Fx000007(/* init = */ 0x000000, data, data_len);
+}
 
 #endif

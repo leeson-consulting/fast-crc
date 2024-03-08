@@ -42,10 +42,24 @@ uint8_t crc8_Fast4_Fx07(uint8_t crc, uint8_t const * data, size_t const data_len
   return crc;
 }
 
-make_crc8_implementation(
-  /* .name     =  */    Fast4,
-  /* .poly     =  */    Fx07,
-  /* .init     =  */    0x00,
-  /* .xorout   =  */    0x00)
+uint8_t crc8_Fast4_start(uint8_t const *data, size_t const data_len)
+{
+  return crc8_Fast4_Fx07(/* init = */ 0x00, data, data_len);
+}
+
+uint8_t crc8_Fast4_continue(uint8_t const crc, uint8_t const *data, size_t const data_len)
+{
+  return crc8_Fast4_Fx07(crc, data, data_len);
+}
+
+uint8_t crc8_Fast4_finish(uint8_t const crc, uint8_t const *data, size_t const data_len)
+{
+  return crc8_Fast4_Fx07(crc, data, data_len);
+}
+
+uint8_t crc8_Fast4(uint8_t const *data, size_t const data_len)
+{
+  return crc8_Fast4_Fx07(/* init = */ 0x00, data, data_len);
+}
 
 #endif
