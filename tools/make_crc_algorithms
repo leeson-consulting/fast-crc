@@ -22,8 +22,15 @@ function check_exclusions()
   local file_name="$1"
 
   case "$file_name" in
-    'crc12_umts.inc') echo "exclude" ;;
-    *)                echo "ok" ;;
+    'crc12_umts.inc')  echo "exclude" ;;
+    'crc8_fast4.inc')  echo "exclude" ;;
+    'crc16_fast4.inc') echo "exclude" ;;
+    'crc16_fast6.inc') echo "exclude" ;;
+    'crc24_fast4.inc') echo "exclude" ;;
+    'crc24_fast6.inc') echo "exclude" ;;
+    'crc32_fast6.inc') echo "exclude" ;;
+    'crc64_fast6.inc') echo "exclude" ;;
+    *)                 echo "ok" ;;
   esac
 }
 
