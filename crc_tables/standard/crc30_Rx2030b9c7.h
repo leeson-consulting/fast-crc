@@ -35,7 +35,7 @@
 
 #if defined(USE_CRC_KERNEL_TABLE8)
 
-static uint32_t const Rx2030b9c7[256] =
+static uint32_t const crc30_Rx2030b9c7_tbl[256] =
 {
     0x00000000, 0x2f6ac783, 0x2f1b0905, 0x0071ce86, 0x2ff89409, 0x0092538a, 0x00e39d0c, 0x2f895a8f,
     0x2e3fae11, 0x01556992, 0x0124a714, 0x2e4e6097, 0x01c73a18, 0x2eadfd9b, 0x2edc331d, 0x01b6f49e,
@@ -75,7 +75,7 @@ make_crc_kernel_r30_t8(Rx2030b9c7)
 
 #else
 
-static uint32_t const Rx2030b9c7[16] =
+static uint32_t const crc30_Rx2030b9c7_tbl[16] =
 {
     0x00000000, 0x2db1da21, 0x2aad3241, 0x071ce860, 0x2494e281, 0x092538a0, 0x0e39d0c0, 0x23880ae1,
     0x38e74301, 0x15569920, 0x124a7140, 0x3ffbab61, 0x1c73a180, 0x31c27ba1, 0x36de93c1, 0x1b6f49e0

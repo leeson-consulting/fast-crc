@@ -28,7 +28,7 @@
 
 #if defined(USE_CRC_KERNEL_TABLE8)
 
-static uint32_t const Rx000000af[256] =
+static uint32_t const crc32_Rx000000af_tbl[256] =
 {
     0x00000000, 0x01ea0000, 0x03d40000, 0x023e0000, 0x07a80000, 0x06420000, 0x047c0000, 0x05960000,
     0x0f500000, 0x0eba0000, 0x0c840000, 0x0d6e0000, 0x08f80000, 0x09120000, 0x0b2c0000, 0x0ac60000,
@@ -68,7 +68,7 @@ make_crc_kernel_r32_t8(Rx000000af)
 
 #else
 
-static uint32_t const Rx000000af[16] =
+static uint32_t const crc32_Rx000000af_tbl[16] =
 {
     0x00000000, 0x1ea00000, 0x3d400000, 0x23e00000, 0x7a800000, 0x64200000, 0x47c00000, 0x59600000,
     0xf5000000, 0xeba00000, 0xc8400000, 0xd6e00000, 0x8f800000, 0x91200000, 0xb2c00000, 0xac600000

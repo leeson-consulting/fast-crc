@@ -33,7 +33,7 @@
 
 #if defined(USE_CRC_KERNEL_TABLE8)
 
-static uint32_t const Rx814141ab[256] =
+static uint32_t const crc32_Rx814141ab_tbl[256] =
 {
     0x00000000, 0x999a0002, 0x98310507, 0x01ab0505, 0x9b670f0d, 0x02fd0f0f, 0x03560a0a, 0x9acc0a08,
     0x9dcb1b19, 0x04511b1b, 0x05fa1e1e, 0x9c601e1c, 0x06ac1414, 0x9f361416, 0x9e9d1113, 0x07071111,
@@ -73,7 +73,7 @@ make_crc_kernel_r32_t8(Rx814141ab)
 
 #else
 
-static uint32_t const Rx814141ab[16] =
+static uint32_t const crc32_Rx814141ab_tbl[16] =
 {
     0x00000000, 0x90933331, 0x8a236361, 0x1ab05050, 0xbf43c3c1, 0x2fd0f0f0, 0x3560a0a0, 0xa5f39391,
     0xd5828281, 0x4511b1b0, 0x5fa1e1e0, 0xcf32d2d1, 0x6ac14140, 0xfa527271, 0xe0e22221, 0x70711110

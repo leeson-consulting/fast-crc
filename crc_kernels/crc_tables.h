@@ -24,8 +24,8 @@
 #define make_crc_kernel_f8_t4(poly) \
 static inline uint_fast8_t crc8_byte_##poly##_impl(uint_fast8_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[((crc >> (8 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
-  crc = poly[((crc >> (8 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
+  crc = crc8_##poly##_tbl[((crc >> (8 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
+  crc = crc8_##poly##_tbl[((crc >> (8 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
   return crc; \
 } \
 \
@@ -48,8 +48,8 @@ static uint_fast8_t crc8_##poly(uint_fast8_t const init, uint8_t const * data, s
 #define make_crc_kernel_r8_t4(poly) \
 static inline uint_fast8_t crc8_byte_##poly##_impl(uint_fast8_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
-  crc = poly[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
+  crc = crc8_##poly##_tbl[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
+  crc = crc8_##poly##_tbl[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
   return crc; \
 } \
 \
@@ -72,7 +72,7 @@ static uint_fast8_t crc8_##poly(uint_fast8_t const init, uint8_t const * data, s
 #define make_crc_kernel_f8_t8(poly) \
 static inline uint_fast8_t crc8_byte_##poly##_impl(uint_fast8_t const crc, uint8_t const data_byte) \
 { \
-  return poly[(crc ^ data_byte) & 0xff]; \
+  return crc8_##poly##_tbl[(crc ^ data_byte) & 0xff]; \
 } \
 \
 static inline uint_fast8_t crc8_byte_##poly(uint_fast8_t const crc, uint8_t const data_byte) \
@@ -94,7 +94,7 @@ static uint_fast8_t crc8_##poly(uint_fast8_t const init, uint8_t const * data, s
 #define make_crc_kernel_r8_t8(poly) \
 static inline uint_fast8_t crc8_byte_##poly##_impl(uint_fast8_t const crc, uint8_t const data_byte) \
 { \
-  return poly[(crc ^ data_byte) & 0xff]; \
+  return crc8_##poly##_tbl[(crc ^ data_byte) & 0xff]; \
 } \
 \
 static inline uint_fast8_t crc8_byte_##poly(uint_fast8_t const crc, uint8_t const data_byte) \
@@ -122,8 +122,8 @@ static uint_fast8_t crc8_##poly(uint_fast8_t const init, uint8_t const * data, s
 #define make_crc_kernel_f9_t4(poly) \
 static inline uint_fast16_t crc9_byte_##poly##_impl(uint_fast16_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[((crc >> (9 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
-  crc = poly[((crc >> (9 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
+  crc = crc9_##poly##_tbl[((crc >> (9 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
+  crc = crc9_##poly##_tbl[((crc >> (9 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
   return crc; \
 } \
 \
@@ -146,8 +146,8 @@ static uint_fast16_t crc9_##poly(uint_fast16_t const init, uint8_t const * data,
 #define make_crc_kernel_r9_t4(poly) \
 static inline uint_fast16_t crc9_byte_##poly##_impl(uint_fast16_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
-  crc = poly[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
+  crc = crc9_##poly##_tbl[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
+  crc = crc9_##poly##_tbl[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
   return crc; \
 } \
 \
@@ -170,7 +170,7 @@ static uint_fast16_t crc9_##poly(uint_fast16_t const init, uint8_t const * data,
 #define make_crc_kernel_f9_t8(poly) \
 static inline uint_fast16_t crc9_byte_##poly##_impl(uint_fast16_t const crc, uint8_t const data_byte) \
 { \
-  return poly[((crc >> (9 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
+  return crc9_##poly##_tbl[((crc >> (9 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
 } \
 \
 static inline uint_fast16_t crc9_byte_##poly(uint_fast16_t const crc, uint8_t const data_byte) \
@@ -192,7 +192,7 @@ static uint_fast16_t crc9_##poly(uint_fast16_t const init, uint8_t const * data,
 #define make_crc_kernel_r9_t8(poly) \
 static inline uint_fast16_t crc9_byte_##poly##_impl(uint_fast16_t const crc, uint8_t const data_byte) \
 { \
-  return poly[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
+  return crc9_##poly##_tbl[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
 } \
 \
 static inline uint_fast16_t crc9_byte_##poly(uint_fast16_t const crc, uint8_t const data_byte) \
@@ -220,8 +220,8 @@ static uint_fast16_t crc9_##poly(uint_fast16_t const init, uint8_t const * data,
 #define make_crc_kernel_f10_t4(poly) \
 static inline uint_fast16_t crc10_byte_##poly##_impl(uint_fast16_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[((crc >> (10 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
-  crc = poly[((crc >> (10 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
+  crc = crc10_##poly##_tbl[((crc >> (10 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
+  crc = crc10_##poly##_tbl[((crc >> (10 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
   return crc; \
 } \
 \
@@ -244,8 +244,8 @@ static uint_fast16_t crc10_##poly(uint_fast16_t const init, uint8_t const * data
 #define make_crc_kernel_r10_t4(poly) \
 static inline uint_fast16_t crc10_byte_##poly##_impl(uint_fast16_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
-  crc = poly[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
+  crc = crc10_##poly##_tbl[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
+  crc = crc10_##poly##_tbl[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
   return crc; \
 } \
 \
@@ -268,7 +268,7 @@ static uint_fast16_t crc10_##poly(uint_fast16_t const init, uint8_t const * data
 #define make_crc_kernel_f10_t8(poly) \
 static inline uint_fast16_t crc10_byte_##poly##_impl(uint_fast16_t const crc, uint8_t const data_byte) \
 { \
-  return poly[((crc >> (10 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
+  return crc10_##poly##_tbl[((crc >> (10 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
 } \
 \
 static inline uint_fast16_t crc10_byte_##poly(uint_fast16_t const crc, uint8_t const data_byte) \
@@ -290,7 +290,7 @@ static uint_fast16_t crc10_##poly(uint_fast16_t const init, uint8_t const * data
 #define make_crc_kernel_r10_t8(poly) \
 static inline uint_fast16_t crc10_byte_##poly##_impl(uint_fast16_t const crc, uint8_t const data_byte) \
 { \
-  return poly[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
+  return crc10_##poly##_tbl[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
 } \
 \
 static inline uint_fast16_t crc10_byte_##poly(uint_fast16_t const crc, uint8_t const data_byte) \
@@ -318,8 +318,8 @@ static uint_fast16_t crc10_##poly(uint_fast16_t const init, uint8_t const * data
 #define make_crc_kernel_f11_t4(poly) \
 static inline uint_fast16_t crc11_byte_##poly##_impl(uint_fast16_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[((crc >> (11 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
-  crc = poly[((crc >> (11 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
+  crc = crc11_##poly##_tbl[((crc >> (11 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
+  crc = crc11_##poly##_tbl[((crc >> (11 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
   return crc; \
 } \
 \
@@ -342,8 +342,8 @@ static uint_fast16_t crc11_##poly(uint_fast16_t const init, uint8_t const * data
 #define make_crc_kernel_r11_t4(poly) \
 static inline uint_fast16_t crc11_byte_##poly##_impl(uint_fast16_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
-  crc = poly[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
+  crc = crc11_##poly##_tbl[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
+  crc = crc11_##poly##_tbl[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
   return crc; \
 } \
 \
@@ -366,7 +366,7 @@ static uint_fast16_t crc11_##poly(uint_fast16_t const init, uint8_t const * data
 #define make_crc_kernel_f11_t8(poly) \
 static inline uint_fast16_t crc11_byte_##poly##_impl(uint_fast16_t const crc, uint8_t const data_byte) \
 { \
-  return poly[((crc >> (11 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
+  return crc11_##poly##_tbl[((crc >> (11 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
 } \
 \
 static inline uint_fast16_t crc11_byte_##poly(uint_fast16_t const crc, uint8_t const data_byte) \
@@ -388,7 +388,7 @@ static uint_fast16_t crc11_##poly(uint_fast16_t const init, uint8_t const * data
 #define make_crc_kernel_r11_t8(poly) \
 static inline uint_fast16_t crc11_byte_##poly##_impl(uint_fast16_t const crc, uint8_t const data_byte) \
 { \
-  return poly[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
+  return crc11_##poly##_tbl[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
 } \
 \
 static inline uint_fast16_t crc11_byte_##poly(uint_fast16_t const crc, uint8_t const data_byte) \
@@ -416,8 +416,8 @@ static uint_fast16_t crc11_##poly(uint_fast16_t const init, uint8_t const * data
 #define make_crc_kernel_f12_t4(poly) \
 static inline uint_fast16_t crc12_byte_##poly##_impl(uint_fast16_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[((crc >> (12 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
-  crc = poly[((crc >> (12 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
+  crc = crc12_##poly##_tbl[((crc >> (12 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
+  crc = crc12_##poly##_tbl[((crc >> (12 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
   return crc; \
 } \
 \
@@ -440,8 +440,8 @@ static uint_fast16_t crc12_##poly(uint_fast16_t const init, uint8_t const * data
 #define make_crc_kernel_r12_t4(poly) \
 static inline uint_fast16_t crc12_byte_##poly##_impl(uint_fast16_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
-  crc = poly[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
+  crc = crc12_##poly##_tbl[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
+  crc = crc12_##poly##_tbl[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
   return crc; \
 } \
 \
@@ -464,7 +464,7 @@ static uint_fast16_t crc12_##poly(uint_fast16_t const init, uint8_t const * data
 #define make_crc_kernel_f12_t8(poly) \
 static inline uint_fast16_t crc12_byte_##poly##_impl(uint_fast16_t const crc, uint8_t const data_byte) \
 { \
-  return poly[((crc >> (12 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
+  return crc12_##poly##_tbl[((crc >> (12 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
 } \
 \
 static inline uint_fast16_t crc12_byte_##poly(uint_fast16_t const crc, uint8_t const data_byte) \
@@ -486,7 +486,7 @@ static uint_fast16_t crc12_##poly(uint_fast16_t const init, uint8_t const * data
 #define make_crc_kernel_r12_t8(poly) \
 static inline uint_fast16_t crc12_byte_##poly##_impl(uint_fast16_t const crc, uint8_t const data_byte) \
 { \
-  return poly[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
+  return crc12_##poly##_tbl[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
 } \
 \
 static inline uint_fast16_t crc12_byte_##poly(uint_fast16_t const crc, uint8_t const data_byte) \
@@ -514,8 +514,8 @@ static uint_fast16_t crc12_##poly(uint_fast16_t const init, uint8_t const * data
 #define make_crc_kernel_f13_t4(poly) \
 static inline uint_fast16_t crc13_byte_##poly##_impl(uint_fast16_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[((crc >> (13 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
-  crc = poly[((crc >> (13 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
+  crc = crc13_##poly##_tbl[((crc >> (13 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
+  crc = crc13_##poly##_tbl[((crc >> (13 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
   return crc; \
 } \
 \
@@ -538,8 +538,8 @@ static uint_fast16_t crc13_##poly(uint_fast16_t const init, uint8_t const * data
 #define make_crc_kernel_r13_t4(poly) \
 static inline uint_fast16_t crc13_byte_##poly##_impl(uint_fast16_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
-  crc = poly[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
+  crc = crc13_##poly##_tbl[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
+  crc = crc13_##poly##_tbl[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
   return crc; \
 } \
 \
@@ -562,7 +562,7 @@ static uint_fast16_t crc13_##poly(uint_fast16_t const init, uint8_t const * data
 #define make_crc_kernel_f13_t8(poly) \
 static inline uint_fast16_t crc13_byte_##poly##_impl(uint_fast16_t const crc, uint8_t const data_byte) \
 { \
-  return poly[((crc >> (13 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
+  return crc13_##poly##_tbl[((crc >> (13 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
 } \
 \
 static inline uint_fast16_t crc13_byte_##poly(uint_fast16_t const crc, uint8_t const data_byte) \
@@ -584,7 +584,7 @@ static uint_fast16_t crc13_##poly(uint_fast16_t const init, uint8_t const * data
 #define make_crc_kernel_r13_t8(poly) \
 static inline uint_fast16_t crc13_byte_##poly##_impl(uint_fast16_t const crc, uint8_t const data_byte) \
 { \
-  return poly[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
+  return crc13_##poly##_tbl[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
 } \
 \
 static inline uint_fast16_t crc13_byte_##poly(uint_fast16_t const crc, uint8_t const data_byte) \
@@ -612,8 +612,8 @@ static uint_fast16_t crc13_##poly(uint_fast16_t const init, uint8_t const * data
 #define make_crc_kernel_f14_t4(poly) \
 static inline uint_fast16_t crc14_byte_##poly##_impl(uint_fast16_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[((crc >> (14 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
-  crc = poly[((crc >> (14 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
+  crc = crc14_##poly##_tbl[((crc >> (14 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
+  crc = crc14_##poly##_tbl[((crc >> (14 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
   return crc; \
 } \
 \
@@ -636,8 +636,8 @@ static uint_fast16_t crc14_##poly(uint_fast16_t const init, uint8_t const * data
 #define make_crc_kernel_r14_t4(poly) \
 static inline uint_fast16_t crc14_byte_##poly##_impl(uint_fast16_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
-  crc = poly[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
+  crc = crc14_##poly##_tbl[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
+  crc = crc14_##poly##_tbl[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
   return crc; \
 } \
 \
@@ -660,7 +660,7 @@ static uint_fast16_t crc14_##poly(uint_fast16_t const init, uint8_t const * data
 #define make_crc_kernel_f14_t8(poly) \
 static inline uint_fast16_t crc14_byte_##poly##_impl(uint_fast16_t const crc, uint8_t const data_byte) \
 { \
-  return poly[((crc >> (14 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
+  return crc14_##poly##_tbl[((crc >> (14 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
 } \
 \
 static inline uint_fast16_t crc14_byte_##poly(uint_fast16_t const crc, uint8_t const data_byte) \
@@ -682,7 +682,7 @@ static uint_fast16_t crc14_##poly(uint_fast16_t const init, uint8_t const * data
 #define make_crc_kernel_r14_t8(poly) \
 static inline uint_fast16_t crc14_byte_##poly##_impl(uint_fast16_t const crc, uint8_t const data_byte) \
 { \
-  return poly[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
+  return crc14_##poly##_tbl[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
 } \
 \
 static inline uint_fast16_t crc14_byte_##poly(uint_fast16_t const crc, uint8_t const data_byte) \
@@ -710,8 +710,8 @@ static uint_fast16_t crc14_##poly(uint_fast16_t const init, uint8_t const * data
 #define make_crc_kernel_f15_t4(poly) \
 static inline uint_fast16_t crc15_byte_##poly##_impl(uint_fast16_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[((crc >> (15 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
-  crc = poly[((crc >> (15 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
+  crc = crc15_##poly##_tbl[((crc >> (15 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
+  crc = crc15_##poly##_tbl[((crc >> (15 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
   return crc; \
 } \
 \
@@ -734,8 +734,8 @@ static uint_fast16_t crc15_##poly(uint_fast16_t const init, uint8_t const * data
 #define make_crc_kernel_r15_t4(poly) \
 static inline uint_fast16_t crc15_byte_##poly##_impl(uint_fast16_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
-  crc = poly[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
+  crc = crc15_##poly##_tbl[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
+  crc = crc15_##poly##_tbl[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
   return crc; \
 } \
 \
@@ -758,7 +758,7 @@ static uint_fast16_t crc15_##poly(uint_fast16_t const init, uint8_t const * data
 #define make_crc_kernel_f15_t8(poly) \
 static inline uint_fast16_t crc15_byte_##poly##_impl(uint_fast16_t const crc, uint8_t const data_byte) \
 { \
-  return poly[((crc >> (15 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
+  return crc15_##poly##_tbl[((crc >> (15 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
 } \
 \
 static inline uint_fast16_t crc15_byte_##poly(uint_fast16_t const crc, uint8_t const data_byte) \
@@ -780,7 +780,7 @@ static uint_fast16_t crc15_##poly(uint_fast16_t const init, uint8_t const * data
 #define make_crc_kernel_r15_t8(poly) \
 static inline uint_fast16_t crc15_byte_##poly##_impl(uint_fast16_t const crc, uint8_t const data_byte) \
 { \
-  return poly[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
+  return crc15_##poly##_tbl[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
 } \
 \
 static inline uint_fast16_t crc15_byte_##poly(uint_fast16_t const crc, uint8_t const data_byte) \
@@ -808,8 +808,8 @@ static uint_fast16_t crc15_##poly(uint_fast16_t const init, uint8_t const * data
 #define make_crc_kernel_f16_t4(poly) \
 static inline uint_fast16_t crc16_byte_##poly##_impl(uint_fast16_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[((crc >> (16 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
-  crc = poly[((crc >> (16 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
+  crc = crc16_##poly##_tbl[((crc >> (16 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
+  crc = crc16_##poly##_tbl[((crc >> (16 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
   return crc; \
 } \
 \
@@ -832,8 +832,8 @@ static uint_fast16_t crc16_##poly(uint_fast16_t const init, uint8_t const * data
 #define make_crc_kernel_r16_t4(poly) \
 static inline uint_fast16_t crc16_byte_##poly##_impl(uint_fast16_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
-  crc = poly[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
+  crc = crc16_##poly##_tbl[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
+  crc = crc16_##poly##_tbl[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
   return crc; \
 } \
 \
@@ -856,7 +856,7 @@ static uint_fast16_t crc16_##poly(uint_fast16_t const init, uint8_t const * data
 #define make_crc_kernel_f16_t8(poly) \
 static inline uint_fast16_t crc16_byte_##poly##_impl(uint_fast16_t const crc, uint8_t const data_byte) \
 { \
-  return poly[((crc >> (16 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
+  return crc16_##poly##_tbl[((crc >> (16 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
 } \
 \
 static inline uint_fast16_t crc16_byte_##poly(uint_fast16_t const crc, uint8_t const data_byte) \
@@ -878,7 +878,7 @@ static uint_fast16_t crc16_##poly(uint_fast16_t const init, uint8_t const * data
 #define make_crc_kernel_r16_t8(poly) \
 static inline uint_fast16_t crc16_byte_##poly##_impl(uint_fast16_t const crc, uint8_t const data_byte) \
 { \
-  return poly[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
+  return crc16_##poly##_tbl[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
 } \
 \
 static inline uint_fast16_t crc16_byte_##poly(uint_fast16_t const crc, uint8_t const data_byte) \
@@ -906,8 +906,8 @@ static uint_fast16_t crc16_##poly(uint_fast16_t const init, uint8_t const * data
 #define make_crc_kernel_f17_t4(poly) \
 static inline uint_fast32_t crc17_byte_##poly##_impl(uint_fast32_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[((crc >> (17 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
-  crc = poly[((crc >> (17 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
+  crc = crc17_##poly##_tbl[((crc >> (17 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
+  crc = crc17_##poly##_tbl[((crc >> (17 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
   return crc; \
 } \
 \
@@ -930,8 +930,8 @@ static uint_fast32_t crc17_##poly(uint_fast32_t const init, uint8_t const * data
 #define make_crc_kernel_r17_t4(poly) \
 static inline uint_fast32_t crc17_byte_##poly##_impl(uint_fast32_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
-  crc = poly[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
+  crc = crc17_##poly##_tbl[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
+  crc = crc17_##poly##_tbl[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
   return crc; \
 } \
 \
@@ -954,7 +954,7 @@ static uint_fast32_t crc17_##poly(uint_fast32_t const init, uint8_t const * data
 #define make_crc_kernel_f17_t8(poly) \
 static inline uint_fast32_t crc17_byte_##poly##_impl(uint_fast32_t const crc, uint8_t const data_byte) \
 { \
-  return poly[((crc >> (17 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
+  return crc17_##poly##_tbl[((crc >> (17 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
 } \
 \
 static inline uint_fast32_t crc17_byte_##poly(uint_fast32_t const crc, uint8_t const data_byte) \
@@ -976,7 +976,7 @@ static uint_fast32_t crc17_##poly(uint_fast32_t const init, uint8_t const * data
 #define make_crc_kernel_r17_t8(poly) \
 static inline uint_fast32_t crc17_byte_##poly##_impl(uint_fast32_t const crc, uint8_t const data_byte) \
 { \
-  return poly[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
+  return crc17_##poly##_tbl[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
 } \
 \
 static inline uint_fast32_t crc17_byte_##poly(uint_fast32_t const crc, uint8_t const data_byte) \
@@ -1004,8 +1004,8 @@ static uint_fast32_t crc17_##poly(uint_fast32_t const init, uint8_t const * data
 #define make_crc_kernel_f18_t4(poly) \
 static inline uint_fast32_t crc18_byte_##poly##_impl(uint_fast32_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[((crc >> (18 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
-  crc = poly[((crc >> (18 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
+  crc = crc18_##poly##_tbl[((crc >> (18 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
+  crc = crc18_##poly##_tbl[((crc >> (18 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
   return crc; \
 } \
 \
@@ -1028,8 +1028,8 @@ static uint_fast32_t crc18_##poly(uint_fast32_t const init, uint8_t const * data
 #define make_crc_kernel_r18_t4(poly) \
 static inline uint_fast32_t crc18_byte_##poly##_impl(uint_fast32_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
-  crc = poly[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
+  crc = crc18_##poly##_tbl[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
+  crc = crc18_##poly##_tbl[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
   return crc; \
 } \
 \
@@ -1052,7 +1052,7 @@ static uint_fast32_t crc18_##poly(uint_fast32_t const init, uint8_t const * data
 #define make_crc_kernel_f18_t8(poly) \
 static inline uint_fast32_t crc18_byte_##poly##_impl(uint_fast32_t const crc, uint8_t const data_byte) \
 { \
-  return poly[((crc >> (18 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
+  return crc18_##poly##_tbl[((crc >> (18 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
 } \
 \
 static inline uint_fast32_t crc18_byte_##poly(uint_fast32_t const crc, uint8_t const data_byte) \
@@ -1074,7 +1074,7 @@ static uint_fast32_t crc18_##poly(uint_fast32_t const init, uint8_t const * data
 #define make_crc_kernel_r18_t8(poly) \
 static inline uint_fast32_t crc18_byte_##poly##_impl(uint_fast32_t const crc, uint8_t const data_byte) \
 { \
-  return poly[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
+  return crc18_##poly##_tbl[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
 } \
 \
 static inline uint_fast32_t crc18_byte_##poly(uint_fast32_t const crc, uint8_t const data_byte) \
@@ -1102,8 +1102,8 @@ static uint_fast32_t crc18_##poly(uint_fast32_t const init, uint8_t const * data
 #define make_crc_kernel_f19_t4(poly) \
 static inline uint_fast32_t crc19_byte_##poly##_impl(uint_fast32_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[((crc >> (19 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
-  crc = poly[((crc >> (19 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
+  crc = crc19_##poly##_tbl[((crc >> (19 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
+  crc = crc19_##poly##_tbl[((crc >> (19 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
   return crc; \
 } \
 \
@@ -1126,8 +1126,8 @@ static uint_fast32_t crc19_##poly(uint_fast32_t const init, uint8_t const * data
 #define make_crc_kernel_r19_t4(poly) \
 static inline uint_fast32_t crc19_byte_##poly##_impl(uint_fast32_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
-  crc = poly[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
+  crc = crc19_##poly##_tbl[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
+  crc = crc19_##poly##_tbl[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
   return crc; \
 } \
 \
@@ -1150,7 +1150,7 @@ static uint_fast32_t crc19_##poly(uint_fast32_t const init, uint8_t const * data
 #define make_crc_kernel_f19_t8(poly) \
 static inline uint_fast32_t crc19_byte_##poly##_impl(uint_fast32_t const crc, uint8_t const data_byte) \
 { \
-  return poly[((crc >> (19 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
+  return crc19_##poly##_tbl[((crc >> (19 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
 } \
 \
 static inline uint_fast32_t crc19_byte_##poly(uint_fast32_t const crc, uint8_t const data_byte) \
@@ -1172,7 +1172,7 @@ static uint_fast32_t crc19_##poly(uint_fast32_t const init, uint8_t const * data
 #define make_crc_kernel_r19_t8(poly) \
 static inline uint_fast32_t crc19_byte_##poly##_impl(uint_fast32_t const crc, uint8_t const data_byte) \
 { \
-  return poly[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
+  return crc19_##poly##_tbl[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
 } \
 \
 static inline uint_fast32_t crc19_byte_##poly(uint_fast32_t const crc, uint8_t const data_byte) \
@@ -1200,8 +1200,8 @@ static uint_fast32_t crc19_##poly(uint_fast32_t const init, uint8_t const * data
 #define make_crc_kernel_f20_t4(poly) \
 static inline uint_fast32_t crc20_byte_##poly##_impl(uint_fast32_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[((crc >> (20 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
-  crc = poly[((crc >> (20 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
+  crc = crc20_##poly##_tbl[((crc >> (20 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
+  crc = crc20_##poly##_tbl[((crc >> (20 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
   return crc; \
 } \
 \
@@ -1224,8 +1224,8 @@ static uint_fast32_t crc20_##poly(uint_fast32_t const init, uint8_t const * data
 #define make_crc_kernel_r20_t4(poly) \
 static inline uint_fast32_t crc20_byte_##poly##_impl(uint_fast32_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
-  crc = poly[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
+  crc = crc20_##poly##_tbl[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
+  crc = crc20_##poly##_tbl[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
   return crc; \
 } \
 \
@@ -1248,7 +1248,7 @@ static uint_fast32_t crc20_##poly(uint_fast32_t const init, uint8_t const * data
 #define make_crc_kernel_f20_t8(poly) \
 static inline uint_fast32_t crc20_byte_##poly##_impl(uint_fast32_t const crc, uint8_t const data_byte) \
 { \
-  return poly[((crc >> (20 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
+  return crc20_##poly##_tbl[((crc >> (20 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
 } \
 \
 static inline uint_fast32_t crc20_byte_##poly(uint_fast32_t const crc, uint8_t const data_byte) \
@@ -1270,7 +1270,7 @@ static uint_fast32_t crc20_##poly(uint_fast32_t const init, uint8_t const * data
 #define make_crc_kernel_r20_t8(poly) \
 static inline uint_fast32_t crc20_byte_##poly##_impl(uint_fast32_t const crc, uint8_t const data_byte) \
 { \
-  return poly[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
+  return crc20_##poly##_tbl[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
 } \
 \
 static inline uint_fast32_t crc20_byte_##poly(uint_fast32_t const crc, uint8_t const data_byte) \
@@ -1298,8 +1298,8 @@ static uint_fast32_t crc20_##poly(uint_fast32_t const init, uint8_t const * data
 #define make_crc_kernel_f21_t4(poly) \
 static inline uint_fast32_t crc21_byte_##poly##_impl(uint_fast32_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[((crc >> (21 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
-  crc = poly[((crc >> (21 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
+  crc = crc21_##poly##_tbl[((crc >> (21 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
+  crc = crc21_##poly##_tbl[((crc >> (21 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
   return crc; \
 } \
 \
@@ -1322,8 +1322,8 @@ static uint_fast32_t crc21_##poly(uint_fast32_t const init, uint8_t const * data
 #define make_crc_kernel_r21_t4(poly) \
 static inline uint_fast32_t crc21_byte_##poly##_impl(uint_fast32_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
-  crc = poly[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
+  crc = crc21_##poly##_tbl[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
+  crc = crc21_##poly##_tbl[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
   return crc; \
 } \
 \
@@ -1346,7 +1346,7 @@ static uint_fast32_t crc21_##poly(uint_fast32_t const init, uint8_t const * data
 #define make_crc_kernel_f21_t8(poly) \
 static inline uint_fast32_t crc21_byte_##poly##_impl(uint_fast32_t const crc, uint8_t const data_byte) \
 { \
-  return poly[((crc >> (21 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
+  return crc21_##poly##_tbl[((crc >> (21 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
 } \
 \
 static inline uint_fast32_t crc21_byte_##poly(uint_fast32_t const crc, uint8_t const data_byte) \
@@ -1368,7 +1368,7 @@ static uint_fast32_t crc21_##poly(uint_fast32_t const init, uint8_t const * data
 #define make_crc_kernel_r21_t8(poly) \
 static inline uint_fast32_t crc21_byte_##poly##_impl(uint_fast32_t const crc, uint8_t const data_byte) \
 { \
-  return poly[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
+  return crc21_##poly##_tbl[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
 } \
 \
 static inline uint_fast32_t crc21_byte_##poly(uint_fast32_t const crc, uint8_t const data_byte) \
@@ -1396,8 +1396,8 @@ static uint_fast32_t crc21_##poly(uint_fast32_t const init, uint8_t const * data
 #define make_crc_kernel_f22_t4(poly) \
 static inline uint_fast32_t crc22_byte_##poly##_impl(uint_fast32_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[((crc >> (22 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
-  crc = poly[((crc >> (22 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
+  crc = crc22_##poly##_tbl[((crc >> (22 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
+  crc = crc22_##poly##_tbl[((crc >> (22 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
   return crc; \
 } \
 \
@@ -1420,8 +1420,8 @@ static uint_fast32_t crc22_##poly(uint_fast32_t const init, uint8_t const * data
 #define make_crc_kernel_r22_t4(poly) \
 static inline uint_fast32_t crc22_byte_##poly##_impl(uint_fast32_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
-  crc = poly[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
+  crc = crc22_##poly##_tbl[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
+  crc = crc22_##poly##_tbl[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
   return crc; \
 } \
 \
@@ -1444,7 +1444,7 @@ static uint_fast32_t crc22_##poly(uint_fast32_t const init, uint8_t const * data
 #define make_crc_kernel_f22_t8(poly) \
 static inline uint_fast32_t crc22_byte_##poly##_impl(uint_fast32_t const crc, uint8_t const data_byte) \
 { \
-  return poly[((crc >> (22 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
+  return crc22_##poly##_tbl[((crc >> (22 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
 } \
 \
 static inline uint_fast32_t crc22_byte_##poly(uint_fast32_t const crc, uint8_t const data_byte) \
@@ -1466,7 +1466,7 @@ static uint_fast32_t crc22_##poly(uint_fast32_t const init, uint8_t const * data
 #define make_crc_kernel_r22_t8(poly) \
 static inline uint_fast32_t crc22_byte_##poly##_impl(uint_fast32_t const crc, uint8_t const data_byte) \
 { \
-  return poly[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
+  return crc22_##poly##_tbl[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
 } \
 \
 static inline uint_fast32_t crc22_byte_##poly(uint_fast32_t const crc, uint8_t const data_byte) \
@@ -1494,8 +1494,8 @@ static uint_fast32_t crc22_##poly(uint_fast32_t const init, uint8_t const * data
 #define make_crc_kernel_f23_t4(poly) \
 static inline uint_fast32_t crc23_byte_##poly##_impl(uint_fast32_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[((crc >> (23 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
-  crc = poly[((crc >> (23 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
+  crc = crc23_##poly##_tbl[((crc >> (23 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
+  crc = crc23_##poly##_tbl[((crc >> (23 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
   return crc; \
 } \
 \
@@ -1518,8 +1518,8 @@ static uint_fast32_t crc23_##poly(uint_fast32_t const init, uint8_t const * data
 #define make_crc_kernel_r23_t4(poly) \
 static inline uint_fast32_t crc23_byte_##poly##_impl(uint_fast32_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
-  crc = poly[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
+  crc = crc23_##poly##_tbl[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
+  crc = crc23_##poly##_tbl[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
   return crc; \
 } \
 \
@@ -1542,7 +1542,7 @@ static uint_fast32_t crc23_##poly(uint_fast32_t const init, uint8_t const * data
 #define make_crc_kernel_f23_t8(poly) \
 static inline uint_fast32_t crc23_byte_##poly##_impl(uint_fast32_t const crc, uint8_t const data_byte) \
 { \
-  return poly[((crc >> (23 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
+  return crc23_##poly##_tbl[((crc >> (23 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
 } \
 \
 static inline uint_fast32_t crc23_byte_##poly(uint_fast32_t const crc, uint8_t const data_byte) \
@@ -1564,7 +1564,7 @@ static uint_fast32_t crc23_##poly(uint_fast32_t const init, uint8_t const * data
 #define make_crc_kernel_r23_t8(poly) \
 static inline uint_fast32_t crc23_byte_##poly##_impl(uint_fast32_t const crc, uint8_t const data_byte) \
 { \
-  return poly[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
+  return crc23_##poly##_tbl[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
 } \
 \
 static inline uint_fast32_t crc23_byte_##poly(uint_fast32_t const crc, uint8_t const data_byte) \
@@ -1592,8 +1592,8 @@ static uint_fast32_t crc23_##poly(uint_fast32_t const init, uint8_t const * data
 #define make_crc_kernel_f24_t4(poly) \
 static inline uint_fast32_t crc24_byte_##poly##_impl(uint_fast32_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[((crc >> (24 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
-  crc = poly[((crc >> (24 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
+  crc = crc24_##poly##_tbl[((crc >> (24 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
+  crc = crc24_##poly##_tbl[((crc >> (24 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
   return crc; \
 } \
 \
@@ -1616,8 +1616,8 @@ static uint_fast32_t crc24_##poly(uint_fast32_t const init, uint8_t const * data
 #define make_crc_kernel_r24_t4(poly) \
 static inline uint_fast32_t crc24_byte_##poly##_impl(uint_fast32_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
-  crc = poly[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
+  crc = crc24_##poly##_tbl[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
+  crc = crc24_##poly##_tbl[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
   return crc; \
 } \
 \
@@ -1640,7 +1640,7 @@ static uint_fast32_t crc24_##poly(uint_fast32_t const init, uint8_t const * data
 #define make_crc_kernel_f24_t8(poly) \
 static inline uint_fast32_t crc24_byte_##poly##_impl(uint_fast32_t const crc, uint8_t const data_byte) \
 { \
-  return poly[((crc >> (24 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
+  return crc24_##poly##_tbl[((crc >> (24 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
 } \
 \
 static inline uint_fast32_t crc24_byte_##poly(uint_fast32_t const crc, uint8_t const data_byte) \
@@ -1662,7 +1662,7 @@ static uint_fast32_t crc24_##poly(uint_fast32_t const init, uint8_t const * data
 #define make_crc_kernel_r24_t8(poly) \
 static inline uint_fast32_t crc24_byte_##poly##_impl(uint_fast32_t const crc, uint8_t const data_byte) \
 { \
-  return poly[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
+  return crc24_##poly##_tbl[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
 } \
 \
 static inline uint_fast32_t crc24_byte_##poly(uint_fast32_t const crc, uint8_t const data_byte) \
@@ -1690,8 +1690,8 @@ static uint_fast32_t crc24_##poly(uint_fast32_t const init, uint8_t const * data
 #define make_crc_kernel_f25_t4(poly) \
 static inline uint_fast32_t crc25_byte_##poly##_impl(uint_fast32_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[((crc >> (25 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
-  crc = poly[((crc >> (25 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
+  crc = crc25_##poly##_tbl[((crc >> (25 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
+  crc = crc25_##poly##_tbl[((crc >> (25 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
   return crc; \
 } \
 \
@@ -1714,8 +1714,8 @@ static uint_fast32_t crc25_##poly(uint_fast32_t const init, uint8_t const * data
 #define make_crc_kernel_r25_t4(poly) \
 static inline uint_fast32_t crc25_byte_##poly##_impl(uint_fast32_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
-  crc = poly[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
+  crc = crc25_##poly##_tbl[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
+  crc = crc25_##poly##_tbl[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
   return crc; \
 } \
 \
@@ -1738,7 +1738,7 @@ static uint_fast32_t crc25_##poly(uint_fast32_t const init, uint8_t const * data
 #define make_crc_kernel_f25_t8(poly) \
 static inline uint_fast32_t crc25_byte_##poly##_impl(uint_fast32_t const crc, uint8_t const data_byte) \
 { \
-  return poly[((crc >> (25 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
+  return crc25_##poly##_tbl[((crc >> (25 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
 } \
 \
 static inline uint_fast32_t crc25_byte_##poly(uint_fast32_t const crc, uint8_t const data_byte) \
@@ -1760,7 +1760,7 @@ static uint_fast32_t crc25_##poly(uint_fast32_t const init, uint8_t const * data
 #define make_crc_kernel_r25_t8(poly) \
 static inline uint_fast32_t crc25_byte_##poly##_impl(uint_fast32_t const crc, uint8_t const data_byte) \
 { \
-  return poly[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
+  return crc25_##poly##_tbl[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
 } \
 \
 static inline uint_fast32_t crc25_byte_##poly(uint_fast32_t const crc, uint8_t const data_byte) \
@@ -1788,8 +1788,8 @@ static uint_fast32_t crc25_##poly(uint_fast32_t const init, uint8_t const * data
 #define make_crc_kernel_f26_t4(poly) \
 static inline uint_fast32_t crc26_byte_##poly##_impl(uint_fast32_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[((crc >> (26 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
-  crc = poly[((crc >> (26 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
+  crc = crc26_##poly##_tbl[((crc >> (26 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
+  crc = crc26_##poly##_tbl[((crc >> (26 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
   return crc; \
 } \
 \
@@ -1812,8 +1812,8 @@ static uint_fast32_t crc26_##poly(uint_fast32_t const init, uint8_t const * data
 #define make_crc_kernel_r26_t4(poly) \
 static inline uint_fast32_t crc26_byte_##poly##_impl(uint_fast32_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
-  crc = poly[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
+  crc = crc26_##poly##_tbl[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
+  crc = crc26_##poly##_tbl[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
   return crc; \
 } \
 \
@@ -1836,7 +1836,7 @@ static uint_fast32_t crc26_##poly(uint_fast32_t const init, uint8_t const * data
 #define make_crc_kernel_f26_t8(poly) \
 static inline uint_fast32_t crc26_byte_##poly##_impl(uint_fast32_t const crc, uint8_t const data_byte) \
 { \
-  return poly[((crc >> (26 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
+  return crc26_##poly##_tbl[((crc >> (26 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
 } \
 \
 static inline uint_fast32_t crc26_byte_##poly(uint_fast32_t const crc, uint8_t const data_byte) \
@@ -1858,7 +1858,7 @@ static uint_fast32_t crc26_##poly(uint_fast32_t const init, uint8_t const * data
 #define make_crc_kernel_r26_t8(poly) \
 static inline uint_fast32_t crc26_byte_##poly##_impl(uint_fast32_t const crc, uint8_t const data_byte) \
 { \
-  return poly[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
+  return crc26_##poly##_tbl[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
 } \
 \
 static inline uint_fast32_t crc26_byte_##poly(uint_fast32_t const crc, uint8_t const data_byte) \
@@ -1886,8 +1886,8 @@ static uint_fast32_t crc26_##poly(uint_fast32_t const init, uint8_t const * data
 #define make_crc_kernel_f27_t4(poly) \
 static inline uint_fast32_t crc27_byte_##poly##_impl(uint_fast32_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[((crc >> (27 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
-  crc = poly[((crc >> (27 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
+  crc = crc27_##poly##_tbl[((crc >> (27 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
+  crc = crc27_##poly##_tbl[((crc >> (27 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
   return crc; \
 } \
 \
@@ -1910,8 +1910,8 @@ static uint_fast32_t crc27_##poly(uint_fast32_t const init, uint8_t const * data
 #define make_crc_kernel_r27_t4(poly) \
 static inline uint_fast32_t crc27_byte_##poly##_impl(uint_fast32_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
-  crc = poly[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
+  crc = crc27_##poly##_tbl[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
+  crc = crc27_##poly##_tbl[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
   return crc; \
 } \
 \
@@ -1934,7 +1934,7 @@ static uint_fast32_t crc27_##poly(uint_fast32_t const init, uint8_t const * data
 #define make_crc_kernel_f27_t8(poly) \
 static inline uint_fast32_t crc27_byte_##poly##_impl(uint_fast32_t const crc, uint8_t const data_byte) \
 { \
-  return poly[((crc >> (27 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
+  return crc27_##poly##_tbl[((crc >> (27 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
 } \
 \
 static inline uint_fast32_t crc27_byte_##poly(uint_fast32_t const crc, uint8_t const data_byte) \
@@ -1956,7 +1956,7 @@ static uint_fast32_t crc27_##poly(uint_fast32_t const init, uint8_t const * data
 #define make_crc_kernel_r27_t8(poly) \
 static inline uint_fast32_t crc27_byte_##poly##_impl(uint_fast32_t const crc, uint8_t const data_byte) \
 { \
-  return poly[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
+  return crc27_##poly##_tbl[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
 } \
 \
 static inline uint_fast32_t crc27_byte_##poly(uint_fast32_t const crc, uint8_t const data_byte) \
@@ -1984,8 +1984,8 @@ static uint_fast32_t crc27_##poly(uint_fast32_t const init, uint8_t const * data
 #define make_crc_kernel_f28_t4(poly) \
 static inline uint_fast32_t crc28_byte_##poly##_impl(uint_fast32_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[((crc >> (28 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
-  crc = poly[((crc >> (28 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
+  crc = crc28_##poly##_tbl[((crc >> (28 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
+  crc = crc28_##poly##_tbl[((crc >> (28 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
   return crc; \
 } \
 \
@@ -2008,8 +2008,8 @@ static uint_fast32_t crc28_##poly(uint_fast32_t const init, uint8_t const * data
 #define make_crc_kernel_r28_t4(poly) \
 static inline uint_fast32_t crc28_byte_##poly##_impl(uint_fast32_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
-  crc = poly[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
+  crc = crc28_##poly##_tbl[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
+  crc = crc28_##poly##_tbl[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
   return crc; \
 } \
 \
@@ -2032,7 +2032,7 @@ static uint_fast32_t crc28_##poly(uint_fast32_t const init, uint8_t const * data
 #define make_crc_kernel_f28_t8(poly) \
 static inline uint_fast32_t crc28_byte_##poly##_impl(uint_fast32_t const crc, uint8_t const data_byte) \
 { \
-  return poly[((crc >> (28 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
+  return crc28_##poly##_tbl[((crc >> (28 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
 } \
 \
 static inline uint_fast32_t crc28_byte_##poly(uint_fast32_t const crc, uint8_t const data_byte) \
@@ -2054,7 +2054,7 @@ static uint_fast32_t crc28_##poly(uint_fast32_t const init, uint8_t const * data
 #define make_crc_kernel_r28_t8(poly) \
 static inline uint_fast32_t crc28_byte_##poly##_impl(uint_fast32_t const crc, uint8_t const data_byte) \
 { \
-  return poly[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
+  return crc28_##poly##_tbl[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
 } \
 \
 static inline uint_fast32_t crc28_byte_##poly(uint_fast32_t const crc, uint8_t const data_byte) \
@@ -2082,8 +2082,8 @@ static uint_fast32_t crc28_##poly(uint_fast32_t const init, uint8_t const * data
 #define make_crc_kernel_f29_t4(poly) \
 static inline uint_fast32_t crc29_byte_##poly##_impl(uint_fast32_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[((crc >> (29 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
-  crc = poly[((crc >> (29 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
+  crc = crc29_##poly##_tbl[((crc >> (29 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
+  crc = crc29_##poly##_tbl[((crc >> (29 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
   return crc; \
 } \
 \
@@ -2106,8 +2106,8 @@ static uint_fast32_t crc29_##poly(uint_fast32_t const init, uint8_t const * data
 #define make_crc_kernel_r29_t4(poly) \
 static inline uint_fast32_t crc29_byte_##poly##_impl(uint_fast32_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
-  crc = poly[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
+  crc = crc29_##poly##_tbl[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
+  crc = crc29_##poly##_tbl[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
   return crc; \
 } \
 \
@@ -2130,7 +2130,7 @@ static uint_fast32_t crc29_##poly(uint_fast32_t const init, uint8_t const * data
 #define make_crc_kernel_f29_t8(poly) \
 static inline uint_fast32_t crc29_byte_##poly##_impl(uint_fast32_t const crc, uint8_t const data_byte) \
 { \
-  return poly[((crc >> (29 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
+  return crc29_##poly##_tbl[((crc >> (29 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
 } \
 \
 static inline uint_fast32_t crc29_byte_##poly(uint_fast32_t const crc, uint8_t const data_byte) \
@@ -2152,7 +2152,7 @@ static uint_fast32_t crc29_##poly(uint_fast32_t const init, uint8_t const * data
 #define make_crc_kernel_r29_t8(poly) \
 static inline uint_fast32_t crc29_byte_##poly##_impl(uint_fast32_t const crc, uint8_t const data_byte) \
 { \
-  return poly[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
+  return crc29_##poly##_tbl[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
 } \
 \
 static inline uint_fast32_t crc29_byte_##poly(uint_fast32_t const crc, uint8_t const data_byte) \
@@ -2180,8 +2180,8 @@ static uint_fast32_t crc29_##poly(uint_fast32_t const init, uint8_t const * data
 #define make_crc_kernel_f30_t4(poly) \
 static inline uint_fast32_t crc30_byte_##poly##_impl(uint_fast32_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[((crc >> (30 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
-  crc = poly[((crc >> (30 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
+  crc = crc30_##poly##_tbl[((crc >> (30 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
+  crc = crc30_##poly##_tbl[((crc >> (30 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
   return crc; \
 } \
 \
@@ -2204,8 +2204,8 @@ static uint_fast32_t crc30_##poly(uint_fast32_t const init, uint8_t const * data
 #define make_crc_kernel_r30_t4(poly) \
 static inline uint_fast32_t crc30_byte_##poly##_impl(uint_fast32_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
-  crc = poly[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
+  crc = crc30_##poly##_tbl[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
+  crc = crc30_##poly##_tbl[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
   return crc; \
 } \
 \
@@ -2228,7 +2228,7 @@ static uint_fast32_t crc30_##poly(uint_fast32_t const init, uint8_t const * data
 #define make_crc_kernel_f30_t8(poly) \
 static inline uint_fast32_t crc30_byte_##poly##_impl(uint_fast32_t const crc, uint8_t const data_byte) \
 { \
-  return poly[((crc >> (30 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
+  return crc30_##poly##_tbl[((crc >> (30 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
 } \
 \
 static inline uint_fast32_t crc30_byte_##poly(uint_fast32_t const crc, uint8_t const data_byte) \
@@ -2250,7 +2250,7 @@ static uint_fast32_t crc30_##poly(uint_fast32_t const init, uint8_t const * data
 #define make_crc_kernel_r30_t8(poly) \
 static inline uint_fast32_t crc30_byte_##poly##_impl(uint_fast32_t const crc, uint8_t const data_byte) \
 { \
-  return poly[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
+  return crc30_##poly##_tbl[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
 } \
 \
 static inline uint_fast32_t crc30_byte_##poly(uint_fast32_t const crc, uint8_t const data_byte) \
@@ -2278,8 +2278,8 @@ static uint_fast32_t crc30_##poly(uint_fast32_t const init, uint8_t const * data
 #define make_crc_kernel_f31_t4(poly) \
 static inline uint_fast32_t crc31_byte_##poly##_impl(uint_fast32_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[((crc >> (31 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
-  crc = poly[((crc >> (31 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
+  crc = crc31_##poly##_tbl[((crc >> (31 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
+  crc = crc31_##poly##_tbl[((crc >> (31 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
   return crc; \
 } \
 \
@@ -2302,8 +2302,8 @@ static uint_fast32_t crc31_##poly(uint_fast32_t const init, uint8_t const * data
 #define make_crc_kernel_r31_t4(poly) \
 static inline uint_fast32_t crc31_byte_##poly##_impl(uint_fast32_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
-  crc = poly[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
+  crc = crc31_##poly##_tbl[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
+  crc = crc31_##poly##_tbl[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
   return crc; \
 } \
 \
@@ -2326,7 +2326,7 @@ static uint_fast32_t crc31_##poly(uint_fast32_t const init, uint8_t const * data
 #define make_crc_kernel_f31_t8(poly) \
 static inline uint_fast32_t crc31_byte_##poly##_impl(uint_fast32_t const crc, uint8_t const data_byte) \
 { \
-  return poly[((crc >> (31 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
+  return crc31_##poly##_tbl[((crc >> (31 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
 } \
 \
 static inline uint_fast32_t crc31_byte_##poly(uint_fast32_t const crc, uint8_t const data_byte) \
@@ -2348,7 +2348,7 @@ static uint_fast32_t crc31_##poly(uint_fast32_t const init, uint8_t const * data
 #define make_crc_kernel_r31_t8(poly) \
 static inline uint_fast32_t crc31_byte_##poly##_impl(uint_fast32_t const crc, uint8_t const data_byte) \
 { \
-  return poly[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
+  return crc31_##poly##_tbl[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
 } \
 \
 static inline uint_fast32_t crc31_byte_##poly(uint_fast32_t const crc, uint8_t const data_byte) \
@@ -2376,8 +2376,8 @@ static uint_fast32_t crc31_##poly(uint_fast32_t const init, uint8_t const * data
 #define make_crc_kernel_f32_t4(poly) \
 static inline uint_fast32_t crc32_byte_##poly##_impl(uint_fast32_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[((crc >> (32 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
-  crc = poly[((crc >> (32 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
+  crc = crc32_##poly##_tbl[((crc >> (32 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
+  crc = crc32_##poly##_tbl[((crc >> (32 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
   return crc; \
 } \
 \
@@ -2400,8 +2400,8 @@ static uint_fast32_t crc32_##poly(uint_fast32_t const init, uint8_t const * data
 #define make_crc_kernel_r32_t4(poly) \
 static inline uint_fast32_t crc32_byte_##poly##_impl(uint_fast32_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
-  crc = poly[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
+  crc = crc32_##poly##_tbl[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
+  crc = crc32_##poly##_tbl[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
   return crc; \
 } \
 \
@@ -2424,7 +2424,7 @@ static uint_fast32_t crc32_##poly(uint_fast32_t const init, uint8_t const * data
 #define make_crc_kernel_f32_t8(poly) \
 static inline uint_fast32_t crc32_byte_##poly##_impl(uint_fast32_t const crc, uint8_t const data_byte) \
 { \
-  return poly[((crc >> (32 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
+  return crc32_##poly##_tbl[((crc >> (32 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
 } \
 \
 static inline uint_fast32_t crc32_byte_##poly(uint_fast32_t const crc, uint8_t const data_byte) \
@@ -2446,7 +2446,7 @@ static uint_fast32_t crc32_##poly(uint_fast32_t const init, uint8_t const * data
 #define make_crc_kernel_r32_t8(poly) \
 static inline uint_fast32_t crc32_byte_##poly##_impl(uint_fast32_t const crc, uint8_t const data_byte) \
 { \
-  return poly[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
+  return crc32_##poly##_tbl[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
 } \
 \
 static inline uint_fast32_t crc32_byte_##poly(uint_fast32_t const crc, uint8_t const data_byte) \
@@ -2474,8 +2474,8 @@ static uint_fast32_t crc32_##poly(uint_fast32_t const init, uint8_t const * data
 #define make_crc_kernel_f33_t4(poly) \
 static inline uint_fast64_t crc33_byte_##poly##_impl(uint_fast64_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[((crc >> (33 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
-  crc = poly[((crc >> (33 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
+  crc = crc33_##poly##_tbl[((crc >> (33 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
+  crc = crc33_##poly##_tbl[((crc >> (33 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
   return crc; \
 } \
 \
@@ -2498,8 +2498,8 @@ static uint_fast64_t crc33_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_r33_t4(poly) \
 static inline uint_fast64_t crc33_byte_##poly##_impl(uint_fast64_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
-  crc = poly[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
+  crc = crc33_##poly##_tbl[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
+  crc = crc33_##poly##_tbl[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
   return crc; \
 } \
 \
@@ -2522,7 +2522,7 @@ static uint_fast64_t crc33_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_f33_t8(poly) \
 static inline uint_fast64_t crc33_byte_##poly##_impl(uint_fast64_t const crc, uint8_t const data_byte) \
 { \
-  return poly[((crc >> (33 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
+  return crc33_##poly##_tbl[((crc >> (33 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
 } \
 \
 static inline uint_fast64_t crc33_byte_##poly(uint_fast64_t const crc, uint8_t const data_byte) \
@@ -2544,7 +2544,7 @@ static uint_fast64_t crc33_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_r33_t8(poly) \
 static inline uint_fast64_t crc33_byte_##poly##_impl(uint_fast64_t const crc, uint8_t const data_byte) \
 { \
-  return poly[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
+  return crc33_##poly##_tbl[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
 } \
 \
 static inline uint_fast64_t crc33_byte_##poly(uint_fast64_t const crc, uint8_t const data_byte) \
@@ -2572,8 +2572,8 @@ static uint_fast64_t crc33_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_f34_t4(poly) \
 static inline uint_fast64_t crc34_byte_##poly##_impl(uint_fast64_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[((crc >> (34 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
-  crc = poly[((crc >> (34 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
+  crc = crc34_##poly##_tbl[((crc >> (34 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
+  crc = crc34_##poly##_tbl[((crc >> (34 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
   return crc; \
 } \
 \
@@ -2596,8 +2596,8 @@ static uint_fast64_t crc34_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_r34_t4(poly) \
 static inline uint_fast64_t crc34_byte_##poly##_impl(uint_fast64_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
-  crc = poly[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
+  crc = crc34_##poly##_tbl[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
+  crc = crc34_##poly##_tbl[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
   return crc; \
 } \
 \
@@ -2620,7 +2620,7 @@ static uint_fast64_t crc34_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_f34_t8(poly) \
 static inline uint_fast64_t crc34_byte_##poly##_impl(uint_fast64_t const crc, uint8_t const data_byte) \
 { \
-  return poly[((crc >> (34 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
+  return crc34_##poly##_tbl[((crc >> (34 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
 } \
 \
 static inline uint_fast64_t crc34_byte_##poly(uint_fast64_t const crc, uint8_t const data_byte) \
@@ -2642,7 +2642,7 @@ static uint_fast64_t crc34_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_r34_t8(poly) \
 static inline uint_fast64_t crc34_byte_##poly##_impl(uint_fast64_t const crc, uint8_t const data_byte) \
 { \
-  return poly[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
+  return crc34_##poly##_tbl[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
 } \
 \
 static inline uint_fast64_t crc34_byte_##poly(uint_fast64_t const crc, uint8_t const data_byte) \
@@ -2670,8 +2670,8 @@ static uint_fast64_t crc34_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_f35_t4(poly) \
 static inline uint_fast64_t crc35_byte_##poly##_impl(uint_fast64_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[((crc >> (35 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
-  crc = poly[((crc >> (35 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
+  crc = crc35_##poly##_tbl[((crc >> (35 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
+  crc = crc35_##poly##_tbl[((crc >> (35 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
   return crc; \
 } \
 \
@@ -2694,8 +2694,8 @@ static uint_fast64_t crc35_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_r35_t4(poly) \
 static inline uint_fast64_t crc35_byte_##poly##_impl(uint_fast64_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
-  crc = poly[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
+  crc = crc35_##poly##_tbl[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
+  crc = crc35_##poly##_tbl[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
   return crc; \
 } \
 \
@@ -2718,7 +2718,7 @@ static uint_fast64_t crc35_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_f35_t8(poly) \
 static inline uint_fast64_t crc35_byte_##poly##_impl(uint_fast64_t const crc, uint8_t const data_byte) \
 { \
-  return poly[((crc >> (35 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
+  return crc35_##poly##_tbl[((crc >> (35 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
 } \
 \
 static inline uint_fast64_t crc35_byte_##poly(uint_fast64_t const crc, uint8_t const data_byte) \
@@ -2740,7 +2740,7 @@ static uint_fast64_t crc35_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_r35_t8(poly) \
 static inline uint_fast64_t crc35_byte_##poly##_impl(uint_fast64_t const crc, uint8_t const data_byte) \
 { \
-  return poly[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
+  return crc35_##poly##_tbl[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
 } \
 \
 static inline uint_fast64_t crc35_byte_##poly(uint_fast64_t const crc, uint8_t const data_byte) \
@@ -2768,8 +2768,8 @@ static uint_fast64_t crc35_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_f36_t4(poly) \
 static inline uint_fast64_t crc36_byte_##poly##_impl(uint_fast64_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[((crc >> (36 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
-  crc = poly[((crc >> (36 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
+  crc = crc36_##poly##_tbl[((crc >> (36 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
+  crc = crc36_##poly##_tbl[((crc >> (36 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
   return crc; \
 } \
 \
@@ -2792,8 +2792,8 @@ static uint_fast64_t crc36_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_r36_t4(poly) \
 static inline uint_fast64_t crc36_byte_##poly##_impl(uint_fast64_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
-  crc = poly[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
+  crc = crc36_##poly##_tbl[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
+  crc = crc36_##poly##_tbl[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
   return crc; \
 } \
 \
@@ -2816,7 +2816,7 @@ static uint_fast64_t crc36_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_f36_t8(poly) \
 static inline uint_fast64_t crc36_byte_##poly##_impl(uint_fast64_t const crc, uint8_t const data_byte) \
 { \
-  return poly[((crc >> (36 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
+  return crc36_##poly##_tbl[((crc >> (36 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
 } \
 \
 static inline uint_fast64_t crc36_byte_##poly(uint_fast64_t const crc, uint8_t const data_byte) \
@@ -2838,7 +2838,7 @@ static uint_fast64_t crc36_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_r36_t8(poly) \
 static inline uint_fast64_t crc36_byte_##poly##_impl(uint_fast64_t const crc, uint8_t const data_byte) \
 { \
-  return poly[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
+  return crc36_##poly##_tbl[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
 } \
 \
 static inline uint_fast64_t crc36_byte_##poly(uint_fast64_t const crc, uint8_t const data_byte) \
@@ -2866,8 +2866,8 @@ static uint_fast64_t crc36_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_f37_t4(poly) \
 static inline uint_fast64_t crc37_byte_##poly##_impl(uint_fast64_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[((crc >> (37 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
-  crc = poly[((crc >> (37 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
+  crc = crc37_##poly##_tbl[((crc >> (37 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
+  crc = crc37_##poly##_tbl[((crc >> (37 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
   return crc; \
 } \
 \
@@ -2890,8 +2890,8 @@ static uint_fast64_t crc37_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_r37_t4(poly) \
 static inline uint_fast64_t crc37_byte_##poly##_impl(uint_fast64_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
-  crc = poly[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
+  crc = crc37_##poly##_tbl[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
+  crc = crc37_##poly##_tbl[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
   return crc; \
 } \
 \
@@ -2914,7 +2914,7 @@ static uint_fast64_t crc37_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_f37_t8(poly) \
 static inline uint_fast64_t crc37_byte_##poly##_impl(uint_fast64_t const crc, uint8_t const data_byte) \
 { \
-  return poly[((crc >> (37 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
+  return crc37_##poly##_tbl[((crc >> (37 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
 } \
 \
 static inline uint_fast64_t crc37_byte_##poly(uint_fast64_t const crc, uint8_t const data_byte) \
@@ -2936,7 +2936,7 @@ static uint_fast64_t crc37_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_r37_t8(poly) \
 static inline uint_fast64_t crc37_byte_##poly##_impl(uint_fast64_t const crc, uint8_t const data_byte) \
 { \
-  return poly[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
+  return crc37_##poly##_tbl[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
 } \
 \
 static inline uint_fast64_t crc37_byte_##poly(uint_fast64_t const crc, uint8_t const data_byte) \
@@ -2964,8 +2964,8 @@ static uint_fast64_t crc37_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_f38_t4(poly) \
 static inline uint_fast64_t crc38_byte_##poly##_impl(uint_fast64_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[((crc >> (38 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
-  crc = poly[((crc >> (38 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
+  crc = crc38_##poly##_tbl[((crc >> (38 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
+  crc = crc38_##poly##_tbl[((crc >> (38 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
   return crc; \
 } \
 \
@@ -2988,8 +2988,8 @@ static uint_fast64_t crc38_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_r38_t4(poly) \
 static inline uint_fast64_t crc38_byte_##poly##_impl(uint_fast64_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
-  crc = poly[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
+  crc = crc38_##poly##_tbl[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
+  crc = crc38_##poly##_tbl[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
   return crc; \
 } \
 \
@@ -3012,7 +3012,7 @@ static uint_fast64_t crc38_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_f38_t8(poly) \
 static inline uint_fast64_t crc38_byte_##poly##_impl(uint_fast64_t const crc, uint8_t const data_byte) \
 { \
-  return poly[((crc >> (38 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
+  return crc38_##poly##_tbl[((crc >> (38 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
 } \
 \
 static inline uint_fast64_t crc38_byte_##poly(uint_fast64_t const crc, uint8_t const data_byte) \
@@ -3034,7 +3034,7 @@ static uint_fast64_t crc38_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_r38_t8(poly) \
 static inline uint_fast64_t crc38_byte_##poly##_impl(uint_fast64_t const crc, uint8_t const data_byte) \
 { \
-  return poly[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
+  return crc38_##poly##_tbl[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
 } \
 \
 static inline uint_fast64_t crc38_byte_##poly(uint_fast64_t const crc, uint8_t const data_byte) \
@@ -3062,8 +3062,8 @@ static uint_fast64_t crc38_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_f39_t4(poly) \
 static inline uint_fast64_t crc39_byte_##poly##_impl(uint_fast64_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[((crc >> (39 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
-  crc = poly[((crc >> (39 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
+  crc = crc39_##poly##_tbl[((crc >> (39 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
+  crc = crc39_##poly##_tbl[((crc >> (39 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
   return crc; \
 } \
 \
@@ -3086,8 +3086,8 @@ static uint_fast64_t crc39_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_r39_t4(poly) \
 static inline uint_fast64_t crc39_byte_##poly##_impl(uint_fast64_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
-  crc = poly[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
+  crc = crc39_##poly##_tbl[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
+  crc = crc39_##poly##_tbl[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
   return crc; \
 } \
 \
@@ -3110,7 +3110,7 @@ static uint_fast64_t crc39_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_f39_t8(poly) \
 static inline uint_fast64_t crc39_byte_##poly##_impl(uint_fast64_t const crc, uint8_t const data_byte) \
 { \
-  return poly[((crc >> (39 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
+  return crc39_##poly##_tbl[((crc >> (39 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
 } \
 \
 static inline uint_fast64_t crc39_byte_##poly(uint_fast64_t const crc, uint8_t const data_byte) \
@@ -3132,7 +3132,7 @@ static uint_fast64_t crc39_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_r39_t8(poly) \
 static inline uint_fast64_t crc39_byte_##poly##_impl(uint_fast64_t const crc, uint8_t const data_byte) \
 { \
-  return poly[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
+  return crc39_##poly##_tbl[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
 } \
 \
 static inline uint_fast64_t crc39_byte_##poly(uint_fast64_t const crc, uint8_t const data_byte) \
@@ -3160,8 +3160,8 @@ static uint_fast64_t crc39_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_f40_t4(poly) \
 static inline uint_fast64_t crc40_byte_##poly##_impl(uint_fast64_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[((crc >> (40 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
-  crc = poly[((crc >> (40 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
+  crc = crc40_##poly##_tbl[((crc >> (40 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
+  crc = crc40_##poly##_tbl[((crc >> (40 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
   return crc; \
 } \
 \
@@ -3184,8 +3184,8 @@ static uint_fast64_t crc40_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_r40_t4(poly) \
 static inline uint_fast64_t crc40_byte_##poly##_impl(uint_fast64_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
-  crc = poly[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
+  crc = crc40_##poly##_tbl[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
+  crc = crc40_##poly##_tbl[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
   return crc; \
 } \
 \
@@ -3208,7 +3208,7 @@ static uint_fast64_t crc40_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_f40_t8(poly) \
 static inline uint_fast64_t crc40_byte_##poly##_impl(uint_fast64_t const crc, uint8_t const data_byte) \
 { \
-  return poly[((crc >> (40 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
+  return crc40_##poly##_tbl[((crc >> (40 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
 } \
 \
 static inline uint_fast64_t crc40_byte_##poly(uint_fast64_t const crc, uint8_t const data_byte) \
@@ -3230,7 +3230,7 @@ static uint_fast64_t crc40_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_r40_t8(poly) \
 static inline uint_fast64_t crc40_byte_##poly##_impl(uint_fast64_t const crc, uint8_t const data_byte) \
 { \
-  return poly[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
+  return crc40_##poly##_tbl[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
 } \
 \
 static inline uint_fast64_t crc40_byte_##poly(uint_fast64_t const crc, uint8_t const data_byte) \
@@ -3258,8 +3258,8 @@ static uint_fast64_t crc40_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_f41_t4(poly) \
 static inline uint_fast64_t crc41_byte_##poly##_impl(uint_fast64_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[((crc >> (41 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
-  crc = poly[((crc >> (41 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
+  crc = crc41_##poly##_tbl[((crc >> (41 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
+  crc = crc41_##poly##_tbl[((crc >> (41 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
   return crc; \
 } \
 \
@@ -3282,8 +3282,8 @@ static uint_fast64_t crc41_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_r41_t4(poly) \
 static inline uint_fast64_t crc41_byte_##poly##_impl(uint_fast64_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
-  crc = poly[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
+  crc = crc41_##poly##_tbl[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
+  crc = crc41_##poly##_tbl[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
   return crc; \
 } \
 \
@@ -3306,7 +3306,7 @@ static uint_fast64_t crc41_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_f41_t8(poly) \
 static inline uint_fast64_t crc41_byte_##poly##_impl(uint_fast64_t const crc, uint8_t const data_byte) \
 { \
-  return poly[((crc >> (41 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
+  return crc41_##poly##_tbl[((crc >> (41 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
 } \
 \
 static inline uint_fast64_t crc41_byte_##poly(uint_fast64_t const crc, uint8_t const data_byte) \
@@ -3328,7 +3328,7 @@ static uint_fast64_t crc41_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_r41_t8(poly) \
 static inline uint_fast64_t crc41_byte_##poly##_impl(uint_fast64_t const crc, uint8_t const data_byte) \
 { \
-  return poly[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
+  return crc41_##poly##_tbl[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
 } \
 \
 static inline uint_fast64_t crc41_byte_##poly(uint_fast64_t const crc, uint8_t const data_byte) \
@@ -3356,8 +3356,8 @@ static uint_fast64_t crc41_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_f42_t4(poly) \
 static inline uint_fast64_t crc42_byte_##poly##_impl(uint_fast64_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[((crc >> (42 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
-  crc = poly[((crc >> (42 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
+  crc = crc42_##poly##_tbl[((crc >> (42 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
+  crc = crc42_##poly##_tbl[((crc >> (42 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
   return crc; \
 } \
 \
@@ -3380,8 +3380,8 @@ static uint_fast64_t crc42_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_r42_t4(poly) \
 static inline uint_fast64_t crc42_byte_##poly##_impl(uint_fast64_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
-  crc = poly[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
+  crc = crc42_##poly##_tbl[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
+  crc = crc42_##poly##_tbl[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
   return crc; \
 } \
 \
@@ -3404,7 +3404,7 @@ static uint_fast64_t crc42_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_f42_t8(poly) \
 static inline uint_fast64_t crc42_byte_##poly##_impl(uint_fast64_t const crc, uint8_t const data_byte) \
 { \
-  return poly[((crc >> (42 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
+  return crc42_##poly##_tbl[((crc >> (42 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
 } \
 \
 static inline uint_fast64_t crc42_byte_##poly(uint_fast64_t const crc, uint8_t const data_byte) \
@@ -3426,7 +3426,7 @@ static uint_fast64_t crc42_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_r42_t8(poly) \
 static inline uint_fast64_t crc42_byte_##poly##_impl(uint_fast64_t const crc, uint8_t const data_byte) \
 { \
-  return poly[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
+  return crc42_##poly##_tbl[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
 } \
 \
 static inline uint_fast64_t crc42_byte_##poly(uint_fast64_t const crc, uint8_t const data_byte) \
@@ -3454,8 +3454,8 @@ static uint_fast64_t crc42_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_f43_t4(poly) \
 static inline uint_fast64_t crc43_byte_##poly##_impl(uint_fast64_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[((crc >> (43 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
-  crc = poly[((crc >> (43 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
+  crc = crc43_##poly##_tbl[((crc >> (43 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
+  crc = crc43_##poly##_tbl[((crc >> (43 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
   return crc; \
 } \
 \
@@ -3478,8 +3478,8 @@ static uint_fast64_t crc43_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_r43_t4(poly) \
 static inline uint_fast64_t crc43_byte_##poly##_impl(uint_fast64_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
-  crc = poly[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
+  crc = crc43_##poly##_tbl[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
+  crc = crc43_##poly##_tbl[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
   return crc; \
 } \
 \
@@ -3502,7 +3502,7 @@ static uint_fast64_t crc43_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_f43_t8(poly) \
 static inline uint_fast64_t crc43_byte_##poly##_impl(uint_fast64_t const crc, uint8_t const data_byte) \
 { \
-  return poly[((crc >> (43 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
+  return crc43_##poly##_tbl[((crc >> (43 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
 } \
 \
 static inline uint_fast64_t crc43_byte_##poly(uint_fast64_t const crc, uint8_t const data_byte) \
@@ -3524,7 +3524,7 @@ static uint_fast64_t crc43_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_r43_t8(poly) \
 static inline uint_fast64_t crc43_byte_##poly##_impl(uint_fast64_t const crc, uint8_t const data_byte) \
 { \
-  return poly[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
+  return crc43_##poly##_tbl[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
 } \
 \
 static inline uint_fast64_t crc43_byte_##poly(uint_fast64_t const crc, uint8_t const data_byte) \
@@ -3552,8 +3552,8 @@ static uint_fast64_t crc43_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_f44_t4(poly) \
 static inline uint_fast64_t crc44_byte_##poly##_impl(uint_fast64_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[((crc >> (44 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
-  crc = poly[((crc >> (44 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
+  crc = crc44_##poly##_tbl[((crc >> (44 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
+  crc = crc44_##poly##_tbl[((crc >> (44 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
   return crc; \
 } \
 \
@@ -3576,8 +3576,8 @@ static uint_fast64_t crc44_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_r44_t4(poly) \
 static inline uint_fast64_t crc44_byte_##poly##_impl(uint_fast64_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
-  crc = poly[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
+  crc = crc44_##poly##_tbl[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
+  crc = crc44_##poly##_tbl[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
   return crc; \
 } \
 \
@@ -3600,7 +3600,7 @@ static uint_fast64_t crc44_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_f44_t8(poly) \
 static inline uint_fast64_t crc44_byte_##poly##_impl(uint_fast64_t const crc, uint8_t const data_byte) \
 { \
-  return poly[((crc >> (44 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
+  return crc44_##poly##_tbl[((crc >> (44 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
 } \
 \
 static inline uint_fast64_t crc44_byte_##poly(uint_fast64_t const crc, uint8_t const data_byte) \
@@ -3622,7 +3622,7 @@ static uint_fast64_t crc44_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_r44_t8(poly) \
 static inline uint_fast64_t crc44_byte_##poly##_impl(uint_fast64_t const crc, uint8_t const data_byte) \
 { \
-  return poly[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
+  return crc44_##poly##_tbl[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
 } \
 \
 static inline uint_fast64_t crc44_byte_##poly(uint_fast64_t const crc, uint8_t const data_byte) \
@@ -3650,8 +3650,8 @@ static uint_fast64_t crc44_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_f45_t4(poly) \
 static inline uint_fast64_t crc45_byte_##poly##_impl(uint_fast64_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[((crc >> (45 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
-  crc = poly[((crc >> (45 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
+  crc = crc45_##poly##_tbl[((crc >> (45 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
+  crc = crc45_##poly##_tbl[((crc >> (45 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
   return crc; \
 } \
 \
@@ -3674,8 +3674,8 @@ static uint_fast64_t crc45_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_r45_t4(poly) \
 static inline uint_fast64_t crc45_byte_##poly##_impl(uint_fast64_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
-  crc = poly[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
+  crc = crc45_##poly##_tbl[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
+  crc = crc45_##poly##_tbl[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
   return crc; \
 } \
 \
@@ -3698,7 +3698,7 @@ static uint_fast64_t crc45_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_f45_t8(poly) \
 static inline uint_fast64_t crc45_byte_##poly##_impl(uint_fast64_t const crc, uint8_t const data_byte) \
 { \
-  return poly[((crc >> (45 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
+  return crc45_##poly##_tbl[((crc >> (45 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
 } \
 \
 static inline uint_fast64_t crc45_byte_##poly(uint_fast64_t const crc, uint8_t const data_byte) \
@@ -3720,7 +3720,7 @@ static uint_fast64_t crc45_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_r45_t8(poly) \
 static inline uint_fast64_t crc45_byte_##poly##_impl(uint_fast64_t const crc, uint8_t const data_byte) \
 { \
-  return poly[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
+  return crc45_##poly##_tbl[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
 } \
 \
 static inline uint_fast64_t crc45_byte_##poly(uint_fast64_t const crc, uint8_t const data_byte) \
@@ -3748,8 +3748,8 @@ static uint_fast64_t crc45_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_f46_t4(poly) \
 static inline uint_fast64_t crc46_byte_##poly##_impl(uint_fast64_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[((crc >> (46 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
-  crc = poly[((crc >> (46 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
+  crc = crc46_##poly##_tbl[((crc >> (46 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
+  crc = crc46_##poly##_tbl[((crc >> (46 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
   return crc; \
 } \
 \
@@ -3772,8 +3772,8 @@ static uint_fast64_t crc46_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_r46_t4(poly) \
 static inline uint_fast64_t crc46_byte_##poly##_impl(uint_fast64_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
-  crc = poly[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
+  crc = crc46_##poly##_tbl[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
+  crc = crc46_##poly##_tbl[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
   return crc; \
 } \
 \
@@ -3796,7 +3796,7 @@ static uint_fast64_t crc46_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_f46_t8(poly) \
 static inline uint_fast64_t crc46_byte_##poly##_impl(uint_fast64_t const crc, uint8_t const data_byte) \
 { \
-  return poly[((crc >> (46 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
+  return crc46_##poly##_tbl[((crc >> (46 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
 } \
 \
 static inline uint_fast64_t crc46_byte_##poly(uint_fast64_t const crc, uint8_t const data_byte) \
@@ -3818,7 +3818,7 @@ static uint_fast64_t crc46_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_r46_t8(poly) \
 static inline uint_fast64_t crc46_byte_##poly##_impl(uint_fast64_t const crc, uint8_t const data_byte) \
 { \
-  return poly[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
+  return crc46_##poly##_tbl[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
 } \
 \
 static inline uint_fast64_t crc46_byte_##poly(uint_fast64_t const crc, uint8_t const data_byte) \
@@ -3846,8 +3846,8 @@ static uint_fast64_t crc46_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_f47_t4(poly) \
 static inline uint_fast64_t crc47_byte_##poly##_impl(uint_fast64_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[((crc >> (47 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
-  crc = poly[((crc >> (47 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
+  crc = crc47_##poly##_tbl[((crc >> (47 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
+  crc = crc47_##poly##_tbl[((crc >> (47 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
   return crc; \
 } \
 \
@@ -3870,8 +3870,8 @@ static uint_fast64_t crc47_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_r47_t4(poly) \
 static inline uint_fast64_t crc47_byte_##poly##_impl(uint_fast64_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
-  crc = poly[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
+  crc = crc47_##poly##_tbl[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
+  crc = crc47_##poly##_tbl[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
   return crc; \
 } \
 \
@@ -3894,7 +3894,7 @@ static uint_fast64_t crc47_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_f47_t8(poly) \
 static inline uint_fast64_t crc47_byte_##poly##_impl(uint_fast64_t const crc, uint8_t const data_byte) \
 { \
-  return poly[((crc >> (47 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
+  return crc47_##poly##_tbl[((crc >> (47 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
 } \
 \
 static inline uint_fast64_t crc47_byte_##poly(uint_fast64_t const crc, uint8_t const data_byte) \
@@ -3916,7 +3916,7 @@ static uint_fast64_t crc47_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_r47_t8(poly) \
 static inline uint_fast64_t crc47_byte_##poly##_impl(uint_fast64_t const crc, uint8_t const data_byte) \
 { \
-  return poly[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
+  return crc47_##poly##_tbl[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
 } \
 \
 static inline uint_fast64_t crc47_byte_##poly(uint_fast64_t const crc, uint8_t const data_byte) \
@@ -3944,8 +3944,8 @@ static uint_fast64_t crc47_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_f48_t4(poly) \
 static inline uint_fast64_t crc48_byte_##poly##_impl(uint_fast64_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[((crc >> (48 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
-  crc = poly[((crc >> (48 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
+  crc = crc48_##poly##_tbl[((crc >> (48 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
+  crc = crc48_##poly##_tbl[((crc >> (48 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
   return crc; \
 } \
 \
@@ -3968,8 +3968,8 @@ static uint_fast64_t crc48_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_r48_t4(poly) \
 static inline uint_fast64_t crc48_byte_##poly##_impl(uint_fast64_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
-  crc = poly[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
+  crc = crc48_##poly##_tbl[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
+  crc = crc48_##poly##_tbl[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
   return crc; \
 } \
 \
@@ -3992,7 +3992,7 @@ static uint_fast64_t crc48_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_f48_t8(poly) \
 static inline uint_fast64_t crc48_byte_##poly##_impl(uint_fast64_t const crc, uint8_t const data_byte) \
 { \
-  return poly[((crc >> (48 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
+  return crc48_##poly##_tbl[((crc >> (48 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
 } \
 \
 static inline uint_fast64_t crc48_byte_##poly(uint_fast64_t const crc, uint8_t const data_byte) \
@@ -4014,7 +4014,7 @@ static uint_fast64_t crc48_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_r48_t8(poly) \
 static inline uint_fast64_t crc48_byte_##poly##_impl(uint_fast64_t const crc, uint8_t const data_byte) \
 { \
-  return poly[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
+  return crc48_##poly##_tbl[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
 } \
 \
 static inline uint_fast64_t crc48_byte_##poly(uint_fast64_t const crc, uint8_t const data_byte) \
@@ -4042,8 +4042,8 @@ static uint_fast64_t crc48_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_f49_t4(poly) \
 static inline uint_fast64_t crc49_byte_##poly##_impl(uint_fast64_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[((crc >> (49 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
-  crc = poly[((crc >> (49 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
+  crc = crc49_##poly##_tbl[((crc >> (49 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
+  crc = crc49_##poly##_tbl[((crc >> (49 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
   return crc; \
 } \
 \
@@ -4066,8 +4066,8 @@ static uint_fast64_t crc49_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_r49_t4(poly) \
 static inline uint_fast64_t crc49_byte_##poly##_impl(uint_fast64_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
-  crc = poly[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
+  crc = crc49_##poly##_tbl[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
+  crc = crc49_##poly##_tbl[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
   return crc; \
 } \
 \
@@ -4090,7 +4090,7 @@ static uint_fast64_t crc49_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_f49_t8(poly) \
 static inline uint_fast64_t crc49_byte_##poly##_impl(uint_fast64_t const crc, uint8_t const data_byte) \
 { \
-  return poly[((crc >> (49 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
+  return crc49_##poly##_tbl[((crc >> (49 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
 } \
 \
 static inline uint_fast64_t crc49_byte_##poly(uint_fast64_t const crc, uint8_t const data_byte) \
@@ -4112,7 +4112,7 @@ static uint_fast64_t crc49_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_r49_t8(poly) \
 static inline uint_fast64_t crc49_byte_##poly##_impl(uint_fast64_t const crc, uint8_t const data_byte) \
 { \
-  return poly[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
+  return crc49_##poly##_tbl[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
 } \
 \
 static inline uint_fast64_t crc49_byte_##poly(uint_fast64_t const crc, uint8_t const data_byte) \
@@ -4140,8 +4140,8 @@ static uint_fast64_t crc49_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_f50_t4(poly) \
 static inline uint_fast64_t crc50_byte_##poly##_impl(uint_fast64_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[((crc >> (50 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
-  crc = poly[((crc >> (50 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
+  crc = crc50_##poly##_tbl[((crc >> (50 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
+  crc = crc50_##poly##_tbl[((crc >> (50 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
   return crc; \
 } \
 \
@@ -4164,8 +4164,8 @@ static uint_fast64_t crc50_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_r50_t4(poly) \
 static inline uint_fast64_t crc50_byte_##poly##_impl(uint_fast64_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
-  crc = poly[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
+  crc = crc50_##poly##_tbl[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
+  crc = crc50_##poly##_tbl[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
   return crc; \
 } \
 \
@@ -4188,7 +4188,7 @@ static uint_fast64_t crc50_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_f50_t8(poly) \
 static inline uint_fast64_t crc50_byte_##poly##_impl(uint_fast64_t const crc, uint8_t const data_byte) \
 { \
-  return poly[((crc >> (50 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
+  return crc50_##poly##_tbl[((crc >> (50 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
 } \
 \
 static inline uint_fast64_t crc50_byte_##poly(uint_fast64_t const crc, uint8_t const data_byte) \
@@ -4210,7 +4210,7 @@ static uint_fast64_t crc50_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_r50_t8(poly) \
 static inline uint_fast64_t crc50_byte_##poly##_impl(uint_fast64_t const crc, uint8_t const data_byte) \
 { \
-  return poly[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
+  return crc50_##poly##_tbl[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
 } \
 \
 static inline uint_fast64_t crc50_byte_##poly(uint_fast64_t const crc, uint8_t const data_byte) \
@@ -4238,8 +4238,8 @@ static uint_fast64_t crc50_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_f51_t4(poly) \
 static inline uint_fast64_t crc51_byte_##poly##_impl(uint_fast64_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[((crc >> (51 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
-  crc = poly[((crc >> (51 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
+  crc = crc51_##poly##_tbl[((crc >> (51 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
+  crc = crc51_##poly##_tbl[((crc >> (51 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
   return crc; \
 } \
 \
@@ -4262,8 +4262,8 @@ static uint_fast64_t crc51_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_r51_t4(poly) \
 static inline uint_fast64_t crc51_byte_##poly##_impl(uint_fast64_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
-  crc = poly[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
+  crc = crc51_##poly##_tbl[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
+  crc = crc51_##poly##_tbl[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
   return crc; \
 } \
 \
@@ -4286,7 +4286,7 @@ static uint_fast64_t crc51_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_f51_t8(poly) \
 static inline uint_fast64_t crc51_byte_##poly##_impl(uint_fast64_t const crc, uint8_t const data_byte) \
 { \
-  return poly[((crc >> (51 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
+  return crc51_##poly##_tbl[((crc >> (51 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
 } \
 \
 static inline uint_fast64_t crc51_byte_##poly(uint_fast64_t const crc, uint8_t const data_byte) \
@@ -4308,7 +4308,7 @@ static uint_fast64_t crc51_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_r51_t8(poly) \
 static inline uint_fast64_t crc51_byte_##poly##_impl(uint_fast64_t const crc, uint8_t const data_byte) \
 { \
-  return poly[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
+  return crc51_##poly##_tbl[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
 } \
 \
 static inline uint_fast64_t crc51_byte_##poly(uint_fast64_t const crc, uint8_t const data_byte) \
@@ -4336,8 +4336,8 @@ static uint_fast64_t crc51_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_f52_t4(poly) \
 static inline uint_fast64_t crc52_byte_##poly##_impl(uint_fast64_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[((crc >> (52 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
-  crc = poly[((crc >> (52 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
+  crc = crc52_##poly##_tbl[((crc >> (52 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
+  crc = crc52_##poly##_tbl[((crc >> (52 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
   return crc; \
 } \
 \
@@ -4360,8 +4360,8 @@ static uint_fast64_t crc52_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_r52_t4(poly) \
 static inline uint_fast64_t crc52_byte_##poly##_impl(uint_fast64_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
-  crc = poly[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
+  crc = crc52_##poly##_tbl[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
+  crc = crc52_##poly##_tbl[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
   return crc; \
 } \
 \
@@ -4384,7 +4384,7 @@ static uint_fast64_t crc52_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_f52_t8(poly) \
 static inline uint_fast64_t crc52_byte_##poly##_impl(uint_fast64_t const crc, uint8_t const data_byte) \
 { \
-  return poly[((crc >> (52 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
+  return crc52_##poly##_tbl[((crc >> (52 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
 } \
 \
 static inline uint_fast64_t crc52_byte_##poly(uint_fast64_t const crc, uint8_t const data_byte) \
@@ -4406,7 +4406,7 @@ static uint_fast64_t crc52_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_r52_t8(poly) \
 static inline uint_fast64_t crc52_byte_##poly##_impl(uint_fast64_t const crc, uint8_t const data_byte) \
 { \
-  return poly[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
+  return crc52_##poly##_tbl[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
 } \
 \
 static inline uint_fast64_t crc52_byte_##poly(uint_fast64_t const crc, uint8_t const data_byte) \
@@ -4434,8 +4434,8 @@ static uint_fast64_t crc52_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_f53_t4(poly) \
 static inline uint_fast64_t crc53_byte_##poly##_impl(uint_fast64_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[((crc >> (53 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
-  crc = poly[((crc >> (53 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
+  crc = crc53_##poly##_tbl[((crc >> (53 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
+  crc = crc53_##poly##_tbl[((crc >> (53 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
   return crc; \
 } \
 \
@@ -4458,8 +4458,8 @@ static uint_fast64_t crc53_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_r53_t4(poly) \
 static inline uint_fast64_t crc53_byte_##poly##_impl(uint_fast64_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
-  crc = poly[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
+  crc = crc53_##poly##_tbl[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
+  crc = crc53_##poly##_tbl[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
   return crc; \
 } \
 \
@@ -4482,7 +4482,7 @@ static uint_fast64_t crc53_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_f53_t8(poly) \
 static inline uint_fast64_t crc53_byte_##poly##_impl(uint_fast64_t const crc, uint8_t const data_byte) \
 { \
-  return poly[((crc >> (53 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
+  return crc53_##poly##_tbl[((crc >> (53 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
 } \
 \
 static inline uint_fast64_t crc53_byte_##poly(uint_fast64_t const crc, uint8_t const data_byte) \
@@ -4504,7 +4504,7 @@ static uint_fast64_t crc53_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_r53_t8(poly) \
 static inline uint_fast64_t crc53_byte_##poly##_impl(uint_fast64_t const crc, uint8_t const data_byte) \
 { \
-  return poly[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
+  return crc53_##poly##_tbl[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
 } \
 \
 static inline uint_fast64_t crc53_byte_##poly(uint_fast64_t const crc, uint8_t const data_byte) \
@@ -4532,8 +4532,8 @@ static uint_fast64_t crc53_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_f54_t4(poly) \
 static inline uint_fast64_t crc54_byte_##poly##_impl(uint_fast64_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[((crc >> (54 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
-  crc = poly[((crc >> (54 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
+  crc = crc54_##poly##_tbl[((crc >> (54 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
+  crc = crc54_##poly##_tbl[((crc >> (54 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
   return crc; \
 } \
 \
@@ -4556,8 +4556,8 @@ static uint_fast64_t crc54_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_r54_t4(poly) \
 static inline uint_fast64_t crc54_byte_##poly##_impl(uint_fast64_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
-  crc = poly[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
+  crc = crc54_##poly##_tbl[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
+  crc = crc54_##poly##_tbl[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
   return crc; \
 } \
 \
@@ -4580,7 +4580,7 @@ static uint_fast64_t crc54_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_f54_t8(poly) \
 static inline uint_fast64_t crc54_byte_##poly##_impl(uint_fast64_t const crc, uint8_t const data_byte) \
 { \
-  return poly[((crc >> (54 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
+  return crc54_##poly##_tbl[((crc >> (54 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
 } \
 \
 static inline uint_fast64_t crc54_byte_##poly(uint_fast64_t const crc, uint8_t const data_byte) \
@@ -4602,7 +4602,7 @@ static uint_fast64_t crc54_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_r54_t8(poly) \
 static inline uint_fast64_t crc54_byte_##poly##_impl(uint_fast64_t const crc, uint8_t const data_byte) \
 { \
-  return poly[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
+  return crc54_##poly##_tbl[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
 } \
 \
 static inline uint_fast64_t crc54_byte_##poly(uint_fast64_t const crc, uint8_t const data_byte) \
@@ -4630,8 +4630,8 @@ static uint_fast64_t crc54_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_f55_t4(poly) \
 static inline uint_fast64_t crc55_byte_##poly##_impl(uint_fast64_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[((crc >> (55 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
-  crc = poly[((crc >> (55 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
+  crc = crc55_##poly##_tbl[((crc >> (55 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
+  crc = crc55_##poly##_tbl[((crc >> (55 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
   return crc; \
 } \
 \
@@ -4654,8 +4654,8 @@ static uint_fast64_t crc55_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_r55_t4(poly) \
 static inline uint_fast64_t crc55_byte_##poly##_impl(uint_fast64_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
-  crc = poly[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
+  crc = crc55_##poly##_tbl[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
+  crc = crc55_##poly##_tbl[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
   return crc; \
 } \
 \
@@ -4678,7 +4678,7 @@ static uint_fast64_t crc55_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_f55_t8(poly) \
 static inline uint_fast64_t crc55_byte_##poly##_impl(uint_fast64_t const crc, uint8_t const data_byte) \
 { \
-  return poly[((crc >> (55 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
+  return crc55_##poly##_tbl[((crc >> (55 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
 } \
 \
 static inline uint_fast64_t crc55_byte_##poly(uint_fast64_t const crc, uint8_t const data_byte) \
@@ -4700,7 +4700,7 @@ static uint_fast64_t crc55_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_r55_t8(poly) \
 static inline uint_fast64_t crc55_byte_##poly##_impl(uint_fast64_t const crc, uint8_t const data_byte) \
 { \
-  return poly[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
+  return crc55_##poly##_tbl[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
 } \
 \
 static inline uint_fast64_t crc55_byte_##poly(uint_fast64_t const crc, uint8_t const data_byte) \
@@ -4728,8 +4728,8 @@ static uint_fast64_t crc55_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_f56_t4(poly) \
 static inline uint_fast64_t crc56_byte_##poly##_impl(uint_fast64_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[((crc >> (56 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
-  crc = poly[((crc >> (56 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
+  crc = crc56_##poly##_tbl[((crc >> (56 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
+  crc = crc56_##poly##_tbl[((crc >> (56 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
   return crc; \
 } \
 \
@@ -4752,8 +4752,8 @@ static uint_fast64_t crc56_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_r56_t4(poly) \
 static inline uint_fast64_t crc56_byte_##poly##_impl(uint_fast64_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
-  crc = poly[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
+  crc = crc56_##poly##_tbl[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
+  crc = crc56_##poly##_tbl[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
   return crc; \
 } \
 \
@@ -4776,7 +4776,7 @@ static uint_fast64_t crc56_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_f56_t8(poly) \
 static inline uint_fast64_t crc56_byte_##poly##_impl(uint_fast64_t const crc, uint8_t const data_byte) \
 { \
-  return poly[((crc >> (56 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
+  return crc56_##poly##_tbl[((crc >> (56 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
 } \
 \
 static inline uint_fast64_t crc56_byte_##poly(uint_fast64_t const crc, uint8_t const data_byte) \
@@ -4798,7 +4798,7 @@ static uint_fast64_t crc56_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_r56_t8(poly) \
 static inline uint_fast64_t crc56_byte_##poly##_impl(uint_fast64_t const crc, uint8_t const data_byte) \
 { \
-  return poly[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
+  return crc56_##poly##_tbl[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
 } \
 \
 static inline uint_fast64_t crc56_byte_##poly(uint_fast64_t const crc, uint8_t const data_byte) \
@@ -4826,8 +4826,8 @@ static uint_fast64_t crc56_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_f57_t4(poly) \
 static inline uint_fast64_t crc57_byte_##poly##_impl(uint_fast64_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[((crc >> (57 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
-  crc = poly[((crc >> (57 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
+  crc = crc57_##poly##_tbl[((crc >> (57 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
+  crc = crc57_##poly##_tbl[((crc >> (57 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
   return crc; \
 } \
 \
@@ -4850,8 +4850,8 @@ static uint_fast64_t crc57_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_r57_t4(poly) \
 static inline uint_fast64_t crc57_byte_##poly##_impl(uint_fast64_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
-  crc = poly[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
+  crc = crc57_##poly##_tbl[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
+  crc = crc57_##poly##_tbl[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
   return crc; \
 } \
 \
@@ -4874,7 +4874,7 @@ static uint_fast64_t crc57_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_f57_t8(poly) \
 static inline uint_fast64_t crc57_byte_##poly##_impl(uint_fast64_t const crc, uint8_t const data_byte) \
 { \
-  return poly[((crc >> (57 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
+  return crc57_##poly##_tbl[((crc >> (57 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
 } \
 \
 static inline uint_fast64_t crc57_byte_##poly(uint_fast64_t const crc, uint8_t const data_byte) \
@@ -4896,7 +4896,7 @@ static uint_fast64_t crc57_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_r57_t8(poly) \
 static inline uint_fast64_t crc57_byte_##poly##_impl(uint_fast64_t const crc, uint8_t const data_byte) \
 { \
-  return poly[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
+  return crc57_##poly##_tbl[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
 } \
 \
 static inline uint_fast64_t crc57_byte_##poly(uint_fast64_t const crc, uint8_t const data_byte) \
@@ -4924,8 +4924,8 @@ static uint_fast64_t crc57_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_f58_t4(poly) \
 static inline uint_fast64_t crc58_byte_##poly##_impl(uint_fast64_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[((crc >> (58 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
-  crc = poly[((crc >> (58 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
+  crc = crc58_##poly##_tbl[((crc >> (58 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
+  crc = crc58_##poly##_tbl[((crc >> (58 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
   return crc; \
 } \
 \
@@ -4948,8 +4948,8 @@ static uint_fast64_t crc58_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_r58_t4(poly) \
 static inline uint_fast64_t crc58_byte_##poly##_impl(uint_fast64_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
-  crc = poly[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
+  crc = crc58_##poly##_tbl[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
+  crc = crc58_##poly##_tbl[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
   return crc; \
 } \
 \
@@ -4972,7 +4972,7 @@ static uint_fast64_t crc58_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_f58_t8(poly) \
 static inline uint_fast64_t crc58_byte_##poly##_impl(uint_fast64_t const crc, uint8_t const data_byte) \
 { \
-  return poly[((crc >> (58 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
+  return crc58_##poly##_tbl[((crc >> (58 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
 } \
 \
 static inline uint_fast64_t crc58_byte_##poly(uint_fast64_t const crc, uint8_t const data_byte) \
@@ -4994,7 +4994,7 @@ static uint_fast64_t crc58_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_r58_t8(poly) \
 static inline uint_fast64_t crc58_byte_##poly##_impl(uint_fast64_t const crc, uint8_t const data_byte) \
 { \
-  return poly[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
+  return crc58_##poly##_tbl[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
 } \
 \
 static inline uint_fast64_t crc58_byte_##poly(uint_fast64_t const crc, uint8_t const data_byte) \
@@ -5022,8 +5022,8 @@ static uint_fast64_t crc58_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_f59_t4(poly) \
 static inline uint_fast64_t crc59_byte_##poly##_impl(uint_fast64_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[((crc >> (59 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
-  crc = poly[((crc >> (59 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
+  crc = crc59_##poly##_tbl[((crc >> (59 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
+  crc = crc59_##poly##_tbl[((crc >> (59 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
   return crc; \
 } \
 \
@@ -5046,8 +5046,8 @@ static uint_fast64_t crc59_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_r59_t4(poly) \
 static inline uint_fast64_t crc59_byte_##poly##_impl(uint_fast64_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
-  crc = poly[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
+  crc = crc59_##poly##_tbl[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
+  crc = crc59_##poly##_tbl[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
   return crc; \
 } \
 \
@@ -5070,7 +5070,7 @@ static uint_fast64_t crc59_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_f59_t8(poly) \
 static inline uint_fast64_t crc59_byte_##poly##_impl(uint_fast64_t const crc, uint8_t const data_byte) \
 { \
-  return poly[((crc >> (59 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
+  return crc59_##poly##_tbl[((crc >> (59 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
 } \
 \
 static inline uint_fast64_t crc59_byte_##poly(uint_fast64_t const crc, uint8_t const data_byte) \
@@ -5092,7 +5092,7 @@ static uint_fast64_t crc59_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_r59_t8(poly) \
 static inline uint_fast64_t crc59_byte_##poly##_impl(uint_fast64_t const crc, uint8_t const data_byte) \
 { \
-  return poly[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
+  return crc59_##poly##_tbl[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
 } \
 \
 static inline uint_fast64_t crc59_byte_##poly(uint_fast64_t const crc, uint8_t const data_byte) \
@@ -5120,8 +5120,8 @@ static uint_fast64_t crc59_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_f60_t4(poly) \
 static inline uint_fast64_t crc60_byte_##poly##_impl(uint_fast64_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[((crc >> (60 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
-  crc = poly[((crc >> (60 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
+  crc = crc60_##poly##_tbl[((crc >> (60 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
+  crc = crc60_##poly##_tbl[((crc >> (60 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
   return crc; \
 } \
 \
@@ -5144,8 +5144,8 @@ static uint_fast64_t crc60_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_r60_t4(poly) \
 static inline uint_fast64_t crc60_byte_##poly##_impl(uint_fast64_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
-  crc = poly[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
+  crc = crc60_##poly##_tbl[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
+  crc = crc60_##poly##_tbl[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
   return crc; \
 } \
 \
@@ -5168,7 +5168,7 @@ static uint_fast64_t crc60_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_f60_t8(poly) \
 static inline uint_fast64_t crc60_byte_##poly##_impl(uint_fast64_t const crc, uint8_t const data_byte) \
 { \
-  return poly[((crc >> (60 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
+  return crc60_##poly##_tbl[((crc >> (60 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
 } \
 \
 static inline uint_fast64_t crc60_byte_##poly(uint_fast64_t const crc, uint8_t const data_byte) \
@@ -5190,7 +5190,7 @@ static uint_fast64_t crc60_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_r60_t8(poly) \
 static inline uint_fast64_t crc60_byte_##poly##_impl(uint_fast64_t const crc, uint8_t const data_byte) \
 { \
-  return poly[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
+  return crc60_##poly##_tbl[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
 } \
 \
 static inline uint_fast64_t crc60_byte_##poly(uint_fast64_t const crc, uint8_t const data_byte) \
@@ -5218,8 +5218,8 @@ static uint_fast64_t crc60_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_f61_t4(poly) \
 static inline uint_fast64_t crc61_byte_##poly##_impl(uint_fast64_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[((crc >> (61 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
-  crc = poly[((crc >> (61 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
+  crc = crc61_##poly##_tbl[((crc >> (61 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
+  crc = crc61_##poly##_tbl[((crc >> (61 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
   return crc; \
 } \
 \
@@ -5242,8 +5242,8 @@ static uint_fast64_t crc61_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_r61_t4(poly) \
 static inline uint_fast64_t crc61_byte_##poly##_impl(uint_fast64_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
-  crc = poly[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
+  crc = crc61_##poly##_tbl[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
+  crc = crc61_##poly##_tbl[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
   return crc; \
 } \
 \
@@ -5266,7 +5266,7 @@ static uint_fast64_t crc61_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_f61_t8(poly) \
 static inline uint_fast64_t crc61_byte_##poly##_impl(uint_fast64_t const crc, uint8_t const data_byte) \
 { \
-  return poly[((crc >> (61 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
+  return crc61_##poly##_tbl[((crc >> (61 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
 } \
 \
 static inline uint_fast64_t crc61_byte_##poly(uint_fast64_t const crc, uint8_t const data_byte) \
@@ -5288,7 +5288,7 @@ static uint_fast64_t crc61_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_r61_t8(poly) \
 static inline uint_fast64_t crc61_byte_##poly##_impl(uint_fast64_t const crc, uint8_t const data_byte) \
 { \
-  return poly[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
+  return crc61_##poly##_tbl[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
 } \
 \
 static inline uint_fast64_t crc61_byte_##poly(uint_fast64_t const crc, uint8_t const data_byte) \
@@ -5316,8 +5316,8 @@ static uint_fast64_t crc61_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_f62_t4(poly) \
 static inline uint_fast64_t crc62_byte_##poly##_impl(uint_fast64_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[((crc >> (62 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
-  crc = poly[((crc >> (62 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
+  crc = crc62_##poly##_tbl[((crc >> (62 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
+  crc = crc62_##poly##_tbl[((crc >> (62 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
   return crc; \
 } \
 \
@@ -5340,8 +5340,8 @@ static uint_fast64_t crc62_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_r62_t4(poly) \
 static inline uint_fast64_t crc62_byte_##poly##_impl(uint_fast64_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
-  crc = poly[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
+  crc = crc62_##poly##_tbl[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
+  crc = crc62_##poly##_tbl[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
   return crc; \
 } \
 \
@@ -5364,7 +5364,7 @@ static uint_fast64_t crc62_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_f62_t8(poly) \
 static inline uint_fast64_t crc62_byte_##poly##_impl(uint_fast64_t const crc, uint8_t const data_byte) \
 { \
-  return poly[((crc >> (62 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
+  return crc62_##poly##_tbl[((crc >> (62 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
 } \
 \
 static inline uint_fast64_t crc62_byte_##poly(uint_fast64_t const crc, uint8_t const data_byte) \
@@ -5386,7 +5386,7 @@ static uint_fast64_t crc62_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_r62_t8(poly) \
 static inline uint_fast64_t crc62_byte_##poly##_impl(uint_fast64_t const crc, uint8_t const data_byte) \
 { \
-  return poly[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
+  return crc62_##poly##_tbl[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
 } \
 \
 static inline uint_fast64_t crc62_byte_##poly(uint_fast64_t const crc, uint8_t const data_byte) \
@@ -5414,8 +5414,8 @@ static uint_fast64_t crc62_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_f63_t4(poly) \
 static inline uint_fast64_t crc63_byte_##poly##_impl(uint_fast64_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[((crc >> (63 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
-  crc = poly[((crc >> (63 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
+  crc = crc63_##poly##_tbl[((crc >> (63 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
+  crc = crc63_##poly##_tbl[((crc >> (63 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
   return crc; \
 } \
 \
@@ -5438,8 +5438,8 @@ static uint_fast64_t crc63_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_r63_t4(poly) \
 static inline uint_fast64_t crc63_byte_##poly##_impl(uint_fast64_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
-  crc = poly[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
+  crc = crc63_##poly##_tbl[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
+  crc = crc63_##poly##_tbl[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
   return crc; \
 } \
 \
@@ -5462,7 +5462,7 @@ static uint_fast64_t crc63_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_f63_t8(poly) \
 static inline uint_fast64_t crc63_byte_##poly##_impl(uint_fast64_t const crc, uint8_t const data_byte) \
 { \
-  return poly[((crc >> (63 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
+  return crc63_##poly##_tbl[((crc >> (63 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
 } \
 \
 static inline uint_fast64_t crc63_byte_##poly(uint_fast64_t const crc, uint8_t const data_byte) \
@@ -5484,7 +5484,7 @@ static uint_fast64_t crc63_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_r63_t8(poly) \
 static inline uint_fast64_t crc63_byte_##poly##_impl(uint_fast64_t const crc, uint8_t const data_byte) \
 { \
-  return poly[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
+  return crc63_##poly##_tbl[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
 } \
 \
 static inline uint_fast64_t crc63_byte_##poly(uint_fast64_t const crc, uint8_t const data_byte) \
@@ -5512,8 +5512,8 @@ static uint_fast64_t crc63_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_f64_t4(poly) \
 static inline uint_fast64_t crc64_byte_##poly##_impl(uint_fast64_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[((crc >> (64 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
-  crc = poly[((crc >> (64 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
+  crc = crc64_##poly##_tbl[((crc >> (64 - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \
+  crc = crc64_##poly##_tbl[((crc >> (64 - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \
   return crc; \
 } \
 \
@@ -5536,8 +5536,8 @@ static uint_fast64_t crc64_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_r64_t4(poly) \
 static inline uint_fast64_t crc64_byte_##poly##_impl(uint_fast64_t crc, uint8_t const data_byte) \
 { \
-  crc = poly[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
-  crc = poly[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
+  crc = crc64_##poly##_tbl[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \
+  crc = crc64_##poly##_tbl[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \
   return crc; \
 } \
 \
@@ -5560,7 +5560,7 @@ static uint_fast64_t crc64_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_f64_t8(poly) \
 static inline uint_fast64_t crc64_byte_##poly##_impl(uint_fast64_t const crc, uint8_t const data_byte) \
 { \
-  return poly[((crc >> (64 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
+  return crc64_##poly##_tbl[((crc >> (64 - 8)) ^ data_byte) & 0xff] ^ (crc << 8); \
 } \
 \
 static inline uint_fast64_t crc64_byte_##poly(uint_fast64_t const crc, uint8_t const data_byte) \
@@ -5582,7 +5582,7 @@ static uint_fast64_t crc64_##poly(uint_fast64_t const init, uint8_t const * data
 #define make_crc_kernel_r64_t8(poly) \
 static inline uint_fast64_t crc64_byte_##poly##_impl(uint_fast64_t const crc, uint8_t const data_byte) \
 { \
-  return poly[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
+  return crc64_##poly##_tbl[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
 } \
 \
 static inline uint_fast64_t crc64_byte_##poly(uint_fast64_t const crc, uint8_t const data_byte) \

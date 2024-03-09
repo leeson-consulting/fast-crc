@@ -19,7 +19,7 @@
 
 #if defined(USE_CRC_KERNEL_TABLE8)
 
-static uint64_t const Fx0004820009[256] =
+static uint64_t const crc40_Fx0004820009_tbl[256] =
 {
     0x0000000000, 0x0004820009, 0x0009040012, 0x000d86001b,
     0x0012080024, 0x00168a002d, 0x001b0c0036, 0x001f8e003f,
@@ -91,7 +91,7 @@ make_crc_kernel_f40_t8(Fx0004820009)
 
 #else
 
-static uint64_t const Fx0004820009[16] =
+static uint64_t const crc40_Fx0004820009_tbl[16] =
 {
     0x0000000000, 0x0004820009, 0x0009040012, 0x000d86001b,
     0x0012080024, 0x00168a002d, 0x001b0c0036, 0x001f8e003f,

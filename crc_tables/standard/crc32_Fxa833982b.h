@@ -36,7 +36,7 @@
 
 #if defined(USE_CRC_KERNEL_TABLE8)
 
-static uint32_t const Fxa833982b[256] =
+static uint32_t const crc32_Fxa833982b_tbl[256] =
 {
     0x00000000, 0xa833982b, 0xf854a87d, 0x50673056, 0x589ac8d1, 0xf0a950fa, 0xa0ce60ac, 0x08fdf887,
     0xb13591a2, 0x19060989, 0x496139df, 0xe152a1f4, 0xe9af5973, 0x419cc158, 0x11fbf10e, 0xb9c86925,
@@ -76,7 +76,7 @@ make_crc_kernel_f32_t8(Fxa833982b)
 
 #else
 
-static uint32_t const Fxa833982b[16] =
+static uint32_t const crc32_Fxa833982b_tbl[16] =
 {
     0x00000000, 0xa833982b, 0xf854a87d, 0x50673056, 0x589ac8d1, 0xf0a950fa, 0xa0ce60ac, 0x08fdf887,
     0xb13591a2, 0x19060989, 0x496139df, 0xe152a1f4, 0xe9af5973, 0x419cc158, 0x11fbf10e, 0xb9c86925

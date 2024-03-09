@@ -41,7 +41,7 @@
 
 #if defined(USE_CRC_KERNEL_TABLE8)
 
-static uint32_t const Fxf4acfb13[256] =
+static uint32_t const crc32_Fxf4acfb13_tbl[256] =
 {
     0x00000000, 0xf4acfb13, 0x1df50d35, 0xe959f626, 0x3bea1a6a, 0xcf46e179, 0x261f175f, 0xd2b3ec4c,
     0x77d434d4, 0x8378cfc7, 0x6a2139e1, 0x9e8dc2f2, 0x4c3e2ebe, 0xb892d5ad, 0x51cb238b, 0xa567d898,
@@ -81,7 +81,7 @@ make_crc_kernel_f32_t8(Fxf4acfb13)
 
 #else
 
-static uint32_t const Fxf4acfb13[16] =
+static uint32_t const crc32_Fxf4acfb13_tbl[16] =
 {
     0x00000000, 0xf4acfb13, 0x1df50d35, 0xe959f626, 0x3bea1a6a, 0xcf46e179, 0x261f175f, 0xd2b3ec4c,
     0x77d434d4, 0x8378cfc7, 0x6a2139e1, 0x9e8dc2f2, 0x4c3e2ebe, 0xb892d5ad, 0x51cb238b, 0xa567d898

@@ -39,7 +39,7 @@
 
 #if defined(USE_CRC_KERNEL_TABLE8)
 
-static uint32_t const Fx741b8cd7[256] =
+static uint32_t const crc32_Fx741b8cd7_tbl[256] =
 {
     0x00000000, 0x741b8cd7, 0xe83719ae, 0x9c2c9579, 0xa475bf8b, 0xd06e335c, 0x4c42a625, 0x38592af2,
     0x3cf0f3c1, 0x48eb7f16, 0xd4c7ea6f, 0xa0dc66b8, 0x98854c4a, 0xec9ec09d, 0x70b255e4, 0x04a9d933,
@@ -79,7 +79,7 @@ make_crc_kernel_f32_t8(Fx741b8cd7)
 
 #else
 
-static uint32_t const Fx741b8cd7[16] =
+static uint32_t const crc32_Fx741b8cd7_tbl[16] =
 {
     0x00000000, 0x741b8cd7, 0xe83719ae, 0x9c2c9579, 0xa475bf8b, 0xd06e335c, 0x4c42a625, 0x38592af2,
     0x3cf0f3c1, 0x48eb7f16, 0xd4c7ea6f, 0xa0dc66b8, 0x98854c4a, 0xec9ec09d, 0x70b255e4, 0x04a9d933

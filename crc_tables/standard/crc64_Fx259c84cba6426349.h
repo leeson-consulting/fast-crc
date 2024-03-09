@@ -19,7 +19,7 @@
 
 #if defined(USE_CRC_KERNEL_TABLE8)
 
-static uint64_t const Fx259c84cba6426349[256] =
+static uint64_t const crc64_Fx259c84cba6426349_tbl[256] =
 {
     0x0000000000000000, 0x259c84cba6426349, 0x4b3909974c84c692, 0x6ea58d5ceac6a5db,
     0x9672132e99098d24, 0xb3ee97e53f4bee6d, 0xdd4b1ab9d58d4bb6, 0xf8d79e7273cf28ff,
@@ -91,7 +91,7 @@ make_crc_kernel_f64_t8(Fx259c84cba6426349)
 
 #else
 
-static uint64_t const Fx259c84cba6426349[16] =
+static uint64_t const crc64_Fx259c84cba6426349_tbl[16] =
 {
     0x0000000000000000, 0x259c84cba6426349, 0x4b3909974c84c692, 0x6ea58d5ceac6a5db,
     0x9672132e99098d24, 0xb3ee97e53f4bee6d, 0xdd4b1ab9d58d4bb6, 0xf8d79e7273cf28ff,

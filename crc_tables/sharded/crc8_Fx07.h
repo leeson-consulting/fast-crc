@@ -17,15 +17,17 @@
 
 #include "crc_kernels/crc_tables.h"
 
-#include "crcx_Sx07.h"
-
-#define Fx07 (Sx07)
+#include "crc8_Sx07.h"
 
 #if defined(USE_CRC_KERNEL_TABLE8)
+
+#define crc8_Fx07_tbl (crc8_Sx07_tbl)
 
 make_crc_kernel_f8_t8(Fx07)
 
 #else
+
+#define crc8_Fx07_tbl (crc8_Sx07_tbl)
 
 make_crc_kernel_f8_t4(Fx07)
 
