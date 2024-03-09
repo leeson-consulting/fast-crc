@@ -90,12 +90,15 @@ function make_crc_kernel_n()
 
   # 1. Avoid UB in C for special case of (crc >> 0), which is triggered by poly_degree == 8
 
-  local f8_t8_kernel
+  local fn_t8_kernel
+  local rn_t8_kernel
 
   if (( poly_degree == 8 )) then
-    f8_t8_kernel="return poly[(crc ^ data_byte) & 0xff] ^ (crc << 8);"
+    fn_t8_kernel="return poly[(crc ^ data_byte) & 0xff];"
+    rn_t8_kernel="$fn_t8_kernel"
   else
-    f8_t8_kernel="return poly[((crc >> (${poly_degree} - 8)) ^ data_byte) & 0xff] ^ (crc << 8);"
+    fn_t8_kernel="return poly[((crc >> (${poly_degree} - 8)) ^ data_byte) & 0xff] ^ (crc << 8);"
+    rn_t8_kernel="return poly[(crc ^ data_byte) & 0xff] ^ (crc >> 8);"
   fi
 
   # 1. Make the CRC-N Kernel Macros
@@ -134,7 +137,7 @@ ${kernel_helpers}
 #define make_crc_kernel_f${poly_degree}_t8(poly) \\
 static inline ${fast_t} crc${poly_degree}_byte_##poly##_impl(${fast_t} const crc, uint8_t const data_byte) \\
 { \\
-  ${f8_t8_kernel} \\
+  ${fn_t8_kernel} \\
 } \\
 \\
 ${kernel_helpers}
@@ -142,7 +145,7 @@ ${kernel_helpers}
 #define make_crc_kernel_r${poly_degree}_t8(poly) \\
 static inline ${fast_t} crc${poly_degree}_byte_##poly##_impl(${fast_t} const crc, uint8_t const data_byte) \\
 { \\
-  return poly[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \\
+  ${rn_t8_kernel} \\
 } \\
 \\
 ${kernel_helpers}
