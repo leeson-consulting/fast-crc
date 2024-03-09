@@ -174,13 +174,18 @@ EOF
 
 function shard_table()
 {
-  local sub_poly_degree="$1"
-  local sub_poly_normal="${2#0x}"
-  local sub_poly_id="crc${sub_poly_degree}_Sx${sub_poly_normal}"
-  local sub_poly_tbl="${sub_poly_id}_tbl"
+  local sub_t4_poly_degree="$1"
+  local sub_t4_poly_normal="${2#0x}"
+  local sub_t4_poly_id="crc${sub_t4_poly_degree}_Sx${sub_t4_poly_normal}"
+  local sub_t4_poly_tbl="${sub_t4_poly_id}_tbl"
 
-  local poly_degree="$3"
-  local poly_normal ; printf -v poly_normal "%0$(( ((poly_degree + 7) / 8) * 2))x" "0x${sub_poly_normal}"
+  local sub_t8_poly_degree="$3"
+  local sub_t8_poly_normal="${4#0x}"
+  local sub_t8_poly_id="crc${sub_t8_poly_degree}_Sx${sub_t8_poly_normal}"
+  local sub_t8_poly_tbl="${sub_t8_poly_id}_tbl"
+
+  local poly_degree="$5"
+  local poly_normal ; printf -v poly_normal "%0$(( ((poly_degree + 7) / 8) * 2))x" "0x${sub_t4_poly_normal}"
 
   local crc_t=$(determine_crc_t "$poly_degree")
   local poly_info=$(print_poly_info "$poly_degree" "$poly_normal")
@@ -209,17 +214,19 @@ $(printf "${poly_info}" | sed -e 's:\(^.*\):// \1:')
 
 #include "crc_kernels/crc_tables.h"
 
-#include "${sub_poly_id}.h"
-
 #if defined(USE_CRC_KERNEL_TABLE8)
 
-#define ${sharded_poly_tbl} (${sub_poly_tbl})
+#include "${sub_t8_poly_id}.h"
+
+#define ${sharded_poly_tbl} (${sub_t8_poly_tbl})
 
 ${sharded_kernel_t8}
 
 #else
 
-#define ${sharded_poly_tbl} (${sub_poly_tbl})
+#include "${sub_t4_poly_id}.h"
+
+#define ${sharded_poly_tbl} (${sub_t4_poly_tbl})
 
 ${sharded_kernel_t4}
 
@@ -231,22 +238,18 @@ EOF
 
 ###############################################################################
 
-function make_sharded_table()
+function shard_tables()
 {
-  # 1. Make the Subordinate Table
+  local sub_t4_poly_degree="$1"
+  local sub_t4_poly_normal="${2#0x}"
+  local sub_t4_crc_t=$(determine_crc_t "$sub_t4_poly_degree")
+  local sub_t8_poly_degree="$3"
+  local sub_t8_poly_normal="${4#0x}"
 
-  local sub_poly_degree="$1"
-  local sub_poly_normal="${2#0x}"
-  local sub_crc_t=$(determine_crc_t "$sub_poly_degree")
-
-  make_tables "$sub_poly_degree" "$sub_poly_normal" "$sub_crc_t" "make_subordinate_table"
-
-  # 2. Make the Sharded Tables
-
-  shift 2
+  shift 4
 
   for poly_degree in "${@}" ; do
-    shard_table "$sub_poly_degree" "$sub_poly_normal" "$poly_degree"
+    shard_table "$sub_t4_poly_degree" "$sub_t4_poly_normal" "$sub_t8_poly_degree" "$sub_t8_poly_normal" "$poly_degree"
   done
 }
 
@@ -359,9 +362,14 @@ function make_sharded_tables()
   # since the whole family can share one uint8_t lookup table.
   #
 
-  make_sharded_table 8 0x07 8 16 24
+  make_tables 8 0x07 uint8_t "make_sub_table"
+  make_tables 10 0x007 uint16_t "make_sub_table"
+  shard_tables 8 0x07 8 0x07 8
+  shard_tables 8 0x07 10 0x007 16 24
 
-  make_sharded_table 16 0x002f 64
+  make_tables 9 0x02f uint16_t "make_sub_table"
+  make_tables 13 0x002f uint16_t "make_sub_table"
+  shard_tables 9 0x02f 13 0x002f 64
 
   printf "\n"
 }
