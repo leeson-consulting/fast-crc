@@ -72,7 +72,7 @@ static uint_fast8_t crc8_##poly(uint_fast8_t const init, uint8_t const * data, s
 #define make_crc_kernel_f8_t8(poly) \
 static inline uint_fast8_t crc8_byte_##poly##_impl(uint_fast8_t const crc, uint8_t const data_byte) \
 { \
-  return poly[(crc ^ data_byte) & 0xff] ^ (crc << 8); \
+  return poly[(crc ^ data_byte) & 0xff]; \
 } \
 \
 static inline uint_fast8_t crc8_byte_##poly(uint_fast8_t const crc, uint8_t const data_byte) \
@@ -94,7 +94,7 @@ static uint_fast8_t crc8_##poly(uint_fast8_t const init, uint8_t const * data, s
 #define make_crc_kernel_r8_t8(poly) \
 static inline uint_fast8_t crc8_byte_##poly##_impl(uint_fast8_t const crc, uint8_t const data_byte) \
 { \
-  return poly[(crc ^ data_byte) & 0xff] ^ (crc >> 8); \
+  return poly[(crc ^ data_byte) & 0xff]; \
 } \
 \
 static inline uint_fast8_t crc8_byte_##poly(uint_fast8_t const crc, uint8_t const data_byte) \
