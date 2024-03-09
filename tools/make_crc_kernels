@@ -87,6 +87,7 @@ function make_crc_kernel_n()
 {
   local -i poly_degree="$1"
   local fast_t="${2:-$(determine_crc_t "$poly_degree" '_fast')}" # optional
+  local poly_tbl="crc${poly_degree}_##poly##_tbl"
 
   # 1. Avoid UB in C for special case of (crc >> 0), which is triggered by poly_degree == 8
 
@@ -94,11 +95,11 @@ function make_crc_kernel_n()
   local rn_t8_kernel
 
   if (( poly_degree == 8 )) then
-    fn_t8_kernel="return poly[(crc ^ data_byte) & 0xff];"
+    fn_t8_kernel="return ${poly_tbl}[(crc ^ data_byte) & 0xff];"
     rn_t8_kernel="$fn_t8_kernel"
   else
-    fn_t8_kernel="return poly[((crc >> (${poly_degree} - 8)) ^ data_byte) & 0xff] ^ (crc << 8);"
-    rn_t8_kernel="return poly[(crc ^ data_byte) & 0xff] ^ (crc >> 8);"
+    fn_t8_kernel="return ${poly_tbl}[((crc >> (${poly_degree} - 8)) ^ data_byte) & 0xff] ^ (crc << 8);"
+    rn_t8_kernel="return ${poly_tbl}[(crc ^ data_byte) & 0xff] ^ (crc >> 8);"
   fi
 
   # 1. Make the CRC-N Kernel Macros
@@ -117,8 +118,8 @@ function make_crc_kernel_n()
 #define make_crc_kernel_f${poly_degree}_t4(poly) \\
 static inline ${fast_t} crc${poly_degree}_byte_##poly##_impl(${fast_t} crc, uint8_t const data_byte) \\
 { \\
-  crc = poly[((crc >> (${poly_degree} - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \\
-  crc = poly[((crc >> (${poly_degree} - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \\
+  crc = ${poly_tbl}[((crc >> (${poly_degree} - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \\
+  crc = ${poly_tbl}[((crc >> (${poly_degree} - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \\
   return crc; \\
 } \\
 \\
@@ -127,8 +128,8 @@ ${kernel_helpers}
 #define make_crc_kernel_r${poly_degree}_t4(poly) \\
 static inline ${fast_t} crc${poly_degree}_byte_##poly##_impl(${fast_t} crc, uint8_t const data_byte) \\
 { \\
-  crc = poly[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \\
-  crc = poly[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \\
+  crc = ${poly_tbl}[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \\
+  crc = ${poly_tbl}[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \\
   return crc; \\
 } \\
 \\
