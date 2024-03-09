@@ -17,17 +17,19 @@
 
 #include "crc_kernels/crc_tables.h"
 
-#include "crc16_Sx002f.h"
-
 #if defined(USE_CRC_KERNEL_TABLE8)
 
-#define crc64_Fx000000000000002f_tbl (crc16_Sx002f_tbl)
+#include "crc13_Sx002f.h"
+
+#define crc64_Fx000000000000002f_tbl (crc13_Sx002f_tbl)
 
 make_crc_kernel_f64_t8(Fx000000000000002f)
 
 #else
 
-#define crc64_Fx000000000000002f_tbl (crc16_Sx002f_tbl)
+#include "crc9_Sx02f.h"
+
+#define crc64_Fx000000000000002f_tbl (crc9_Sx02f_tbl)
 
 make_crc_kernel_f64_t4(Fx000000000000002f)
 

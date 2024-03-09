@@ -23,15 +23,17 @@
 
 #include "crc_kernels/crc_tables.h"
 
-#include "crc8_Sx07.h"
-
 #if defined(USE_CRC_KERNEL_TABLE8)
 
-#define crc24_Fx000007_tbl (crc8_Sx07_tbl)
+#include "crc10_Sx007.h"
+
+#define crc24_Fx000007_tbl (crc10_Sx007_tbl)
 
 make_crc_kernel_f24_t8(Fx000007)
 
 #else
+
+#include "crc8_Sx07.h"
 
 #define crc24_Fx000007_tbl (crc8_Sx07_tbl)
 
