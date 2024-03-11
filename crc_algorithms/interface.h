@@ -69,6 +69,186 @@ crc##crc_width##_##crc_name##_params = { \
 
 ///////////////////////////////////////////////////////////////////////////////
 
+#define make_crc3_interface(crc_name, crc_poly, crc_init, crc_refin, crc_refout, crc_xorout, crc_check, crc_residue) \
+\
+define_crc_parameters(crc_name, /* crc_width = */ 3, crc_poly, crc_init, crc_refin, crc_refout, crc_xorout, crc_check, crc_residue) \
+\
+uint8_t crc3_##crc_name##_start(uint8_t const *data, size_t const data_len); \
+\
+uint8_t crc3_##crc_name##_continue(uint8_t const crc, uint8_t const *data, size_t const data_len); \
+\
+uint8_t crc3_##crc_name##_finish(uint8_t const crc, uint8_t const *data, size_t const data_len); \
+\
+uint8_t crc3_##crc_name(uint8_t const *data, size_t const data_len); \
+
+#define make_crc3_implementation(crc_name, crc_poly, crc_init, crc_xorout) \
+\
+uint8_t crc3_##crc_name##_start(uint8_t const *data, size_t const data_len) \
+{ \
+  return crc3_##crc_poly(/* init = */ crc_init, data, data_len); \
+} \
+\
+uint8_t crc3_##crc_name##_continue(uint8_t const crc, uint8_t const *data, size_t const data_len) \
+{ \
+  return crc3_##crc_poly(/* init = */ crc, data, data_len); \
+} \
+\
+uint8_t crc3_##crc_name##_finish(uint8_t const crc, uint8_t const *data, size_t const data_len) \
+{ \
+  return crc3_##crc_poly(/* init = */ crc, data, data_len) ^ crc_xorout; /* NB. Compiler eliminates xor(0) */ \
+} \
+\
+uint8_t crc3_##crc_name(uint8_t const *data, size_t const data_len) \
+{ \
+  return crc3_##crc_name##_finish(crc_init, data, data_len); \
+} \
+
+///////////////////////////////////////////////////////////////////////////////
+
+#define make_crc4_interface(crc_name, crc_poly, crc_init, crc_refin, crc_refout, crc_xorout, crc_check, crc_residue) \
+\
+define_crc_parameters(crc_name, /* crc_width = */ 4, crc_poly, crc_init, crc_refin, crc_refout, crc_xorout, crc_check, crc_residue) \
+\
+uint8_t crc4_##crc_name##_start(uint8_t const *data, size_t const data_len); \
+\
+uint8_t crc4_##crc_name##_continue(uint8_t const crc, uint8_t const *data, size_t const data_len); \
+\
+uint8_t crc4_##crc_name##_finish(uint8_t const crc, uint8_t const *data, size_t const data_len); \
+\
+uint8_t crc4_##crc_name(uint8_t const *data, size_t const data_len); \
+
+#define make_crc4_implementation(crc_name, crc_poly, crc_init, crc_xorout) \
+\
+uint8_t crc4_##crc_name##_start(uint8_t const *data, size_t const data_len) \
+{ \
+  return crc4_##crc_poly(/* init = */ crc_init, data, data_len); \
+} \
+\
+uint8_t crc4_##crc_name##_continue(uint8_t const crc, uint8_t const *data, size_t const data_len) \
+{ \
+  return crc4_##crc_poly(/* init = */ crc, data, data_len); \
+} \
+\
+uint8_t crc4_##crc_name##_finish(uint8_t const crc, uint8_t const *data, size_t const data_len) \
+{ \
+  return crc4_##crc_poly(/* init = */ crc, data, data_len) ^ crc_xorout; /* NB. Compiler eliminates xor(0) */ \
+} \
+\
+uint8_t crc4_##crc_name(uint8_t const *data, size_t const data_len) \
+{ \
+  return crc4_##crc_name##_finish(crc_init, data, data_len); \
+} \
+
+///////////////////////////////////////////////////////////////////////////////
+
+#define make_crc5_interface(crc_name, crc_poly, crc_init, crc_refin, crc_refout, crc_xorout, crc_check, crc_residue) \
+\
+define_crc_parameters(crc_name, /* crc_width = */ 5, crc_poly, crc_init, crc_refin, crc_refout, crc_xorout, crc_check, crc_residue) \
+\
+uint8_t crc5_##crc_name##_start(uint8_t const *data, size_t const data_len); \
+\
+uint8_t crc5_##crc_name##_continue(uint8_t const crc, uint8_t const *data, size_t const data_len); \
+\
+uint8_t crc5_##crc_name##_finish(uint8_t const crc, uint8_t const *data, size_t const data_len); \
+\
+uint8_t crc5_##crc_name(uint8_t const *data, size_t const data_len); \
+
+#define make_crc5_implementation(crc_name, crc_poly, crc_init, crc_xorout) \
+\
+uint8_t crc5_##crc_name##_start(uint8_t const *data, size_t const data_len) \
+{ \
+  return crc5_##crc_poly(/* init = */ crc_init, data, data_len); \
+} \
+\
+uint8_t crc5_##crc_name##_continue(uint8_t const crc, uint8_t const *data, size_t const data_len) \
+{ \
+  return crc5_##crc_poly(/* init = */ crc, data, data_len); \
+} \
+\
+uint8_t crc5_##crc_name##_finish(uint8_t const crc, uint8_t const *data, size_t const data_len) \
+{ \
+  return crc5_##crc_poly(/* init = */ crc, data, data_len) ^ crc_xorout; /* NB. Compiler eliminates xor(0) */ \
+} \
+\
+uint8_t crc5_##crc_name(uint8_t const *data, size_t const data_len) \
+{ \
+  return crc5_##crc_name##_finish(crc_init, data, data_len); \
+} \
+
+///////////////////////////////////////////////////////////////////////////////
+
+#define make_crc6_interface(crc_name, crc_poly, crc_init, crc_refin, crc_refout, crc_xorout, crc_check, crc_residue) \
+\
+define_crc_parameters(crc_name, /* crc_width = */ 6, crc_poly, crc_init, crc_refin, crc_refout, crc_xorout, crc_check, crc_residue) \
+\
+uint8_t crc6_##crc_name##_start(uint8_t const *data, size_t const data_len); \
+\
+uint8_t crc6_##crc_name##_continue(uint8_t const crc, uint8_t const *data, size_t const data_len); \
+\
+uint8_t crc6_##crc_name##_finish(uint8_t const crc, uint8_t const *data, size_t const data_len); \
+\
+uint8_t crc6_##crc_name(uint8_t const *data, size_t const data_len); \
+
+#define make_crc6_implementation(crc_name, crc_poly, crc_init, crc_xorout) \
+\
+uint8_t crc6_##crc_name##_start(uint8_t const *data, size_t const data_len) \
+{ \
+  return crc6_##crc_poly(/* init = */ crc_init, data, data_len); \
+} \
+\
+uint8_t crc6_##crc_name##_continue(uint8_t const crc, uint8_t const *data, size_t const data_len) \
+{ \
+  return crc6_##crc_poly(/* init = */ crc, data, data_len); \
+} \
+\
+uint8_t crc6_##crc_name##_finish(uint8_t const crc, uint8_t const *data, size_t const data_len) \
+{ \
+  return crc6_##crc_poly(/* init = */ crc, data, data_len) ^ crc_xorout; /* NB. Compiler eliminates xor(0) */ \
+} \
+\
+uint8_t crc6_##crc_name(uint8_t const *data, size_t const data_len) \
+{ \
+  return crc6_##crc_name##_finish(crc_init, data, data_len); \
+} \
+
+///////////////////////////////////////////////////////////////////////////////
+
+#define make_crc7_interface(crc_name, crc_poly, crc_init, crc_refin, crc_refout, crc_xorout, crc_check, crc_residue) \
+\
+define_crc_parameters(crc_name, /* crc_width = */ 7, crc_poly, crc_init, crc_refin, crc_refout, crc_xorout, crc_check, crc_residue) \
+\
+uint8_t crc7_##crc_name##_start(uint8_t const *data, size_t const data_len); \
+\
+uint8_t crc7_##crc_name##_continue(uint8_t const crc, uint8_t const *data, size_t const data_len); \
+\
+uint8_t crc7_##crc_name##_finish(uint8_t const crc, uint8_t const *data, size_t const data_len); \
+\
+uint8_t crc7_##crc_name(uint8_t const *data, size_t const data_len); \
+
+#define make_crc7_implementation(crc_name, crc_poly, crc_init, crc_xorout) \
+\
+uint8_t crc7_##crc_name##_start(uint8_t const *data, size_t const data_len) \
+{ \
+  return crc7_##crc_poly(/* init = */ crc_init, data, data_len); \
+} \
+\
+uint8_t crc7_##crc_name##_continue(uint8_t const crc, uint8_t const *data, size_t const data_len) \
+{ \
+  return crc7_##crc_poly(/* init = */ crc, data, data_len); \
+} \
+\
+uint8_t crc7_##crc_name##_finish(uint8_t const crc, uint8_t const *data, size_t const data_len) \
+{ \
+  return crc7_##crc_poly(/* init = */ crc, data, data_len) ^ crc_xorout; /* NB. Compiler eliminates xor(0) */ \
+} \
+\
+uint8_t crc7_##crc_name(uint8_t const *data, size_t const data_len) \
+{ \
+  return crc7_##crc_name##_finish(crc_init, data, data_len); \
+} \
+
+///////////////////////////////////////////////////////////////////////////////
+
 #define make_crc8_interface(crc_name, crc_poly, crc_init, crc_refin, crc_refout, crc_xorout, crc_check, crc_residue) \
 \
 define_crc_parameters(crc_name, /* crc_width = */ 8, crc_poly, crc_init, crc_refin, crc_refout, crc_xorout, crc_check, crc_residue) \
