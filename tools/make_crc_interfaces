@@ -174,7 +174,7 @@ EOF
 
   # 2. Make the remaining CRC-8 to CRC-64 kernel macros in a loop
 
-  for ((degree = 8 ; degree <= 64 ; degree++ )) ; do
+  for ((degree = 3 ; degree <= 64 ; degree++ )) ; do
 
     echo "$(make_crc_interface_n ${degree})" >> "${crc_interface}"
 

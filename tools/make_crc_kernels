@@ -89,20 +89,72 @@ function make_crc_kernel_n()
   local fast_t="${2:-$(determine_crc_t "$poly_degree" '_fast')}" # optional
   local poly_tbl="crc${poly_degree}_##poly##_tbl"
 
-  # 1. Avoid UB in C for special case of (crc >> 0), which is triggered by poly_degree == 8
+  # 1. Avoid UB in C when performing arithmetic shifts.
+  #    The << and >> operators require strictly positive RH arguments.
+  #    This creates three cases for each of the four kernels...
+
+  local fn_t4_kernel
+  local rn_t4_kernel
+
+  if (( poly_degree < 4 )) then
+
+    mapfile -d '' fn_t4_kernel << EOF
+  crc = ${poly_tbl}[((crc << (4 - ${poly_degree})) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \\
+  crc = ${poly_tbl}[((crc << (4 - ${poly_degree})) ^ data_byte) & 0x0f] ^ (crc << 4); \\
+  return crc; \\
+EOF
+
+    mapfile -d '' rn_t4_kernel << EOF
+  crc = ${poly_tbl}[(crc ^ data_byte) & 0x0f]; \\
+  crc = ${poly_tbl}[(crc ^ (data_byte >> 4)) & 0x0f]; \\
+  return crc; \\
+EOF
+
+  elif (( poly_degree == 4 )) then
+
+    mapfile -d '' fn_t4_kernel << EOF
+  crc = ${poly_tbl}[(crc ^ (data_byte >> 4)) & 0x0f]; \\
+  crc = ${poly_tbl}[(crc ^ data_byte) & 0x0f]; \\
+  return crc; \\
+EOF
+
+    mapfile -d '' rn_t4_kernel << EOF
+  crc = ${poly_tbl}[(crc ^ data_byte) & 0x0f]; \\
+  crc = ${poly_tbl}[(crc ^ (data_byte >> 4)) & 0x0f]; \\
+  return crc; \\
+EOF
+
+  else # poly_degree > 4
+
+    mapfile -d '' fn_t4_kernel << EOF
+  crc = ${poly_tbl}[((crc >> (${poly_degree} - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \\
+  crc = ${poly_tbl}[((crc >> (${poly_degree} - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \\
+  return crc; \\
+EOF
+
+    mapfile -d '' rn_t4_kernel << EOF
+  crc = ${poly_tbl}[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \\
+  crc = ${poly_tbl}[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \\
+  return crc; \\
+EOF
+
+  fi
 
   local fn_t8_kernel
   local rn_t8_kernel
 
-  if (( poly_degree == 8 )) then
-    fn_t8_kernel="return ${poly_tbl}[(crc ^ data_byte) & 0xff];"
+  if (( poly_degree < 8 )) then
+    fn_t8_kernel="  return ${poly_tbl}[((crc << (8 - ${poly_degree})) ^ data_byte) & 0xff];"
+    rn_t8_kernel="  return ${poly_tbl}[(crc ^ data_byte) & 0xff];"
+  elif (( poly_degree == 8 )) then
+    fn_t8_kernel="  return ${poly_tbl}[(crc ^ data_byte) & 0xff];"
     rn_t8_kernel="$fn_t8_kernel"
-  else
-    fn_t8_kernel="return ${poly_tbl}[((crc >> (${poly_degree} - 8)) ^ data_byte) & 0xff] ^ (crc << 8);"
-    rn_t8_kernel="return ${poly_tbl}[(crc ^ data_byte) & 0xff] ^ (crc >> 8);"
+  else # poly_degree > 8
+    fn_t8_kernel="  return ${poly_tbl}[((crc >> (${poly_degree} - 8)) ^ data_byte) & 0xff] ^ (crc << 8);"
+    rn_t8_kernel="  return ${poly_tbl}[(crc ^ data_byte) & 0xff] ^ (crc >> 8);"
   fi
 
-  # 1. Make the CRC-N Kernel Macros
+  # 2. Make the CRC-N Kernel Macros
 
   local crc_kernel
   local kernel_helpers=$(make_crc_kernel_helpers ${poly_degree} ${fast_t})
@@ -118,9 +170,7 @@ function make_crc_kernel_n()
 #define make_crc_kernel_f${poly_degree}_t4(poly) \\
 static inline ${fast_t} crc${poly_degree}_byte_##poly##_impl(${fast_t} crc, uint8_t const data_byte) \\
 { \\
-  crc = ${poly_tbl}[((crc >> (${poly_degree} - 4)) ^ (data_byte >> 4)) & 0x0f] ^ (crc << 4); \\
-  crc = ${poly_tbl}[((crc >> (${poly_degree} - 4)) ^ data_byte) & 0x0f] ^ (crc << 4); \\
-  return crc; \\
+${fn_t4_kernel} \\
 } \\
 \\
 ${kernel_helpers}
@@ -128,9 +178,7 @@ ${kernel_helpers}
 #define make_crc_kernel_r${poly_degree}_t4(poly) \\
 static inline ${fast_t} crc${poly_degree}_byte_##poly##_impl(${fast_t} crc, uint8_t const data_byte) \\
 { \\
-  crc = ${poly_tbl}[(crc ^ data_byte) & 0x0f] ^ (crc >> 4); \\
-  crc = ${poly_tbl}[(crc ^ (data_byte >> 4)) & 0x0f] ^ (crc >> 4); \\
-  return crc; \\
+${rn_t4_kernel} \\
 } \\
 \\
 ${kernel_helpers}
@@ -138,7 +186,7 @@ ${kernel_helpers}
 #define make_crc_kernel_f${poly_degree}_t8(poly) \\
 static inline ${fast_t} crc${poly_degree}_byte_##poly##_impl(${fast_t} const crc, uint8_t const data_byte) \\
 { \\
-  ${fn_t8_kernel} \\
+${fn_t8_kernel} \\
 } \\
 \\
 ${kernel_helpers}
@@ -146,7 +194,7 @@ ${kernel_helpers}
 #define make_crc_kernel_r${poly_degree}_t8(poly) \\
 static inline ${fast_t} crc${poly_degree}_byte_##poly##_impl(${fast_t} const crc, uint8_t const data_byte) \\
 { \\
-  ${rn_t8_kernel} \\
+${rn_t8_kernel} \\
 } \\
 \\
 ${kernel_helpers}
@@ -199,7 +247,7 @@ EOF
 
   # 2. Make the remaining CRC-8 to CRC-64 kernel macros in a loop
 
-  for ((degree = 8 ; degree <= 64 ; degree++ )) ; do
+  for ((degree = 3 ; degree <= 64 ; degree++ )) ; do
 
     echo "$(make_crc_kernel_n ${degree})" >> "${crc_table_kernel}"
 
