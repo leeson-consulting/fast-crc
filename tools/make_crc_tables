@@ -329,6 +329,7 @@ function make_standard_tables()
   # CRC "Odds and Sods" Polynomials
 
   make_tables  3 0x3
+  make_tables  5 0x09
   make_tables  7 0x45
   make_tables 10 0x175
   make_tables 10 0x3d9
