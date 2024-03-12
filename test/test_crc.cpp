@@ -44,7 +44,7 @@ struct CRC_Algorithm
   CRC_Algorithm_Finish const     crc_finish;
 };
 
-void test_crc(crc_parameters_t const & crc_params, CRC_Algorithm const algorithm)
+void short_test_crc(crc_parameters_t const & crc_params, CRC_Algorithm const algorithm)
 {
   printf("Test \"%s\" on \"%s\"", crc_params.name, CRC_CHECK_STRING);
 
@@ -104,97 +104,71 @@ void test_crc(crc_parameters_t const & crc_params, CRC_Algorithm const algorithm
   printf("   ==>   PASS\n\n");
 }
 
-#define test_crc8(crc_alg) test_crc(crc_alg##_params, { \
-      .crc_main     = [](uint8_t const * const data, size_t const data_len) -> uint64_t { return crc_alg(data, data_len) & 0xff; }, \
-      .crc_start    = [](uint8_t const * const data, size_t const data_len) -> uint64_t { return crc_alg##_start(data, data_len) & 0xff; }, \
-      .crc_continue = [](uint64_t const crc, uint8_t const * const data, size_t const data_len) -> uint64_t { return crc_alg##_continue(crc, data, data_len) & 0xff; }, \
-      .crc_finish   = [](uint64_t const crc, uint8_t const * const data, size_t const data_len) -> uint64_t { return crc_alg##_finish(crc, data, data_len) & 0xff; }, \
-}); \
+constexpr uint64_t make_poly_mask(size_t const poly_degree)
+{
+  if (poly_degree == 64) {
+    return 0xffffffffffffffff;
+  }
 
-#define test_crc12(crc_alg) test_crc(crc_alg##_params, { \
-      .crc_main     = [](uint8_t const * const data, size_t const data_len) -> uint64_t { return crc_alg(data, data_len) & 0xfff; }, \
-      .crc_start    = [](uint8_t const * const data, size_t const data_len) -> uint64_t { return crc_alg##_start(data, data_len) & 0xfff; }, \
-      .crc_continue = [](uint64_t const crc, uint8_t const * const data, size_t const data_len) -> uint64_t { return crc_alg##_continue(crc, data, data_len) & 0xfff; }, \
-      .crc_finish   = [](uint64_t const crc, uint8_t const * const data, size_t const data_len) -> uint64_t { return crc_alg##_finish(crc, data, data_len) & 0xfff; }, \
-}); \
+  return (((uint64_t) 1) << poly_degree) - 1;
+}
 
-#define test_crc16(crc_alg) test_crc(crc_alg##_params, { \
-      .crc_main     = [](uint8_t const * const data, size_t const data_len) -> uint64_t { return crc_alg(data, data_len) & 0xffff; }, \
-      .crc_start    = [](uint8_t const * const data, size_t const data_len) -> uint64_t { return crc_alg##_start(data, data_len) & 0xffff; }, \
-      .crc_continue = [](uint64_t const crc, uint8_t const * const data, size_t const data_len) -> uint64_t { return crc_alg##_continue(crc, data, data_len) & 0xffff; }, \
-      .crc_finish   = [](uint64_t const crc, uint8_t const * const data, size_t const data_len) -> uint64_t { return crc_alg##_finish(crc, data, data_len) & 0xffff; }, \
-}); \
-
-#define test_crc24(crc_alg) test_crc(crc_alg##_params, { \
-      .crc_main     = [](uint8_t const * const data, size_t const data_len) -> uint64_t { return crc_alg(data, data_len) & 0xffffff; }, \
-      .crc_start    = [](uint8_t const * const data, size_t const data_len) -> uint64_t { return crc_alg##_start(data, data_len) & 0xffffff; }, \
-      .crc_continue = [](uint64_t const crc, uint8_t const * const data, size_t const data_len) -> uint64_t { return crc_alg##_continue(crc, data, data_len) & 0xffffff; }, \
-      .crc_finish   = [](uint64_t const crc, uint8_t const * const data, size_t const data_len) -> uint64_t { return crc_alg##_finish(crc, data, data_len) & 0xffffff; }, \
-}); \
-
-#define test_crc32(crc_alg) test_crc(crc_alg##_params, { \
-      .crc_main     = [](uint8_t const * const data, size_t const data_len) -> uint64_t { return crc_alg(data, data_len) & 0xffffffff; }, \
-      .crc_start    = [](uint8_t const * const data, size_t const data_len) -> uint64_t { return crc_alg##_start(data, data_len) & 0xffffffff; }, \
-      .crc_continue = [](uint64_t const crc, uint8_t const * const data, size_t const data_len) -> uint64_t { return crc_alg##_continue(crc, data, data_len) & 0xffffffff; }, \
-      .crc_finish   = [](uint64_t const crc, uint8_t const * const data, size_t const data_len) -> uint64_t { return crc_alg##_finish(crc, data, data_len) & 0xffffffff; }, \
-}); \
-
-#define test_crc64(crc_alg) test_crc(crc_alg##_params, { \
-      .crc_main     = [](uint8_t const * const data, size_t const data_len) -> uint64_t { return crc_alg(data, data_len) & 0xffffffffffffffff; }, \
-      .crc_start    = [](uint8_t const * const data, size_t const data_len) -> uint64_t { return crc_alg##_start(data, data_len) & 0xffffffffffffffff; }, \
-      .crc_continue = [](uint64_t const crc, uint8_t const * const data, size_t const data_len) -> uint64_t { return crc_alg##_continue(crc, data, data_len) & 0xffffffffffffffff; }, \
-      .crc_finish   = [](uint64_t const crc, uint8_t const * const data, size_t const data_len) -> uint64_t { return crc_alg##_finish(crc, data, data_len) & 0xffffffffffffffff; }, \
+#define SHORT_TEST_CRC(poly_degree, crc_alg) short_test_crc(crc##poly_degree##_##crc_alg##_params, { \
+      .crc_main     = [](uint8_t const * const data, size_t const data_len) -> uint64_t { return crc##poly_degree##_##crc_alg(data, data_len) & make_poly_mask(poly_degree); }, \
+      .crc_start    = [](uint8_t const * const data, size_t const data_len) -> uint64_t { return crc##poly_degree##_##crc_alg##_start(data, data_len) & make_poly_mask(poly_degree); }, \
+      .crc_continue = [](uint64_t const crc, uint8_t const * const data, size_t const data_len) -> uint64_t { return crc##poly_degree##_##crc_alg##_continue(crc, data, data_len) & make_poly_mask(poly_degree); }, \
+      .crc_finish   = [](uint64_t const crc, uint8_t const * const data, size_t const data_len) -> uint64_t { return crc##poly_degree##_##crc_alg##_finish(crc, data, data_len) & make_poly_mask(poly_degree); }, \
 }); \
 
 int main(void)
 {
   // CRC-8 Algorithms
 
-  test_crc8(crc8_Koopman);
-  test_crc8(crc8_Nguyen_Fx07);
-  test_crc8(crc8_Fast4);
+  SHORT_TEST_CRC(8, Koopman);
+  SHORT_TEST_CRC(8, Nguyen_Fx07);
+  SHORT_TEST_CRC(8, Fast4);
 
   // CRC-12 Algorithms
 
-  test_crc12(crc12_UMTS);
+  SHORT_TEST_CRC(12, UMTS);
 
   // CRC-16 Algorithms
 
-  test_crc16(crc16_CCITT);
-  test_crc16(crc16_DDS_110);
-  test_crc16(crc16_IBM_3740);
-  test_crc16(crc16_KERMIT);
-  test_crc16(crc16_MCRF4XX);
-  test_crc16(crc16_MODBUS);
+  SHORT_TEST_CRC(16, CCITT);
+  SHORT_TEST_CRC(16, DDS_110);
+  SHORT_TEST_CRC(16, IBM_3740);
+  SHORT_TEST_CRC(16, KERMIT);
+  SHORT_TEST_CRC(16, MCRF4XX);
+  SHORT_TEST_CRC(16, MODBUS);
 
-  test_crc16(crc16_Nguyen_Fx0007);
-  test_crc16(crc16_Fast4);
+  SHORT_TEST_CRC(16, Nguyen_Fx0007);
+  SHORT_TEST_CRC(16, Fast4);
 
-  test_crc16(crc16_Nguyen_Fx011b);
-  test_crc16(crc16_Fast6);
+  SHORT_TEST_CRC(16, Nguyen_Fx011b);
+  SHORT_TEST_CRC(16, Fast6);
 
   // CRC-24 Algorithms
 
-  test_crc24(crc24_Nguyen_Fx000007);
-  test_crc24(crc24_Fast4);
+  SHORT_TEST_CRC(24, Nguyen_Fx000007);
+  SHORT_TEST_CRC(24, Fast4);
 
-  test_crc24(crc24_Nguyen_Fx018301);
-  test_crc24(crc24_Fast6);
+  SHORT_TEST_CRC(24, Nguyen_Fx018301);
+  SHORT_TEST_CRC(24, Fast6);
 
   // CRC-32 Algorithms
 
-  test_crc32(crc32_ISO_HDLC);
-  test_crc32(crc32_ISCSI);
+  SHORT_TEST_CRC(32, ISO_HDLC);
+  SHORT_TEST_CRC(32, ISCSI);
 
-  test_crc32(crc32_Nguyen_Fx0006c001);
-  test_crc32(crc32_Fast6);
+  SHORT_TEST_CRC(32, Nguyen_Fx0006c001);
+  SHORT_TEST_CRC(32, Fast6);
 
   // CRC-64 Algorithms
 
-  test_crc64(crc64_XZ);
+  SHORT_TEST_CRC(64, XZ);
 
-  test_crc64(crc64_Nguyen_Fx000000000000002f);
-  test_crc64(crc64_Fast6);
+  SHORT_TEST_CRC(64, Nguyen_Fx000000000000002f);
+  SHORT_TEST_CRC(64, Fast6);
 
   return 0;
 }
