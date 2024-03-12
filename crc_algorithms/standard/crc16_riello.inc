@@ -19,7 +19,7 @@ make_crc16_interface(
 make_crc16_implementation(
   /* .name     =  */    RIELLO,
   /* .poly     =  */    Rx1021,
-  /* .init     =  */    0xb2aa,
+  /* .init     =  */    0x554d,
   /* .xorout   =  */    0x0000)
 
 #endif

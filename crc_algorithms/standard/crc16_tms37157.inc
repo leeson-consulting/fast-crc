@@ -19,7 +19,7 @@ make_crc16_interface(
 make_crc16_implementation(
   /* .name     =  */    TMS37157,
   /* .poly     =  */    Rx1021,
-  /* .init     =  */    0x89ec,
+  /* .init     =  */    0x3791,
   /* .xorout   =  */    0x0000)
 
 #endif

@@ -19,7 +19,7 @@ make_crc24_interface(
 make_crc24_implementation(
   /* .name     =  */    BLE,
   /* .poly     =  */    Rx00065b,
-  /* .init     =  */    0x555555,
+  /* .init     =  */    0xaaaaaa,
   /* .xorout   =  */    0x000000)
 
 #endif

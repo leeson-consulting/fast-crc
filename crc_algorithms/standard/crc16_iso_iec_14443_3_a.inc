@@ -19,7 +19,7 @@ make_crc16_interface(
 make_crc16_implementation(
   /* .name     =  */    ISO_IEC_14443_3_A,
   /* .poly     =  */    Rx1021,
-  /* .init     =  */    0xc6c6,
+  /* .init     =  */    0x6363,
   /* .xorout   =  */    0x0000)
 
 #endif
