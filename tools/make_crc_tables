@@ -326,23 +326,58 @@ function make_standard_tables()
   make_tables 64 0xad93d23594c935a9
   make_tables 64 0x42f0e1eba9ea3693
 
-  # CRC "Odds and Sods" Polynomials
+  printf "\n"
+}
+
+###############################################################################
+
+function make_odds_and_sods_tables()
+{
+  printf "Making Odds-and-Sods Polynomial Tables...\n\n"
+
+  local POLYNOMIAL_EXPORT_PATH="${POLYNOMIAL_BASE_PATH}/standard"
 
   make_tables  3 0x3
+
+  make_tables  4 0x3
+
+  make_tables  5 0x05
   make_tables  5 0x09
+  make_tables  5 0x15
+
+  make_tables  6 0x03
+  make_tables  6 0x07
+  make_tables  6 0x19
+  make_tables  6 0x27
+  make_tables  6 0x2f
+
+  make_tables  7 0x09
   make_tables  7 0x45
+  make_tables  7 0x4f
+
   make_tables 10 0x175
+  make_tables 10 0x233
   make_tables 10 0x3d9
+
   make_tables 11 0x385
   make_tables 11 0x307
+
   make_tables 13 0x1cf5
+
+  make_tables 14 0x0805
   make_tables 14 0x202d
+
   make_tables 15 0x4599
   make_tables 15 0x6815
+
   make_tables 17 0x1685b
+
   make_tables 21 0x102899
+
   make_tables 30 0x2030b9c7
+
   make_tables 31 0x04c11db7
+
   make_tables 40 0x0004820009
 
   printf "\n"
@@ -479,6 +514,8 @@ function main()
   setup_pycrc
 
   make_standard_tables
+
+  make_odds_and_sods_tables
 
   make_sharded_tables
 
