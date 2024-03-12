@@ -170,5 +170,9 @@ int main(void)
   SHORT_TEST_CRC(64, Nguyen_Fx000000000000002f);
   SHORT_TEST_CRC(64, Fast6);
 
+  SHORT_TEST_CRC(3, GSM);
+  SHORT_TEST_CRC(5, EPC_C1G2);
+  SHORT_TEST_CRC(31, PHILIPS);
+
   return 0;
 }

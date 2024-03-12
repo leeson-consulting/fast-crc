@@ -12,6 +12,8 @@
 
 #define USE_CRC_KERNEL_TABLE8
 
+#include "crc_algorithms/standard/crc3_gsm.inc"
+
 #include "crc_algorithms/sharded/crc8_nguyen_Fx07.inc"
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -21,6 +23,8 @@
 
 #undef USE_CRC_KERNEL_TABLE8
 
+#include "crc_algorithms/standard/crc5_epc_c1g2.inc"
+
 #include "crc_algorithms/standard/crc12_umts.inc"
 #include "crc_algorithms/standard/crc16_ccitt.inc"
 #include "crc_algorithms/standard/crc16_dds_110.inc"
@@ -28,6 +32,9 @@
 #include "crc_algorithms/standard/crc16_kermit.inc"
 #include "crc_algorithms/standard/crc16_mcrf4xx.inc"
 #include "crc_algorithms/standard/crc16_modbus.inc"
+
+#include "crc_algorithms/standard/crc31_philips.inc"
+
 #include "crc_algorithms/standard/crc32_iso_hdlc.inc"
 #include "crc_algorithms/standard/crc32_iscsi.inc"
 #include "crc_algorithms/standard/crc64_xz.inc"
