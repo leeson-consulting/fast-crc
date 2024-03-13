@@ -120,59 +120,15 @@ constexpr uint64_t make_poly_mask(size_t const poly_degree)
       .crc_finish   = [](uint64_t const crc, uint8_t const * const data, size_t const data_len) -> uint64_t { return crc##poly_degree##_##crc_alg##_finish(crc, data, data_len) & make_poly_mask(poly_degree); }, \
 }); \
 
-int main(void)
+///////////////////////////////////////////////////////////////////////////////
+
+int run_tests();
+
+int main()
 {
-  // CRC-8 Algorithms
-
-  SHORT_TEST_CRC(8, Koopman);
-  SHORT_TEST_CRC(8, Nguyen_Fx07);
-  SHORT_TEST_CRC(8, Fast4);
-
-  // CRC-12 Algorithms
-
-  SHORT_TEST_CRC(12, UMTS);
-
-  // CRC-16 Algorithms
-
-  SHORT_TEST_CRC(16, CCITT);
-  SHORT_TEST_CRC(16, DDS_110);
-  SHORT_TEST_CRC(16, IBM_3740);
-  SHORT_TEST_CRC(16, KERMIT);
-  SHORT_TEST_CRC(16, MCRF4XX);
-  SHORT_TEST_CRC(16, MODBUS);
-
-  SHORT_TEST_CRC(16, Nguyen_Fx0007);
-  SHORT_TEST_CRC(16, Fast4);
-
-  SHORT_TEST_CRC(16, Nguyen_Fx011b);
-  SHORT_TEST_CRC(16, Fast6);
-
-  // CRC-24 Algorithms
-
-  SHORT_TEST_CRC(24, Nguyen_Fx000007);
-  SHORT_TEST_CRC(24, Fast4);
-
-  SHORT_TEST_CRC(24, Nguyen_Fx018301);
-  SHORT_TEST_CRC(24, Fast6);
-
-  // CRC-32 Algorithms
-
-  SHORT_TEST_CRC(32, ISO_HDLC);
-  SHORT_TEST_CRC(32, ISCSI);
-
-  SHORT_TEST_CRC(32, Nguyen_Fx0006c001);
-  SHORT_TEST_CRC(32, Fast6);
-
-  // CRC-64 Algorithms
-
-  SHORT_TEST_CRC(64, XZ);
-
-  SHORT_TEST_CRC(64, Nguyen_Fx000000000000002f);
-  SHORT_TEST_CRC(64, Fast6);
-
-  SHORT_TEST_CRC(3, GSM);
-  SHORT_TEST_CRC(5, EPC_C1G2);
-  SHORT_TEST_CRC(31, PHILIPS);
-
-  return 0;
+  return run_tests();
 }
+
+///////////////////////////////////////////////////////////////////////////////
+
+#include "run_tests.inc"

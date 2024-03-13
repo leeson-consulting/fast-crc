@@ -7,34 +7,82 @@ REPO_ROOT="$(git rev-parse --show-toplevel)"
 
 ###############################################################################
 
-function main()
+function build_and_test()
 {
+  local test_root="${1}"
+
+  local optimisation="${2:--Os}"
+
+  local test_name="${test_root#${REPO_ROOT}/}"
+  test_name="${test_name//\//_}"
+
   mkdir -p "${REPO_ROOT}/build/bin"
 
-  gcc -o "${REPO_ROOT}/build/bin/fast_crc.c.o" \
-    -Wall -Wpedantic -std=c99 -fdiagnostics-color=always \
+  gcc -o "${REPO_ROOT}/build/bin/${test_name}_fast_crc.c.o" \
+    "${optimisation}" \
+    -Wall -std=c99 \
+    -fdiagnostics-color=always \
+    -Wno-variadic-macros \
+    -ffile-prefix-map="${REPO_ROOT}"/=./ \
     -I "${REPO_ROOT}" \
-    -I "${REPO_ROOT}/test" \
+    -I "${test_root}" \
     \
     -c \
     "${REPO_ROOT}/fast_crc.c" \
-    \
-    -L "${REPO_ROOT}"
 
-  g++ -o "${REPO_ROOT}/build/bin/test_crc.cpp.o" \
-    -Wall -Wpedantic -std=c++23 -fdiagnostics-color=always \
+  g++ -o "${REPO_ROOT}/build/bin/${test_name}.o" \
+    "${optimisation}" \
+    -Wall -std=c++23 \
+    -fdiagnostics-color=always \
+    -Wno-variadic-macros \
+    -ffile-prefix-map="${REPO_ROOT}"/=./ \
     -I "${REPO_ROOT}" \
-    -I "${REPO_ROOT}/test" \
+    -I "${test_root}" \
     \
     -c \
     "${REPO_ROOT}/test/test_crc.cpp" \
-    \
-    -L "${REPO_ROOT}"
 
-  g++ -o "${REPO_ROOT}/build/bin/test_crc" \
-         "${REPO_ROOT}/build/bin/fast_crc.c.o" \
-         "${REPO_ROOT}/build/bin/test_crc.cpp.o" \
-         && "${REPO_ROOT}/build/bin/test_crc"
+  g++ -o "${REPO_ROOT}/build/bin/${test_name}" \
+    "${optimisation}" \
+    "${REPO_ROOT}/build/bin/${test_name}_fast_crc.c.o" \
+    "${REPO_ROOT}/build/bin/${test_name}.o"
+
+  printf "\nRunning \"${test_name^^}\"\n\n"
+
+  "${REPO_ROOT}/build/bin/${test_name}"
+}
+
+###############################################################################
+
+function main()
+{
+  printf "\n########## ========== ########## ========== ########## ========== ##########\n"
+
+  build_and_test "${REPO_ROOT}/test/catalog/t4" "$@"
+
+  printf "\n########## ========== ########## ========== ########## ========== ##########\n"
+
+  build_and_test "${REPO_ROOT}/test/catalog/t8" "$@"
+
+  printf "\n########## ========== ########## ========== ########## ========== ##########\n"
+
+  build_and_test "${REPO_ROOT}/test/fast" "$@"
+
+  printf "\n########## ========== ########## ========== ########## ========== ##########\n"
+
+  build_and_test "${REPO_ROOT}/test/research/t4" "$@"
+
+  printf "\n########## ========== ########## ========== ########## ========== ##########\n"
+
+  build_and_test "${REPO_ROOT}/test/research/t8" "$@"
+
+  printf "\n########## ========== ########## ========== ########## ========== ##########\n"
+
+  build_and_test "${REPO_ROOT}/test/sharded/t4" "$@"
+
+  printf "\n########## ========== ########## ========== ########## ========== ##########\n"
+
+  build_and_test "${REPO_ROOT}/test/sharded/t8" "$@"
 }
 
 ###############################################################################
