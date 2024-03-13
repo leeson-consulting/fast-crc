@@ -1,0 +1,203 @@
+#!/usr/bin/env bash
+
+set -e
+
+###############################################################################
+
+function find_tmp_dir()
+{
+  local tmpdir
+
+  for tmpdir in "$TMPDIR" "$TMP" /tmp /var/tmp "$PWD" ; do
+    test -d "$tmpdir" && break
+  done
+
+  echo "$tmpdir"
+}
+
+###############################################################################
+
+function check_exclusions()
+{
+  local file_name="$1"
+
+  case "$file_name" in
+    'crc8_fast4.inc')  echo "exclude" ;;
+    'crc16_fast4.inc') echo "exclude" ;;
+    'crc16_fast6.inc') echo "exclude" ;;
+    'crc24_fast4.inc') echo "exclude" ;;
+    'crc24_fast6.inc') echo "exclude" ;;
+    'crc32_fast6.inc') echo "exclude" ;;
+    'crc64_fast6.inc') echo "exclude" ;;
+
+    'crc82_darc.inc')  echo "exclude" ;;
+    *)                 echo "ok" ;;
+  esac
+}
+
+###############################################################################
+
+function make_crc_catalog_tests()
+{
+  # 0. Parse and Validate args
+
+  local catalog_root="$1"
+  local crc_catalog="${catalog_root}/allcrcs.txt"
+
+  if [[ ! -r "${crc_catalog}" ]] ; then
+    echo "CRC Catalog is unreadable: \"${crc_catalog}\""
+    exit 1
+  fi
+
+  local table_kernel="${3:-t8}"
+  local export_path="${2}/catalog/${table_kernel}"
+
+  mkdir -p "$export_path"
+
+  if [[ ! -d "${export_path}" ]] ; then
+    echo "Export Path is invalid: \"${export_path}\""
+    exit 2
+  fi
+
+  local standard_algorithm_root="crc_algorithms/standard"
+
+  # 1. Read the raw catalog,
+  #    which contains one key-value parameterised algorithm per line
+
+  local width
+  local poly
+  local init
+  local refin
+  local refout
+  local xorout
+  local check
+  local residue
+  local name
+  local file_name
+
+  local -a algorithm_include_list=()
+  local -a test_runner_list=()
+
+  while read -r width poly init refin refout xorout check residue name ; do
+    width="${width##*=}"
+    poly="${poly##*=}"
+    init="${init##*=}"
+    refin="${refin##*=}"
+    refout="${refout##*=}"
+    xorout="${xorout##*=}"
+    check="${check##*=}"
+    residue="${residue##*=}"
+
+    name="${name//\"/}"
+    name="${name##*=}"
+    name="${name##*/}"
+    name="${name//-/_}"
+
+    # 2. Encode Polynomial Reflection in the 'F'orward / 'R'everse polynomial prefix,
+    #    which is used to distinguish between table types in the generated C source
+
+    if [[ "${refin,,}" == "false" ]] ; then
+      poly="${poly/0x/Fx}"
+    else
+      poly="${poly/0x/Rx}"
+    fi
+
+    # 3. Coerce name into Fast-CRC Algorithm File Naming Convention
+
+    file_name="crc${width}_${name,,}.inc"
+
+    # 4. Append to include and test runner lists
+
+    if [[ $(check_exclusions "$file_name") == 'exclude' ]] ; then
+      printf "  !!!  EXCLUDING \"${file_name}\" -- See \"check_exclusions\" in \"${SCRIPT_NAME}\"  !!!\n"
+    else
+      algorithm_include_list+=( "#include \"${standard_algorithm_root}/${file_name}\"" )
+      test_runner_list+=( "  SHORT_TEST_CRC(${width}, ${name});" )
+    fi
+
+  done < "$crc_catalog"
+
+  # 5. Generate test/catalog/t{4,8}/crc_algorithms.inc
+
+  local kernel_selector
+
+  if [[ "$table_kernel" == 't8' ]] ; then
+    kernel_selector="#define USE_CRC_KERNEL_TABLE8"
+  else
+    kernel_selector="#undef USE_CRC_KERNEL_TABLE8"
+  fi
+
+  local crc_algorithms_inc
+
+  mapfile -d '' crc_algorithms_inc << EOF
+// Generated for CRC catalog test with ${table_kernel} Table-Kernel
+
+${kernel_selector}
+
+$(printf "%s\n" "${algorithm_include_list[@]}")
+
+EOF
+
+  echo -n "${crc_algorithms_inc}" > "${export_path}/crc_algorithms.inc"
+
+  # 6. Generate test/catalog/t{4,8}/crc_test.inc
+
+  local run_tests
+
+  mapfile -d '' run_tests << EOF
+
+///////////////////////////////////////////////////////////////////////////////
+
+int run_tests()
+{
+$(printf "%s\n" "${test_runner_list[@]}")
+
+  return 0;
+}
+EOF
+
+  echo -n "${run_tests}" > "${export_path}/run_tests.inc"
+}
+
+###############################################################################
+
+function main()
+{
+  local SCRIPT_PATH=$(realpath "${BASH_SOURCE[0]%/*}")
+  local SCRIPT_NAME="${BASH_SOURCE[0]##*/}"
+  local REPO_ROOT="$(git rev-parse --show-toplevel)"
+
+  CALLERS_WD="$PWD"
+
+  if [[ "${BASH_SOURCE[0]}" == "${0}" ]] then
+    SCRIPT_TMPDIR="$(find_tmp_dir)/${SCRIPT_NAME}"
+  else
+    SCRIPT_TMPDIR="$(find_tmp_dir)/bash_pid_$$"
+  fi
+
+  trap "clean_up ;" EXIT
+
+  # 1. Setup catalog_root and export_path
+
+  local catalog_root="${1:-${REPO_ROOT}/db/algorithm/raw_catalog}"
+  local export_path="${2:-${REPO_ROOT}/test}"
+
+  # 2. Convert allcrcs.txt catalog to Fast-CRC table based algorithms
+
+  make_crc_catalog_tests "$catalog_root" "$export_path" "t4"
+
+  make_crc_catalog_tests "$catalog_root" "$export_path" "t8"
+}
+
+###############################################################################
+
+function clean_up()
+{
+  rm -rf "$SCRIPT_TMPDIR"
+  cd "$CALLERS_WD" &> /dev/null;
+}
+
+###############################################################################
+
+main "$@"
+
