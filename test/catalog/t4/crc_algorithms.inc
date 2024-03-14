@@ -110,6 +110,7 @@
 #include "crc_algorithms/standard/crc64_ecma_182.inc"
 #include "crc_algorithms/standard/crc64_go_iso.inc"
 #include "crc_algorithms/standard/crc64_ms.inc"
+#include "crc_algorithms/standard/crc64_redis.inc"
 #include "crc_algorithms/standard/crc64_we.inc"
 #include "crc_algorithms/standard/crc64_xz.inc"
 
