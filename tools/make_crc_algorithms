@@ -17,6 +17,23 @@ function find_tmp_dir()
 
 ###############################################################################
 
+function determine_crc_t()
+{
+  local poly_degree="$1"
+  local -i bytes_required=$(( ((poly_degree + 7) / 8) ))
+  local sub_category="$2"
+
+  case "$bytes_required" in
+    1)          echo "uint${sub_category}8_t"  ;;
+    2)          echo "uint${sub_category}16_t" ;;
+    3|4)        echo "uint${sub_category}32_t" ;;
+    5|6|7|8)    echo "uint${sub_category}64_t" ;;
+    *)          echo "Bytes required for CRC (${bytes_required}) exceeds width of max integer!" >&2 ; exit 1 ;;
+  esac
+}
+
+###############################################################################
+
 function check_exclusions()
 {
   local file_name="$1"
@@ -210,6 +227,159 @@ EOF
 
 ###############################################################################
 
+function make_crc_interface_n()
+{
+  local -i poly_degree="$1"
+  local crc_t="${2:-$(determine_crc_t "$poly_degree")}" # optional
+  local crc_interface
+
+  mapfile -d '' crc_interface << EOF
+
+///////////////////////////////////////////////////////////////////////////////
+
+#define make_crc${poly_degree}_interface(crc_name, crc_poly, crc_init, crc_refin, crc_refout, crc_xorout, crc_check, crc_residue) \\
+\\
+define_crc_parameters(crc_name, /* crc_width = */ ${poly_degree}, crc_poly, crc_init, crc_refin, crc_refout, crc_xorout, crc_check, crc_residue) \\
+\\
+${crc_t} crc${poly_degree}_##crc_name##_start(uint8_t const *data, size_t const data_len); \\
+\\
+${crc_t} crc${poly_degree}_##crc_name##_continue(${crc_t} const crc, uint8_t const *data, size_t const data_len); \\
+\\
+${crc_t} crc${poly_degree}_##crc_name##_finish(${crc_t} const crc, uint8_t const *data, size_t const data_len); \\
+\\
+${crc_t} crc${poly_degree}_##crc_name(uint8_t const *data, size_t const data_len); \\
+
+#define make_crc${poly_degree}_implementation(crc_name, crc_poly, crc_init, crc_xorout) \\
+\\
+${crc_t} crc${poly_degree}_##crc_name##_start(uint8_t const *data, size_t const data_len) \\
+{ \\
+  return crc${poly_degree}_##crc_poly(/* init = */ crc_init, data, data_len); \\
+} \\
+\\
+${crc_t} crc${poly_degree}_##crc_name##_continue(${crc_t} const crc, uint8_t const *data, size_t const data_len) \\
+{ \\
+  return crc${poly_degree}_##crc_poly(/* init = */ crc, data, data_len); \\
+} \\
+\\
+${crc_t} crc${poly_degree}_##crc_name##_finish(${crc_t} const crc, uint8_t const *data, size_t const data_len) \\
+{ \\
+  return crc${poly_degree}_##crc_poly(/* init = */ crc, data, data_len) ^ crc_xorout; /* NB. Compiler eliminates xor(0) */ \\
+} \\
+\\
+${crc_t} crc${poly_degree}_##crc_name(uint8_t const *data, size_t const data_len) \\
+{ \\
+  return crc${poly_degree}_##crc_name##_finish(crc_init, data, data_len); \\
+} \\
+
+EOF
+
+  echo "${crc_interface}"
+}
+
+###############################################################################
+
+function make_crc_interfaces()
+{
+  local export_path="$1"
+  mkdir -p "$export_path"
+
+  if [[ ! -d "${export_path}" ]] ; then
+    echo "Export Path is invalid: \"${export_path}\""
+    exit 1
+  fi
+
+  local crc_interface="${export_path}/interface.h"
+
+  local crc_interface_notes
+
+  mapfile -d '' crc_interface_notes << EOF
+#pragma once
+
+#include "stdint.h"
+#include "stdbool.h"
+
+// @CRC_Parameters is used to capture the standardised CRC parameterisation popularised by Ross Williams [1]:
+//  - Provided primarily for >> documentation purposes <<
+//  - Used by unit tests to extract things like the "check" value
+//  - Not suitable for use in production code due to member types, size, layout, etc.
+//
+// [1] "A Painless Guide to CRC Error Detection Algorithms", Ross Williams
+
+typedef struct CRC_Parameters
+{
+  char const * const    name;         // eg. "CRC-8/Koopman"
+  size_t const          width;        // in bits
+
+  // @poly is a pseudo hex-string describing "F"orward/"R"everse CRC polynomial in explicit notation, but without the leading bit:
+  //
+  //   eg. "Fx1021"   ==>   Forward_Polynomial(x^16 + x^12 + x^5 + 1)
+  //   eg. "Rx1021"   ==>   Reverse_Polynomial(x^16 + x^12 + x^5 + 1)
+  //   eg. "Fx80f"    ==>   Forward_Polynomial(x^12 + x^11 + x^3 + x^2 + x + 1)
+  //
+  // The "F"/"R" component of the polynomial typically interacts with the table-based implementations,
+  // where the entire table is encoded "Reversed" for "R"eversed polynomials.
+  //
+  // This eliminates the need to reverse the input data bits,
+  // and (importantly) eliminates one bit shift operation in the implementation.
+  //
+
+  char const * const    poly;
+
+  uint64_t const        init;         // used to seed CRC value
+  bool const            refin;        // are the data bits reflected when processed
+  bool const            refout;       // are the CRC value bits reflected prior to XOR out
+  uint64_t const        xorout;       // XORed with (possibly reflected) CRC value prior to return
+  uint64_t const        check;        // the result of crc_algorithm("123456789")
+  uint64_t const        residue;      // the result of crc_algorithm(codeword) == crc_algorithm(concat(dataword, crc_val))
+
+} crc_parameters_t;
+
+#if defined(UNIT_TESTS)
+
+#define define_crc_parameters(crc_name, crc_width, crc_poly, crc_init, crc_refin, crc_refout, crc_xorout, crc_check, crc_residue) \\
+\\
+static const crc_parameters_t \\
+crc##crc_width##_##crc_name##_params = { \\
+  .name     = "CRC-"#crc_width"/"#crc_name, \\
+  .width    = crc_width, \\
+  .poly     = #crc_poly, \\
+  .init     = crc_init, \\
+  .refin    = crc_refin, \\
+  .refout   = crc_refout, \\
+  .xorout   = crc_xorout, \\
+  .check    = crc_check, \\
+  .residue  = crc_residue \\
+}; \\
+
+#else
+
+#define define_crc_parameters(crc_name, crc_width, crc_poly, crc_init, crc_refin, crc_refout, crc_xorout, crc_check, crc_residue)
+
+#endif
+
+///////////////////////////////////////////////////////////////////////////////
+//
+// CRC Interface Construction Macros
+//
+EOF
+
+  echo -n "${crc_interface_notes}" > "${crc_interface}"
+
+  # 2. Make the remaining CRC-8 to CRC-64 kernel macros in a loop
+
+  for ((degree = 3 ; degree <= 64 ; degree++ )) ; do
+
+    echo "$(make_crc_interface_n ${degree})" >> "${crc_interface}"
+
+  done
+
+  # 3. Avoid C preprocessor warning about trailing backslash on last line
+
+  echo "" >> "${crc_interface}"
+}
+
+###############################################################################
+
 function main()
 {
   local SCRIPT_PATH=$(realpath "${BASH_SOURCE[0]%/*}")
@@ -229,11 +399,15 @@ function main()
   # 1. Setup catalog_root and export_path
 
   local catalog_root="${1:-${REPO_ROOT}/db/algorithm/raw_catalog}"
-  local export_path="${2:-${REPO_ROOT}/crc_algorithms/standard}"
+  local export_path="${2:-${REPO_ROOT}/crc_algorithms}"
 
   # 2. Convert allcrcs.txt catalog to Fast-CRC table based algorithms
 
-  make_crc_algorithms "$catalog_root" "$export_path"
+  make_crc_algorithms "$catalog_root" "${export_path}/standard"
+
+  # 3. Generate algorithm-kernel interfacing types and Macros
+
+  make_crc_interfaces "${export_path}"
 }
 
 ###############################################################################
