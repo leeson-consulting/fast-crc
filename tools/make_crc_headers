@@ -1,0 +1,140 @@
+#!/usr/bin/env bash
+
+set -e
+
+###############################################################################
+
+function find_tmp_dir()
+{
+  local tmpdir
+
+  for tmpdir in "$TMPDIR" "$TMP" /tmp /var/tmp "$PWD" ; do
+    test -d "$tmpdir" && break
+  done
+
+  echo "$tmpdir"
+}
+
+###############################################################################
+
+function make_crc_interfaces()
+{
+  # 1. Run the C preprocessor across fast_crc.c using the temporary 'crc_algorithms.inc'
+
+  local crc_algorithms_inc=$(realpath "$1")
+  local crc_algorithms_inc_path="${crc_algorithms_inc%/*}"
+  local crc_algorithms_cppout="${SCRIPT_TMPDIR}/crc_algorithms.cppout"
+
+  mkdir -p "$SCRIPT_TMPDIR"
+
+  gcc -o "$crc_algorithms_cppout" \
+    -Wall -std=c99 \
+    -fdiagnostics-color=always \
+    -Wno-variadic-macros \
+    -ffile-prefix-map="${REPO_ROOT}"/=./ \
+    -I "${REPO_ROOT}" \
+    -I "${crc_algorithms_inc_path}" \
+    \
+    -E \
+    "${REPO_ROOT}/fast_crc.c"
+
+  # 2. Extract the function prototypes for each algorithm from the C preprocessor output
+  #    And print the results to stdout
+
+  local header_prologue
+
+  mapfile -d '' header_prologue << EOF
+#pragma once
+
+///////////////////////////////////////////////////////////////////////////////
+//
+// Fast-CRC Algorithm Interfaces
+//
+
+#include <stdint.h>
+#include <stddef.h>
+
+EOF
+
+  echo -n "$header_prologue"
+
+  sed -n -e '/_t crc.*_.*_start.*const data_len.;/{s:^\s*::g ; s:;\s*:;\n:g ; p}' < "$crc_algorithms_cppout"
+}
+
+###############################################################################
+
+function make_all_crc_interfaces()
+{
+  # 1. Collect all CRC .inc algorithms into a temporary 'crc_algorithms.inc'
+
+  mkdir -p "$SCRIPT_TMPDIR"
+  local crc_algorithms_inc="${SCRIPT_TMPDIR}/crc_algorithms.inc"
+
+  rm -f "$crc_algorithms_inc"
+
+  local algorithm_filename
+  local tmp
+  local -i crc_width
+
+  while read -r algorithm ; do
+
+    algorithm_filename="${algorithm##*/}"
+    tmp="${algorithm_filename%%_*}"
+    tmp="${tmp##*crc}"
+
+    if [[ -z "$tmp" ]] then
+      continue
+    fi
+
+    crc_width="$tmp"
+
+    if (( "$crc_width" < 3 || "$crc_width" > 64 )) then
+      continue
+    fi
+
+    printf "#include \"${algorithm}\"\n" >> "$crc_algorithms_inc"
+
+  done < <(find "$@" -iname \*.inc | xargs realpath -e)
+
+  # 2. Generate crc_algorithms.h
+
+  make_crc_interfaces "$crc_algorithms_inc"
+}
+
+###############################################################################
+
+function main()
+{
+  local SCRIPT_PATH=$(realpath "${BASH_SOURCE[0]%/*}")
+  local SCRIPT_NAME="${BASH_SOURCE[0]##*/}"
+  local REPO_ROOT="$(git rev-parse --show-toplevel)"
+
+  CALLERS_WD="$PWD"
+
+  if [[ "${BASH_SOURCE[0]}" == "${0}" ]] then
+    SCRIPT_TMPDIR="$(find_tmp_dir)/${SCRIPT_NAME}"
+  else
+    SCRIPT_TMPDIR="$(find_tmp_dir)/bash_pid_$$"
+  fi
+
+  trap "clean_up ;" EXIT
+
+  if [[ "$#" == '1' && "${1##*/}" == "crc_algorithms.inc" ]] then
+    make_crc_interfaces "$@"
+  else
+    make_all_crc_interfaces "$@"
+  fi
+}
+
+###############################################################################
+
+function clean_up()
+{
+  rm -rf "$SCRIPT_TMPDIR"
+  cd "$CALLERS_WD" &> /dev/null;
+}
+
+###############################################################################
+
+main "$@"
+
