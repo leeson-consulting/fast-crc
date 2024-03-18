@@ -102,6 +102,7 @@ function make_polynomial_db()
 {
   local polynomial_root="${1}"
   local profiles="${polynomial_root}/profiles"
+  local hd_survey="${polynomial_root}/hd_survey"
   local all_polynomials="${SCRIPT_TMPDIR}/all_polynomials.json5"
 
   mkdir -p "${profiles}"
@@ -129,7 +130,7 @@ function make_polynomial_db()
     mapfile -d '' profile_json5_data << EOF
 {
   "id" : $(${SCRIPT_PATH}/convert_poly k2j ${identity_koopman} | sed -e '$ { /^$/ d}' -e '1 ! s/\(^.*\)/  \1/'),
-  "hd" : $(convert_hamming_lengths_to_json5 "$hamming_lengths" | sed -e '$ ! s/\(^.*\)/    \1/' -e '$ s/\(^.*\)/  \1/'),
+  "hd" : $(echo "$hamming_lengths_json5" | sed -e '$ ! s/\(^.*\)/    \1/' -e '$ s/\(^.*\)/  \1/'),
 }
 EOF
 
@@ -138,9 +139,49 @@ EOF
 
   done < <(find "$polynomial_root/raw_profiles" -type f -iname \*_len.txt | sort)
 
+  if [[ "$PROCESS_SURVEY_DATA" == 'yes' ]] ; then
+
+    # 2. Convert HD Survey data to JSON5
+    #        ---   Warning ----
+    #    This takes several minutes
+    #    And produces over 30,000 JSON5 profiles
+
+    while read -r crcx_hd_data ; do
+
+      local identity_crc="${crcx_hd_data##*/}" ; identity_crc="cr${identity_crc%_*}"
+
+      while read -r identity_koopman hamming_lengths ; do
+
+        local identity="${identity_crc}_${identity_koopman/0x/Kx}"
+        local profile_json5_file="${identity}_profile.json5"
+
+        if [[ -r "$profile_json5_file" ]] ; then
+          continue
+        fi
+
+        echo "Generating \"${profile_json5_file}\" from survey data"
+
+        local hamming_lengths_json5=$(convert_hamming_lengths_to_json5 "$hamming_lengths")
+
+        mapfile -d '' profile_json5_data << EOF
+{
+  "id" : $(${SCRIPT_PATH}/convert_poly k2j ${identity_koopman} | sed -e '$ { /^$/ d}' -e '1 ! s/\(^.*\)/  \1/'),
+  "hd" : $(echo "$hamming_lengths_json5" | sed -e '$ ! s/\(^.*\)/    \1/' -e '$ s/\(^.*\)/  \1/'),
+}
+EOF
+
+        echo -n "${profile_json5_data}" > "${profiles}/${profile_json5_file}"
+        echo -n "${profile_json5_data}," >> "${all_polynomials}"
+
+      done < <(cat "$crcx_hd_data" | sort)
+
+    done < <(find "$polynomial_root/hd_survey" -type f -iname \*_hd.out | sort)
+
+  fi
+
   echo "]" >> "${all_polynomials}"
 
-  # 2. Make a primitive JS polynomial database
+  # 3. Make a primitive JS polynomial database
 
   mapfile -d '' polynomial_db << EOF
 
@@ -335,6 +376,8 @@ function main()
 
   # 3. Convert profile txt data current JSON5 schema
   #    and concantenate the results to form a primitive JS database.
+
+  PROCESS_SURVEY_DATA='no'
 
   make_polynomial_db "$polynomial_root"
 }
