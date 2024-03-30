@@ -1,29 +1,108 @@
-= Fast-CRC - Off the shelf and on your way
+:source-highlighter: rouge
+:rouge-style: monokai
 
-Fast-CRC provides tooling for generating efficient Cyclic Redundancy Check (CRC) implementations from pick and choose templates.
+= Fast-CRC: _Off the shelf and on your way_
+
+Fast-CRC provides tooling for generating efficient Cyclic Redundancy Check (CRC) algorithms from pick and choose templates.
+All algorithms are C99 compliant and tested, which allows for easy integration with your C or C++ source.
+
+Features:
+
+* _Every_ algorithm up to CRC-64 from Greg Cook's "CRC Catalog"
+* Choice of 4-bit and 8-bit polynomial table-kernels
+* Unit tested against published check values
+* Dr. Nguyen's HD4 and HD6 "Fast CRC" algorithms
+* Hamming profile database for every polynomial listed in Prof. Koopman's "CRC Zoo"
+
+== Setup:
+
+* Get a copy of the Fast-CRC source.
+* Copy and modify one of the crc_algorithm.inc templates to suit your application.
+  There's a few examples under the ./templates folder to get you started.
+* Ensure the Fast-CRC directory and modified template are both on the header include path.
+
+== Example:
+
+[source,shell]
+----
+cd ./examples/hello_crc/
+
+cmake -G "Unix Makefiles" -B build
+
+cmake --build ./build/ && ./build/hello_crc
+
+CRC-16/CCITT "Hello, CRC!" == 0x991c
+----
+
+../examples/hello_crc/crc_algorithms.inc
+[source,c]
+----
+#include "crc_algorithms/standard/crc16_ccitt.inc"
+----
+
+../examples/hello_crc/hello_crc.c
+[source,c]
+----
+#include "crc.h"
+
+#include <stdio.h>
+#include <string.h>
+
+static char const HELLO_CRC[] = "Hello, CRC!";
+
+int main(void)
+{
+  uint32_t const crc = crc16_CCITT((uint8_t const *) HELLO_CRC, strlen(HELLO_CRC));
+
+  printf("\n\nCRC-16/CCITT \"%s\" == 0x%04x\n\n", HELLO_CRC, crc);
+
+  return 0;
+}
+----
 
 == Table Based Algorithms:
 
-* Every polynomial listed in Prof. Koopman's "CRC Zoo"
-* Every "attested" or "confirmed" algorithm from Greg Cook's "CRC Catalog"
-* Choice of 4-bit and 8-bit polynomial lookup tables
-* Unit tested against published check values
+Most of the algorithms bundled with Fast-CRC use polynomial table-kernels to speed up processing.
+These process data either 8-bits at a time or 4-bits at a time.
+The 8-bit table-kernels are around twice as fast as the 4-bit table-kernels, but use significantly more memory.
 
-All algorithms are C99 compliant, allowing easy integration with your C or C++ source.
-Interfaces are provided for direct calculation across a single buffer and for cumulative calculation across multiple buffers.
-Template names prefix all interfaces to prevent ambiguity and provide standardisation.
+For example a CRC-32 8-bit table-kernel will use 1 kB of memory,
+but the equivalent 4-bit table-kernel only uses 64 bytes!
 
-== Bonus Algorithms:
+This speed/size trade-off is of most interest in embedded applications, which don't typically have memory to burn.
 
-* Dr. Nyugen's HD4 and HD6 Fast-CRC algorithms
-* Prof. Koopman's HD4 Koopman15P algorithm
+The choice of kernel is controlled by `USE_CRC_KERNEL_TABLE8`, which can be optionally defined for each applications's crc_algorithms.inc template.
+
+In the unlikely case that two algorithms happen to use the same polynomial but they are included under different kernels, the 8-bit kernel wins.
+In other words both benefit from the speed of the 8-bit table with out needless duplication.
+
+..examples/kernel_selection/crc_algorithms.inc
+[source,c]
+----
+#define USE_CRC_KERNEL_TABLE8
+
+// These algorithms use 8-bit kernels
+
+#include "crc_algorithms/standard/crc16_ccitt.inc"
+
+#undef USE_CRC_KERNEL_TABLE8
+
+// These algorithms use 4-bit kernels ...
+
+#include "crc_algorithms/standard/crc32_iso_hdlc.inc"
+
+// ... except for this one,
+// which implicitly uses the same 8-bit kernel-table
+// that was brought in with crc16_ccitt above
+
+#include "crc_algorithms/standard/crc16_ibm_sdlc.inc"
+----
+
+== Dr. Nyugen's Fast CRC Algorithms:
 
 Fast-CRC provides the first tested library of Dr. Nyugen's "Fast-CRC" algorithms.
 These CRC algorithms offer the best speed-size trade off available for pure software implementations.
 In some instances they can outperform the large table based implementations.
-
-Koopman15P is an algorithm proposed as a fast alternative to CRC-16 algorithms.
-It offers HD4 error detection of datawords up to around 2kB, but has not been used outside of research environments.
 
 == Acknowledgements:
 
