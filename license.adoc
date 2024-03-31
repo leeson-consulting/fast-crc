@@ -14,7 +14,7 @@ When complying with this license, attribution must be given to the copyright hol
 
 Attribution must be worded as follows:
 
-"The <Your_Incorporating_Work> makes use of the Fast-CRC library under the Microsoft Public License (Ms-PL).
+"<Your_Incorporating_Work> makes use of the Fast-CRC library under the Microsoft Public License (Ms-PL).
 
 Fast-CRC is Copyright:
   <Copyright_Holders>
