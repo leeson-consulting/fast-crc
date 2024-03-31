@@ -84,7 +84,7 @@ uint32_t crc32_Fast6(uint8_t const *data, size_t const data_len);
 Single-Pass interfaces would typically be used to compute CRCs across a large blocks of readily accessible data, such as FLASH storage.
 Multi-Pass interfaces are best used for communication protocols or for calculating CRCs across large blocks in a cooperative multitasking / task-loop scenario.  See `./examples/multipass_interface` for usage.
 
-Asynchronous interfaces are not currently supported, but could be implemented to support things like DMA driven CRC peripherals.  See `./documentation/roadmap.adoc`.
+Asynchronous interfaces are not currently supported, but could be implemented to support things like DMA driven CRC peripherals.  See `./documentation/road_map.adoc`.
 
 == Standard Table Algorithms:
 
@@ -99,7 +99,7 @@ but the equivalent 4-bit table-kernel only uses 64 bytes!
 
 This speed/size trade-off is of most interest in embedded applications, which don't typically have memory to burn.
 
-The choice of kernel is controlled by `USE_CRC_KERNEL_TABLE8`, which can be optionally defined for each applications's crc_algorithms.inc template.
+The choice of kernel is controlled by `USE_CRC_KERNEL_TABLE8`, which can be optionally defined for each applications's `crc_algorithms.inc` template.
 
 In the unlikely case that two algorithms use the same polynomial under different kernels, the 8-bit kernel wins.
 In other words both benefit from the speed of the 8-bit table with out needless duplication.
@@ -139,12 +139,129 @@ but interested parties can review `./tools/make_crc_tables` and `./test/sharded/
 
 == Dr. Nyugen's Fast CRC Algorithms:
 
-Fast-CRC provides the first tested library of Dr. Nyugen's "Fast-CRC" algorithms.
+Fast-CRC provides the first tested library of Dr. Nyugen's "Fast CRC" algorithms.
 These CRC algorithms offer the best speed-size trade off available for pure software implementations.
 In some instances they can outperform the large table based implementations.
 
 The Fast algorithms as cross-checked against table based implementations to ensure consistency.
 However, since this is the first library to implement them there are no independent checks of correctness.
+
+== Custom CRC Algorithms
+
+Fast-CRC uses the C preprocessor under the hood to take an algorithm template and use it to compose functions and polynomial lookup tables.
+There's a wide selection of algorithms under `./crc_algorithms`, but you can also create your own algorithms by copying and modifying a template to suit.
+
+This is a straight-forward process, but one which has a lot of finicky steps.
+
+Let's take a look at an example:
+
+../crc_algorithms/crc16_riello.inc
+[source,c]
+----
+#if crc_algorithms_inc == INCLUDE_INTERFACE
+
+#include "crc_algorithms/interface.h"
+
+make_crc16_interface(
+  /* .name     =  */    RIELLO,
+  /* .poly     =  */    Rx1021,
+  /* .init     =  */    0xb2aa,
+  /* .refin    =  */    true,
+  /* .refout   =  */    true,
+  /* .xorout   =  */    0x0000,
+  /* .check    =  */    0x63d0,
+  /* .residue  =  */    0x0000)
+
+#elif crc_algorithms_inc == INCLUDE_IMPLEMENTATION
+
+#include "crc_tables/standard/crc16_Rx1021.h"
+
+make_crc16_implementation(
+  /* .name     =  */    RIELLO,
+  /* .poly     =  */    Rx1021,
+  /* .init     =  */    0x554d,
+  /* .xorout   =  */    0x0000)
+
+#endif
+----
+
+=== Creating a Custom CRC Algorithm Template
+
+The algorithm template calls two macros that are invoked at different phases of construction.
+
+During the `INCLUDE_INTERFACE` phase,
+`make_crc16_interface()` generates the function protoypes for the CRC-16/RIELLO interfaces.
+It is one of a family of `make_crcXX_interface()` macros ranging from crc3 to crc64.
+
+The parameters passed to the macro match those popularised by Ross Williams in his 1993 paper
+"A Painless Guide to CRC Error Detection Algorithms".
+A copy of the paper is included in `./documentation/crc_v3.txt` under license.
+
+The name field is used to distinguish your algorithm from other algorithms.
+You can choose any unique name you like, but it must be useable as a C identifier.
+
+The poly(nomial) field has a special encoding.
+It represents the polynomial in "Normal Notation" with a single letter prefix.
+"Fx" polynomials refer to lookup tables encoded with Non-Reflected (Forward) polynomials.
+"Rx" polynomials refer to lookup tables encoded with Reflected (Reverse) polynomials.
+
+The kernels treat these differently.
+The Reverse polynomials need one less shift operation than the equivalent Forward polynomials.
+This means that Reversed Polynomial algorithms are slightly faster than Forward algorithms.
+
+The init value is used to initialise the CRC.
+It is not used in interface construction per se, but is used as a means to document the interface.
+
+The refin and refout values exist only for documentation purposes.
+They relate to the need to reflect data coming into the algorithm and CRC values coming out.
+
+When refin is set to false, the algorithm *must* use the `Fx` Forward Polynomial already discussed.
+Conversely when refin is set to true, the algorithm *must* use the `Rx` Reversed Polynomial.
+
+Algorithms *should* set refin and refout to the same value, ie. both true or both false.
+
+However, if you do chose to set refin and refout to different values you can still use Fast-CRC,
+but some manual coding will be required to reflect the CRC out.
+See `./crc_algorithms/standard/crc12_umts.inc` for an example.
+
+The xorout field is used to xor the final CRC value prior to return.
+This should generally be set to zero, since the compiler will optimize this away in the kernel.
+You can, however, choose any value you wish.
+
+The check field is the CRC value returned after processing the data "123456789".
+This is published for all the cataloged algorithms and used by unit tests to verify operation.
+
+The residue field is the result of running the algorithm across the complete codeword,
+which consists of the dataword concatenated with the crc value.
+This is only used for documentary purposes and is not currently used by the kernel constructors.
+
+During the `INCLUDE_IMPLEMENTATION` phase,
+the desired CRC polynomial lookup table is first included from `./crc_tables`.
+
+This is followed by a call to the `make_crc16_implementation()` macro,
+which is a one-for-one counterpart to the corresponding interface macro.
+
+Since the generated implementation needs to exactly match the interface,
+care must be taken to call the macro of the same CRC degree (width) with a subset of the *same values* used in the interface.
+
+The one exception is the init value.
+This must be bit-reflected for reflected polynomials when calling the `make_crcXX_implementation()` macro.
+Often this reflection will produce the same value, eg. 0x000, 0xffff, which can cause some confusion.
+Neverthless, for reflected polynomials the init value must be passed in bit-reflected.
+
+=== Creating a Custom CRC Interface Header
+
+A manually constructed interface header should be provided for custom algorithms.
+The CRC algorithms and their respective interfaces bundled with Fast-CRC are the output of code generators under `./tools`.
+
+Have a look at these generators to see how things work, but in practice it's easiest to copy and modify
+one of the interface blocks for an existing algorithm in `./crc.h` when creating your custom header.
+
+=== Including a Customised CRC Algorithm
+
+After completing the `custom_crc.inc` and `custom_crc.h` files,
+you simply need to add `#include "custom_crc.inc"` to your `crc_algorithms.inc` template
+and `#include "custom_crc.h"` to your application code to use the new algorithm.
 
 == Polynomial Survey Data
 
