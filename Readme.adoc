@@ -73,7 +73,7 @@ This speed/size trade-off is of most interest in embedded applications, which do
 
 The choice of kernel is controlled by `USE_CRC_KERNEL_TABLE8`, which can be optionally defined for each applications's crc_algorithms.inc template.
 
-In the unlikely case that two algorithms happen to use the same polynomial but they are included under different kernels, the 8-bit kernel wins.
+In the unlikely case that two algorithms use the same polynomial under different kernels, the 8-bit kernel wins.
 In other words both benefit from the speed of the 8-bit table with out needless duplication.
 
 ..examples/kernel_selection/crc_algorithms.inc
