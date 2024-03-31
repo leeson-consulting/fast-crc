@@ -18,8 +18,8 @@ Features:
 
 * Get a copy of the Fast-CRC source.
 * Copy and modify one of the crc_algorithm.inc templates to suit your application.
-  There's a few examples under the ./templates folder to get you started.
-* Ensure the Fast-CRC directory and modified template are both on the header include path.
+  There's a few examples under the `./templates` folder to get you started.
+* Ensure the Fast-CRC folder and modified crc_algorithm.inc are both on the compiler's header include path.
 
 == Example:
 
@@ -60,10 +60,38 @@ int main(void)
 }
 ----
 
-== Table Based Algorithms:
+== Interfaces:
+
+Fast-CRC interfaces support two use cases:
+
+. Single-Pass Calculation
+. Multi-Pass Calculation
+
+The Single-Pass interfaces calculate the CRC across the provided data.
+The Multi-Pass interfaces `_start`, `_continue`, or `_finish` a CRC calculation incrementally as data becomes available.
+
+These interfaces are standardised across four functions per algorithm, eg.
+
+.crc32_Fast6 Interfaces
+[source, c]
+----
+uint32_t crc32_Fast6_start(uint8_t const *data, size_t const data_len);
+uint32_t crc32_Fast6_continue(uint32_t const crc, uint8_t const *data, size_t const data_len);
+uint32_t crc32_Fast6_finish(uint32_t const crc, uint8_t const *data, size_t const data_len);
+uint32_t crc32_Fast6(uint8_t const *data, size_t const data_len);
+----
+
+Single-Pass interfaces would typically be used to compute CRCs across a large blocks of readily accessible data, such as FLASH storage.
+Multi-Pass interfaces are best used for communication protocols or for calculating CRCs aross large blocks in a cooperative multitasking / task-loop scenario.  See the `./examples` folder for more.
+
+Asynchronous interfaces are not currently supported, but could be implemented to support things like DMA driven CRC peripherals.  See `./documentation/roadmap.adoc`.
+
+== Standard Table Algorithms:
 
 Most of the algorithms bundled with Fast-CRC use polynomial table-kernels to speed up processing.
-These process data either 8-bits at a time or 4-bits at a time.
+These should be familiar to seasoned engineers -- they're what you'd write yourself but standardised and tested.
+
+Table based algorithms process data either 8-bits at a time or 4-bits at a time.
 The 8-bit table-kernels are around twice as fast as the 4-bit table-kernels, but use significantly more memory.
 
 For example a CRC-32 8-bit table-kernel will use 1 kB of memory,
@@ -98,11 +126,72 @@ In other words both benefit from the speed of the 8-bit table with out needless 
 #include "crc_algorithms/standard/crc16_ibm_sdlc.inc"
 ----
 
+== Sharded Table Algorithms:
+
+Some CRC polynomial tables can be stored in types that are narrower than the CRC polynomial degree.
+Koopman identifies a few HD6 "Sub8" polynomials here, https://users.ece.cmu.edu/~koopman/crc/6sub8.html
+
+Fast-CRC provides Sharded Tables for Dr. Nyugen's HD4 Fast Polynomials.
+These tables allow a single table to masquerade as a whole family of wider CRCs, which provides a significant space saving over standard tables.
+
+Sharded tables should be considered experimental,
+but interested parties can review `./tools/make_crc_tables` and `./test/sharded/t{4,8}`
+
 == Dr. Nyugen's Fast CRC Algorithms:
 
 Fast-CRC provides the first tested library of Dr. Nyugen's "Fast-CRC" algorithms.
 These CRC algorithms offer the best speed-size trade off available for pure software implementations.
 In some instances they can outperform the large table based implementations.
+
+The Fast algorithms as cross-checked against table based implementations to ensure consistency.
+However, since this is the first library to implement them there are no independent checks of correctness.
+
+== Polynomial Survey Data
+
+Prof. Koopman was kind enough to share a large amount of data with the project.
+Some of this data has been mangled into a Javascript database.
+
+It's well known that the _standard_ CRC algorithms do not provide the _best bang for buck_.
+
+For instance consider the CRC-32 0x04c11db7 polynomial used by CRC-32/ISO_HDLC.
+This shows that the algorithm _does_ provide HD6 protection, _but_ only for the first 33 bytes of data:
+
+.CRC-32 0x04c11db7 Profile Data
+[source,javascript]
+----
+{
+  "id" : {
+    "polynomial" : "x^32 + x^26 + x^23 + x^22 + x^16 + x^12 + x^11 + x^10 + x^8 + x^7 + x^5 + x^4 + x^2 + x^1 + 1",
+    "degree"     : 32,
+    "explicit"   : "0x104c11db7",
+    "koopman"    : "0x82608edb",
+    "normal"     : "0x4c11db7"
+  },
+  "hd" :     [null, null, null,
+    /* 3 */ { "bits"    : 4294967263, "bytes"   : 536870907 },
+    /* 4 */ { "bits"    : 91607, "bytes"   : 11450 },
+    /* 5 */ { "bits"    : 2974, "bytes"   : 371 },
+    /* 6 */ { "bits"    : 268, "bytes"   : 33 },
+    /* 7 */ { "bits"    : 171, "bytes"   : 21 },
+    /* 8 */ { "bits"    : 91, "bytes"   : 11 },
+    /* 9 */ { "bits"    : 57, "bytes"   : 7 },
+    /* 10 */ { "bits"    : 34, "bytes"   : 4 },
+    /* 11 */ { "bits"    : 21, "bytes"   : 2 },
+    /* 12 */ { "bits"    : 12, "bytes"   : 1 },
+    /* 13 */ { "bits"    : 10, "bytes"   : 1 },
+    /* 14 */ { "bits"    : 10, "bytes"   : 1 },
+    /* 15 */ { "bits"    : 10, "bytes"   : 1 }
+  ],
+}
+----
+
+Compare this, with CRC-32 0x32c00699, which provides HD6 for up to 4092 bytes of data,
+*ie. this polynomial provides HD6 protection over 100 times greater range than the polynomial used by the standard algorithm*
+
+Simarly, CRC-24 0x65b provides HD6 protection for up to 59 bytes of data but with with one byte less overhead.
+
+What this shows is that there's considerable room for improvement in the selection of CRC polynomials for new applications.
+It also, questions the virtue of using a wider CRC algorithm when a narrower algorithm provides the equivalent protection for the underlying conditions.
 
 == Acknowledgements:
 
@@ -117,5 +206,7 @@ Greg Cook's https://reveng.sourceforge.io/crc-catalogue/[CRC Catalog] has proved
 for disambiguating the often subtle differences between "standard" CRC algorithms.
 
 Thomas Pircher's https://pycrc.org/[pycrc] generates the CRC tables used by Fast-CRC.
-pycrc is an excellent and simple to use product that can generate standalone C implementations at the drop of a hat.
-pycrc is used under terms of the http://opensource.org/licenses/mit-license.php[MIT license].
+`pycrc` is an excellent and simple to use product that can generate standalone C implementations at the drop of a hat.
+`pycrc` is used under terms of the http://opensource.org/licenses/mit-license.php[MIT license].
+
+Finally, Dr. Gam Nguyen's research into fast algorithms for calculating certain classes of CRC polynomials has been eye-opening.  These provide practical software based alternatives to lookup table for HD4 CRC calculations and should be considered for adoption into communication protocols targeting resource constrained platforms.
