@@ -16,7 +16,7 @@ Attribution must be worded as follows:
 
 "The <Your_Incorporating_Work> makes use of the Fast-CRC library under the Microsoft Public License (Ms-PL).
 
-Fast-CRC is owned by:
+Fast-CRC is Copyright:
   <Copyright_Holders>
 
 with contributions from:
