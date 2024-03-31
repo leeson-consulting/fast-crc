@@ -82,7 +82,7 @@ uint32_t crc32_Fast6(uint8_t const *data, size_t const data_len);
 ----
 
 Single-Pass interfaces would typically be used to compute CRCs across a large blocks of readily accessible data, such as FLASH storage.
-Multi-Pass interfaces are best used for communication protocols or for calculating CRCs aross large blocks in a cooperative multitasking / task-loop scenario.  See `./examples/multipass_interface` for usage.
+Multi-Pass interfaces are best used for communication protocols or for calculating CRCs across large blocks in a cooperative multitasking / task-loop scenario.  See `./examples/multipass_interface` for usage.
 
 Asynchronous interfaces are not currently supported, but could be implemented to support things like DMA driven CRC peripherals.  See `./documentation/roadmap.adoc`.
 
