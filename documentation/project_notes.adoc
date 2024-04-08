@@ -1,0 +1,148 @@
+:source-highlighter: rouge
+:rouge-style: monokai
+
+= Fast-CRC: Background and Motivation
+
+Cyclic Redundancy Checks (CRCs) are the best choice for detecting infrequent corruptions in data communications and storage.
+CRCs are simple to implement and well understood.
+
+Most engineers (including myself) choose to copy-paste CRC implementations from one product to the next.
+Once working, it is rightfully forgotten -- doing its job just like the rest of us.
+
+While this appeals on paper, there remains a persistent misapplication of CRCs in practice.
+
+I have personally eye-witnessed:
+
+* Using two CRC-8s on different seeds instead of a CRC-16.
+  Some incarnation was whispered over the source to make it better at doing its job.
+* Using Adler checksums (incorrectly) instead of a similarly sized CRC since "it's easier"
+* Not using a CRC-16 because simply replaying the inverted message length was "pretty good" at detecting errors.
+* Using a CRC-8 to "protect" FLASH data ranging from 64 to 128 bytes.
+  No need to consider the maximum code-word length here...
+* A uC code-base with 6 independent CRC implementations that precious .ROData.
+  There were duplications, needless "for speed" optimizations, interface inconsistencies, and no tests.
+* Using a truncated MD5, because it's got "better cryptographic properties"
+
+Then there are "best practices", which amount to chosing the same polynomial as some ancient telco standard.
+This being despite the fact that better advice is only a few Google searches away.
+
+What to do?
+
+Well, if you are fortunate enough to be in an environment that encourages engineering rigour:
+
+`Read, Learn, Choose`
+
+Read the abundance of material offered by Professor Koopman and his peers.
+Learn the application of the technology.
+Choose the best CRC polynomials that fit your purpose.
+
+But back in Acme Engineering, you're stuck with whatever Joe Engineer chose to do.
+Well, you can still refactor for size, correctness, and interfaceing.
+
+You can also don the Error Mitigation cap.
+Address the implications of undetected errors.
+Do the undetected errors actually matter?
+Can you "do something dumb" to make these undetectable errors less impactful or "systematically avoidable".
+
+== Design Goals
+
+Fast-CRC's principle ambition was easing CRC integration into C-based products both old and new.
+
+This entailed:
+
+* Providing the full catalog of known CRC algorithms
+* Standardising naming and interfaces across all algorithms
+* Declaring product requirements in a simple C template
+* Only paying for what you use, but always leveraging what's available
+* Ensuring the generated code was efficient, tested, and comprehensible
+* Allowing for customization and experimentation
+
+== Design Internals
+
+C is the lingua franca of embedded software development.
+So initially I restricted myself to what it can offer through the preprocessor and language itself.
+This led to a PIMPL-style design, which although flexible traded away performance via pointer indirection.
+
+After some naval gazing I decided to redesign Fast-CRC around macro-expansion of code-snippets.
+I considered C++ TMP and X-Macros, but rejected both as being too obtuse and difficult to maintain.
+
+This led to the decision to implement a hybrid code generator:
+
+* Provide tools to generate families of tightly coupled C macros
+* Expand the macros at build time via phased inclusion of conditional blocks selected by user defined preferences
+
+The `./tools` folder contains a number of shell scripts for generating these macro-infused source code.
+The underlying mechanics depend heavily on HereDoc style code generation from lists of algorithms, polynomials, and kernels.
+The Shell is not precious.  It could be replaced by Python or (better) Golang.
+
+The generated code is spread across a hierarchy of `algorithms`, `tables`, and `kernels`.
+Each algorithm is described in its own .inc (C source) file and generally pulls in a lookup table matching the underlying polynomial and selected via the kernel.
+
+Standard algorithms match those described in Greg Cook's CRC catalog.
+Many of the algorithms use the same polynomial and only differ in initialization, reflection, and finilization of the CRC value.
+Each algorithm is tested against the supported kernels and tables.
+
+Even though the macros may feel opaque,
+the intention is that when expanded they produce source code you'd write yourself.
+You can get a better feel for things by forcing the Preprocessor to spit out the generated source code.
+I'd encourage interested parties to have a look and offer suggestions for improvements.
+
+The current kernels use table based lookups.
+There is scope for implementing other kernels -- principally those supporting CRC HW peripherals and custom instructions (eg. SSE 4.1).
+Depending on interest, these may be implemented in later releases.
+
+== Special Cases
+
+Dr. Nguyen's Fast CRC Algorithms[1] were not generated.  These have been more or less copied from his "Fast CRC" paper.
+During implementation I found some errors in his Fast CRC-16 mini-table implementation for `x^16 + x^2 + x^1 + 1`.
+The input data is treated as uint16_t, but needs to be byte swapped on little-endian platforms (PCs, most modern uCs).
+
+Careful inspection of the Standard Polynomial Tables for the `x^y + x^2 + x^1 + 1` polynomial family revealed that the entries never exceed 10 bits.
+This led to the development of the _Sharded Polynomial Tables_, which facilitate reuse of a single lookup table across the Fast CRC family from CRC-10 to CRC-64 inclusive.
+
+This is a significant finding for protocols wishing to implement an adaptive CRC algorithm on resource constrained uCs.
+This topic and others will be explored as part of _The Goldilocks Protocol_, which aims to provide a robust, flexible, and low-overhead transport for point to point communications.
+
+`CRC-12/UMTS` is unique in the CRC catalog with .refin != .refout.
+In practice this means that the calculated CRC value needs reversed prior to return from the algorithm.
+The source for the main interfaces was hand written rather than generated.
+This was simply avoid layers of macro-complifications for a one-off algorithm.
+
+Learn the lesson and *never* define .refin != .refout.
+Doing so offers *no advantage* and will cause much constenation amongst the folk that have to code it!
+
+== Product Integration and Build
+
+Fast-CRC is intended to be easy to incorporate into C/C++ applications:
+
+* Acquire the Fast-CRC source from an official release, clone etc.
+* Add `./fast_crc.c` to your build system.
+  See `./examples` and `./test` for inspiration
+* Copy and edit an example crc_algorithms.inc to suit your product.
+  Make sure this is on the C preprocessor include path.
+
+== CRC Interfaces
+
+The CRC interfaces follow a standardised naming convention based on macro expansions in crc_algorithms/interface.h.
+
+For example the interfaces generated by including crc_algorithms/crc16_ccitt.inc:
+
+[source,C]
+----
+
+// The "Single-Pass Interface" calculates the CRC-16/CCITT CRC across the provided data in a single pass.
+
+uint16_t crc16_CCITT(uint8_t const *data, size_t const data_len);
+
+// The "Multi-Pass Interface" calculates the CRC-16/CCITT CRC across the provided data as it comes to hand.
+// The intermediate crc value returned by _start or _continue is passed into _continue or _finish until the required data is fully processed.
+
+uint16_t crc16_CCITT_start(uint8_t const *data, size_t const data_len);
+uint16_t crc16_CCITT_continue(uint16_t const crc, uint8_t const *data, size_t const data_len);
+uint16_t crc16_CCITT_finish(uint16_t const crc, uint8_t const *data, size_t const data_len);
+
+----
+
+== References
+
+[1] "Fast CRCs (Extended Version)", Nguyen Gam, https://arxiv.org/pdf/1009.5949.pdf
