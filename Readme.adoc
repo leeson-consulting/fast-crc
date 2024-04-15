@@ -307,8 +307,90 @@ Compare this, with CRC-32 0x32c00699, which provides HD6 for up to 4092 bytes of
 
 Simarly, CRC-24 0x65b provides HD6 protection for up to 59 bytes of data but with with one byte less overhead.
 
-What this shows is that there's considerable room for improvement in the selection of CRC polynomials for new applications.
-It also, questions the virtue of using a wider CRC algorithm when a narrower algorithm provides the equivalent protection for the underlying conditions.
+== Orthodox Engineering Practice
+
+The Polynomial Survey Data shows that there is considerable room for improvement in the selection of CRC polynomials for new applications.
+
+=== Follow Polynomial Design Guides
+
+The best practices for polynomial selection has been clearly described by Prof. Koopman et al.
+
+These start with questions of constraint.
+Can you make a change to the design to improve error resilience?
+
+If the design is open to change, what do you know and what do you care about?
+
+It's all very well saying that a polynomial provides HD6 performance at the design length.
+But if that polynomial comes with an additional 10% overhead do you care?
+Is the channel or media modelled well enough to accept an HD4 polynomial instead?
+
+If there's still a rationale for change, then choose the lowest degree polynomial that fits
+both constraints and the known (or assumed) error characteristics of the channel or media.
+
+=== Consider Black Swans
+
+In my experience it's not popular to raise "what if" questions to the engineering team.
+Being the sole objector to "... a simple solution that already works ..." can be isolating.
+
+But my experience has also taught me that _Black Swan Events_ are *far* from uncommon.
+
+Shot noise conducted or radiated from power electronics and switchgear can radically affect communications -- even if for a short time.
+
+Passive thermal cycling, changes in humidity, dirty connectors, non-static mechanical loads, etc. can all reduce SNR,
+which can present as both bit desynchronisation and corruptions.
+
+Off-by-one errors or other weak coding can systematically change or augment large quantities of buffered data,
+which presents as overwhelming levels of corruption to any CRC.
+
+When (not if) data corruptions hit the proverbial fan, how does your design cope?
+https://how.complexsystems.fail[How Complex Systems Fail] says that complex systems are *always* running under degraded conditions.
+Whether the degradation is sufficient to cause failure is difficult to determine because the system is complex.
+Nevertheless, every effort should be made to mitigate degradation.
+
+Mitigating against high BERs or systemic corruption starts with CRC selection.
+
+CRC performance has been analysed at BERs around 50% and towards 100%.
+The ideal CRC polynomial degrades to HD2 performance at any level of corruption at any data length.
+These polynomials are said to be "proper".
+
+Some polynomials are proper at BERs around 50% as shown in Koopman's CRC Zoo.
+But no known polynomials are proper at every length and every level of data corruption.
+
+Given the choice of polynomials that satisfy HD requirements and other constraints, choose the least improper polynomial.
+
+However, since the data is scant in this area, a more orthodox approach is to assume some errors will escape detection by CRC alone.
+These errors are not necessarily undetectable.
+Simple measures like sequence numbers and other protocol double-checks will weed out some errors.
+
+At the end of the day you can't guarantee that data is incorrupt, but you may be able to put a bounds on the corruption.
+Always check that your application is fit for purpose in terms of those bounds.
+
+=== Recommendations
+
+Select a CRC polynomial in the following order:
+
+. The highest HD for the lengths of interest,
+. The highest secondary HDs at shorter lengths,
+. The highest degree given engineering constraints,
+. The least improper at lengths of interest at errors approaching 50% corruption.
+
+For the sky is falling (> 50% corruption) scenario, the best practical advice is use a higher degree polynomial.
+The extra bits in the CRC check value might help ward off disaster even if it's no better than a good hash of the same width.
+
+Beyond that you must address _Black Swans_ in your protocol.
+If detected error rate creeps up above design criteria, it might be best to apply radio silence for a while.
+Resumption can be driven by timers, side-channel coordination, intrinsic measurements (RSSI etc.).
+
+Other adaptations to protocol can also be applied to continue operation under adverse conditions, but I'll address these in another project.
+
+A useful (but strictly untrue) analogy is just as "you can't beat cubic inches", "you can't beat CRC degree".
+Do not prematurely optimise CRC degree.
+Look at the additional overhead.
+If the additional transmission / storage overhead is less than 1%, just use the higher degree CRC.
+
+Fast-CRC eliminates concerns about implementation overhead in embedded targets.
+It offers the choice of both T4 and Sharded tables with the possibility of Fast CRC algorithms.
+It's up to you to make the best choices for your application.
 
 == Acknowledgements:
 
