@@ -1,0 +1,73 @@
+:source-highlighter: rouge
+:rouge-style: monokai
+
+= Fast-CRC: Road Map
+
+== 1.x
+
+The principle motivation of Fast-CRC was to provide a full catalog of ready to use and C99 compliant CRC algorithms.
+These provide consistent, correct, and efficient CRC implementations for engineers who just need to "get on with it".
+
+This objective was met in the 1.0 release (circa April 2024),
+which also included some novel algorithms and survey data for those wishing to explore further.
+
+== 2.x
+
+The second major release will focus on supporting multiple languages.
+This will be done in phases.
+
+The first phase (2.0) will target Rust, Golang, and Javascript based on their features and popularity as at the development date.
+Rust is the only significant competitor to C and C++ in the Embedded / System Programing space.
+Golang is the best (IMO) general purpose programming language and is very suitable to embedded Linux Server applications.
+Javascript is deployed on scale for Web based Client Server applications.
+
+The basic hybrid-generator approach of the library will remain, but with an additional code generator step.
+
+In the 1.x implementation, scripts in the tools folder generate tightly coupled C source that are assembled at build time via the C preprocessor.
+
+In the 2.x implementation, these scripts will be refactored to generate tightly coupled source for each language of interest.
+The C preprocessor will be used to assemble these source to explicitly generate the final source for every language target except C,
+which will continue to use the 1.x behaviour.
+
+This approach aims to maximumise code reuse and should apply equally well to any imperative programming language.
+
+Any minor releases of the 2.x development line will aim to support more languages, eg. D, Java, C#, Python, etc.
+
+== 3.x
+
+The third major release will focus on faster kernels.
+
+It must be said from the start that faster algorithms, don't necessarily offer practical benefits.
+The 100s of microseconds saved calculating a CRC across a small data set doesn't always amount to much,
+especially if the demand is infrequent like in low-bandwidth telemetry comms.
+
+Of course this is a case by case consideration.
+Chatty high speed comms or large datasets may warrant searching for every every lost microsecond...
+
+The Intel SSE 4.2 instruction set provides hardware support for the CRC-32/ISCSI algorithm (CRC32-C).
+This is http://stackoverflow.com/a/17646775[reportedly] 15x faster than using an 8-bit lookup table.
+GCC and Clang provide the _mm_crc32_u{8,16,32} family of intrinsics to directly access this facility.
+
+The STM family of ARM Cortex-M microcontrollers provide memory mapped CRC peripherals.
+The F1, F2, F4, and L1 variants support CRC-32/MPEG-2.
+More recent variants provide support for arbitrary polynomials with CRC-7, CRC-8, CRC-16, and CRC-32 algorithms.
+These variants also support DMA, which allows for asychronous operation with OS (external) support.
+
+STM claims a 60x speed improvement over the bit-at-a-time implementation, which is around 4 to 5 times slower than an 8-bit table lookup.
+Another way of looking at this is the STM peripheral is around 12-15x faster than using an 8-bit table and around 30x faster than using a 4-bit table.
+
+The ESP32 family of microcontrollers provide https://github.com/espressif/esp-idf/blob/master/components/esp_rom/include/esp32/rom/crc.h[CRC polynomial lookup tables in ROM] for:
+
+* `x^8 + x^2 + x^1 + 1`
+* `x^16 + x^12 + x^5 + 1`
+* `x^32 + x^26 + x^23 + x^22 + x^16 + x^12 + x^11 + x^10 + x^8 + x^7 + x^5 + x^4 + x^2 + x^1 + 1`
+
+The driver for these tables allows both the initial value and refin/refout parameters to be specified,
+which allows for the simple implementation of many standard CRC algorithms, eg. CRC-16/CCITT and CRC-32/ISO_HDLC.
+
+I suspect the ESP32 facilty is mostly a space saving rather than a speed improvement over the 8-bit RAM based table lookup.
+However, since these devices have limited RAM this could represent a practical 2x speed improvement when going from a 4-bit RAM based table to the ROMS based alternative.
+
+Other brands of microcontrollers have similar HW peripherals.
+I won't detail them all here, suffice it to say that the kernel changes need a way to allow the injection of a peripheral "driver" of some kind.
+The DMA based facility would be the most challenging as this needs external support to implement a "sleep and wait" delagator pattern.
