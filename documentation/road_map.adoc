@@ -5,7 +5,7 @@
 
 == 1.x
 
-The principle motivation of Fast-CRC was to provide a full catalog of ready to use and C99 compliant CRC algorithms.
+The principle motivation of Fast-CRC was to provide a full catalogue of ready to use and C99 compliant CRC algorithms.
 These provide consistent, correct, and efficient CRC implementations for engineers who just need to "get on with it".
 
 This objective was met in the 1.0 release (circa April 2024),
@@ -29,7 +29,7 @@ In the 2.x implementation, these scripts will be refactored to generate tightly 
 The C preprocessor will be used to assemble these source to explicitly generate the final source for every language target except C,
 which will continue to use the 1.x behaviour.
 
-This approach aims to maximumise code reuse and should apply equally well to any imperative programming language.
+This approach aims to maximise code reuse and should apply equally well to any imperative programming language.
 
 Any minor releases of the 2.x development line will aim to support more languages, eg. D, Java, C#, Python, etc.
 
@@ -41,20 +41,65 @@ It must be said from the start that faster algorithms, don't necessarily offer p
 The 100s of microseconds saved calculating a CRC across a small data set doesn't always amount to much,
 especially if the demand is infrequent like in low-bandwidth telemetry comms.
 
-Of course this is a case by case consideration.
-Chatty high speed comms or large datasets may warrant searching for every every lost microsecond...
+Nevertheless, in the quest for speed there are a number of avenues to investigate.
+These are outlined below.
+
+The key challenges in meeting the general objective of faster CRC implementations will be:
+
+* Identifying and validating individual methods.
+* Determining whether the methods should be opt-in or opt-out.
+* Detecting which methods are supported on any given platform.
+* Providing predictable fall-back strategies that hide the implementation details from the user.
+
+=== Explicit Loop Unrolling
+
+Explicit loop unrolling is top of the list for potential speed improvements.
+Optimising compilers are very good at automating unrolling on byte at a time processing.
+But there is room for manipulation via compiler flags.
+Deliberate data pre-fetch instructions could also be interleaved in the source.
+This would require experimentation across a selection of compilers, compiler versions, and optimisation settings.
+My gut feeling is that explicit unrolling would be of little benefit, but that hasn't been proven either way.
+
+=== Multi-part Lookup Tables
+
+Next on the list is providing _Multi-Part Table_ kernels.
+These process the data at the natural CPU register-width using multiple 8-bit tables.
+For instance on a 32-bit machines this approach would require 4 x 8-bit tables.
+The performance of these multi-part tables has been https://github.com/komrad36/CRC[measured].
+The 4-part tables are around 2.5x faster than a single 8-bit table, and the 8-part tables are around 4.4x times faster.
+
+These come at the cost of a linear increase in the table footprint,
+which isn't a big deal on modern PCs but is a *show-stopper* on embedded platforms.
+They also have practical speed limits dictated by the speed on the L1 data-cache.
+For instance, a 16-part 8-bit table for CRC-32 works out to be 16kB,
+which equates to 50% of the L1 data-cache on typical PC CPUs.
+
+=== Intel SSE 4.2 CRC32-C
 
 The Intel SSE 4.2 instruction set provides hardware support for the CRC-32/ISCSI algorithm (CRC32-C).
-This is http://stackoverflow.com/a/17646775[reportedly] 15x faster than using an 8-bit lookup table.
-GCC and Clang provide the _mm_crc32_u{8,16,32} family of intrinsics to directly access this facility.
+This uses the Castagnoli polynomial, which is HD6 on datawords up to 655 bytes.
+This is far superior to the CRC-32/ISO_HDLC polynomial, which makes the SSE implementation particularly attractive.
+
+GCC, Clang, and MSVC all provide the _mm_crc32_u{8,16,32} family of intrinsics to directly access these SSE CRC instructions.
+This greatly simplifies implementation.
+
+Depending on where you look the SSE based implementation is around 15 to 19 times faster than the 8-bit table kernel.
+
+Kareem Omar (GH komrad36) provides a https://github.com/komrad36/CRC[hand-optimised SSE 4.2 implementation] that minimises instruction latency.
+This MIT licensed implementation is around 56x faster than the 8-bit table kernel, which is very impressive!
+Well done Kareem!
+
+=== STM32 Cortex-M CRC Peripherals
 
 The STM family of ARM Cortex-M microcontrollers provide memory mapped CRC peripherals.
 The F1, F2, F4, and L1 variants support CRC-32/MPEG-2.
 More recent variants provide support for arbitrary polynomials with CRC-7, CRC-8, CRC-16, and CRC-32 algorithms.
-These variants also support DMA, which allows for asychronous operation with OS (external) support.
+These variants also support DMA, which allows for asynchronous operation with OS (external) support.
 
 STM claims a 60x speed improvement over the bit-at-a-time implementation, which is around 4 to 5 times slower than an 8-bit table lookup.
-Another way of looking at this is the STM peripheral is around 12-15x faster than using an 8-bit table and around 30x faster than using a 4-bit table.
+Another way of looking at this is the STM peripheral is around 12-15x faster than the 8-bit table kernel and around 30x faster than the 4-bit table kernel.
+
+=== ESP32 ROM CRC Tables
 
 The ESP32 family of microcontrollers provide https://github.com/espressif/esp-idf/blob/master/components/esp_rom/include/esp32/rom/crc.h[CRC polynomial lookup tables in ROM] for:
 
@@ -68,6 +113,9 @@ which allows for the simple implementation of many standard CRC algorithms, eg. 
 I suspect the ESP32 facilty is mostly a space saving rather than a speed improvement over the 8-bit RAM based table lookup.
 However, since these devices have limited RAM this could represent a practical 2x speed improvement when going from a 4-bit RAM based table to the ROMS based alternative.
 
-Other brands of microcontrollers have similar HW peripherals.
-I won't detail them all here, suffice it to say that the kernel changes need a way to allow the injection of a peripheral "driver" of some kind.
-The DMA based facility would be the most challenging as this needs external support to implement a "sleep and wait" delagator pattern.
+=== More Hardware Acceleration Options
+
+Specialised instructions like `CLMUL` on x86 and ARM, or `XMULX` on SPARC are designed speed up multiplication of polynomials over the finite field GF(2).  http://www.intel.com/content/dam/www/public/us/en/documents/white-papers/fast-crc-computation-generic-polynomials-pclmulqdq-paper.pdf[Intel published a paper] describing how `PCLMULQDQ` can be used to speed up CRC calculations for generic polynomials.
+
+Other brands of microcontrollers have similar hardware peripherals to those discussed here for STM32/Cortex-M and ESP32.
+I won't detail them all here, suffice it to say that each has to be implemented on a case by case basis via a "driver".
