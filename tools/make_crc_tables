@@ -268,7 +268,16 @@ function make_standard_tables()
   make_tables 8 0x1d
   make_tables 8 0x49
   make_tables 8 0x2f
+
+  # CRC-8/DARC 0x39 - Least Improper CRC-8 at BER 100%
+  #
+  # This is "The sky is falling" CRC-8 where the BER has exploded and the best you can hope for is PUD = 1/256
+  # It's 1.8 times worse than the hypothetical Proper CRC-8, ie. PUD = 1.8 / 256 = 0.7%
+  #
+  # It also provides HD5 for datawords up to 9 bits, which makes it useful for protecting length fields in comms protocols
+
   make_tables 8 0x39
+
   make_tables 8 0xd5
   make_tables 8 0x9b
   make_tables 8 0xa7
@@ -418,9 +427,17 @@ function make_research_tables()
 
   local POLYNOMIAL_EXPORT_PATH="${POLYNOMIAL_BASE_PATH}/research"
 
-  # Koopman HD4 CRC-8
+  # Koopman CRC-8, HD4
 
   make_tables 8 0x4d
+
+  # Best CRC-9, HD6
+
+  make_tables 9 0x79
+
+  # Best CRC-10, HD6
+
+  make_tables 10 0x173
 
   # Nguyen HD6 "Fast CRCs"
 
