@@ -53,34 +53,6 @@ function generate_routine()
 // The following routines use the "Division by a constant" method described in:
 // https://en.wikipedia.org/wiki/Division_algorithm
 //
-// <quote>
-//
-// ...
-//
-// For general {{mvar|x}}-bit unsigned integer division where the divisor {{mvar|D}} is not a power of 2,
-// the following identity converts the division into two {{mvar|x}}-bit addition/subtraction,
-// one {{mvar|x}}-bit by {{mvar|x}}-bit multiplication (where only the upper half of the result is used) and several shifts,
-// after precomputing
-//
-//   <math>
-//     k=x+\lceil\log_2{D}\rceil
-//   </math>
-//
-//   and
-//
-//   <math>
-//     a=\left\lceil\frac{2^k}{D}\right\rceil-2^x
-//   </math>:
-//
-// : <math>
-//     \left\lfloor\frac{N}{D}\right\rfloor=\left\lfloor\frac{\left\lfloor\frac{N-b}{2}\right\rfloor+b}{2^{k-x-1}}\right\rfloor
-//     \text{ where } b=\left\lfloor\frac{Na}{2^x}\right\rfloor
-//   </math>
-//
-// ...
-//
-// </quote>
-//
 
 ${uint_t} u${int_width}_div_by_${divisor}(${uint_t} const numerator)
 {
