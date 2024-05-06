@@ -9,5 +9,6 @@
 
 #include "crc_algorithms/fast/crc16_fast6.inc"
 #include "crc_algorithms/fast/crc24_fast6.inc"
+#include "crc_algorithms/fast/crc31_fast6.inc"
 #include "crc_algorithms/fast/crc32_fast6.inc"
 #include "crc_algorithms/fast/crc64_fast6.inc"
