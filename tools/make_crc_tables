@@ -443,6 +443,7 @@ function make_research_tables()
 
   make_tables 16 0x011b
   make_tables 24 0x018301
+  make_tables 31 0xc3001
   make_tables 32 0x0006c001
 
   printf "\n"
