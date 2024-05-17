@@ -94,7 +94,7 @@ function make_all_crc_interfaces()
 
     printf "#include \"${algorithm}\"\n" >> "$crc_algorithms_inc"
 
-  done < <(find "$@" -iname \*.inc | xargs realpath -e)
+  done < <(find "$@" -iname \*.inc | sort -t'c' -V -k2 | xargs realpath -e)
 
   # 2. Generate crc_algorithms.h
 
