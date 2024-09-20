@@ -24,25 +24,24 @@ static inline uint32_t crc31_Fast6_u8(uint32_t const crc, uint8_t const data_byt
 static inline uint32_t crc31_Fast6_u16(uint32_t crc, uint16_t const * data, size_t const data_len)
 {
   uint32_t const T[16] = {
-    0x00000000, 0x430c2001, 0x06147003, 0x45185002,
-    0x0c28e006, 0x4f24c007, 0x0a3c9005, 0x4930b004,
-    0x1851c00c, 0x5b5de00d, 0x1e45b00f, 0x5d49900e,
-    0x1479200a, 0x5775000b, 0x126d5009, 0x51617008,
+    0x00000000, 0x000c3001, 0x00145003, 0x00186002,
+    0x0028a006, 0x00249007, 0x003cf005, 0x0030c004,
+    0x0051400c, 0x005d700d, 0x0045100f, 0x0049200e,
+    0x0079e00a, 0x0075d00b, 0x006db009, 0x00618008,
   };
 
-  uint32_t A, A1, A2, B, B1;
+  uint32_t A, A1, B, B1;
 
   for (size_t i = 0; i < data_len; ++i) {                               //   2 ops
     uint16_t const item = ensure_be16(data[i]);                         //   1 op on little-endian platforms
     A = (crc >> (31 - 16)) ^ item;                                      //   2 ops
     A1 = A >> 12;                                                       //   1 op
-    A2 = A & 0xfff;                                                     //   1 op
-    B1 = (A2 << 13) ^ (A2 << 12);                                       //   3 ops
-    B = T[A1] ^ (B1 << 6) ^ B1 ^ A2;                                    //   4 ops
+    B1 = (A << 13) ^ (A << 12);                                         //   3 ops
+    B = T[A1] ^ (B1<<6) ^ B1 ^ A;                                       //   4 ops
     crc = (B ^ (crc << 16)) & 0x7fffffff;                               // + 3 ops
   }                                                                     // -------
-                                                                        //  17    ops/u16
-  return crc;                                                           //   8.5  ops/u8
+                                                                        //  16    ops/u16
+  return crc;                                                           //   8    ops/u8
 }
 
 uint32_t crc31_Fast6_Fxc3001(uint32_t const init, uint8_t const * data, size_t data_len)
