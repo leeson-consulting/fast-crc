@@ -2,11 +2,11 @@
 
 #include "fast_crc.h"
 
-#include "stdio.h"
-#include "stdint.h"
-#include "stdlib.h"
-#include "string.h"
-#include "assert.h"
+#include <stdio.h>
+#include <stdint.h>
+#include <stdlib.h>
+#include <string.h>
+#include <assert.h>
 
 static char const CRC_CHECK_STRING[10] = "123456789";
 static size_t const CRC_CHECK_STRING_LEN = strlen(CRC_CHECK_STRING);
@@ -28,6 +28,103 @@ do {                                           \
 } while (0)
 
 #endif
+
+#define ANSI_RESET                  "\033[0m"
+
+#define ANSI_BLACK                  "\033[0;30m"
+#define ANSI_RED                    "\033[0;31m"
+#define ANSI_GREEN                  "\033[0;32m"
+#define ANSI_YELLOW                 "\033[0;33m"
+#define ANSI_BLUE                   "\033[0;34m"
+#define ANSI_MAGENTA                "\033[0;35m"
+#define ANSI_CYAN                   "\033[0;36m"
+#define ANSI_WHITE                  "\033[0;37m"
+
+void dump_data(
+    uint8_t const * data, size_t const data_len,
+    FILE * const data_sink,
+    char const * const hex_highlight_code,
+    char const * const annotation_highlight_code)
+{
+  if (data == NULL || data_len == 0 || data_sink == NULL) {
+    return;
+  }
+
+  if (hex_highlight_code == NULL || annotation_highlight_code == NULL) {
+    return;
+  }
+
+  // The following constants should be powers of two for speed
+
+  static const size_t ROW_WIDTH         = 16;
+  static const size_t ROW_HEIGHT        = 16;
+  static const size_t GROUP_WIDTH       =  4;
+  static const size_t ROW_PRINT_WIDTH   = ROW_WIDTH * (2 /* hex digits */ + 1 /* space */) + (ROW_WIDTH / GROUP_WIDTH);
+
+  // Row Annotations
+
+  char annotated_row_data[ROW_WIDTH] = { 0 };
+  char FIRST_PRINTABLE_BYTE          = ' ';    // ANSI(&Space;)
+  char NON_PRINTABLE_SUBSTITUTE      = '\xb7'; // ANSI(&CenterDot;) ==> '·'
+
+  size_t const data_rows = (data_len + (ROW_WIDTH - 1)) / ROW_WIDTH;
+  size_t data_offset = 0;
+
+  fprintf(data_sink, ANSI_RESET);
+
+  for (size_t row = 0 ; row < data_rows ; ++row) {
+
+    if (row % ROW_HEIGHT == 0) {
+      fprintf(data_sink, ANSI_RESET"\nBlock %lu\n\n", row / ROW_HEIGHT); // data-block row
+    }
+
+    size_t const data_remaining = data_len - data_offset;
+    size_t const row_data_len = data_remaining >= ROW_WIDTH ? ROW_WIDTH : data_remaining;
+    size_t const next_data_offset = data_offset + row_data_len;
+
+    // Print the row block-index
+
+    fprintf(data_sink, ANSI_RESET"%02lu | ", row % ROW_HEIGHT);
+
+    // Print the row data
+
+    fprintf(data_sink, hex_highlight_code);
+
+    for (size_t idx = data_offset ; idx < next_data_offset ; ++idx) {
+      fprintf(data_sink, "%02x ", data[idx]);
+
+      annotated_row_data[idx - data_offset] = data[idx] >= FIRST_PRINTABLE_BYTE ? data[idx] : NON_PRINTABLE_SUBSTITUTE;
+
+      if ((idx + 1) % GROUP_WIDTH == 0) {
+        fprintf(data_sink, " ");
+      }
+    }
+
+    // Print the row annotation
+
+    size_t right_padding;
+
+    if (row_data_len == ROW_WIDTH) {
+      right_padding = 0;
+    } else {
+      right_padding = ROW_PRINT_WIDTH - (row_data_len * (2 /* hex digits */ + 1 /* space */) + (row_data_len / GROUP_WIDTH));
+    }
+
+    fprintf(data_sink, ANSI_RESET"%*s;%*s", (int) right_padding, "", 2, "");
+    fprintf(data_sink, annotation_highlight_code);
+    fprintf(data_sink, "%.*s\n", (int) row_data_len, annotated_row_data);
+
+    data_offset = next_data_offset;
+
+  }
+
+  fprintf(data_sink, ANSI_RESET);
+}
+
+void dump_hex(uint8_t const * data, size_t const data_len)
+{
+  dump_data(data, data_len, stdout, ANSI_GREEN, ANSI_CYAN);
+}
 
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -153,10 +250,12 @@ static const size_t RANDOM_TEST_DATA_LEN = sizeof(RANDOM_TEST_DATA) / sizeof(RAN
 
 void test_crc_of_random_data(crc_parameters_t const & crc_params, CRC_Algorithm const algorithm, uint64_t const expected_crc)
 {
-  printf("Test \"%s\" of random test data", crc_params.name);
-
   uint8_t const * const data_start = &RANDOM_TEST_DATA[0];
   size_t const data_len = RANDOM_TEST_DATA_LEN;
+
+  printf("Test \"%s\" of random test data:\n", crc_params.name);
+  dump_hex(data_start, data_len);
+  printf("\n   ==>   Expect CRC = 0x%016lx\n", expected_crc);
 
   return test_crc(crc_params, algorithm, data_start, data_len, expected_crc);
 }
