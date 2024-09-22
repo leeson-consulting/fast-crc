@@ -44,18 +44,21 @@ struct CRC_Algorithm
   CRC_Algorithm_Finish const     crc_finish;
 };
 
-void short_test_crc(crc_parameters_t const & crc_params, CRC_Algorithm const algorithm)
+void test_crc(
+  crc_parameters_t const & crc_params,
+  CRC_Algorithm const algorithm,
+  uint8_t const * const data_start,
+  size_t const data_len,
+  uint64_t const expected_crc)
 {
-  printf("Test \"%s\" on \"%s\"", crc_params.name, CRC_CHECK_STRING);
-
-  uint8_t const * const data_start = (uint8_t *) CRC_CHECK_STRING;
-  size_t const data_len = CRC_CHECK_STRING_LEN;
+  assert(data_start != nullptr);
+  assert(data_len > 0);
 
   // 1. Test the main CRC interface
 
   uint64_t crc = algorithm.crc_main(data_start, data_len);
 
-  if (crc_params.check != crc) {
+  if (crc != expected_crc) {
     ERROR("\n\n>>>   CRC Main Test Failed: Expected 0x%016lx , Actual 0x%016lx   <<<\n\n", crc_params.check, crc);
   }
 
@@ -78,7 +81,7 @@ void short_test_crc(crc_parameters_t const & crc_params, CRC_Algorithm const alg
 
   crc = algorithm.crc_finish(crc, data, data_len - (data - data_start));
 
-  if (crc_params.check != crc) {
+  if (crc != expected_crc) {
     ERROR("\n\n>>>   CRC Accumulation Test #1 Failed: Expected 0x%016lx , Actual 0x%016lx   <<<\n\n", crc_params.check, crc);
   }
 
@@ -97,11 +100,21 @@ void short_test_crc(crc_parameters_t const & crc_params, CRC_Algorithm const alg
 
   crc = algorithm.crc_finish(crc, data, data_len - (data - data_start));
 
-  if (crc_params.check != crc) {
+  if (crc != expected_crc) {
     ERROR("\n\n>>>   CRC Accumulation Test #2 Failed: Expected 0x%016lx , Actual 0x%016lx   <<<\n\n", crc_params.check, crc);
   }
 
   printf("   ==>   PASS\n\n");
+}
+
+void short_test_crc(crc_parameters_t const & crc_params, CRC_Algorithm const algorithm)
+{
+  printf("Short Test \"%s\" on \"%s\"", crc_params.name, CRC_CHECK_STRING);
+
+  uint8_t const * const data_start = (uint8_t *) CRC_CHECK_STRING;
+  size_t const data_len = CRC_CHECK_STRING_LEN;
+
+  return test_crc(crc_params, algorithm, data_start, data_len, crc_params.check);
 }
 
 constexpr uint64_t make_poly_mask(size_t const poly_degree)
