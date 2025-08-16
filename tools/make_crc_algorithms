@@ -45,7 +45,7 @@ function check_exclusions()
     'crc16_fast6.inc') echo "exclude" ;;
     'crc24_fast4.inc') echo "exclude" ;;
     'crc24_fast6.inc') echo "exclude" ;;
-    'crc32_fast6.inc') echo "exclude" ;;
+    'crc31_fast6.inc') echo "exclude" ;;
     'crc64_fast6.inc') echo "exclude" ;;
     *)                 echo "ok" ;;
   esac

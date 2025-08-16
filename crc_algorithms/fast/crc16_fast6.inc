@@ -24,10 +24,10 @@ static inline uint16_t crc16_Fast6_u8(uint16_t crc, uint8_t const data_byte)
 uint16_t crc16_Fast6_Fx011b(uint16_t crc, uint8_t const * data, size_t data_len)
 {
   for (size_t i = 0; i < data_len; ++i) {                               //    2 ops
-    crc = crc16_Fast6_u8(crc, data[i]);                                 // + 13 ops
+    crc = crc16_Fast6_u8(crc, data[i]);                                 // + 12 ops
   }                                                                     // --------
                                                                         //
-  return crc;                                                           //   15 ops/u8
+  return crc;                                                           //   14 ops/u8
 }
 
 uint16_t crc16_Fast6_start(uint8_t const *data, size_t const data_len)

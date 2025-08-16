@@ -26,10 +26,10 @@ uint32_t crc24_Fast4_Fx000007(uint32_t const init, uint8_t const * data, size_t 
   uint32_t crc = init & 0xffffff;
 
   for (size_t i = 0; i < data_len; ++i) {                               //    2 ops
-    crc = crc24_Fast4_u8(crc, data[i]);                                 // + 13 ops
+    crc = crc24_Fast4_u8(crc, data[i]);                                 // +  9 ops
   }                                                                     // --------
                                                                         //
-  return crc;                                                           //   15 ops/u8
+  return crc;                                                           //   11 ops/u8
 }
 
 uint32_t crc24_Fast4_start(uint8_t const *data, size_t const data_len)
