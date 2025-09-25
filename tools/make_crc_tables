@@ -483,16 +483,7 @@ cat <<-EOF > "$PYCRC"
 
 #!/usr/bin/env bash
 
-# Some versions of pycrc run very slowly.
-# The cause is unknown.
-#
-# Older versions of pycrc seem to require Python 2.7,
-# but are much faster...
-#
-# This is a wee hack to make sure table generation completes in a timely manner
-#
-
-exec python2 "$pycrc" "\$@"
+exec python3 "$pycrc" "\$@"
 
 EOF
 
