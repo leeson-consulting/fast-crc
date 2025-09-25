@@ -46,6 +46,10 @@ function make_crc_interfaces()
   mapfile -d '' header_prologue << EOF
 #pragma once
 
+#if defined(__cplusplus)
+extern "C" {
+#endif
+
 ///////////////////////////////////////////////////////////////////////////////
 //
 // Fast-CRC Algorithm Interfaces
@@ -59,6 +63,17 @@ EOF
   echo -n "$header_prologue"
 
   sed -n -e '/_t crc.*_.*_start.*const data_len.;/{s:^\s*::g ; s:;\s*:;\n:g ; p}' < "$crc_algorithms_cppout"
+
+  local header_epilogue
+
+  mapfile -d '' header_epilogue << EOF
+#if defined(__cplusplus)
+}
+#endif
+EOF
+
+  echo -n "$header_epilogue"
+
 }
 
 ###############################################################################
